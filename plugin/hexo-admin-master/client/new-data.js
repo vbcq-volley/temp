@@ -14,7 +14,7 @@ var NewData = React.createClass({
       showing: false,
       loading: true,
       text: 'Untitled',
-      pageType: 'normal',
+      pageType: 'match',
       team1: '',
       team2: '',
       homeDateTime: '',
@@ -33,7 +33,7 @@ var NewData = React.createClass({
   },
 
   componentDidMount: function () {
-    api.match().then((matches) => {
+    api.getEntries("match").then((matches) => {
       console.log(matches);
       this.setState({ matches: matches });
     });
@@ -109,11 +109,11 @@ var NewData = React.createClass({
       pageData.isPostponed = this.state.isPostponed;
     }
 
-    api.newPage(pageData).then((page) => {
+    api.addEntry(pageData.type,pageData).then((page) => {
       this.setState({
         showing: false,
         text: 'Untitled',
-        pageType: 'normal',
+        pageType: 'match',
         team1: '',
         team2: '',
         homeDateTime: '',
@@ -246,7 +246,7 @@ var NewData = React.createClass({
         <div className="new-post" onClick={this._onShow}>
           <div className="new-post_button">
             <i className="fa fa-plus" />{' '}
-            New page
+            nouveau match
           </div>
         </div>
       );
@@ -262,11 +262,7 @@ var NewData = React.createClass({
           onKeyPress={this._onKeydown}
           onChange={this._onChange}
         />
-        <select value={this.state.pageType} onChange={this._onPageTypeChange}>
-          <option value="normal">Page banale</option>
-          <option value="match">Match</option>
-          <option value="result">Résultat de match</option>
-        </select>
+       
         <div className={this.state.pageType === 'match' ? 'visible' : 'hidden'}>
           <label>
             Équipe 1:
@@ -330,89 +326,7 @@ var NewData = React.createClass({
             </select>
           </label>
         </div>
-        <div className={this.state.pageType === 'result' ? 'visible' : 'hidden'}>
-          <label>
-            Sélectionnez un match:
-            <select value={this.state.selectedMatch ? this.state.selectedMatch._id : ''} onChange={this._onMatchSelect}>
-              <option value="">Sélectionnez un match</option>
-              {this.state.matches.map((match) => (
-                <option key={match._id} value={match._id}>
-                  {match.team1} vs {match.team2}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Type de match:
-            <select value={this.state.matchType} onChange={this._onMatchTypeChange}>
-              <option value="home">Match à domicile</option>
-              <option value="away">Match à l'extérieur</option>
-            </select>
-          </label>
-          <label>
-            Équipe 1:
-            <input
-              type="text"
-              placeholder="Équipe 1"
-              value={this.state.team1}
-              onChange={this._onTeam1Change}
-            />
-          </label>
-          <label>
-            Équipe 2:
-            <input
-              type="text"
-              placeholder="Équipe 2"
-              value={this.state.team2}
-              onChange={this._onTeam2Change}
-            />
-          </label>
-          <label>
-            Groupe:
-            <select value={this.state.group} onChange={this._onGroupChange}>
-              <option value="">Sélectionnez un groupe</option>
-              <option value="1">Groupe 1</option>
-              <option value="2">Groupe 2</option>
-              <option value="3">Groupe 3</option>
-            </select>
-          </label>
-          <label>
-            Score Équipe 1:
-            <input
-              type="number"
-              placeholder="Score Équipe 1"
-              value={this.state.team1Score}
-              onChange={this._onTeam1ScoreChange}
-              disabled={this.state.isForfeit}
-            />
-          </label>
-          <label>
-            Score Équipe 2:
-            <input
-              type="number"
-              placeholder="Score Équipe 2"
-              value={this.state.team2Score}
-              onChange={this._onTeam2ScoreChange}
-              disabled={this.state.isForfeit}
-            />
-          </label>
-          <label>
-            Forfait:
-            <input
-              type="checkbox"
-              checked={this.state.isForfeit}
-              onChange={this._onForfeitChange}
-            />
-          </label>
-          <label>
-            Reporté:
-            <input
-              type="checkbox"
-              checked={this.state.isPostponed}
-              onChange={this._onPostponedChange}
-            />
-          </label>
-        </div>
+        
         <i className="fa fa-check-circle new-post_ok" onMouseDown={this._onSubmit}></i>
         <i className="fa fa-times-circle new-post_cancel" onMouseDown={this._onCancel}></i>
       </div>

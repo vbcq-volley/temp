@@ -9,6 +9,7 @@ var Deploy = require('./deploy')
 var Settings = require('./settings')
 var AuthSetup = require('./auth-setup')
 var datas=require("./datas")
+var data=require("./data")
 var Route = require('react-router').Route
 
 module.exports = () => {
@@ -17,7 +18,8 @@ module.exports = () => {
     <Route name="post" handler={Post} path="/posts/:postId"/>
     <Route name="page" handler={Page} path="/pages/:pageId"/>
     <Route name="pages" handler={Pages} path="/pages"/>
-    <Route name="data" handler={datas} path="/administration"/>
+    <Route name="datas" handler={datas} path="/administration"/>
+    <Route name="data" handler={data} path="/administration/:matchId"/>
     <Route name="about" handler={About}/>
     <Route name="deploy" handler={Deploy}/>
     <Route name="settings" handler={Settings}/>

@@ -15,9 +15,7 @@ var api = require('./api');
 var Datas = React.createClass({
   mixins: [DataFetcher((params) => {
     return {
-      pages: api.data().then((pages) =>
-        pages
-      )
+      pages: api.getEntries("match")
     }
   })],
 
@@ -28,17 +26,19 @@ var Datas = React.createClass({
   },
 
   _onNew: function (page) {
+    
     var pages = this.state.pages.slice()
+    console.log(pages)
     pages.unshift(page)
     this.setState({pages: pages})
-    Router.transitionTo('page', {pageId: page._id})
+    Router.transitionTo('data', {matchId: page._id})
   },
 
   goTo: function (id, e) {
     if (e) {
       e.preventDefault()
     }
-    Router.transitionTo('page', {pageId: id})
+    Router.transitionTo('data', {matchId: id})
   },
 
   render: function () {
@@ -70,7 +70,7 @@ var Datas = React.createClass({
               <a className='posts_perma-link' target="_blank" href={rootPath + '/' + page.path}>
                 <i className='fa fa-link'/>
               </a>
-              <Link className='posts_edit-link' to="page" pageId={page._id}>
+              <Link className='posts_edit-link' to="data" matchId={page._id}>
                 <i className='fa fa-pencil'/>
               </Link>
             </li>

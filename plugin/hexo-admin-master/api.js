@@ -130,6 +130,11 @@ class DB {
 const db=new DB({
   filename:"./source/_data/db.json"
 })
+
+db.read("match").map((item,index)=>{
+  item.title=`${item.team1} vs ${item.team2}`
+  db.update('match',index,item)
+})
 module.exports = function (app, hexo) {
 
   function addIsDraft(post) {
@@ -243,7 +248,9 @@ module.exports = function (app, hexo) {
   }
 
   var use = function (path, fn) {
+  
     app.use(hexo.config.root + 'admin/api/' + path, function (req, res) {
+    
       var done = function (val) {
         console.log(val)
         if (!val) {
@@ -341,12 +348,91 @@ module.exports = function (app, hexo) {
    //.log(page)
    res.done(page.toArray());
   });
-  use("match/list", function (req, res, next) {
-    
-    const data=db.read("match")
-   console.log(data)
-    res.done(data)
-  })
+
+
+// Endpoint pour ajouter une entrée dans un modèle
+use('db/', function(req, res) {
+    if (req.method === 'POST') {
+        
+       
+            try {
+                const modelName = req.url.split('/').filter(Boolean)[0];
+                const entry = req.body;
+                entry._id=uuid.v7()
+                // Ajouter une entrée dans le modèle
+                db.create(modelName, entry);
+
+                return res.done(entry);
+            } catch (error) {
+              console.log(error)
+               return  res.send(400, 'Bad Request');
+            }
+       
+    } else {
+         if (req.method === 'GET') {
+          db.read("match").map((item,index)=>{
+  item.title=`${item.team1} vs ${item.team2}`
+  if(!item._id){
+    item._id=uuid.v7()
+  }
+  db.update('match',index,item)
+})  
+        const modelName = req.url.split('/').filter(Boolean)[0];
+
+        // Obtenir toutes les entrées du modèle
+        const entries = db.read(modelName);
+
+return res.done(entries);
+    } else {
+       return  res.send(405, 'Method Not Allowed');
+    }
+    }
+});
+
+// Endpoint pour obtenir toutes les entrées d'un modèle
+
+
+// Endpoint pour mettre à jour une entrée dans un modèle
+use('db/:model/:index', function(req, res) {
+    if (req.method === 'PUT') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', () => {
+            try {
+                const modelName = req.url.split('/').filter(Boolean)[0];
+                const index = req.url.split('/').filter(Boolean)[1];
+                const newEntry = JSON.parse(body);
+
+                // Mettre à jour une entrée dans le modèle
+                db.update(modelName, index, newEntry);
+
+                res.send(200, 'Entry updated');
+            } catch (error) {
+                res.send(400, 'Bad Request');
+            }
+        });
+    } else {
+        res.send(405, 'Method Not Allowed');
+    }
+});
+
+// Endpoint pour supprimer une entrée d'un modèle
+use('db/:model/:index', function(req, res) {
+    if (req.method === 'DELETE') {
+        const modelName = req.url.split('/').filter(Boolean)[0];
+        const index = req.url.split('/').filter(Boolean)[1];
+
+        // Supprimer une entrée du modèle
+        db.delete(modelName, index);
+
+        res.send(200, 'Entry deleted');
+    } else {
+        res.send(405, 'Method Not Allowed');
+    }
+});
+
   use('pages/new', function (req, res, next) {
     if (req.method !== 'POST') return next()
     if (!req.body) {

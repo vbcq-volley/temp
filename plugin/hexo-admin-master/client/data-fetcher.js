@@ -16,6 +16,10 @@ module.exports = function (fetch) {
     },
 
     loadData: function (props) {
+      console.log(props.params)
+      if(props.params==Object()){
+        return
+      }
       var items = fetch(props.params)
       Object.keys(items).forEach((name) => {
         Promise.resolve(items[name]).then((data) => {
