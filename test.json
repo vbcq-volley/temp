@@ -1,0 +1,30 @@
+{
+  "users": {
+    "entries": [
+      {
+        "id": 1,
+        "name": "Alice"
+      },
+      {
+        "id": 1,
+        "name": "Alice"
+      }
+    ]
+  },
+  "admin": {
+    "entries": [
+      {
+        "id": 1,
+        "name": "Alice"
+      },
+      {
+        "id": 1,
+        "name": "Alice"
+      },
+      {
+        "id": 1,
+        "name": "Alice"
+      }
+    ]
+  }
+}
