@@ -87,13 +87,13 @@ var Rendered = React.createClass({
     const textContent = this.parseJsonText(this.props.text);
     return (
       <div style={styles.container}>
-        <h2 style={styles.title}>{this.props.team1} vs {this.props.team2}</h2>
+        <h2 style={styles.title}>{textContent.team1} vs {textContent.team2}</h2>
         <div style={styles.info}>
-          <p><span style={styles.label}>Groupe:</span> {this.props.group}</p>
-          <p><span style={styles.label}>Match à domicile:</span> {this.props.homeDate || 'Non défini'}</p>
-          <p><span style={styles.label}>Lieu domicile:</span> {this.props.homeLocation || 'Non défini'}</p>
-          <p><span style={styles.label}>Match à l'extérieur:</span> {this.props.awayDate || 'Non défini'}</p>
-          <p><span style={styles.label}>Lieu extérieur:</span> {this.props.awayLocation || 'Non défini'}</p>
+          <p><span style={styles.label}>Groupe:</span> {textContent.group}</p>
+          <p><span style={styles.label}>Match à domicile:</span> {textContent.homeDate || 'Non défini'}</p>
+          <p><span style={styles.label}>Lieu domicile:</span> {textContent.homeLocation || 'Non défini'}</p>
+          <p><span style={styles.label}>Match à l'extérieur:</span> {textContent.awayDate || 'Non défini'}</p>
+          <p><span style={styles.label}>Lieu extérieur:</span> {textContent.awayLocation || 'Non défini'}</p>
         </div>
         {textContent && (
           <div style={styles.description}>
@@ -112,15 +112,15 @@ var Rendered = React.createClass({
     const textContent = this.parseJsonText(this.props.text);
     return (
       <div style={styles.container}>
-        <h2 style={styles.title}>{this.props.team1} vs {this.props.team2}</h2>
+        <h2 style={styles.title}>{textContent.team1} vs {textContent.team2}</h2>
         <div style={styles.info}>
           <div style={styles.score}>
-            <span>{this.props.team1Score}</span>
+            <span>{textContent.team1Score}</span>
             <span style={styles.separator}>-</span>
-            <span>{this.props.team2Score}</span>
+            <span>{textContent.team2Score}</span>
           </div>
-          <p><span style={styles.label}>Groupe:</span> {this.props.group}</p>
-          {this.props.isPostponed && <p style={styles.postponed}>Match reporté</p>}
+          <p><span style={styles.label}>Groupe:</span> {textContent.group}</p>
+          {textContent.isPostponed && <p style={styles.postponed}>Match reporté</p>}
         </div>
         {textContent && (
           <div style={styles.description}>
@@ -139,10 +139,10 @@ var Rendered = React.createClass({
     const textContent = this.parseJsonText(this.props.text);
     return (
       <div style={styles.container}>
-        <h2 style={styles.title}>{this.props.teamName}</h2>
+        <h2 style={styles.title}>{textContent.teamName}</h2>
         <div style={styles.info}>
-          <p><span style={styles.label}>Entraîneur:</span> {this.props.coach}</p>
-          <p><span style={styles.label}>Groupe:</span> {this.props.group}</p>
+          <p><span style={styles.label}>Entraîneur:</span> {textContent.coach}</p>
+          <p><span style={styles.label}>Groupe:</span> {textContent.group}</p>
         </div>
         {textContent && (
           <div style={styles.description}>
@@ -159,7 +159,7 @@ var Rendered = React.createClass({
 
   render: function () {
     const textContent = this.parseJsonText(this.props.text);
-    
+    console.log(this.props.type)
     switch(this.props.type) {
       case "match":
         return this.renderMatch();
