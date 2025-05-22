@@ -24,6 +24,7 @@ module.exports = function (model, id, update, callback, hexo) {
   if (!post) {
     return callback('Post not found');
   }
+  console.log(post)
   var config = hexo.config,
     slug = post.slug = hfm.escape(post.slug || post.title, config.filename_case),
     layout = post.layout = (post.layout || config.default_layout).toLowerCase(),
