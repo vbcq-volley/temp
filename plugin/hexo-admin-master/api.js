@@ -10,6 +10,7 @@ var updateAny = require('./update')
   , deploy = require('./deploy')
 const uuid=require("uuid")
 
+// Classe DB améliorée avec validation et gestion d'erreurs
 class DB {
     constructor(options, filename) {
         if (!options || typeof options !== 'object') {
@@ -18,12 +19,13 @@ class DB {
         this.options = options;
         this.data = {};
         this.filename = filename||this.options.filename||'./db.json';
-        console.log(path.resolve(this.filename))
-        // Load data from file at startup if the file exists
-        this.loadFromFile(this.filename);
-
-        // Set up automatic saving
-       // this.setupAutoSave();
+        
+        try {
+            this.loadFromFile(this.filename);
+        } catch (error) {
+            console.error(`Error loading database: ${error.message}`);
+            this.data = {};
+        }
     }
 
     /**
@@ -38,7 +40,11 @@ class DB {
 
         if (!this.data[name]) {
             this.data[name] = {
-                // You can add default properties or methods for the model here
+                entries: [],
+                metadata: {
+                    created_at: new Date().toISOString(),
+                    updated_at: new Date().toISOString()
+                }
             };
         }
 
@@ -51,13 +57,25 @@ class DB {
      * @param {object} entry - The entry to create
      */
     create(modelName, entry) {
-      console.log(path.resolve(this.filename))
-        const model = this.model(modelName);
-        if (!model.entries) {
-            model.entries = [];
+        try {
+            const model = this.model(modelName);
+            if (!entry) {
+                throw new Error('Entry data is required');
+            }
+            
+            entry._id = entry._id || uuid.v7();
+            entry.created_at = new Date().toISOString();
+            entry.updated_at = entry.created_at;
+            
+            model.entries.push(entry);
+            model.metadata.updated_at = entry.updated_at;
+            
+            this.saveToFile(this.filename);
+            return entry;
+        } catch (error) {
+            console.error(`Error creating entry: ${error.message}`);
+            throw error;
         }
-        model.entries.push(entry);
-        this.saveToFile(this.filename);
     }
 
     /**
@@ -66,9 +84,13 @@ class DB {
      * @returns {array} The list of entries
      */
     read(modelName) {
-      console.log(path.resolve(this.filename))
-        const model = this.model(modelName);
-        return model.entries || [];
+        try {
+            const model = this.model(modelName);
+            return model.entries || [];
+        } catch (error) {
+            console.error(`Error reading entries: ${error.message}`);
+            throw error;
+        }
     }
 
     /**
@@ -78,12 +100,21 @@ class DB {
      * @param {object} newEntry - The new entry data
      */
     update(modelName, index, newEntry) {
-        const model = this.model(modelName);
-        if (model.entries && model.entries[index]) {
-            model.entries[index] = newEntry;
+        try {
+            const model = this.model(modelName);
+            if (!model.entries || !model.entries[index]) {
+                throw new Error('Entry not found');
+            }
+            
+            newEntry.updated_at = new Date().toISOString();
+            model.entries[index] = { ...model.entries[index], ...newEntry };
+            model.metadata.updated_at = newEntry.updated_at;
+            
             this.saveToFile(this.filename);
-        } else {
-            throw new Error('Entry not found');
+            return model.entries[index];
+        } catch (error) {
+            console.error(`Error updating entry: ${error.message}`);
+            throw error;
         }
     }
 
@@ -93,12 +124,19 @@ class DB {
      * @param {number} index - The index of the entry to delete
      */
     delete(modelName, index) {
-        const model = this.model(modelName);
-        if (model.entries && model.entries[index]) {
+        try {
+            const model = this.model(modelName);
+            if (!model.entries || !model.entries[index]) {
+                throw new Error('Entry not found');
+            }
+            
             model.entries.splice(index, 1);
+            model.metadata.updated_at = new Date().toISOString();
+            
             this.saveToFile(this.filename);
-        } else {
-            throw new Error('Entry not found');
+        } catch (error) {
+            console.error(`Error deleting entry: ${error.message}`);
+            throw error;
         }
     }
 
@@ -107,8 +145,12 @@ class DB {
      * @param {string} filename - The name of the file to save the data
      */
     saveToFile(filename) {
-        console.log(this.data)
-        fs.writeFileSync(filename, JSON.stringify(this.data, null, 2));
+        try {
+            fs.writeFileSync(filename, JSON.stringify(this.data, null, 2));
+        } catch (error) {
+            console.error(`Error saving to file: ${error.message}`);
+            throw error;
+        }
     }
 
     /**
@@ -116,9 +158,14 @@ class DB {
      * @param {string} filename - The name of the file to load the data from
      */
     loadFromFile(filename) {
-        if (fs.existsSync(filename)) {
-            const fileData = fs.readFileSync(filename, 'utf8');
-            this.data = JSON.parse(fileData);
+        try {
+            if (fs.existsSync(filename)) {
+                const fileData = fs.readFileSync(filename, 'utf8');
+                this.data = JSON.parse(fileData);
+            }
+        } catch (error) {
+            console.error(`Error loading from file: ${error.message}`);
+            throw error;
         }
     }
 
@@ -248,34 +295,39 @@ module.exports = function (app, hexo) {
   }
 
   var use = function (path, fn) {
-  
     app.use(hexo.config.root + 'admin/api/' + path, function (req, res) {
-    
+      hexo.log.d(`API Request: ${req.method} ${path}`);
+      
       var done = function (val) {
-        console.log(val)
         if (!val) {
-          res.statusCode = 204
+          res.statusCode = 204;
           return res.end('');
         }
-        res.setHeader('Content-type', 'application/json')
+        res.setHeader('Content-type', 'application/json');
         res.end(JSON.stringify(val, function(k, v) {
-          // tags and cats have posts reference resulting in circular json..
-          if ( k == 'tags' || k == 'categories' ) {
-            // convert object to simple array
+          if (k == 'tags' || k == 'categories') {
             return v.toArray ? v.toArray().map(function(obj) {
-              return obj.name
-            }) : v
+              return obj.name;
+            }) : v;
           }
           return v;
-        }))
-      }
-      res.done = done
+        }));
+      };
+      
+      res.done = done;
       res.send = function (num, data) {
-        res.statusCode = num
-        res.end(data)
+        hexo.log.d(`API Response: ${num} ${data}`);
+        res.statusCode = num;
+        res.end(data);
+      };
+      
+      try {
+        fn(req, res);
+      } catch (err) {
+        hexo.log.e(`API Error: ${err.message}`);
+        res.send(500, `Internal Server Error: ${err.message}`);
       }
-      fn(req, res)
-    })
+    });
   }
 
   //TODO, get gallery data
@@ -353,39 +405,42 @@ module.exports = function (app, hexo) {
 // Endpoint pour ajouter une entrée dans un modèle
 use('db/', function(req, res) {
     if (req.method === 'POST') {
-        
-       
-            try {
-                const modelName = req.url.split('/').filter(Boolean)[0];
-                const entry = req.body;
-                entry._id=uuid.v7()
-                // Ajouter une entrée dans le modèle
-                db.create(modelName, entry);
-
-                return res.done(entry);
-            } catch (error) {
-              console.log(error)
-               return  res.send(400, 'Bad Request');
+        try {
+            const modelName = req.url.split('/').filter(Boolean)[0];
+            if (!modelName) {
+                return res.send(400, 'Model name is required');
             }
-       
+            
+            const entry = req.body;
+            if (!entry) {
+                return res.send(400, 'Entry data is required');
+            }
+            
+            const createdEntry = db.create(modelName, entry);
+            hexo.log.d(`Created new entry in ${modelName}`);
+            
+            return res.done(createdEntry);
+        } catch (error) {
+            hexo.log.e(`Error creating entry: ${error.message}`);
+            return res.send(400, `Bad Request: ${error.message}`);
+        }
+    } else if (req.method === 'GET') {
+        try {
+            const modelName = req.url.split('/').filter(Boolean)[0];
+            if (!modelName) {
+                return res.send(400, 'Model name is required');
+            }
+            
+            const entries = db.read(modelName);
+            hexo.log.d(`Retrieved ${entries.length} entries from ${modelName}`);
+            
+            return res.done(entries);
+        } catch (error) {
+            hexo.log.e(`Error reading entries: ${error.message}`);
+            return res.send(400, `Bad Request: ${error.message}`);
+        }
     } else {
-         if (req.method === 'GET') {
-          db.read("match").map((item,index)=>{
-  item.title=`${item.team1} vs ${item.team2}`
-  if(!item._id){
-    item._id=uuid.v7()
-  }
-  db.update('match',index,item)
-})  
-        const modelName = req.url.split('/').filter(Boolean)[0];
-
-        // Obtenir toutes les entrées du modèle
-        const entries = db.read(modelName);
-
-return res.done(entries);
-    } else {
-       return  res.send(405, 'Method Not Allowed');
-    }
+        return res.send(405, 'Method Not Allowed');
     }
 });
 
@@ -394,44 +449,44 @@ return res.done(entries);
 
 // Endpoint pour mettre à jour une entrée dans un modèle
 use('db/:model/:index', function(req, res) {
+    const modelName = req.url.split('/').filter(Boolean)[0];
+    const index = parseInt(req.url.split('/').filter(Boolean)[1]);
+    
+    if (isNaN(index)) {
+        return res.send(400, 'Invalid index');
+    }
+    
     if (req.method === 'PUT') {
-        let body = '';
-        req.on('data', chunk => {
-            body += chunk.toString();
-        });
-        req.on('end', () => {
-            try {
-                const modelName = req.url.split('/').filter(Boolean)[0];
-                const index = req.url.split('/').filter(Boolean)[1];
-                const newEntry = JSON.parse(body);
-
-                // Mettre à jour une entrée dans le modèle
-                db.update(modelName, index, newEntry);
-
-                res.send(200, 'Entry updated');
-            } catch (error) {
-                res.send(400, 'Bad Request');
+        try {
+            if (!req.body) {
+                return res.send(400, 'No update data provided');
             }
-        });
+            
+            const updatedEntry = db.update(modelName, index, req.body);
+            hexo.log.d(`Updated entry in ${modelName} at index ${index}`);
+            
+            return res.done(updatedEntry);
+        } catch (error) {
+            hexo.log.e(`Error updating entry: ${error.message}`);
+            return res.send(400, `Bad Request: ${error.message}`);
+        }
+    } else if (req.method === 'DELETE') {
+        try {
+            db.delete(modelName, index);
+            hexo.log.d(`Deleted entry from ${modelName} at index ${index}`);
+            
+            return res.done({ success: true });
+        } catch (error) {
+            hexo.log.e(`Error deleting entry: ${error.message}`);
+            return res.send(400, `Bad Request: ${error.message}`);
+        }
     } else {
-        res.send(405, 'Method Not Allowed');
+        return res.send(405, 'Method Not Allowed');
     }
 });
 
 // Endpoint pour supprimer une entrée d'un modèle
-use('db/:model/:index', function(req, res) {
-    if (req.method === 'DELETE') {
-        const modelName = req.url.split('/').filter(Boolean)[0];
-        const index = req.url.split('/').filter(Boolean)[1];
 
-        // Supprimer une entrée du modèle
-        db.delete(modelName, index);
-
-        res.send(200, 'Entry deleted');
-    } else {
-        res.send(405, 'Method Not Allowed');
-    }
-});
 
   use('pages/new', function (req, res, next) {
     if (req.method !== 'POST') return next()
@@ -601,77 +656,77 @@ return res.done(db.read(req.body.data.type))  }
   });
 
   use('images/upload', function (req, res, next) {
-    hexo.log.d('uploading image')
-    if (req.method !== 'POST') return next()
+    hexo.log.d('Processing image upload');
+    
+    if (req.method !== 'POST') return next();
     if (!req.body) {
-      return res.send(400, 'No post body given');
+        return res.send(400, 'No post body given');
     }
     if (!req.body.data) {
-      return res.send(400, 'No data given');
+        return res.send(400, 'No data given');
     }
-    var settings = getSettings()
-
-    var imagePath = '/images'
-    var imagePrefix = 'pasted-'
-    var askImageFilename = false
-    var overwriteImages = false
-    // check for image settings and set them if they exist
-    if (settings.options) {
-      askImageFilename = !!settings.options.askImageFilename
-      overwriteImages = !!settings.options.overwriteImages
-      imagePath = settings.options.imagePath ? settings.options.imagePath : imagePath
-      imagePrefix = settings.options.imagePrefix ? settings.options.imagePrefix : imagePrefix
-    }
-
-    var msg = 'uploaded!'
-    var i = 0
-    while (fs.existsSync(path.join(hexo.source_dir, imagePath, imagePrefix + i +'.png'))) {
-      i +=1
-    }
-    var filename = path.join(imagePrefix + i +'.png')
-    if (req.body.filename) {
-      var givenFilename = req.body.filename
-      // check for png ending, add it if not there
-      var index = givenFilename.toLowerCase().indexOf('.png')
-      if (index < 0 || index != givenFilename.length - 4) {
-        givenFilename += '.png'
-      }
-      hexo.log.d('trying custom filename', givenFilename)
-      if (fs.existsSync(path.join(hexo.source_dir, imagePath, givenFilename))){
-        if (overwriteImages) {
-          hexo.log.d('file already exists, overwriting')
-          msg = 'overwrote existing file'
-          filename = givenFilename
-        } else {
-          hexo.log.d('file already exists, using', filename)
-          msg = 'filename already exists, renamed'
+    
+    try {
+        var settings = getSettings();
+        var imagePath = settings.options?.imagePath || '/images';
+        var imagePrefix = settings.options?.imagePrefix || 'pasted-';
+        var overwriteImages = settings.options?.overwriteImages || false;
+        
+        // Validation du chemin d'image
+        if (!fs.existsSync(path.join(hexo.source_dir, imagePath))) {
+            fs.mkdirSync(path.join(hexo.source_dir, imagePath), { recursive: true });
         }
-      } else {
-        filename = givenFilename
-      }
+        
+        var filename = generateUniqueFilename(imagePath, imagePrefix, req.body.filename, overwriteImages);
+        var outpath = path.join(hexo.source_dir, imagePath, filename);
+        
+        var dataURI = req.body.data.slice('data:image/png;base64,'.length);
+        var buf = Buffer.from(dataURI, 'base64');
+        
+        fs.writeFile(outpath, buf, function (err) {
+            if (err) {
+                hexo.log.e(`Error saving image: ${err.message}`);
+                return res.send(500, `Failed to save image: ${err.message}`);
+            }
+            
+            hexo.source.process().then(function () {
+                res.done({
+                    src: hexo.config.url + path.join(imagePath, filename),
+                    msg: 'Image uploaded successfully'
+                });
+            });
+        });
+    } catch (error) {
+        hexo.log.e(`Error processing image upload: ${error.message}`);
+        return res.send(500, `Internal Server Error: ${error.message}`);
     }
-
-    filename = path.join(imagePath, filename)
-    var outpath = path.join(hexo.source_dir, filename)
-
-    var dataURI = req.body.data.slice('data:image/png;base64,'.length)
-    var buf = new Buffer(dataURI, 'base64')
-    hexo.log.d(`saving image to ${outpath}`)
-    fs.writeFile(outpath, buf, function (err) {
-      if (err) {
-        console.log(err)
-      }
-      console.log('hexo.config.url: '+hexo.config.url);
-      hexo.source.process().then(function () {
-        res.done({
-          // FIXME, use image URL to display image rather than relative path @2018/02/04
-          src: hexo.config.url + filename,
-          // src: path.join(hexo.config.root + filename),
-          msg: msg
-        })
-      });
-    })
   });
+
+  // Fonction utilitaire pour générer un nom de fichier unique
+  function generateUniqueFilename(imagePath, prefix, customFilename, overwrite) {
+    if (customFilename) {
+        if (!customFilename.toLowerCase().endsWith('.png')) {
+            customFilename += '.png';
+        }
+        
+        if (fs.existsSync(path.join(hexo.source_dir, imagePath, customFilename))) {
+            if (overwrite) {
+                return customFilename;
+            }
+        } else {
+            return customFilename;
+        }
+    }
+    
+    var i = 0;
+    var filename;
+    do {
+        filename = `${prefix}${i}.png`;
+        i++;
+    } while (fs.existsSync(path.join(hexo.source_dir, imagePath, filename)));
+    
+    return filename;
+  }
 
   // using deploy to generate static pages
   // @2018/01/22
