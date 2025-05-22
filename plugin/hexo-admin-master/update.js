@@ -50,6 +50,7 @@ module.exports = function (model, id, update, callback, hexo) {
       compiled[attr] = update[attr]
     }
   });
+  console.log(compiled)
   compiled.date = moment(compiled.date).toDate()
 
   delete update._content
