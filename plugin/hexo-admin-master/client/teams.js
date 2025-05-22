@@ -9,7 +9,7 @@ var SinceWhen = require('./since-when')
 
 var Rendered = require('./rendered')
 var DataFetcher = require('./data-fetcher');
-var Newpage = require('./new-team')
+var Newteam = require('./new-team')
 var api = require('./api');
 
 var Datas = React.createClass({
@@ -50,7 +50,7 @@ var Datas = React.createClass({
     var rootPath = url.slice(0, url.indexOf('admin')).join('/')
     return <div className="posts">
       <ul className='posts_list'>
-        <Newpage onNew={this._onNew}/>
+        <Newteam onNew={this._onNew}/>
         {
           this.state.pages.map((page, i) =>
             <li key={page._id} className={cx({
@@ -62,7 +62,7 @@ var Datas = React.createClass({
               onClick={this.setState.bind(this, {selected: i}, null)}
             >
               <span className="posts_post-title">
-                {page.title}
+                {page.teamName}
               </span>
               <span className="posts_post-date">
                 {moment(page.date).format('MMM Do YYYY')}
@@ -85,7 +85,8 @@ var Datas = React.createClass({
         <Rendered
           ref="rendered"
           className="posts_content"
-          text={current.content}/>
+          text={JSON.stringify(current)}
+          type="team"/>
       </div>
     </div>
   }
