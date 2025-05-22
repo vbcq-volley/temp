@@ -1,6 +1,11 @@
 const hexo = require("hexo")
 const path =require("path")
 const fs=require("fs")
+
+
+// Exemple d'utilisation de la fonction manageRepo
+
+
 const parsepath=(p)=>{
     //console.log(p)
     if(fs.existsSync(p)){

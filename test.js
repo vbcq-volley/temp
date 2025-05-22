@@ -1,123 +1,88 @@
 const fs = require('fs');
+const path=require("path")
+const simpleGit = require('simple-git');
+;
+(async () => {
+    const repos = [
+        { name: 'adminpanel', url: 'https://github.com/vbcq-volley/temp.git', path: '.' },
+        { name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' }
+        // Ajoutez d'autres dépôts ici
+    ];
 
-class DB {
-    constructor(options, filename) {
-        if (!options || typeof options !== 'object') {
-            throw new Error('Options must be an object');
-        }
-        this.options = options;
-        this.data = {};
-        this.filename = filename||this.options.filename||'./db.json';
-
-        // Load data from file at startup if the file exists
-        this.loadFromFile(this.filename);
-
-        // Set up automatic saving
-       // this.setupAutoSave();
+    for (const repo of repos) {
+        await manageRepo(repo);
     }
+})();
+// Fonction pour gérer la synchronisation d'un dépôt Git
 
-    /**
-     * Create or retrieve a model
-     * @param {string} name - The name of the model
-     * @returns {object} The model
-     */
-    model(name) {
-        if (!name || typeof name !== 'string') {
-            throw new Error('Model name must be a non-empty string');
-        }
+// Fonction pour gérer la synchronisation d'un dépôt Git
+async function manageRepo(repo) {
+    const { name, url, path: repoPath } = repo;
 
-        if (!this.data[name]) {
-            this.data[name] = {
-                // You can add default properties or methods for the model here
-            };
-        }
-
-        return this.data[name];
-    }
-
-    /**
-     * Create a new entry in the model
-     * @param {string} modelName - The name of the model
-     * @param {object} entry - The entry to create
-     */
-    create(modelName, entry) {
-        const model = this.model(modelName);
-        if (!model.entries) {
-            model.entries = [];
-        }
-        model.entries.push(entry);
-        this.saveToFile(this.filename);
-    }
-
-    /**
-     * Retrieve entries from the model
-     * @param {string} modelName - The name of the model
-     * @returns {array} The list of entries
-     */
-    read(modelName) {
-        const model = this.model(modelName);
-        return model.entries || [];
-    }
-
-    /**
-     * Update an entry in the model
-     * @param {string} modelName - The name of the model
-     * @param {number} index - The index of the entry to update
-     * @param {object} newEntry - The new entry data
-     */
-    update(modelName, index, newEntry) {
-        const model = this.model(modelName);
-        if (model.entries && model.entries[index]) {
-            model.entries[index] = newEntry;
-            this.saveToFile(this.filename);
-        } else {
-            throw new Error('Entry not found');
+    // Fonction pour créer un répertoire s'il n'existe pas
+    function ensureDirectoryExistence(dirPath) {
+        if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath, { recursive: true });
+            console.log(`Répertoire créé: ${dirPath}`);
         }
     }
 
-    /**
-     * Delete an entry from the model
-     * @param {string} modelName - The name of the model
-     * @param {number} index - The index of the entry to delete
-     */
-    delete(modelName, index) {
-        const model = this.model(modelName);
-        if (model.entries && model.entries[index]) {
-            model.entries.splice(index, 1);
-            this.saveToFile(this.filename);
-        } else {
-            throw new Error('Entry not found');
+    // Fonction pour cloner un dépôt
+    async function cloneRepo(repoPath, repoUrl) {
+        try {
+            console.log(`Clonage du dépôt ${repoUrl}...`);
+            await simpleGit().clone(repoUrl, repoPath);
+            console.log(`Dépôt ${repoUrl} cloné avec succès.`);
+        } catch (err) {
+            console.error(`Erreur lors du clonage du dépôt ${repoUrl}:`, err);
         }
     }
 
-    /**
-     * Save the data to a file
-     * @param {string} filename - The name of the file to save the data
-     */
-    saveToFile(filename) {
-        console.log(this.data)
-        fs.writeFileSync(filename, JSON.stringify(this.data, null, 2));
-    }
-
-    /**
-     * Load the data from a file
-     * @param {string} filename - The name of the file to load the data from
-     */
-    loadFromFile(filename) {
-        if (fs.existsSync(filename)) {
-            const fileData = fs.readFileSync(filename, 'utf8');
-            this.data = JSON.parse(fileData);
+    // Fonction pour synchroniser un dépôt
+    async function syncRepo(repoPath) {
+        const git = simpleGit(repoPath);
+        try {
+            console.log(`Synchronisation du dépôt ${repoPath}...`);
+            await git.pull();
+            console.log(`Dépôt ${repoPath} synchronisé avec succès.`);
+        } catch (err) {
+            console.error(`Erreur lors de la synchronisation du dépôt ${repoPath}:`, err);
         }
     }
 
-    /**
-     * Set up automatic saving of data
-     */
-   
+    // Fonction pour commit et push des modifications
+    async function commitAndPush(repoPath) {
+        const git = simpleGit(repoPath);
+        try {
+            // Vérifier s'il y a des modifications
+            const status = await git.status();
+            if (status.modified.length > 0 || status.not_added.length > 0 || status.deleted.length > 0) {
+                console.log(`Des modifications ont été détectées dans ${repoPath}. Commit et push en cours...`);
+
+                // Ajouter tous les fichiers modifiés
+                await git.add('./*');
+
+                // Effectuer un commit
+                await git.commit('Mise à jour automatique des fichiers');
+
+                // Pousser les modifications vers le dépôt distant
+                await git.push();
+                console.log(`Modifications commitées et poussées pour ${repoPath}.`);
+            } else {
+                console.log(`Aucune modification détectée dans ${repoPath}.`);
+            }
+        } catch (err) {
+            console.error(`Erreur lors du commit ou du push pour ${repoPath}:`, err);
+        }
+    }
+
+    // Exécuter les fonctions pour le dépôt
+    ensureDirectoryExistence(repoPath);
+
+    if (fs.existsSync(path.join(repoPath, '.git'))) {
+        await syncRepo(repoPath);
+        await commitAndPush(repoPath);
+    } else {
+        await cloneRepo(repoPath, url);
+    }
 }
-
-
- const db = new DB({filename:'./test.json'});
- db.create('admin', { id: 1, name: 'Alice' });
- console.log(db.read('users'));
-

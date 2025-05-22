@@ -16,7 +16,7 @@ var App = React.createClass({
           <li><Link to="posts">Post</Link></li>
           <li><Link to="pages">Page</Link></li>
           <li><Link to="about">About</Link></li>
-          <li><Link to="deploy">Generate</Link></li>
+      
           <li><Link to="settings">Settings</Link></li>
           <li><Link to="datas">gestion des match</Link></li>
         </ul>

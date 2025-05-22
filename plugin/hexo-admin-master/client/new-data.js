@@ -27,6 +27,7 @@ var NewData = React.createClass({
       isForfeit: false,
       isPostponed: false,
       matches: [],
+      team:[],
       selectedMatch: null,
       matchType: 'home'
     }
@@ -37,6 +38,9 @@ var NewData = React.createClass({
       console.log(matches);
       this.setState({ matches: matches });
     });
+    api.getEntries("team").then((team)=>{
+      this.setState({ team: team });
+    })
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -266,21 +270,25 @@ var NewData = React.createClass({
         <div className={this.state.pageType === 'match' ? 'visible' : 'hidden'}>
           <label>
             Équipe 1:
-            <input
-              type="text"
-              placeholder="Équipe 1"
-              value={this.state.team1}
-              onChange={this._onTeam1Change}
-            />
+             <select value={this.state.team1} onChange={this._onTeam1Change}>
+              <option value="">Sélectionnez une équipe </option>
+              {
+                this.state.team.map((page, i) =>{
+                  return  <option value={page.text}>{page.text}</option>
+                })
+              }
+            </select>
           </label>
           <label>
             Équipe 2:
-            <input
-              type="text"
-              placeholder="Équipe 2"
-              value={this.state.team2}
-              onChange={this._onTeam2Change}
-            />
+             <select value={this.state.team2} onChange={this._onTeam2Change}>
+              <option value="">Sélectionnez une équipe </option>
+              {
+                this.state.team.map((page, i) =>{
+                  return  <option value={page.text}>{page.text}</option>
+                })
+              }
+            </select>
           </label>
           <label>
             Date et heure du match à domicile:
