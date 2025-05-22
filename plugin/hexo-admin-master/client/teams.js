@@ -31,7 +31,7 @@ var Datas = React.createClass({
     console.log(pages)
     pages.unshift(page)
     this.setState({pages: pages})
-    Router.transitionTo('data', {matchId: page._id})
+    Router.transitionTo('team', {matchId: page._id})
   },
 
   goTo: function (id, e) {
