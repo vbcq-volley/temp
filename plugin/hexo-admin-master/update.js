@@ -33,7 +33,7 @@ module.exports = function (model, id, update, callback, hexo) {
   var split = hfm.split(post.raw),
     frontMatter = split.data
     compiled = hfm.parse([frontMatter, '---', split.content].join('\n'));
-
+console.log(split)
   var preservedKeys = ['title', 'date', 'tags', 'categories', '_content', 'author'];
   Object.keys(hexo.config.metadata || {}).forEach(function (key) {
     preservedKeys.push(key);
