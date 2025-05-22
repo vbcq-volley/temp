@@ -9,13 +9,13 @@ var SinceWhen = require('./since-when')
 
 var Rendered = require('./rendered')
 var DataFetcher = require('./data-fetcher');
-var Newpage = require('./new-data')
+var Newpage = require('./new-team')
 var api = require('./api');
 
 var Datas = React.createClass({
   mixins: [DataFetcher((params) => {
     return {
-      pages: api.getEntries("match")
+      pages: api.getEntries("team")
     }
   })],
 

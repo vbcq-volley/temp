@@ -244,102 +244,107 @@ var NewData = React.createClass({
     }
   },
 
-  render: function () {
-    if (!this.state.showing) {
-      return (
-        <div className="new-post" onClick={this._onShow}>
-          <div className="new-post_button">
-            <i className="fa fa-plus" />{' '}
-            nouveau match
-          </div>
-        </div>
-      );
-    }
-
+render: function () {
+  if (!this.state.showing) {
     return (
-      <div className="new-post" ref="form">
-        <input
-          className="new-post_input"
-          ref="input"
-          value={this.state.text}
-          onBlur={this._onBlur}
-          onKeyPress={this._onKeydown}
-          onChange={this._onChange}
-        />
-       
-        <div className={this.state.pageType === 'match' ? 'visible' : 'hidden'}>
-          <label>
-            Équipe 1:
-             <select value={this.state.team1} onChange={this._onTeam1Change}>
-              <option value="">Sélectionnez une équipe </option>
-              {
-                this.state.team.map((page, i) =>{
-                  return  <option value={page.text}>{page.text}</option>
-                })
-              }
-            </select>
-          </label>
-          <label>
-            Équipe 2:
-             <select value={this.state.team2} onChange={this._onTeam2Change}>
-              <option value="">Sélectionnez une équipe </option>
-              {
-                this.state.team.map((page, i) =>{
-                  return  <option value={page.text}>{page.text}</option>
-                })
-              }
-            </select>
-          </label>
-          <label>
-            Date et heure du match à domicile:
-            <input
-              type="datetime-local"
-              value={this.state.homeDateTime}
-              onChange={this._onHomeDateTimeChange}
-            />
-          </label>
-          <label>
-            Date et heure du match à l'extérieur:
-            <input
-              type="datetime-local"
-              value={this.state.awayDateTime}
-              onChange={this._onAwayDateTimeChange}
-            />
-          </label>
-          <label>
-            Lieu du match à domicile:
-            <input
-              type="text"
-              placeholder="Lieu du match à domicile"
-              value={this.state.homeLocation}
-              onChange={this._onHomeLocationChange}
-            />
-          </label>
-          <label>
-            Lieu du match à l'extérieur:
-            <input
-              type="text"
-              placeholder="Lieu du match à l'extérieur"
-              value={this.state.awayLocation}
-              onChange={this._onAwayLocationChange}
-            />
-          </label>
-          <label>
-            Groupe:
-            <select value={this.state.group} onChange={this._onGroupChange}>
-              <option value="">Sélectionnez un groupe</option>
-              <option value="1">Groupe 1</option>
-              <option value="2">Groupe 2</option>
-              <option value="3">Groupe 3</option>
-            </select>
-          </label>
+      <div className="new-post" onClick={this._onShow}>
+        <div className="new-post_button">
+          <i className="fa fa-plus" />{' '}
+          nouveau match
         </div>
-        
-        <i className="fa fa-check-circle new-post_ok" onMouseDown={this._onSubmit}></i>
-        <i className="fa fa-times-circle new-post_cancel" onMouseDown={this._onCancel}></i>
       </div>
     );
   }
+
+  return (
+    <div className="new-post" ref="form">
+      <input
+        className="new-post_input"
+        ref="input"
+        value={this.state.text}
+        onBlur={this._onBlur}
+        onKeyPress={this._onKeydown}
+        onChange={this._onChange}
+      />
+
+      <div className={this.state.pageType === 'match' ? 'visible' : 'hidden'}>
+        <label>
+          Équipe 1:
+           <select value={this.state.team1} onChange={this._onTeam1Change}>
+            <option value="">Sélectionnez une équipe </option>
+            {
+              this.state.team.filter((item) => {
+                return item.group === this.state.group;
+              }).map((page, i) => {
+                return <option key={i} value={page.teamName}>{page.teamName}</option>;
+              })
+            }
+          </select>
+        </label>
+        <label>
+          Équipe 2:
+           <select value={this.state.team2} onChange={this._onTeam2Change}>
+            <option value="">Sélectionnez une équipe </option>
+            {
+              this.state.team.filter((item) => {
+                return item.group === this.state.group;
+              }).map((page, i) => {
+                return <option key={i} value={page.teamName}>{page.teamName}</option>;
+              })
+            }
+          </select>
+        </label>
+        <label>
+          Date et heure du match à domicile:
+          <input
+            type="datetime-local"
+            value={this.state.homeDateTime}
+            onChange={this._onHomeDateTimeChange}
+          />
+        </label>
+        <label>
+          Date et heure du match à l'extérieur:
+          <input
+            type="datetime-local"
+            value={this.state.awayDateTime}
+            onChange={this._onAwayDateTimeChange}
+          />
+        </label>
+        <label>
+          Lieu du match à domicile:
+          <input
+            type="text"
+            placeholder="Lieu du match à domicile"
+            value={this.state.homeLocation}
+            onChange={this._onHomeLocationChange}
+          />
+        </label>
+        <label>
+          Lieu du match à l'extérieur:
+          <input
+            type="text"
+            placeholder="Lieu du match à l'extérieur"
+            value={this.state.awayLocation}
+            onChange={this._onAwayLocationChange}
+          />
+        </label>
+        <label>
+          Groupe:
+          <select value={this.state.group} onChange={this._onGroupChange}>
+            <option value="">Sélectionnez un groupe</option>
+            <option value="1">Groupe 1</option>
+            <option value="2">Groupe 2</option>
+            <option value="3">Groupe 3</option>
+          </select>
+        </label>
+      </div>
+
+      <i className="fa fa-check-circle new-post_ok" onMouseDown={this._onSubmit}></i>
+      <i className="fa fa-times-circle new-post_cancel" onMouseDown={this._onCancel}></i>
+    </div>
+  );
+}
+
 });
 
 module.exports = NewData;
