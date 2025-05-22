@@ -122,6 +122,8 @@ var Post = React.createClass({
   },
 
   dataDidLoad: function (name, data) {
+    console.log(data)
+    console.log(name)
     if (name !== 'post') return
     var parts = data.raw.split('---');
     var _slice = parts[0] === '' ? 2 : 1;
@@ -135,6 +137,7 @@ var Post = React.createClass({
   },
 
   render: function () {
+    console.log(this.state)
     var post = this.state.post
     var settings = this.state.settings
     if (!post || !this.state.tagsCategoriesAndMetadata || !settings) {
@@ -156,7 +159,8 @@ var Post = React.createClass({
       onChangeTitle: this.handleChangeTitle,
       onPublish: this.handlePublish,
       onUnpublish: this.handleUnpublish,
-      onRemove: this.handleRemove
+      onRemove: this.handleRemove,
+      type: 'post'
     })
   }
 });

@@ -99,6 +99,7 @@ var Editor = React.createClass({
   },
 
   render: function () {
+    console.log(this.state)
     return <div className={cx({
       "editor": true,
       "editor--draft": this.props.isDraft
@@ -138,7 +139,7 @@ var Editor = React.createClass({
                 onClick={this.onCheckGrammar}>
           <i className="fa fa-check-circle-o"/>
         </button>}
-        {/* add image button */}
+      
         {this.state.renderedType === 'post' && !this.props.isPage &&
           <button className="editor_addImage" title="Add Image to Post"
                   onClick={this.onAddImage}>

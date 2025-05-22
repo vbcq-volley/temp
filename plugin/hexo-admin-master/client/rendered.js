@@ -188,7 +188,7 @@ var Rendered = React.createClass({
 
   render: function () {
     const textContent = this.parseJsonText(this.props.text);
-    console.log(this.props.type)
+    console.log(this.props)
     switch(this.props.type) {
       case "match":
         return this.renderMatch();

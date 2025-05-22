@@ -43,6 +43,7 @@ var Posts = React.createClass({
   },
 
   render: function () {
+    console.log(this.state)
     if (!this.state.posts) {
       return <div className='posts'>Loading...</div>
     }

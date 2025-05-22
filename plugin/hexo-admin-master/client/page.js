@@ -113,7 +113,8 @@ var Page = React.createClass({
       onPublish: this.handlePublish,
       onUnpublish: this.handleUnpublish,
       tagsCategoriesAndMetadata: this.state.tagsCategoriesAndMetadata,
-      adminSettings: settings
+      adminSettings: settings,
+      type: 'page'
     })
   }
 });

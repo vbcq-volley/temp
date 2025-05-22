@@ -328,7 +328,7 @@ module.exports = function (app, hexo) {
       try {
         fn(req, res);
       } catch (err) {
-        hexo.log.e(`API Error: ${err.message}`);
+        hexo.log.e(`API Error: ${err}`);
         res.send(500, `Internal Server Error: ${err.message}`);
       }
     });
