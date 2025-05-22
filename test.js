@@ -16,6 +16,7 @@ const simpleGit = require('simple-git');
 // Fonction pour gérer la synchronisation d'un dépôt Git
 
 // Fonction pour gérer la synchronisation d'un dépôt Git
+// Fonction pour gérer la synchronisation d'un dépôt Git
 async function manageRepo(repo) {
     const { name, url, path: repoPath } = repo;
 
@@ -38,41 +39,52 @@ async function manageRepo(repo) {
         }
     }
 
-    // Fonction pour synchroniser un dépôt
-    async function syncRepo(repoPath) {
-        const git = simpleGit(repoPath);
-        try {
-            console.log(`Synchronisation du dépôt ${repoPath}...`);
-            await git.pull();
-            console.log(`Dépôt ${repoPath} synchronisé avec succès.`);
-        } catch (err) {
-            console.error(`Erreur lors de la synchronisation du dépôt ${repoPath}:`, err);
-        }
-    }
-
-    // Fonction pour commit et push des modifications
-    async function commitAndPush(repoPath) {
+    // Fonction pour commit des modifications
+    async function commitChanges(repoPath) {
         const git = simpleGit(repoPath);
         try {
             // Vérifier s'il y a des modifications
             const status = await git.status();
             if (status.modified.length > 0 || status.not_added.length > 0 || status.deleted.length > 0) {
-                console.log(`Des modifications ont été détectées dans ${repoPath}. Commit et push en cours...`);
+                console.log(`Des modifications ont été détectées dans ${repoPath}. Commit en cours...`);
 
                 // Ajouter tous les fichiers modifiés
                 await git.add('./*');
 
                 // Effectuer un commit
                 await git.commit('Mise à jour automatique des fichiers');
-
-                // Pousser les modifications vers le dépôt distant
-                await git.push();
-                console.log(`Modifications commitées et poussées pour ${repoPath}.`);
+                console.log(`Modifications commitées pour ${repoPath}.`);
+                return true;
             } else {
                 console.log(`Aucune modification détectée dans ${repoPath}.`);
+                return false;
             }
         } catch (err) {
-            console.error(`Erreur lors du commit ou du push pour ${repoPath}:`, err);
+            console.error(`Erreur lors du commit pour ${repoPath}:`, err);
+            return false;
+        }
+    }
+
+    // Fonction pour synchroniser un dépôt
+    async function syncRepo(repoPath) {
+        const git = simpleGit(repoPath);
+        try {
+            console.log(`Synchronisation du dépôt ${repoPath}...`);
+
+            // D'abord, commit les modifications locales
+            const changesCommitted = await commitChanges(repoPath);
+
+            // Ensuite, pull les dernières modifications
+            await git.pull();
+            console.log(`Dépôt ${repoPath} synchronisé avec succès.`);
+
+            // Si des modifications ont été commitées, push vers le dépôt distant
+            if (changesCommitted) {
+                await git.push();
+                console.log(`Modifications poussées pour ${repoPath}.`);
+            }
+        } catch (err) {
+            console.error(`Erreur lors de la synchronisation du dépôt ${repoPath}:`, err);
         }
     }
 
@@ -81,7 +93,6 @@ async function manageRepo(repo) {
 
     if (fs.existsSync(path.join(repoPath, '.git'))) {
         await syncRepo(repoPath);
-        await commitAndPush(repoPath);
     } else {
         await cloneRepo(repoPath, url);
     }

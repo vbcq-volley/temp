@@ -10,6 +10,8 @@ var Settings = require('./settings')
 var AuthSetup = require('./auth-setup')
 var datas=require("./datas")
 var data=require("./data")
+var team=require("./team")
+var teams=require("./teams")
 var Route = require('react-router').Route
 
 module.exports = () => {
@@ -20,6 +22,8 @@ module.exports = () => {
     <Route name="pages" handler={Pages} path="/pages"/>
     <Route name="datas" handler={datas} path="/administration"/>
     <Route name="data" handler={data} path="/administration/:matchId"/>
+    <Route name="teams" handler={teams} path="/equipe"/>
+    <Route name="team" handler={team} path="/equipe/:matchId"/>
     <Route name="about" handler={About}/>
     <Route name="deploy" handler={Deploy}/>
     <Route name="settings" handler={Settings}/>
