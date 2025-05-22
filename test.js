@@ -5,7 +5,8 @@ const simpleGit = require('simple-git');
 (async () => {
     const repos = [
         { name: 'adminpanel', url: 'https://github.com/vbcq-volley/temp.git', path: '.' },
-        { name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' }
+        { name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' },
+        { name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: '../global/source' }
         // Ajoutez d'autres dépôts ici
     ];
 
