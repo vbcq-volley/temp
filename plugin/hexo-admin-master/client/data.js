@@ -3,7 +3,7 @@ var DataFetcher = require('./data-fetcher');
 var api = require('./api');
 var React = require('react/addons')
 
-var Editor_data = require('./editor-data')
+var Editor_data = require('./editor')
 var _ = require('lodash')
 var moment = require('moment')
 

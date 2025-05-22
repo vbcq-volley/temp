@@ -28,7 +28,7 @@ var Editor = React.createClass({
     onUnpublish: PT.func.isRequired,
     tagsCategoriesAndMetadata: PT.object,
     adminSettings: PT.object,
-
+    type: PT.string,
   },
 
   getInitialState: function() {
@@ -40,7 +40,8 @@ var Editor = React.createClass({
       postPath: this.props.post.path,
       previewLink: completeURL,
       checkingGrammar: false,
-      openGallery: false
+      openGallery: false,
+      renderedType: this.props.type,
     }
   },
 
@@ -108,12 +109,12 @@ var Editor = React.createClass({
           value={this.props.title}
           onChange={this.handleChangeTitle}/>
 
-        {!this.props.isPage && <ConfigDropper
+        {this.state.renderedType === 'post' && !this.props.isPage && <ConfigDropper
           post={this.props.post}
           tagsCategoriesAndMetadata={this.props.tagsCategoriesAndMetadata}
           onChange={this.props.onChange}/>}
 
-        {!this.props.isPage && (this.props.isDraft ?
+        {this.state.renderedType === 'post' && !this.props.isPage && (this.props.isDraft ?
           /* this is a comment for publish button */
           <button className="editor_publish" onClick={this.props.onPublish}>
             Publish
@@ -122,7 +123,7 @@ var Editor = React.createClass({
             Unpublish
           </button>)}
 
-          {!this.props.isPage && (this.props.isDraft ?
+        {this.state.renderedType === 'post' && !this.props.isPage && (this.props.isDraft ?
           <button className="editor_remove" title="Remove"
                   onClick={this.props.onRemove}>
             <i className="fa fa-trash-o" aria-hidden="true"/>
@@ -132,18 +133,18 @@ var Editor = React.createClass({
             <i className="fa fa-trash-o" aria-hidden="true"/>
           </button>)}
 
-          {!this.props.isPage &&
-          <button className="editor_checkGrammar" title="Check for Writing Improvements"
-                  onClick={this.onCheckGrammar}>
-            <i className="fa fa-check-circle-o"/>
-          </button>}
-          {/* add image button */}
-          {!this.props.isPage &&
-            <button className="editor_addImage" title="Add Image to Post"
-                    onClick={this.onAddImage}>
-              <i className="fa fa-picture-o"/>
-            </button>
-          }
+        {this.state.renderedType === 'post' && !this.props.isPage &&
+        <button className="editor_checkGrammar" title="Check for Writing Improvements"
+                onClick={this.onCheckGrammar}>
+          <i className="fa fa-check-circle-o"/>
+        </button>}
+        {/* add image button */}
+        {this.state.renderedType === 'post' && !this.props.isPage &&
+          <button className="editor_addImage" title="Add Image to Post"
+                  onClick={this.onAddImage}>
+            <i className="fa fa-picture-o"/>
+          </button>
+        }
 
       </div>
 
@@ -181,17 +182,18 @@ var Editor = React.createClass({
           {!this.state.checkingGrammar && <Rendered
             ref="rendered"
             className="editor_rendered"
-            text={this.props.rendered}/>}
+            text={this.props.rendered}
+            type={this.state.renderedType}/>}
           {this.state.checkingGrammar && <CheckGrammar
             toggleGrammar={this.onCheckGrammar}
             raw={this.props.updatedRaw} />}
         </div>
-        {/* end of editor_display */}
+ 
       </div>
-      {/* end of editor_main */}
+    
       {this.state.openGallery && <PopGallery onChange={this.handleImgSelect}/>}
     </div>;
-    {/* end of editor template */}
+    
   }// end of render()
 })// end of component
 

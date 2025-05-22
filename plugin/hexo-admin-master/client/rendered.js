@@ -112,15 +112,15 @@ var Rendered = React.createClass({
           <div style={styles.form}>
             <form onSubmit={this.handleSubmit}>
               <label style={styles.label}>Groupe:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.group} />
+              <input style={styles.formInput} type="text" value={textContent.group} />
               <label style={styles.label}>Match à domicile:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.homeDate} />
+              <input style={styles.formInput} type="date" value={textContent.homeDate} />
               <label style={styles.label}>Lieu domicile:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.homeLocation} />
+              <input style={styles.formInput} type="text" value={textContent.homeLocation} />
               <label style={styles.label}>Match à l'extérieur:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.awayDate} />
+              <input style={styles.formInput} type="date" value={textContent.awayDate} />
               <label style={styles.label}>Lieu extérieur:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.awayLocation} />
+                <input style={styles.formInput} type="text" value={textContent.awayLocation} />
               <button type="submit">Enregistrer les modifications</button>
             </form>
           </div>
@@ -147,11 +147,11 @@ var Rendered = React.createClass({
           <div style={styles.form}>
             <form onSubmit={this.handleSubmit}>
               <label style={styles.label}>Score de l'équipe 1:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.team1Score} />
+              <input style={styles.formInput} type="text" value={textContent.team1Score} />
               <label style={styles.label}>Score de l'équipe 2:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.team2Score} />
+              <input style={styles.formInput} type="text" value={textContent.team2Score} />
               <label style={styles.label}>Groupe:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.group} />
+              <input style={styles.formInput} type="text" value={textContent.group} />
               <button type="submit">Enregistrer les modifications</button>
             </form>
           </div>
@@ -171,13 +171,13 @@ var Rendered = React.createClass({
         </div>
         {textContent && (
           <div style={styles.form}>
-            <form onSubmit={this.handleSubmit }>
+            <form onSubmit={this.handleSubmit}>
               <label style={styles.label}>Nom de l'équipe:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.teamName} />
+              <input style={styles.formInput} type="text" value={textContent.teamName} />
               <label style={styles.label}>Entraîneur:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.coach} />
+              <input style={styles.formInput} type="text" value={textContent.coach} />
               <label style={styles.label}>Groupe:</label>
-              <input style={styles.formInput} type="text" defaultValue={textContent.group} />
+                <input style={styles.formInput} type="number" defaultValue={textContent.group} />
               <button type="submit">Enregistrer les modifications</button>
             </form>
           </div>
@@ -209,11 +209,11 @@ var Rendered = React.createClass({
           </div>
         );
       default:
-        return (
-          <div style={styles.container}>
-            <h1 style={styles.title}>Type de contenu non reconnu</h1>
-          </div>
-        );
+        return this.transferPropsTo(
+          <div className="post-content"
+            dangerouslySetInnerHTML={{
+              __html: this.props.text || '<h1 class="editor_no-content">There doesn\'t seem to be anything here</h1>'
+            }}/>)
     }
   }
 })
