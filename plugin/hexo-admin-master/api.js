@@ -108,7 +108,11 @@ class DB {
             
             newEntry.updated_at = new Date().toISOString();
             model.entries[index] = { ...model.entries[index], ...newEntry };
-            model.metadata.updated_at = newEntry.updated_at;
+            if (model.metadata) {
+                model.metadata.updated_at = newEntry.updated_at;
+            } else {
+                model.metadata = { updated_at: newEntry.updated_at };
+            }
             
             this.saveToFile(this.filename);
             return model.entries[index];
