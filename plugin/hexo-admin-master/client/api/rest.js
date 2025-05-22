@@ -95,8 +95,8 @@ deleteEntry : (modelName, index) => delet(`/db/${modelName}/${index}`),
       return get('/pages/' + id)
     },
     deploy: (message) => post('/deploy', {message: message}),
-    newPage: (data) => post('/pages/new', {data}),
-    // for paste in editor
+    newPage: (data) => post('/pages/new', {title:data}),
+    // for paste in editor 
     uploadImage: (data, filename) => post('/images/upload', {data: data, filename: filename}),
     remove: (id) => post('/posts/' + id + '/remove'),
     publish: (id) => post('/posts/' + id + '/publish'),
