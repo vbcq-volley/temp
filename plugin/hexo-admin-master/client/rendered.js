@@ -88,7 +88,14 @@ var Rendered = React.createClass({
       return text;
     }
   },
-
+  handleSubmit: function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    // Ici, vous pouvez ajouter votre logique pour envoyer les données au serveur ou les traiter localement
+    require("./api").updateEntry(data.type,data.index,data) 
+    console.log(data);
+  },
   renderMatch: function() {
     const textContent = this.parseJsonText(this.props.text);
     return (
@@ -103,7 +110,7 @@ var Rendered = React.createClass({
         </div>
         {textContent && (
           <div style={styles.form}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
               <label style={styles.label}>Groupe:</label>
               <input style={styles.formInput} type="text" defaultValue={textContent.group} />
               <label style={styles.label}>Match à domicile:</label>
@@ -121,21 +128,14 @@ var Rendered = React.createClass({
       </div>
     )
   },
-  handleSubmit: function(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
-    // Ici, vous pouvez ajouter votre logique pour envoyer les données au serveur ou les traiter localement
-    require("./api").updateEntry(data.type,data.index,data) 
-    console.log(data);
-  },
+  
   renderResult: function() {
     const textContent = this.parseJsonText(this.props.text);
     return (
       <div style={styles.container}>
         <h2 style={styles.title}>{textContent.team1} vs {textContent.team2}</h2>
         <div style={styles.info}>
-          <div style={styles.score}>
+          <div style={styles.score}>  
             <span>{textContent.team1Score}</span>
             <span style={styles.separator}>-</span>
             <span>{textContent.team2Score}</span>
@@ -145,7 +145,7 @@ var Rendered = React.createClass({
         </div>
         {textContent && (
           <div style={styles.form}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
               <label style={styles.label}>Score de l'équipe 1:</label>
               <input style={styles.formInput} type="text" defaultValue={textContent.team1Score} />
               <label style={styles.label}>Score de l'équipe 2:</label>
@@ -171,7 +171,7 @@ var Rendered = React.createClass({
         </div>
         {textContent && (
           <div style={styles.form}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={this.handleSubmit }>
               <label style={styles.label}>Nom de l'équipe:</label>
               <input style={styles.formInput} type="text" defaultValue={textContent.teamName} />
               <label style={styles.label}>Entraîneur:</label>

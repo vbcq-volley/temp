@@ -17,7 +17,7 @@ var Data = React.createClass({
   getInitialState: function () {
     return {
       updated: moment(),
-      team: null, // Initialize team data as null
+      team: [], // Initialize team data as null
       filteredEntries: [] // Initialize filtered entries as an empty array
     };
   },

@@ -1,4 +1,3 @@
-
 var React = require('react/addons')
 var cx = React.addons.classSet
 var Link = require('react-router').Link;
@@ -15,19 +14,21 @@ var api = require('./api');
 var Datas = React.createClass({
   mixins: [DataFetcher((params) => {
     return {
-      pages: api.getEntries("match")
+     
     }
   })],
 
   getInitialState: function () {
     return {
-      selected: 0
+      selected: 0,
+      pages: [] // Initialisation à null pour indiquer que les données ne sont pas encore chargées
     }
   },
   componentDidMount: function () {
     api.getEntries("match").then((data) => {
       console.log("le data est"+JSON.stringify(data))
       this.setState({pages: data})
+      this.componentDidUpdate()
     })
   },
   _onNew: function (page) {
@@ -47,8 +48,9 @@ var Datas = React.createClass({
   },
 
   render: function () {
-    if (!this.state.pages) {
-      return <div className='pages'>Loading...</div>
+    console.log("le pages est"+JSON.stringify(this.state.pages))
+    if (!this.state.pages) { // Vérification si les données sont chargées
+      return <div>Chargement...</div> // Affichage d'un message de chargement si les données ne sont pas encore arrivées
     }
     var current = this.state.pages[this.state.selected] || {}
     var url = window.location.href.replace(/^.*\/\/[^\/]+/, '').split('/')
@@ -94,6 +96,12 @@ var Datas = React.createClass({
           type="match"/>
       </div>
     </div>
+  },
+  componentDidUpdate: function() {
+    if (this.state.pages) { // Vérification si les pages sont arrivées
+      console.log("Pages arrivées, mise à jour du rendu");
+      this.render(); // Force la mise à jour du rendu
+    }
   }
 });
 

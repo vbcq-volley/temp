@@ -15,14 +15,22 @@ var api = require('./api');
 var Datas = React.createClass({
   mixins: [DataFetcher((params) => {
     return {
-      pages: api.getEntries("team")
+     
     }
   })],
 
   getInitialState: function () {
     return {
-      selected: 0
+      selected: 0,
+      pages: [] // Initialisation à null pour indiquer que les données ne sont pas encore chargées
     }
+  },
+
+  componentDidMount: function () {
+    api.getEntries("team").then((data) => {
+      this.setState({pages: data})
+ 
+    })
   },
 
   _onNew: function (page) {
