@@ -24,13 +24,18 @@ var Datas = React.createClass({
       selected: 0
     }
   },
-
+  componentDidMount: function () {
+    api.getEntries("match").then((data) => {
+      console.log("le data est"+JSON.stringify(data))
+      this.setState({pages: data})
+    })
+  },
   _onNew: function (page) {
-    
+    console.log("le page est"+JSON.stringify(page))
     var pages = this.state.pages.slice()
     console.log(pages)
     pages.unshift(page)
-    this.setState({pages: pages})
+    this.setState({pages: pages}) 
     Router.transitionTo('data', {matchId: page._id})
   },
 
@@ -81,7 +86,7 @@ var Datas = React.createClass({
         'posts_display': true,
         'posts_display--draft': current.isDraft
       })}>
-        {current.isDraft && <div className="posts_draft-message">Draft</div>}
+        
         <Rendered
           ref="rendered"
           className="posts_content"

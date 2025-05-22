@@ -69,7 +69,7 @@ class DB {
             
             model.entries.push(entry);
             model.metadata.updated_at = entry.updated_at;
-            
+            model.entries.map((entry, index) => ({...entry, index}))
             this.saveToFile(this.filename);
             return entry;
         } catch (error) {

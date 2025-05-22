@@ -54,28 +54,34 @@ var styles = {
   description: {
     marginTop: '20px',
     lineHeight: '1.6'
+  },
+  form: {
+    padding: '15px',
+    borderRadius: '5px',
+    border: '1px solid #e9ecef',
+    fontFamily: 'Arial, sans-serif',
+    whiteSpace: 'pre-wrap',
+    overflow: 'auto',
+    maxHeight: '400px'
+  },
+  formInput: {
+    padding: '10px',
+    margin: '5px 0',
+    border: '1px solid #e9ecef',
+    borderRadius: '5px',
+    width: '100%'
   }
 };
 
 var Rendered = React.createClass({
   propTypes: {
     text: React.PropTypes.string,
-    type: React.PropTypes.string,
-    team1: React.PropTypes.string,
-    team2: React.PropTypes.string,
-    team1Score: React.PropTypes.string,
-    team2Score: React.PropTypes.string,
-    homeDate: React.PropTypes.string,
-    awayDate: React.PropTypes.string,
-    homeLocation: React.PropTypes.string,
-    awayLocation: React.PropTypes.string,
-    group: React.PropTypes.string,
-    teamName: React.PropTypes.string,
-    coach: React.PropTypes.string,
-    isPostponed: React.PropTypes.bool
+    type: React.PropTypes.string
+    
   },
 
   parseJsonText: function(text) {
+    console.log("le texte requis est"+text)
     try {
       return JSON.parse(text);
     } catch (e) {
@@ -96,18 +102,33 @@ var Rendered = React.createClass({
           <p><span style={styles.label}>Lieu extérieur:</span> {textContent.awayLocation || 'Non défini'}</p>
         </div>
         {textContent && (
-          <div style={styles.description}>
-            <div style={styles.jsonContent}
-              dangerouslySetInnerHTML={{
-                __html: typeof textContent === 'string' ? textContent : JSON.stringify(textContent, null, 2)
-              }}
-            />
+          <div style={styles.form}>
+            <form onSubmit={handleSubmit}>
+              <label style={styles.label}>Groupe:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.group} />
+              <label style={styles.label}>Match à domicile:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.homeDate} />
+              <label style={styles.label}>Lieu domicile:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.homeLocation} />
+              <label style={styles.label}>Match à l'extérieur:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.awayDate} />
+              <label style={styles.label}>Lieu extérieur:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.awayLocation} />
+              <button type="submit">Enregistrer les modifications</button>
+            </form>
           </div>
         )}
       </div>
     )
   },
-
+  handleSubmit: function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    // Ici, vous pouvez ajouter votre logique pour envoyer les données au serveur ou les traiter localement
+    require("./api").updateEntry(data.type,data.index,data) 
+    console.log(data);
+  },
   renderResult: function() {
     const textContent = this.parseJsonText(this.props.text);
     return (
@@ -123,12 +144,16 @@ var Rendered = React.createClass({
           {textContent.isPostponed && <p style={styles.postponed}>Match reporté</p>}
         </div>
         {textContent && (
-          <div style={styles.description}>
-            <div style={styles.jsonContent}
-              dangerouslySetInnerHTML={{
-                __html: typeof textContent === 'string' ? textContent : JSON.stringify(textContent, null, 2)
-              }}
-            />
+          <div style={styles.form}>
+            <form onSubmit={handleSubmit}>
+              <label style={styles.label}>Score de l'équipe 1:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.team1Score} />
+              <label style={styles.label}>Score de l'équipe 2:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.team2Score} />
+              <label style={styles.label}>Groupe:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.group} />
+              <button type="submit">Enregistrer les modifications</button>
+            </form>
           </div>
         )}
       </div>
@@ -145,12 +170,16 @@ var Rendered = React.createClass({
           <p><span style={styles.label}>Groupe:</span> {textContent.group}</p>
         </div>
         {textContent && (
-          <div style={styles.description}>
-            <div style={styles.jsonContent}
-              dangerouslySetInnerHTML={{
-                __html: typeof textContent === 'string' ? textContent : JSON.stringify(textContent, null, 2)
-              }}
-            />
+          <div style={styles.form}>
+            <form onSubmit={handleSubmit}>
+              <label style={styles.label}>Nom de l'équipe:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.teamName} />
+              <label style={styles.label}>Entraîneur:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.coach} />
+              <label style={styles.label}>Groupe:</label>
+              <input style={styles.formInput} type="text" defaultValue={textContent.group} />
+              <button type="submit">Enregistrer les modifications</button>
+            </form>
           </div>
         )}
       </div>
