@@ -329,7 +329,7 @@ module.exports = function (app, hexo) {
         fn(req, res);
       } catch (err) {
         hexo.log.e(`API Error: ${err}`);
-        res.send(500, `Internal Server Error: ${err.message}`);
+        res.send(500, `Internal Server Error: ${err}`);
       }
     });
   }

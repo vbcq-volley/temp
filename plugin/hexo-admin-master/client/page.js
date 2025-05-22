@@ -62,7 +62,7 @@ var Page = React.createClass({
       return
     }
     this.setState({title: title});
-    this._page({title: title})
+    this._page(this.state)
   },
 
   handlePublish: function () {
