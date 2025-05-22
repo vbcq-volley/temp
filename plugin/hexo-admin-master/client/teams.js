@@ -85,7 +85,7 @@ var Datas = React.createClass({
         <Rendered
           ref="rendered"
           className="posts_content"
-          text={JSON.stringify(current)}
+          text={JSON.stringify(current,null,2)}
           type="team"/>
       </div>
     </div>

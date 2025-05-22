@@ -7,6 +7,7 @@ var Rendered = React.createClass({
     type:React.PropTypes.string
   },
   render: function () {
+    console.log(this.props)
     if(this.props.type=="post"){
       return this.transferPropsTo(
       <div className="post-content"

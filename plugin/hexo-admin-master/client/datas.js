@@ -85,7 +85,8 @@ var Datas = React.createClass({
         <Rendered
           ref="rendered"
           className="posts_content"
-          text={current.content}/>
+          text={JSON.stringify(current)}
+          type="match"/>
       </div>
     </div>
   }
