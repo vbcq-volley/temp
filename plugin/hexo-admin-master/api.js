@@ -178,7 +178,7 @@ class DB {
      */
    
 }
-const db=new DB({
+const db=new DB({ 
   filename:"./source/_data/db.json"
 })
 
@@ -220,7 +220,7 @@ module.exports = function (app, hexo) {
       fs.writeFile(hexo.base_dir+'_admin-config.yml', '')
       return {}
     } else {
-      var settings = yml.safeLoad(fs.readFileSync(path))
+      var settings = yml.load(fs.readFileSync(path))
 
       if (!settings) return {}
       return settings
@@ -392,7 +392,7 @@ module.exports = function (app, hexo) {
     }
     hexo.log.d('set', name, '=', value, 'with', JSON.stringify(addedOptions))
 
-    fs.writeFileSync(hexo.base_dir + '_admin-config.yml', yml.safeDump(settings))
+    fs.writeFileSync(hexo.base_dir + '_admin-config.yml', yml.dump(settings))
     res.done({
       updated: 'Successfully updated ' + name + ' = ' + value,
       settings: settings
@@ -567,7 +567,7 @@ return res.done(db.read(req.body.data.type))  }
     if (id === 'pages' || !id) return next()
     if (req.method === 'GET') {
       var page = hexo.model('Page').get(id)
-    
+      console.log(page)
       return res.done(addIsDraft(page))
     }
 

@@ -11,7 +11,7 @@ var Rendered = require('./rendered')
 var DataFetcher = require('./data-fetcher');
 var Newteam = require('./new-team')
 var api = require('./api');
-
+ 
 var Datas = React.createClass({
   mixins: [DataFetcher((params) => {
     return {

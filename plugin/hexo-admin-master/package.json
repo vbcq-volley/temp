@@ -4,7 +4,7 @@
   "description": "Adds an admin section to the hexo server -- enchance version",
   "main": "index.js",
   "scripts": {
-    "prepublish": "gulp build"
+    
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "express-session": "^1.10.3",
     "extend": "^3.0.0",
     "hexo-admin-ehc": "file:",
-    "hexo-front-matter": "^0.2.2",
+    "hexo-front-matter": "4.2.1",
     "hexo-fs": "^0.2.2",
     "hexo-util": "^0.1.6",
     "less": "^2.5.1",
