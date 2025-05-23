@@ -7,7 +7,9 @@ const simpleGit = require('simple-git');
         { name: 'adminpanel', url: 'https://github.com/vbcq-volley/temp.git', path: '.' },
         { name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' },
         { name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: '../global/source' },
-        { name: 'web', url: 'https://github.com/vbcq-volley/source.git', path: '../global' }
+        { name: 'web', url: 'https://github.com/vbcq-volley/source.git', path: '../global' },
+    { name: 'plugins', url: 'https://github.com/vbcq-volley/plugin.git', path: './plugin' },
+    { name: 'plugins', url: 'https://github.com/vbcq-volley/plugin.git', path: '../plugin' }
         // Ajoutez d'autres dépôts ici
     ];
 
