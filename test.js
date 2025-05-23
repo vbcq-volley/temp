@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path=require("path")
 const simpleGit = require('simple-git');
-const bad=["git","plugin"]
+const bad=["git","plugin","node"]
 const isinArray = (item) => {
     return bad.some(element => item.includes(element));
 };
