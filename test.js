@@ -3,7 +3,7 @@ const path=require("path")
 const simpleGit = require('simple-git');
 const bad=["git","plugin"]
 const isinArray = (item) => {
-    return bad.every(element => item.includes(element));
+    return bad.some(element => item.includes(element));
 };
 (async () => {
     const repos = [
