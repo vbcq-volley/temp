@@ -94,10 +94,25 @@ async function manageRepo(repo) {
 
     // Exécuter les fonctions pour le dépôt
     ensureDirectoryExistence(repoPath);
-
     if (fs.existsSync(path.join(repoPath, '.git'))) {
         await syncRepo(repoPath);
+        
+        // Surveiller les modifications du dépôt
+        fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
+            if (filename) {
+                console.log(`Modification détectée dans ${filename}`);
+                await syncRepo(repoPath);
+            }
+        });
     } else {
         await cloneRepo(repoPath, url);
+        
+        // Configurer la surveillance après le clonage
+        fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
+            if (filename) {
+                console.log(`Modification détectée dans ${filename}`);
+                await syncRepo(repoPath);
+            }
+        });
     }
 }
