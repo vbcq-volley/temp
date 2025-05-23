@@ -3,7 +3,7 @@ var api = require('./api');
 var React = require('react/addons');
 var _ = require('lodash');
 var moment = require('moment');
-
+var Editor_data = require('./editor-data');
 var Data = React.createClass({
   mixins: [DataFetcher((params) => {
     console.log(params);
@@ -24,14 +24,16 @@ var Data = React.createClass({
 
   componentDidMount: function () {
     // Fetch the team data when the component is mounted
-    this.fetchTeamData(this.props.params.id);
+    this.fetchTeamData(this.props.params.matchId);
   },
 
   fetchTeamData: function (id) {
+    console.log(id)
     // Assuming api.fetchTeamData returns a Promise
    api.getEntries("team").then((teams)=>{
     this.setState({team:teams.find(match => match._id === id)});
    })
+   this.render()
   },
 
   filterEntriesWithAPI: function () {
@@ -48,24 +50,9 @@ var Data = React.createClass({
     }
 
     // Extract all keys from the team data
-    const keys = Object.keys(this.state.team);
+    
 
-    return (
-      <div>
-        <h1>Team Data Keys</h1>
-        <ul>
-          {keys.map((key, index) => (
-            <li key={index}>{key}</li>
-          ))}
-        </ul>
-        <h2>Filtered Entries</h2>
-        <ul>
-          {this.state.filteredEntries.map((entry, index) => (
-            <li key={index}>{entry.name}</li> // Assuming each entry has a 'name' property
-          ))}
-        </ul>
-      </div>
-    );
+    return <Editor_data id={this.props.params.matchId} type="team" />;
   }
 });
 

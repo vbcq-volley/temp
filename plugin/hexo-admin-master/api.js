@@ -182,10 +182,16 @@ const db=new DB({
   filename:"./source/_data/db.json"
 })
 
-db.read("match").map((item,index)=>{
-  item.title=`${item.team1} vs ${item.team2}`
-  db.update('match',index,item)
-})
+function updateMatchTitles() {
+  const matches = db.read("match");
+const updatedMatches = matches.map((item, index) => {
+  if (!item.title || item.title !== `${item.team1} vs ${item.team2}`) {
+    item.title = `${item.team1} vs ${item.team2}`;
+    db.update('match', index, item);
+  }
+  return item;
+});
+}
 module.exports = function (app, hexo) {
 
   function addIsDraft(post) {
@@ -409,6 +415,7 @@ module.exports = function (app, hexo) {
 
 // Endpoint pour ajouter une entrée dans un modèle
 use('db/', function(req, res) {
+  updateMatchTitles();
     if (req.method === 'POST') {
         try {
             const modelName = req.url.split('/').filter(Boolean)[0];

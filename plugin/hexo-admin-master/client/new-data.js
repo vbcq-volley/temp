@@ -1,5 +1,3 @@
-
-
 var React = require('react');
 var PT = React.PropTypes;
 var api = require('./api');
@@ -34,7 +32,7 @@ var NewData = React.createClass({
       team2Forfeit: false,
       team1Postponed: false,
       team2Postponed: false,
-      session: ''
+      session: 0
     }
   },
 
@@ -46,6 +44,7 @@ var NewData = React.createClass({
     api.getEntries("team").then((team)=>{
       this.setState({ team: team });
     })
+    this.render()
   },
 
   componentDidUpdate: function (prevProps, prevState) {
@@ -97,7 +96,8 @@ var NewData = React.createClass({
 
     var pageData = {
       text: this.state.text,
-      type: this.state.pageType
+      type: this.state.pageType,
+      session: parseInt(this.state.session)
     };
     console.log(this.state)
     if (this.state.pageType === 'match') {
@@ -112,7 +112,7 @@ var NewData = React.createClass({
       pageData.team1 = this.state.team1;
       pageData.team2 = this.state.team2;
       pageData.group = this.state.group;
-      pageData.date = this.state.matchType === 'home' ? this.state.homeDateTime : this.state.awayDateTime;
+      pageData.date = this.state.matchType === 'home' ? this.state.homeDate : this.state.awayDate;
       pageData.team1Score = this.state.isForfeit ? 'Forfait' : this.state.team1Score;
       pageData.team2Score = this.state.isForfeit ? 'Forfait' : this.state.team2Score;
       pageData.isPostponed = this.state.isPostponed;
@@ -135,7 +135,8 @@ var NewData = React.createClass({
         isForfeit: false,
         isPostponed: false,
         selectedMatch: null,
-        matchType: 'home'
+        matchType: 'home',
+        session: 0
       });
       this.props.onNew(page);
     }, (err) => {
@@ -231,6 +232,12 @@ var NewData = React.createClass({
     });
   },
 
+  _onSessionChange: function (e) {
+    this.setState({
+      session: parseInt(e.target.value)
+    });
+  },
+
   _onMatchSelect: function (e) {
     const selectedMatchId = e.target.value;
     const selectedMatch = this.state.matches.find(match => match._id === selectedMatchId);
@@ -244,7 +251,8 @@ var NewData = React.createClass({
         awayDateTime: selectedMatch.awayDate,
         homeLocation: selectedMatch.homeLocation,
         awayLocation: selectedMatch.awayLocation,
-        group: selectedMatch.group
+        group: selectedMatch.group,
+        session: selectedMatch.session
       });
     }
   },
@@ -273,6 +281,16 @@ render: function () {
       />
 
       <div className={this.state.pageType === 'match' ? 'visible' : 'hidden'}>
+        <label>
+          Session:
+          <input 
+            type="number"
+            value={this.state.session}
+            onChange={this._onSessionChange}
+            min="0"
+            max="20"
+          />
+        </label>
         <label>
           Équipe 1:
            <select value={this.state.team1} onChange={this._onTeam1Change}>
