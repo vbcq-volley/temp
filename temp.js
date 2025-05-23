@@ -9,24 +9,14 @@ function installDependencies(directory) {
         // Vérifier si package.json existe
         if (fs.existsSync(path.join(directory, 'package.json'))) {
             console.log(`Installation des dépendances dans ${directory}`);
-            execSync('npm install', { cwd: directory, stdio: 'inherit' });
+            execSync('npx pnpm install', { cwd: directory, stdio: 'inherit' });
         }
         
         // Lire le contenu du dossier
         const items = fs.readdirSync(directory);
         
         // Parcourir chaque élément
-        items.forEach(item => {
-            const fullPath = path.join(directory, item);
-            
-            // Vérifier si c'est un dossier
-            if (fs.statSync(fullPath).isDirectory()) {
-                // Ignorer node_modules
-                if (item !== 'node_modules') {
-                    installDependencies(fullPath);
-                }
-            }
-        });
+        
     } catch (error) {
         console.error(`Erreur lors de l'installation dans ${directory}:`, error);
     }

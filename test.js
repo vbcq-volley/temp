@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path=require("path")
 const simpleGit = require('simple-git');
-;
+
+
 (async () => {
     const repos = [
         { name: 'adminpanel', url: 'https://github.com/vbcq-volley/temp.git', path: '.' },
