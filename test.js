@@ -1,8 +1,10 @@
 const fs = require('fs');
 const path=require("path")
 const simpleGit = require('simple-git');
-
-
+const bad=[".git","plugin"]
+const isinArray = (item) => {
+    return bad.includes(item);
+};
 (async () => {
     const repos = [
         { name: 'adminpanel', url: 'https://github.com/vbcq-volley/temp.git', path: '.' },
@@ -101,19 +103,6 @@ async function manageRepo(repo) {
         await syncRepo(repoPath);
         
         // Surveiller les modifications du dépôt en excluant le dossier .git
-     /*   fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
-            if (filename && !filename.includes('.git') && !isSyncing) {
-                isSyncing = true;
-                console.log(`Modification détectée dans ${filename}`);
-                await syncRepo(repoPath);
-                isSyncing = false;
-            }
-        });*/
-    } else {
-        await cloneRepo(repoPath, url);
-        
-        // Configurer la surveillance après le clonage en excluant le dossier .git
-       /*
         fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
             if (filename && !filename.includes('.git') && !isSyncing) {
                 isSyncing = true;
@@ -121,6 +110,19 @@ async function manageRepo(repo) {
                 await syncRepo(repoPath);
                 isSyncing = false;
             }
-        });*/
+        });
+    } else {
+        await cloneRepo(repoPath, url);
+        
+        // Configurer la surveillance après le clonage en excluant le dossier .git
+       
+        fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
+            if (filename && !filename.includes('.git') && !isSyncing) {
+                isSyncing = true;
+                console.log(`Modification détectée dans ${filename}`);
+                await syncRepo(repoPath);
+                isSyncing = false;
+            }
+        });
     }
 }
