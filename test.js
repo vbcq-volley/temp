@@ -21,7 +21,10 @@ const isinArray = (item) => {
     }
 })();
 // Fonction pour gérer la synchronisation d'un dépôt Git
-
+console.log(fs.readdirSync("./source",{recursive:true}).filter((item)=>{
+    console.log(item)
+    return item.includes("node")
+}))
 // Fonction pour gérer la synchronisation d'un dépôt Git
 // Fonction pour gérer la synchronisation d'un dépôt Git
 async function manageRepo(repo) {
@@ -58,9 +61,7 @@ async function manageRepo(repo) {
                 // Ajouter tous les fichiers modifiés
                 await git.add('*');
                 await git.add('*/*');
-                await git.rmKeepLocal(fs.readdirSync(".").filter((item)=>{
-                    return item.includes("node")
-                }))
+                
                 // Effectuer un commit
                 await git.commit('Mise à jour automatique des fichiers');
                 console.log(`Modifications commitées pour ${repoPath}.`);

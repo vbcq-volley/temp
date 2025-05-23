@@ -26,7 +26,7 @@ async function main() {
     await admin.load()
     await admin.call("list", { _: ["post","pages","draft"] })
     await Promise.all(fs.readdirSync("./plugin").filter((item)=>{
-        return item !==".git"
+        return fs.statSync(path.join("./plugin",item)).isDirectory()
     }).map((value)=>{
         const pkg=require(path.join(__dirname,"plugin",value,"package.json"))
         console.log(value)

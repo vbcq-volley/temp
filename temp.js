@@ -19,6 +19,7 @@ function installDependencies(directory) {
                 if (!dependencies) return;
                 for (const [dep, version] of Object.entries(dependencies)) {
                     if (version.startsWith('file:')) {
+                        console.log(dep)
                         delete dependencies[dep];
                     }
                 }
@@ -33,7 +34,7 @@ function installDependencies(directory) {
             fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
         
             console.log(`Installation des dépendances dans ${directory}`);
-            execSync('npx pnpm install', { cwd: directory, stdio: 'inherit' });
+            execSync(' pnpm install', { cwd: directory, stdio: 'inherit' });
         }
         
         
