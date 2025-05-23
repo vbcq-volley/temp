@@ -3,9 +3,7 @@
   "version": "2.3.2",
   "description": "Adds an admin section to the hexo server -- enchance version",
   "main": "index.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/lwz7512/hexo-admin-ehc.git"

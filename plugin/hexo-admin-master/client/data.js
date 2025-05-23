@@ -1,9 +1,7 @@
-
 var DataFetcher = require('./data-fetcher');
 var api = require('./api');
 var React = require('react/addons')
-
-var Editor_data = require('./editor')
+var Editor_data = require('./editor-data')
 var _ = require('lodash')
 var moment = require('moment')
 
@@ -28,15 +26,8 @@ var Data = React.createClass({
     
   },
 
- 
-
   render: function () {
-    
- 
-    
-    return Editor_data({
-  id:this.state.matchId
-    })
+    return <Editor_data id={this.props.params.matchId} type="result" />
   }
 });
 

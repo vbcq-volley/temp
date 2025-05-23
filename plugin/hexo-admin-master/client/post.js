@@ -1,11 +1,10 @@
-
 var DataFetcher = require('./data-fetcher');
 var api = require('./api');
 var React = require('react/addons')
 var cx = React.addons.classSet
 var Promise = require('es6-promise').Promise
 var marked = require('marked')
-var Editor = require('./editor')
+var Editor_data = require('./editor-data')
 var _ = require('lodash')
 var moment = require('moment')
 var Router = require('react-router');
@@ -143,7 +142,7 @@ var Post = React.createClass({
     if (!post || !this.state.tagsCategoriesAndMetadata || !settings) {
       return <span>Loading...</span>
     }
-    return Editor({
+    return Editor_data({
       post: this.state.post,
       raw: this.state.initialRaw,
       updatedRaw: this.state.raw,

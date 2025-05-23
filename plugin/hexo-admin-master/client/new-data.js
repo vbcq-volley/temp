@@ -29,7 +29,12 @@ var NewData = React.createClass({
       matches: [],
       team:[],
       selectedMatch: null,
-      matchType: 'home'
+      matchType: 'home',
+      team1Forfeit: false,
+      team2Forfeit: false,
+      team1Postponed: false,
+      team2Postponed: false,
+      session: ''
     }
   },
 

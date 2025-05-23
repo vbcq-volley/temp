@@ -1,11 +1,10 @@
-
 var DataFetcher = require('./data-fetcher');
 var api = require('./api');
 var React = require('react/addons')
 var cx = React.addons.classSet
 var Promise = require('es6-promise').Promise
 var marked = require('marked')
-var Editor = require('./editor')
+var Editor_data = require('./editor-data')
 var _ = require('lodash')
 var moment = require('moment')
 
@@ -98,7 +97,7 @@ var Page = React.createClass({
     if (!page || !settings) {
       return <span>Loading...</span>
     }
-    return Editor({
+    return Editor_data({
       isPage: true,
       post: this.state.page,
       raw: this.state.initialRaw,

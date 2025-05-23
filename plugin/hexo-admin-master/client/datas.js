@@ -26,13 +26,13 @@ var Datas = React.createClass({
   },
   componentDidMount: function () {
     api.getEntries("match").then((data) => {
-      console.log("le data est"+JSON.stringify(data))
+      console.log("la data est"+JSON.stringify(data))
       this.setState({pages: data})
       this.componentDidUpdate()
     })
   },
   _onNew: function (page) {
-    console.log("le page est"+JSON.stringify(page))
+    console.log("la page est"+JSON.stringify(page))
     var pages = this.state.pages.slice()
     console.log(pages)
     pages.unshift(page)
@@ -48,7 +48,7 @@ var Datas = React.createClass({
   },
 
   render: function () {
-    console.log("le pages est"+JSON.stringify(this.state.pages))
+    console.log("la pages est"+JSON.stringify(this.state.pages))
     if (!this.state.pages) { // Vérification si les données sont chargées
       return <div>Chargement...</div> // Affichage d'un message de chargement si les données ne sont pas encore arrivées
     }

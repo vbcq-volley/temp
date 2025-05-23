@@ -76,7 +76,7 @@ module.exports = function (baseUrl) {
   var delet=_delete.bind(null, baseUrl)
   return {
     posts: () => get('/posts/list'),
-    getEntries : (modelName) => get(`/db/${modelName}`),
+    getEntry : (modelName, id) => get(`/db/${modelName}/${id}`),getEntries : (modelName) => get(`/db/${modelName}`),
     addEntry : (modelName, data) => post(`/db/${modelName}`, data),
 
 

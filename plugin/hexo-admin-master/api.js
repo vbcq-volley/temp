@@ -484,6 +484,17 @@ use('db/:model/:index', function(req, res) {
             hexo.log.e(`Error deleting entry: ${error.message}`);
             return res.send(400, `Bad Request: ${error.message}`);
         }
+    } else if (req.method === 'GET') {
+        try {
+            const entries = db.read(modelName);
+            const entry = entries.find(item => item.id === index);
+            hexo.log.d(`Retrieved entry from ${modelName} with id ${index}`);
+            
+            return res.done(entry);
+        } catch (error) {
+            hexo.log.e(`Error getting entry: ${error.message}`);
+            return res.send(400, `Bad Request: ${error.message}`);
+        }
     } else {
         return res.send(405, 'Method Not Allowed');
     }

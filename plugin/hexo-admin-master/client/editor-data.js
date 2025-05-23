@@ -1,4 +1,3 @@
-
 var path = require('path')
 var React = require('react/addons')
 var cx = React.addons.classSet
@@ -6,51 +5,95 @@ var Promise = require('es6-promise').Promise
 var PT = React.PropTypes
 var api=require("./api")
 var Router = require('react-router')
+var Editor = require('./editor')
+
 var Editor_data = React.createClass({
 
   // cmRef: null,
 
   propTypes: {
   
-    id: PT.string
+    id: PT.string,
+    type: PT.string
 
   },
 
   getInitialState: function() {
-    //FIXME, use href is right!
-     return {
+    return {
       showing: true,
       loading: true,
       text: 'Untitled',
       pageType: 'result',
-      team1: '',
-      team2: '',
-      homeDateTime: '',
-      awayDateTime: '',
-      homeLocation: '',
-      awayLocation: '',
-      group: '',
-      team1Score: '',
-      team2Score: '',
-      isForfeit: false,
-      isPostponed: false,
+      data: {},
       matches: [],
       selectedMatch: null,
-      matchType: 'home'
+      raw: '',
+      rendered: '',
+      wordCount: 0,
+      updated: null,
+      isDraft: false
     }
   },
 
-  // TODO, ...just for test
   componentDidMount: function() {
-    api.getEntries("match").then((matches) => {
-      console.log(this.props);
-      this.props.id=this.props.id||window.location.href.split('/').slice(-1)[0]
-      console.log(this.props);
-      const good=matches.find(entry => entry._id === this.props.id)
-      good.text=good.title
-    this.setState(good)
-      this.setState({ matches: matches });
-    });
+    this.props.id = this.props.id || window.location.href.split('/').slice(-1)[0];
+    
+    // Si on a un ID, charger les données correspondantes
+    if (this.props.id) {
+      // Utiliser le type spécifié dans les props ou par défaut
+      const type = this.props.type || this.state.pageType;
+      
+      if (type) {
+        // Utiliser l'API appropriée selon le type
+        let apiCall;
+        if (type === 'post') {
+          apiCall = api.post(this.props.id);
+        } else if (type === 'page') {
+          apiCall = api.page(this.props.id);
+        } else {
+          apiCall = api.getEntry(type, this.props.id);
+        }
+
+        apiCall.then((entry) => {
+          if (entry) {
+            if (type === 'post' || type === 'page') {
+              // Pour les posts et pages, extraire le contenu du front matter
+              const parts = entry.raw.split('---');
+              const _slice = parts[0] === '' ? 2 : 1;
+              const raw = parts.slice(_slice).join('---').trim();
+              
+              this.setState({
+                text: entry.title,
+                pageType: type,
+                data: entry,
+                raw: raw,
+                rendered: entry.content,
+                loading: false
+              });
+            } else {
+              this.setState({
+                text: entry.title || entry.teamName || 'Sans titre',
+                pageType: type,
+                data: entry,
+                loading: false
+              });
+            }
+          }
+        }).catch((err) => {
+          console.error('Erreur lors du chargement des données:', err);
+          this.setState({ loading: false });
+        });
+
+        // Si c'est un match ou un résultat, charger aussi la liste des matchs
+        if (type === 'match' || type === 'result') {
+          api.getEntries("match").then((matches) => {
+            this.setState({ matches: matches });
+          });
+        }
+      }
+    } else {
+      this.setState({ loading: false });
+    }
   },
 
   // recreate previewLink
@@ -94,7 +137,6 @@ var Editor_data = React.createClass({
     this.setState({ loading: true, showing: true });
 
     const formatDate = (dateTimeString) => {
-      console.log(dateTimeString)
       if (!dateTimeString) return '';
       const date = new Date(dateTimeString);
       return new Intl.DateTimeFormat('fr-FR', {
@@ -108,29 +150,12 @@ var Editor_data = React.createClass({
 
     var pageData = {
       text: this.state.text,
-      type: this.state.pageType
+      type: this.state.pageType,
+      ...this.state.data
     };
-    console.log(this.state)
-    if (this.state.pageType === 'match') {
-      pageData.team1 = this.state.team1;
-      pageData.team2 = this.state.team2;
-      pageData.homeDate = formatDate(this.state.homeDateTime);
-      pageData.awayDate = formatDate(this.state.awayDateTime);
-      pageData.homeLocation = this.state.homeLocation;
-      pageData.awayLocation = this.state.awayLocation;
-      pageData.group = this.state.group;
-    } else if (this.state.pageType === 'result') {
-      pageData.team1 = this.state.team1;
-      pageData.team2 = this.state.team2;
-      pageData.group = this.state.group;
-      pageData.date = this.state.matchType === 'home' ? this.state.homeDateTime : this.state.awayDateTime;
-      pageData.team1Score = this.state.isForfeit ? 'Forfait' : this.state.team1Score;
-      pageData.team2Score = this.state.isForfeit ? 'Forfait' : this.state.team2Score;
-      pageData.isPostponed = this.state.isPostponed;
-    }
 
-    api.addEntry(pageData.type,pageData).then((page) => {
-    Router.transitionTo('datas')
+    api.addEntry(pageData.type, pageData).then((page) => {
+      Router.transitionTo('datas')
     }, (err) => {
       console.error('Failed! to make page', err);
     });
@@ -148,97 +173,275 @@ var Editor_data = React.createClass({
 
   _onPageTypeChange: function (e) {
     this.setState({
-      pageType: e.target.value
+      pageType: e.target.value,
+      data: {} // Reset data when changing type
     });
   },
 
-  _onTeam1Change: function (e) {
-    this.setState({
-      team1: e.target.value
+  _onDataChange: function (field, value) {
+    const newData = { ...this.state.data, [field]: value };
+    this.setState({ data: newData });
+  },
+
+  handleChangeTitle: function(title) {
+    this.setState({ text: title });
+  },
+
+  handleChangeContent: function(content) {
+    this.setState({ 
+      raw: content,
+      updated: new Date()
     });
   },
 
-  _onTeam2Change: function (e) {
-    this.setState({
-      team2: e.target.value
-    });
+  handlePublish: function() {
+    this.setState({ isDraft: false });
   },
 
-  _onHomeDateTimeChange: function (e) {
-    this.setState({
-      homeDateTime: e.target.value
-    });
+  handleUnpublish: function() {
+    this.setState({ isDraft: true });
   },
 
-  _onAwayDateTimeChange: function (e) {
-    this.setState({
-      awayDateTime: e.target.value
-    });
+  renderFormFields: function() {
+    const { pageType, data } = this.state;
+    
+    switch(pageType) {
+      case 'match':
+        return (
+          <div className="visible">
+            <label>
+              Équipe 1:
+              <input
+                type="text"
+                placeholder="Équipe 1"
+                value={data.team1 || ''}
+                onChange={(e) => this._onDataChange('team1', e.target.value)}
+              />
+            </label>
+            <label>
+              Équipe 2:
+              <input
+                type="text"
+                placeholder="Équipe 2"
+                value={data.team2 || ''}
+                onChange={(e) => this._onDataChange('team2', e.target.value)}
+              />
+            </label>
+            <label>
+              Date et heure du match à domicile:
+              <input
+                type="datetime-local"
+                value={data.homeDateTime || ''}
+                onChange={(e) => this._onDataChange('homeDateTime', e.target.value)}
+              />
+            </label>
+            <label>
+              Date et heure du match à l'extérieur:
+              <input
+                type="datetime-local"
+                value={data.awayDateTime || ''}
+                onChange={(e) => this._onDataChange('awayDateTime', e.target.value)}
+              />
+            </label>
+            <label>
+              Lieu du match à domicile:
+              <input
+                type="text"
+                placeholder="Lieu du match à domicile"
+                value={data.homeLocation || ''}
+                onChange={(e) => this._onDataChange('homeLocation', e.target.value)}
+              />
+            </label>
+            <label>
+              Lieu du match à l'extérieur:
+              <input
+                type="text"
+                placeholder="Lieu du match à l'extérieur"
+                value={data.awayLocation || ''}
+                onChange={(e) => this._onDataChange('awayLocation', e.target.value)}
+              />
+            </label>
+            <label>
+              Groupe:
+              <select 
+                value={data.group || ''} 
+                onChange={(e) => this._onDataChange('group', e.target.value)}
+              >
+                <option value="">Sélectionnez un groupe</option>
+                <option value="1">Groupe 1</option>
+                <option value="2">Groupe 2</option>
+                <option value="3">Groupe 3</option>
+              </select>
+            </label>
+            <label>
+              Statut du match:
+              <select 
+                value={data.matchStatus || 'scheduled'} 
+                onChange={(e) => this._onDataChange('matchStatus', e.target.value)}
+              >
+                <option value="scheduled">Programmé</option>
+                <option value="forfeit">Forfait</option>
+                <option value="postponed">Report demandé</option>
+              </select>
+            </label>
+            
+          </div>
+        );
+      
+      case 'result':
+        return (
+          <div className="visible">
+            <label>
+              Type de match:
+              <select 
+                value={data.matchType || 'home'} 
+                onChange={(e) => this._onDataChange('matchType', e.target.value)}
+              >
+                <option value="home">Match à domicile</option>
+                <option value="away">Match à l'extérieur</option>
+              </select>
+            </label>
+            <label>
+              Score Équipe 1:
+              <input
+                type="number"
+                placeholder="Score Équipe 1"
+                value={data.team1Score || ''}
+                onChange={(e) => this._onDataChange('team1Score', e.target.value)}
+                disabled={data.isForfeit}
+              />
+            </label>
+            <label>
+              Score Équipe 2:
+              <input
+                type="number"
+                placeholder="Score Équipe 2"
+                value={data.team2Score || ''}
+                onChange={(e) => this._onDataChange('team2Score', e.target.value)}
+                disabled={data.isForfeit}
+              />
+            </label>
+            <label>
+              Forfait:
+              <input
+                type="checkbox"
+                checked={data.isForfeit || false}
+                onChange={(e) => this._onDataChange('isForfeit', e.target.checked)}
+              />
+            </label>
+            <label>
+              Reporté:
+              <input
+                type="checkbox"
+                checked={data.isPostponed || false}
+                onChange={(e) => this._onDataChange('isPostponed', e.target.checked)}
+              />
+            </label>
+            <label>
+              Statut du match:
+              <select 
+                value={data.matchStatus || 'scheduled'} 
+                onChange={(e) => this._onDataChange('matchStatus', e.target.value)}
+              >
+                <option value="scheduled">Programmé</option>
+                <option value="forfeit">Forfait</option>
+                <option value="postponed">Report demandé</option>
+              </select>
+            </label>
+            {data.matchStatus === 'forfeit' && (
+              <label>
+                Équipe en forfait:
+                <select 
+                  value={data.forfeitTeam || ''} 
+                  onChange={(e) => this._onDataChange('forfeitTeam', e.target.value)}
+                >
+                  <option value="">Sélectionnez l'équipe</option>
+                  <option value="team1">{data.team1}</option>
+                  <option value="team2">{data.team2}</option>
+                </select>
+              </label>
+            )}
+            {data.matchStatus === 'postponed' && (
+              <label>
+                Équipe demandant le report:
+                <select 
+                  value={data.postponedTeam || ''} 
+                  onChange={(e) => this._onDataChange('postponedTeam', e.target.value)}
+                >
+                  <option value="">Sélectionnez l'équipe</option>
+                  <option value="team1">{data.team1}</option>
+                  <option value="team2">{data.team2}</option>
+                </select>
+              </label>
+            )}
+          </div>
+        );
+
+      case 'team':
+        return (
+          <div className="visible">
+            <label>
+              Nom de l'équipe:
+              <input
+                type="text"
+                placeholder="Nom de l'équipe"
+                value={data.teamName || ''}
+                onChange={(e) => this._onDataChange('teamName', e.target.value)}
+              />
+            </label>
+            <label>
+              Description:
+              <textarea
+                placeholder="Description de l'équipe"
+                value={data.description || ''}
+                onChange={(e) => this._onDataChange('description', e.target.value)}
+              />
+            </label>
+          </div>
+        );
+
+      case 'post':
+      case 'page':
+        return (
+          <Editor
+            post={this.props.post || { path: this.state.text }}
+            raw={this.state.raw}
+            rendered={this.state.rendered}
+            onChangeTitle={this.handleChangeTitle}
+            title={this.state.text}
+            updated={this.state.updated}
+            isDraft={this.state.isDraft}
+            onPublish={this.handlePublish}
+            onUnpublish={this.handleUnpublish}
+            onChangeContent={this.handleChangeContent}
+            wordCount={this.state.wordCount}
+            type={pageType}
+            adminSettings={this.props.adminSettings}
+          />
+        );
+
+      default:
+        return null;
+    }
   },
-
-  _onHomeLocationChange: function (e) {
-    this.setState({
-      homeLocation: e.target.value
-    });
-  },
-
-  _onAwayLocationChange: function (e) {
-    this.setState({
-      awayLocation: e.target.value
-    });
-  },
-
-  _onGroupChange: function (e) {
-    this.setState({
-      group: e.target.value
-    });
-  },
-
-  _onTeam1ScoreChange: function (e) {
-    this.setState({
-      team1Score: e.target.value
-    });
-  },
-
-  _onTeam2ScoreChange: function (e) {
-    this.setState({
-      team2Score: e.target.value
-    });
-  },
-
-  _onForfeitChange: function (e) {
-    this.setState({
-      isForfeit: e.target.checked
-    });
-  },
-
-  _onPostponedChange: function (e) {
-    this.setState({
-      isPostponed: e.target.checked
-    });
-  },
-
-  _onMatchTypeChange: function (e) {
-    this.setState({
-      matchType: e.target.value
-    });
-  },
-
-  
-
 
   render: function () {
-   if (!this.state.showing) {
+    if (!this.state.showing) {
       return (
         <div className="new-post" onClick={this._onShow}>
           <div className="new-post_button">
             <i className="fa fa-plus" />{' '}
-            New page
+            Nouvelle entrée
           </div>
         </div>
       );
     }
-      return (
+
+    if (this.state.pageType === 'post' || this.state.pageType === 'page') {
+      return this.renderFormFields();
+    }
+
+    return (
       <div className="new-post" ref="form">
         <input
           className="new-post_input"
@@ -248,118 +451,20 @@ var Editor_data = React.createClass({
           onKeyPress={this._onKeydown}
           onChange={this._onChange}
         />
-       
-        <div className={this.state.pageType === 'match' ? 'visible' : 'hidden'}>
-          <label>
-            Équipe 1:
-            <input
-              type="text"
-              placeholder="Équipe 1"
-              value={this.state.team1}
-              onChange={this._onTeam1Change}
-            />
-          </label>
-          <label>
-            Équipe 2:
-            <input
-              type="text"
-              placeholder="Équipe 2"
-              value={this.state.team2}
-              onChange={this._onTeam2Change}
-            />
-          </label>
-          <label>
-            Date et heure du match à domicile:
-            <input
-              type="datetime-local"
-              value={this.state.homeDateTime}
-              onChange={this._onHomeDateTimeChange}
-            />
-          </label>
-          <label>
-            Date et heure du match à l'extérieur:
-            <input
-              type="datetime-local"
-              value={this.state.awayDateTime}
-              onChange={this._onAwayDateTimeChange}
-            />
-          </label>
-          <label>
-            Lieu du match à domicile:
-            <input
-              type="text"
-              placeholder="Lieu du match à domicile"
-              value={this.state.homeLocation}
-              onChange={this._onHomeLocationChange}
-            />
-          </label>
-          <label>
-            Lieu du match à l'extérieur:
-            <input
-              type="text"
-              placeholder="Lieu du match à l'extérieur"
-              value={this.state.awayLocation}
-              onChange={this._onAwayLocationChange}
-            />
-          </label>
-          <label>
-            Groupe:
-            <select value={this.state.group} onChange={this._onGroupChange}>
-              <option value="">Sélectionnez un groupe</option>
-              <option value="1">Groupe 1</option>
-              <option value="2">Groupe 2</option>
-              <option value="3">Groupe 3</option>
-            </select>
-          </label>
-        </div>
-        <div className={this.state.pageType === 'result' ? 'visible' : 'hidden'}>
         
-          <label>
-            Type de match:
-            <select value={this.state.matchType} onChange={this._onMatchTypeChange}>
-              <option value="home">Match à domicile</option>
-              <option value="away">Match à l'extérieur</option>
-            </select>
-          </label>
-         
-          
-          <label>
-            Score Équipe 1:
-            <input
-              type="number"
-              placeholder="Score Équipe 1"
-              value={this.state.team1Score}
-              onChange={this._onTeam1ScoreChange}
-              disabled={this.state.isForfeit}
-            />
-          </label>
-          <label>
-            Score Équipe 2:
-            <input
-              type="number"
-              placeholder="Score Équipe 2"
-              value={this.state.team2Score}
-              onChange={this._onTeam2ScoreChange}
-              disabled={this.state.isForfeit}
-            />
-          </label>
-          <label>
-            Forfait:
-            <input
-              type="checkbox"
-              checked={this.state.isForfeit}
-              onChange={this._onForfeitChange}
-            />
-          </label>
-          <label>
-            Reporté:
-            <input
-              type="checkbox"
-              checked={this.state.isPostponed}
-              onChange={this._onPostponedChange}
-            />
-          </label>
-        </div>
+        <label>
+          Type de données:
+          <select value={this.state.pageType} onChange={this._onPageTypeChange}>
+            <option value="match">Match</option>
+            <option value="result">Résultat</option>
+            <option value="team">Équipe</option>
+            <option value="post">Article</option>
+            <option value="page">Page</option>
+          </select>
+        </label>
+
+        {this.renderFormFields()}
+
         <i className="fa fa-check-circle new-post_ok" onMouseDown={this._onSubmit}></i>
         <i className="fa fa-times-circle new-post_cancel" onMouseDown={this._onCancel}></i>
       </div>
