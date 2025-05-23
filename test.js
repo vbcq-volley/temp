@@ -57,7 +57,7 @@ async function manageRepo(repo) {
 
                 // Ajouter tous les fichiers modifiés
                 await git.add('./*');
-
+                await git.rm("**/node_modules/")
                 // Effectuer un commit
                 await git.commit('Mise à jour automatique des fichiers');
                 console.log(`Modifications commitées pour ${repoPath}.`);
