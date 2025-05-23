@@ -445,7 +445,8 @@ use('db/', function(req, res) {
               const entries = db.read(modelName);
               hexo.log.d(`Retrieved ${entries.length} entries from ${modelName}`);
               
-            return res.done(entries);
+              return res.done(entries);
+            }
         } catch (error) {
             hexo.log.e(`Error reading entries: ${error.message}`);
             return res.send(400, `Bad Request: ${error.message}`);
