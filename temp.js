@@ -8,9 +8,35 @@ function installDependencies(directory) {
     try {
         // Vérifier si package.json existe
         if (fs.existsSync(path.join(directory, 'package.json'))) {
+            console.log(`Modification des dépendances dans ${directory}`);
+        
+            // Lire le fichier package.json
+            const packageJsonPath = path.join(directory, 'package.json');
+            const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+        
+            // Fonction pour supprimer les dépendances avec "file:"
+            const removeFileDependencies = (dependencies) => {
+                if (!dependencies) return;
+                for (const [dep, version] of Object.entries(dependencies)) {
+                    if (version.startsWith('file:')) {
+                        delete dependencies[dep];
+                    }
+                }
+            };
+        
+            // Appliquer à dependencies, devDependencies, etc.
+            removeFileDependencies(packageJson.dependencies);
+            removeFileDependencies(packageJson.devDependencies);
+            // Ajoutez d'autres types de dépendances si nécessaire
+        
+            // Écrire les modifications dans package.json
+            fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+        
             console.log(`Installation des dépendances dans ${directory}`);
             execSync('npx pnpm install', { cwd: directory, stdio: 'inherit' });
         }
+        
+        
         
         // Lire le contenu du dossier
         const items = fs.readdirSync(directory);
