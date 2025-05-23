@@ -62,7 +62,7 @@ var Datas = React.createClass({
         {
           this.state.pages.map((page, i) =>
             <li key={page._id} className={cx({
-                "posts_post": true,
+                "posts_post": false,
                 "posts_post--draft": page.isDraft,
                 "posts_post--selected": i === this.state.selected
               })}

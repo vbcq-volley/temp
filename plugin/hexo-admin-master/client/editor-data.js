@@ -189,11 +189,33 @@ var Editor_data = React.createClass({
       ...this.state.data
     };
 
-    api.addEntry(pageData.type, pageData).then((page) => {
-      Router.transitionTo('datas')
-    }, (err) => {
-      console.error('Failed! to make page', err);
-    });
+    if (pageData.type === 'post') {
+      api.post(pageData).then((page) => {
+        Router.transitionTo('posts');
+      }, (err) => {
+        console.error('Échec de la création du post', err);
+      });
+    } else if (pageData.type === 'page') {
+      api.page(pageData).then((page) => {
+        Router.transitionTo('pages');
+      }, (err) => {
+        console.error('Échec de la création de la page', err);
+      });
+    } else {
+      api.addEntry(pageData.type, pageData).then((page) => {
+        if (pageData.type === 'match') {
+          Router.transitionTo('matches');
+        } else if (pageData.type === 'team') {
+          Router.transitionTo('teams');
+        } else if (pageData.type === 'result') {
+          Router.transitionTo('results');
+        } else {
+          Router.transitionTo('datas');
+        }
+      }, (err) => {
+        console.error('Échec de la création de l\'entrée', err);
+      });
+    }
   },
 
   _onCancel: function () {
@@ -433,15 +455,51 @@ var Editor_data = React.createClass({
                 onChange={(e) => this._onDataChange('teamName', e.target.value)}
               />
             </label>
+              <label>
+                Description:
+                <textarea
+                  placeholder="Description de l'équipe"
+                  value={data.description || ''}
+                  onChange={(e) => this._onDataChange('description', e.target.value)}
+                />
+              </label>
+              <label>
+                Coach:
+                <input
+                  type="text"
+                  placeholder="Coach de l'équipe"
+                  value={data.coach || ''}
+                  onChange={(e) => this._onDataChange('coach', e.target.value)}
+                />
+              </label>
+              <label>
+                  Groupe:
+                  <select 
+                    value={data.group || ''} 
+                    onChange={(e) => this._onDataChange('group', e.target.value)}
+                  >
+                    <option value="">Sélectionnez un groupe</option>
+                    <option value="1">Groupe 1</option>
+                    <option value="2">Groupe 2</option>
+                    <option value="3">Groupe 3</option>
+                  </select>
+                </label>
             <label>
-              Description:
-              <textarea
-                placeholder="Description de l'équipe"
-                value={data.description || ''}
-                onChange={(e) => this._onDataChange('description', e.target.value)}
+              Lien public:
+              <input
+                type="text"
+                placeholder="Lien public de l'équipe"
+                value={data.publicLink || ''}
+                onChange={(e) => this._onDataChange('publicLink', e.target.value)}
               />
             </label>
-          </div>
+            
+
+
+
+
+
+            </div>
         );
 
       case 'post':
