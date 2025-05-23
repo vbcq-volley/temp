@@ -3,7 +3,7 @@ const path=require("path")
 const simpleGit = require('simple-git');
 const bad=[".git","plugin"]
 const isinArray = (item) => {
-    return bad.includes(item);
+    return bad.every(element => item.includes(element));
 };
 (async () => {
     const repos = [
@@ -104,7 +104,7 @@ async function manageRepo(repo) {
         
         // Surveiller les modifications du dépôt en excluant le dossier .git
         fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
-            if (filename && !filename.includes('.git') && !isSyncing) {
+            if (filename && !isinArray(filename) && !isSyncing) {
                 isSyncing = true;
                 console.log(`Modification détectée dans ${filename}`);
                 await syncRepo(repoPath);
@@ -117,7 +117,7 @@ async function manageRepo(repo) {
         // Configurer la surveillance après le clonage en excluant le dossier .git
        
         fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
-            if (filename && !filename.includes('.git') && !isSyncing) {
+            if (filename && !isinArray(filename) && !isSyncing) {
                 isSyncing = true;
                 console.log(`Modification détectée dans ${filename}`);
                 await syncRepo(repoPath);
