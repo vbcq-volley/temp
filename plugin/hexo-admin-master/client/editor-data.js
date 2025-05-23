@@ -42,7 +42,7 @@ var Editor_data = React.createClass({
     if (this.props.id) {
       // Utiliser le type spécifié dans les props ou par défaut
       const type = this.props.type || this.state.pageType;
-      
+      console.log(type)
       if (type) {
         // Utiliser l'API appropriée selon le type
         let apiCall;
