@@ -94,14 +94,18 @@ async function manageRepo(repo) {
 
     // Exécuter les fonctions pour le dépôt
     ensureDirectoryExistence(repoPath);
+    let isSyncing = false;
+
     if (fs.existsSync(path.join(repoPath, '.git'))) {
         await syncRepo(repoPath);
         
         // Surveiller les modifications du dépôt en excluant le dossier .git
         fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
-            if (filename && !filename.includes('.git')) {
+            if (filename && !filename.includes('.git') && !isSyncing) {
+                isSyncing = true;
                 console.log(`Modification détectée dans ${filename}`);
                 await syncRepo(repoPath);
+                isSyncing = false;
             }
         });
     } else {
@@ -109,9 +113,11 @@ async function manageRepo(repo) {
         
         // Configurer la surveillance après le clonage en excluant le dossier .git
         fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
-            if (filename && !filename.includes('.git')) {
+            if (filename && !filename.includes('.git') && !isSyncing) {
+                isSyncing = true;
                 console.log(`Modification détectée dans ${filename}`);
                 await syncRepo(repoPath);
+                isSyncing = false;
             }
         });
     }
