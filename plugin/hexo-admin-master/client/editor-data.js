@@ -50,6 +50,41 @@ var Editor_data = React.createClass({
           apiCall = api.post(this.props.id);
         } else if (type === 'page') {
           apiCall = api.page(this.props.id);
+        } else if (type === 'result') {
+          // Pour les résultats, d'abord vérifier si le résultat existe
+          api.getEntry('result', this.props.id).then((result) => {
+            if (result) {
+              // Si le résultat existe, l'utiliser
+              this.setState({
+                text: result.title || 'Sans titre',
+                pageType: type,
+                data: result,
+                loading: false
+              });
+            } else {
+              // Si le résultat n'existe pas, charger le match correspondant
+              api.getEntry('match', this.props.id).then((match) => {
+                if (match) {
+                  this.setState({
+                    text: `Résultat: ${match.team1} vs ${match.team2}`,
+                    pageType: type,
+                    data: {
+                      matchId: match._id,
+                      team1: match.team1,
+                      team2: match.team2,
+                      matchType: 'home',
+                      team1Score: '',
+                      team2Score: '',
+                      isForfeit: false,
+                      isPostponed: false
+                    },
+                    loading: false
+                  });
+                }
+              });
+            }
+          });
+          return; // Sortir de la fonction car on gère le cas des résultats différemment
         } else {
           apiCall = api.getEntry(type, this.props.id);
         }
@@ -179,7 +214,9 @@ var Editor_data = React.createClass({
   },
 
   _onDataChange: function (field, value) {
-    const newData = { ...this.state.data, [field]: value };
+    console.log("la data est"+JSON.stringify(this.state.data))
+    const newData = { ...this.state.data };
+    newData[field] = value;
     this.setState({ data: newData });
   },
 
@@ -308,7 +345,7 @@ var Editor_data = React.createClass({
                 placeholder="Score Équipe 1"
                 value={data.team1Score || ''}
                 onChange={(e) => this._onDataChange('team1Score', e.target.value)}
-                disabled={data.isForfeit}
+                disabled={data.isForfeit || data.isPostponed}
               />
             </label>
             <label>
@@ -318,7 +355,7 @@ var Editor_data = React.createClass({
                 placeholder="Score Équipe 2"
                 value={data.team2Score || ''}
                 onChange={(e) => this._onDataChange('team2Score', e.target.value)}
-                disabled={data.isForfeit}
+                disabled={data.isForfeit || data.isPostponed}
               />
             </label>
             <label>
@@ -326,29 +363,19 @@ var Editor_data = React.createClass({
               <input
                 type="checkbox"
                 checked={data.isForfeit || false}
-                onChange={(e) => this._onDataChange('isForfeit', e.target.checked)}
+                onChange={(e) => {
+                  const newData = { ...this.state.data };
+                  newData.isForfeit = e.target.checked;
+                  if (e.target.checked) {
+                    newData.isPostponed = false;
+                    newData.team1Score = '';
+                    newData.team2Score = '';
+                  }
+                  this.setState({ data: newData });
+                }}
               />
             </label>
-            <label>
-              Reporté:
-              <input
-                type="checkbox"
-                checked={data.isPostponed || false}
-                onChange={(e) => this._onDataChange('isPostponed', e.target.checked)}
-              />
-            </label>
-            <label>
-              Statut du match:
-              <select 
-                value={data.matchStatus || 'scheduled'} 
-                onChange={(e) => this._onDataChange('matchStatus', e.target.value)}
-              >
-                <option value="scheduled">Programmé</option>
-                <option value="forfeit">Forfait</option>
-                <option value="postponed">Report demandé</option>
-              </select>
-            </label>
-            {data.matchStatus === 'forfeit' && (
+            {data.isForfeit && (
               <label>
                 Équipe en forfait:
                 <select 
@@ -361,7 +388,24 @@ var Editor_data = React.createClass({
                 </select>
               </label>
             )}
-            {data.matchStatus === 'postponed' && (
+            <label>
+              Reporté:
+              <input
+                type="checkbox"
+                checked={data.isPostponed || false}
+                onChange={(e) => {
+                  const newData = { ...this.state.data };
+                  newData.isPostponed = e.target.checked;
+                  if (e.target.checked) {
+                    newData.isForfeit = false;
+                    newData.team1Score = '';
+                    newData.team2Score = '';
+                  }
+                  this.setState({ data: newData });
+                }}
+              />
+            </label>
+            {data.isPostponed && (
               <label>
                 Équipe demandant le report:
                 <select 

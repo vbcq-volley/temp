@@ -489,7 +489,7 @@ use('db/:model/:index', function(req, res) {
             const entries = db.read(modelName);
             const entry = entries.find(item => item.id === index);
             hexo.log.d(`Retrieved entry from ${modelName} with id ${index}`);
-            
+            console.log(entry)
             return res.done(entry);
         } catch (error) {
             hexo.log.e(`Error getting entry: ${error.message}`);
