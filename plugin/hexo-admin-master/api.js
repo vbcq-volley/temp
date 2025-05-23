@@ -189,7 +189,7 @@ db.read("match").map((item,index)=>{
 module.exports = function (app, hexo) {
 
   function addIsDraft(post) {
-  //  console.log(post)
+  //  hexo.log.d(post)
     post.isDraft = post.source.indexOf('_draft') === 0
     post.isDiscarded = post.source.indexOf('_discarded') === 0
     return post
@@ -229,7 +229,7 @@ module.exports = function (app, hexo) {
 
   function remove(id, body, res) {
     var post = hexo.model('Post').update().get(id)
-    console.log(post)
+    hexo.log.d(post)
     if (!post) return res.send(404, "Post not found")
     var newSource = '_discarded/' + post.source.slice('_drafts'.length)
     update(id, {source: newSource}, function (err, post) {
@@ -242,7 +242,7 @@ module.exports = function (app, hexo) {
 
   function publish(id, body, res) {
     var post = hexo.model('Post').get(id)
-    console.log(post)
+    hexo.log.d(post)
     if (!post) return res.send(404, "Post not found")
     var newSource = '_posts/' + post.source.slice('_drafts/'.length)
     update(id, {source: newSource}, function (err, post) {
@@ -255,7 +255,7 @@ module.exports = function (app, hexo) {
 
   function unpublish(id, body, res) {
     var post = hexo.model('Post').get(id)
-    console.log(post)
+    hexo.log.d(post)
     if (!post) return res.send(404, "Post not found")
     var newSource = '_drafts/' + post.source.slice('_posts/'.length)
     update(id, {source: newSource}, function (err, post) {
@@ -269,11 +269,11 @@ module.exports = function (app, hexo) {
   function rename(id, body, res) {
     var model = 'Post'
     var post = hexo.model('Post').get(id)
-    //console.log(post)
+    //hexo.log.d(post)
     if (!post) {
       model = 'Page'
       post = hexo.model('Page').get(id)
-      //console.log(post)
+      //hexo.log.d(post)
       if (!post) return res.send(404, "Post not found")
     }
     // remember old path w/o index.md
@@ -303,7 +303,7 @@ module.exports = function (app, hexo) {
       hexo.log.d(`API Request: ${req.method} ${path}`);
       
       var done = function (val) {
-        //console.log(val)
+        //hexo.log.d(val)
         if (!val) {
           res.statusCode = 204;
           return res.end('');
@@ -361,13 +361,13 @@ module.exports = function (app, hexo) {
   use('settings/set', function (req, res, next) {
     if (req.method !== 'POST') return next()
     if (!req.body.name) {
-      console.log('no name')
+      hexo.log.d('no name')
       hexo.log.d('no name')
       return res.send(400, 'No name given')
     }
     // value is capable of being false
     if (typeof req.body.value === 'undefined') {
-      console.log('no value')
+      hexo.log.d('no value')
       hexo.log.d('no value')
       return res.send(400, 'No value given')
     }
@@ -435,10 +435,16 @@ use('db/', function(req, res) {
             if (!modelName) {
                 return res.send(400, 'Model name is required');
             }
-            
-            const entries = db.read(modelName);
-            hexo.log.d(`Retrieved ${entries.length} entries from ${modelName}`);
-            
+            if(req.url.split('/').filter(Boolean)[1]){
+              const entries = db.read(modelName);
+              const entry = entries.find(item => item._id === req.url.split('/').filter(Boolean)[1]);
+              hexo.log.d(`Retrieved ${entries.length} entries from ${modelName}`);
+              
+              return res.done(entry);
+            }else{
+              const entries = db.read(modelName);
+              hexo.log.d(`Retrieved ${entries.length} entries from ${modelName}`);
+              
             return res.done(entries);
         } catch (error) {
             hexo.log.e(`Error reading entries: ${error.message}`);
@@ -490,7 +496,7 @@ use('db/:model/:index', function(req, res) {
             const entries = db.read(modelName);
             const entry = entries.find(item => item._id === req.url.split('/').filter(Boolean)[1]);
             hexo.log.d(`Retrieved entry from ${modelName} with id ${index}`);
-            console.log(entry)
+            hexo.log.d(entry)
             return res.done(entry);
         } catch (error) {
             hexo.log.e(`Error getting entry: ${error.message}`);
@@ -533,7 +539,7 @@ use('db/:model/:index', function(req, res) {
     if (!req.body) {
       return res.send(400, 'No page body given');
     }
-    console.log(req.body)
+    hexo.log.d(req.body)
     if (!req.body.data.text) {
       return res.send(400, 'No title given');
     }
@@ -561,7 +567,7 @@ return res.done(db.read(req.body.data.type))  }
 
   use('pages/', function (req, res, next) {
     var url = req.url
-    console.log('in pages', url)
+    hexo.log.d('in pages', url)
     if (url[url.length - 1] === '/') {
       url = url.slice(0, -1)
     }
@@ -579,7 +585,7 @@ return res.done(db.read(req.body.data.type))  }
     if (id === 'pages' || !id) return next()
     if (req.method === 'GET') {
       var page = hexo.model('Page').get(id)
-      console.log(page)
+      hexo.log.d(page)
       return res.done(addIsDraft(page))
     }
 
@@ -600,7 +606,7 @@ return res.done(db.read(req.body.data.type))  }
 
   use('posts/list', function (req, res) {
    var post = hexo.model('Post')
-   console.log(post)
+   hexo.log.d(post)
    res.done(post.map(addIsDraft));
   });
 
@@ -614,16 +620,16 @@ return res.done(db.read(req.body.data.type))  }
     }
 
     var postParameters = {title: req.body.title, layout: 'posts', date: new Date(), author: hexo.config.author,source:"_post"};
-    console.log(postParameters)
+    hexo.log.d(postParameters)
     hexo.post.create(postParameters)
     .error(function(err) {
-      console.log("l'erreur est a la création du post")
+      hexo.log.d("l'erreur est a la création du post")
       console.error(err, err.stack)
       return res.send(500, 'Failed to create post')
     })
     .then(function (file) {
       var source = postParameters.source
-      console.log(file)
+      hexo.log.d(file)
       res.send(200,"succes")
     });
   });
