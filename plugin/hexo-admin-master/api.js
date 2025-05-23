@@ -303,6 +303,7 @@ module.exports = function (app, hexo) {
       hexo.log.d(`API Request: ${req.method} ${path}`);
       
       var done = function (val) {
+        console.log(val)
         if (!val) {
           res.statusCode = 204;
           return res.end('');
@@ -487,7 +488,7 @@ use('db/:model/:index', function(req, res) {
     } else if (req.method === 'GET') {
         try {
             const entries = db.read(modelName);
-            const entry = entries.find(item => item.id === index);
+            const entry = entries.find(item => item._id === req.url.split('/').filter(Boolean)[1]);
             hexo.log.d(`Retrieved entry from ${modelName} with id ${index}`);
             console.log(entry)
             return res.done(entry);
