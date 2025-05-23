@@ -303,7 +303,7 @@ module.exports = function (app, hexo) {
       hexo.log.d(`API Request: ${req.method} ${path}`);
       
       var done = function (val) {
-        console.log(val)
+        //console.log(val)
         if (!val) {
           res.statusCode = 204;
           return res.end('');
