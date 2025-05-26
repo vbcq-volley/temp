@@ -21130,97 +21130,6 @@ var require_deep_assign = __commonJS({
   }
 });
 
-// node_modules/.pnpm/extend@3.0.2/node_modules/extend/index.js
-var require_extend = __commonJS({
-  "node_modules/.pnpm/extend@3.0.2/node_modules/extend/index.js"(exports2, module2) {
-    "use strict";
-    var hasOwn = Object.prototype.hasOwnProperty;
-    var toStr = Object.prototype.toString;
-    var defineProperty = Object.defineProperty;
-    var gOPD = Object.getOwnPropertyDescriptor;
-    var isArray = function isArray2(arr) {
-      if (typeof Array.isArray === "function") {
-        return Array.isArray(arr);
-      }
-      return toStr.call(arr) === "[object Array]";
-    };
-    var isPlainObject = function isPlainObject2(obj2) {
-      if (!obj2 || toStr.call(obj2) !== "[object Object]") {
-        return false;
-      }
-      var hasOwnConstructor = hasOwn.call(obj2, "constructor");
-      var hasIsPrototypeOf = obj2.constructor && obj2.constructor.prototype && hasOwn.call(obj2.constructor.prototype, "isPrototypeOf");
-      if (obj2.constructor && !hasOwnConstructor && !hasIsPrototypeOf) {
-        return false;
-      }
-      var key;
-      for (key in obj2) {
-      }
-      return typeof key === "undefined" || hasOwn.call(obj2, key);
-    };
-    var setProperty = function setProperty2(target, options) {
-      if (defineProperty && options.name === "__proto__") {
-        defineProperty(target, options.name, {
-          enumerable: true,
-          configurable: true,
-          value: options.newValue,
-          writable: true
-        });
-      } else {
-        target[options.name] = options.newValue;
-      }
-    };
-    var getProperty = function getProperty2(obj2, name) {
-      if (name === "__proto__") {
-        if (!hasOwn.call(obj2, name)) {
-          return void 0;
-        } else if (gOPD) {
-          return gOPD(obj2, name).value;
-        }
-      }
-      return obj2[name];
-    };
-    module2.exports = function extend() {
-      var options, name, src, copy, copyIsArray, clone;
-      var target = arguments[0];
-      var i = 1;
-      var length = arguments.length;
-      var deep = false;
-      if (typeof target === "boolean") {
-        deep = target;
-        target = arguments[1] || {};
-        i = 2;
-      }
-      if (target == null || typeof target !== "object" && typeof target !== "function") {
-        target = {};
-      }
-      for (; i < length; ++i) {
-        options = arguments[i];
-        if (options != null) {
-          for (name in options) {
-            src = getProperty(target, name);
-            copy = getProperty(options, name);
-            if (target !== copy) {
-              if (deep && copy && (isPlainObject(copy) || (copyIsArray = isArray(copy)))) {
-                if (copyIsArray) {
-                  copyIsArray = false;
-                  clone = src && isArray(src) ? src : [];
-                } else {
-                  clone = src && isPlainObject(src) ? src : {};
-                }
-                setProperty(target, { name, newValue: extend(deep, clone, copy) });
-              } else if (typeof copy !== "undefined") {
-                setProperty(target, { name, newValue: copy });
-              }
-            }
-          }
-        }
-      }
-      return target;
-    };
-  }
-});
-
 // node_modules/.pnpm/debug@1.0.5/node_modules/debug/debug.js
 var require_debug2 = __commonJS({
   "node_modules/.pnpm/debug@1.0.5/node_modules/debug/debug.js"(exports2, module2) {
@@ -23924,7 +23833,7 @@ var require_methods = __commonJS({
 });
 
 // node_modules/.pnpm/extend@1.2.1/node_modules/extend/index.js
-var require_extend2 = __commonJS({
+var require_extend = __commonJS({
   "node_modules/.pnpm/extend@1.2.1/node_modules/extend/index.js"(exports2, module2) {
     var hasOwn = Object.prototype.hasOwnProperty;
     var toString = Object.prototype.toString;
@@ -25869,7 +25778,7 @@ var require_node3 = __commonJS({
     var methods = require_methods();
     var Stream = require("stream");
     var utils = require_utils2();
-    var extend = require_extend2();
+    var extend = require_extend();
     var Part = require_part();
     var mime = require_mime2();
     var https = require("https");
@@ -55234,7 +55143,12 @@ var require_update = __commonJS({
     var moment = require_moment();
     var hfm = require_front_matter();
     var fs = require_fs();
-    var extend = require_extend();
+    var extend = (original, other) => {
+      for (let key in other) {
+        original[key] = other[key];
+      }
+      return original;
+    };
     module2.exports = function(model, id, update, callback, hexo2) {
       function removeExtname(str) {
         return str.substring(0, str.length - path2.extname(str).length);
@@ -55243,11 +55157,9 @@ var require_update = __commonJS({
       if (!post) {
         return callback("Post not found");
       }
-      console.log(post);
       var config = hexo2.config, slug = post.slug = hfm.escape(post.slug || post.title, config.filename_case), layout = post.layout = (post.layout || config.default_layout).toLowerCase(), date = post.date = post.date ? moment(post.date) : moment();
       var split = hfm.split(post.raw), frontMatter = split.data;
       compiled = hfm.parse([frontMatter, "---", split.content].join("\n"));
-      console.log(split);
       var preservedKeys = ["title", "date", "tags", "categories", "_content", "author"];
       Object.keys(hexo2.config.metadata || {}).forEach(function(key) {
         preservedKeys.push(key);
@@ -55261,8 +55173,7 @@ var require_update = __commonJS({
           compiled[attr] = update[attr];
         }
       });
-      console.log(compiled);
-      compiled.date = moment(compiled.date).toDate();
+      compiled.date = compiled.date;
       delete update._content;
       var raw = hfm.stringify(compiled);
       update.raw = raw;
@@ -55923,7 +55834,6 @@ var require_api = __commonJS({
     var fs = require("fs");
     var yml = require_js_yaml();
     var deepAssign = require_deep_assign();
-    var extend = require_extend();
     var { source } = require_node3();
     var updateAny = require_update();
     var updatePage = updateAny.bind(null, "Page");
@@ -56134,6 +56044,8 @@ var require_api = __commonJS({
         hexo2.model("Tag").forEach(function(tag) {
           tags[tag._id] = tag.name;
         });
+        console.log(cats);
+        console.log(tags);
         return {
           categories: cats,
           tags,
@@ -56239,7 +56151,8 @@ var require_api = __commonJS({
           try {
             fn2(req, res);
           } catch (err) {
-            hexo2.log.e(`API Error: ${err}`);
+            hexo2.log.e(`API Error: ${err.message}
+${err.stack}`);
             res.send(500, `Internal Server Error: ${err}`);
           }
         });
@@ -56438,7 +56351,6 @@ var require_api = __commonJS({
           return remove(parts[parts.length - 2], req.body, res);
         }
         var id = last;
-        if (id === "pages" || !id) return next();
         if (req.method === "GET") {
           var page = hexo2.model("Page").get(id);
           hexo2.log.d(page);
@@ -56447,6 +56359,7 @@ var require_api = __commonJS({
         if (!req.body) {
           return res.send(400, "No page body given");
         }
+        console.log(req.body);
         updatePage(id, req.body, function(err, page2) {
           if (err) {
             return res.send(400, err);
@@ -56502,7 +56415,6 @@ var require_api = __commonJS({
           return rename(parts[parts.length - 2], req.body, res);
         }
         var id = last;
-        if (id === "posts" || !id) return next();
         if (req.method === "GET") {
           var post = hexo2.model("Post").get(id);
           if (!post) return next();

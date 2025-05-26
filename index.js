@@ -29,11 +29,9 @@ async function main() {
         return !fs.statSync(path.join("./dist",item)).isDirectory()
     }).map((value)=>{
        
-        if(lp){
-            return admin.loadPlugin(value)
-        }else{
-            return null
-        }
+      
+            return admin.loadPlugin(path.join("./dist",value))
+       
         
     }))
     console.log(admin.log)

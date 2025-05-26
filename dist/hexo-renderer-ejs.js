@@ -745,7 +745,6 @@ var require_renderer = __commonJS({
       return ejs.render(data.text, Object.assign({ filename: data.path }, locals));
     }
     ejsRenderer.compile = function(data) {
-      console.log(data);
       return ejs.compile(data.text, {
         filename: data.path
       });
