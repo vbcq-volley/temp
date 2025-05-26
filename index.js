@@ -25,14 +25,12 @@ async function main() {
     await admin.init()
     await admin.load()
     await admin.call("list", { _: ["post","pages","draft"] })
-    await Promise.all(fs.readdirSync("./plugin").filter((item)=>{
-        return fs.statSync(path.join("./plugin",item)).isDirectory()
+    await Promise.all(fs.readdirSync("./dist").filter((item)=>{
+        return !fs.statSync(path.join("./dist",item)).isDirectory()
     }).map((value)=>{
-        const pkg=require(path.join(__dirname,"plugin",value,"package.json"))
-        console.log(value)
-        const lp=parsepath(path.normalize(path.join("./plugin",value,pkg.main||"index.js")))
+       
         if(lp){
-            return admin.loadPlugin(lp)
+            return admin.loadPlugin(value)
         }else{
             return null
         }
