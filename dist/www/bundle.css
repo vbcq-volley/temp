@@ -71,12 +71,11 @@ body > div:first-of-type {
   color: #6EAEFF;
 }
 .app_main {
+  display: flex;
+  flex: 1 1 auto;
   min-height: 0;
   position: relative;
   padding-top: 70px;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
 }
 .posts_header {
   display: flex;
@@ -90,6 +89,7 @@ body > div:first-of-type {
   margin: 0;
   font-size: 20px;
   font-weight: bold;
+  color: #264373;
 }
 .posts_header button {
   background-color: #6EAEFF;
@@ -115,6 +115,10 @@ body > div:first-of-type {
   background-color: #668ccc;
   border-bottom: 1px solid #264373;
   margin-bottom: 20px;
+}
+.teams-container {
+  margin-top: 20px;
+  padding: 0 20px;
 }
 .posts {
   display: flex;
