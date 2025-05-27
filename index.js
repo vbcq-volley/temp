@@ -35,7 +35,7 @@ async function main() {
         
     }))
     console.log(admin.log)
-    admin.log._debug=true
+  //  admin.log._debug=true
     console.log(admin.log)
     admin.call("server",{i:"127.0.0.1",port:8080})
     
