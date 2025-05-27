@@ -55932,6 +55932,7 @@ var require_api = __commonJS({
           } else {
             model.metadata = { updated_at: newEntry.updated_at };
           }
+          model.entries = model.entries.map((entry, idx) => ({ ...entry, index: idx }));
           this.saveToFile(this.filename);
           return model.entries[index];
         } catch (error) {
@@ -56211,45 +56212,79 @@ ${err.stack}`);
       });
       use("db/", function(req, res) {
         updateMatchTitles();
-        if (req.method === "POST") {
-          try {
-            const modelName = req.url.split("/").filter(Boolean)[0];
-            if (!modelName) {
-              return res.send(400, "Model name is required");
+        const modelName = req.url.split("/").filter(Boolean)[0];
+        if (!modelName) {
+          return res.send(400, "Model name is required");
+        }
+        switch (req.method) {
+          case "POST":
+            try {
+              const entry = req.body;
+              if (!entry) {
+                return res.send(400, "Entry data is required");
+              }
+              const createdEntry = db.create(modelName, entry);
+              hexo2.log.d(`Created new entry in ${modelName}`);
+              return res.done(createdEntry);
+            } catch (error) {
+              hexo2.log.e(`Error creating entry: ${error.message}`);
+              return res.send(400, `Bad Request: ${error.message}`);
             }
-            const entry = req.body;
-            if (!entry) {
-              return res.send(400, "Entry data is required");
-            }
-            const createdEntry = db.create(modelName, entry);
-            hexo2.log.d(`Created new entry in ${modelName}`);
-            return res.done(createdEntry);
-          } catch (error) {
-            hexo2.log.e(`Error creating entry: ${error.message}`);
-            return res.send(400, `Bad Request: ${error.message}`);
-          }
-        } else if (req.method === "GET") {
-          try {
-            const modelName = req.url.split("/").filter(Boolean)[0];
-            if (!modelName) {
-              return res.send(400, "Model name is required");
-            }
-            if (req.url.split("/").filter(Boolean)[1]) {
+            break;
+          case "GET":
+            try {
+              const id = req.url.split("/").filter(Boolean)[1];
               const entries = db.read(modelName);
-              const entry = entries.find((item) => item._id === req.url.split("/").filter(Boolean)[1]);
-              hexo2.log.d(`Retrieved ${entries.length} entries from ${modelName}`);
-              return res.done(entry);
-            } else {
-              const entries = db.read(modelName);
-              hexo2.log.d(`Retrieved ${entries.length} entries from ${modelName}`);
-              return res.done(entries);
+              if (id) {
+                const entry = entries.find((item) => item._id === id);
+                hexo2.log.d(`Retrieved entry from ${modelName}`);
+                return res.done(entry);
+              } else {
+                hexo2.log.d(`Retrieved ${entries.length} entries from ${modelName}`);
+                return res.done(entries);
+              }
+            } catch (error) {
+              hexo2.log.e(`Error reading entries: ${error.message}`);
+              return res.send(400, `Bad Request: ${error.message}`);
             }
-          } catch (error) {
-            hexo2.log.e(`Error reading entries: ${error.message}`);
-            return res.send(400, `Bad Request: ${error.message}`);
-          }
-        } else {
-          return res.send(405, "Method Not Allowed");
+            break;
+          case "PUT":
+            try {
+              if (!req.body) {
+                return res.send(400, "No update data provided");
+              }
+              const id = req.url.split("/").filter(Boolean)[1];
+              const entries = db.read(modelName);
+              const index = entries.findIndex((item) => item._id === id);
+              if (index === -1) {
+                return res.send(404, "Entry not found");
+              }
+              const updatedEntry = db.update(modelName, index, req.body);
+              hexo2.log.d(`Updated entry in ${modelName} at index ${index}`);
+              return res.done(updatedEntry);
+            } catch (error) {
+              hexo2.log.e(`Error updating entry: ${error.message}`);
+              return res.send(400, `Bad Request: ${error.message}`);
+            }
+            break;
+          case "DELETE":
+            try {
+              const id = req.url.split("/").filter(Boolean)[1];
+              const entries = db.read(modelName);
+              const index = entries.findIndex((item) => item._id === id);
+              if (index === -1) {
+                return res.send(404, "Entry not found");
+              }
+              db.delete(modelName, index);
+              hexo2.log.d(`Deleted entry from ${modelName} at index ${index}`);
+              return res.done({ success: true });
+            } catch (error) {
+              hexo2.log.e(`Error deleting entry: ${error.message}`);
+              return res.send(400, `Bad Request: ${error.message}`);
+            }
+            break;
+          default:
+            return res.send(405, "Method Not Allowed");
         }
       });
       use("db/:model/:index", function(req, res) {
