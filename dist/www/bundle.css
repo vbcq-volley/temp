@@ -71,9 +71,6 @@ body > div:first-of-type {
   color: #6EAEFF;
 }
 .app_main {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
   min-height: 0;
   position: relative;
   padding-top: 70px;
