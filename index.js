@@ -23,6 +23,7 @@ const admin=new hexo(process.cwd(), {
 async function main() {
    
     await admin.init()
+    
     await admin.load()
     await admin.call("list", { _: ["post","pages","draft"] })
     await Promise.all(fs.readdirSync("./dist").filter((item)=>{
