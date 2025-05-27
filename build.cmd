@@ -88,3 +88,4 @@ npx esbuild ./dist/log.js --bundle --platform=node --outfile=../../dist/hexo-log
 npx esbuild ./lib/pagination --bundle --platform=node --outfile=../../dist/hexo-pagination.js
 npx esbuild ./index.js --bundle --platform=node --outfile=../../dist/hexo-recommended-posts.js
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-ejs.js
+npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-marked.js
