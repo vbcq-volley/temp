@@ -17,7 +17,7 @@ const parsepath=(p)=>{
 }
 
 const admin=new hexo(process.cwd(), {
-    e
+    
 })
 require("./hs")(admin)
 async function main() {
