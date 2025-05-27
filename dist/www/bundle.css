@@ -15,7 +15,6 @@ body > div:first-of-type {
 .app_header {
   background-color: #0d1626;
   height: 52px;
-  display: flex;
   align-items: center;
   padding: 0 20px;
 }
