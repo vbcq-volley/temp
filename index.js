@@ -17,7 +17,13 @@ const parsepath=(p)=>{
 }
 
 const admin=new hexo(process.cwd(), {
-    
+debug: true,
+silent: false,
+safe: false,
+draft: false,
+drafts: false,
+output: './public',
+config: '_config.yml'
 })
 
 async function main() {
