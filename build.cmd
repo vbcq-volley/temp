@@ -82,3 +82,5 @@ npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-generator
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-generator-category.js
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-generator-index.js
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-generator-search.js
+npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-generator-tag.js
+npx esbuild ./dist/i18n.js --bundle --platform=node --outfile=../../dist/hexo-i18n.js
