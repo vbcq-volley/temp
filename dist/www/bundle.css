@@ -16,15 +16,10 @@ body > div:first-of-type {
 }
 .app_header {
   background-color: #0d1626;
-  height: 70px;
+  height: 52px;
   display: flex;
   align-items: center;
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  padding: 0 20px;
 }
 .app_header,
 .app_header a {
@@ -74,22 +69,19 @@ body > div:first-of-type {
   display: flex;
   flex: 1 1 auto;
   min-height: 0;
-  position: relative;
-  padding-top: 70px;
 }
 .posts_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  border-bottom: 1px solid #264373;
-  margin-bottom: 20px;
+  background-color: #0d1626;
+  color: #eee;
 }
 .posts_header h2 {
   margin: 0;
   font-size: 20px;
   font-weight: bold;
-  color: #264373;
 }
 .posts_header button {
   background-color: #6EAEFF;
@@ -115,10 +107,6 @@ body > div:first-of-type {
   background-color: #668ccc;
   border-bottom: 1px solid #264373;
   margin-bottom: 20px;
-}
-.teams-container {
-  margin-top: 20px;
-  padding: 0 20px;
 }
 .posts {
   display: flex;
