@@ -23,7 +23,6 @@ body > div:first-of-type {
   color: #eee;
 }
 .app_header-left {
-  display: flex;
   align-items: center;
   margin-right: 30px;
 }
