@@ -81,13 +81,14 @@ body > div:first-of-type {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: #0d1626;
-  color: #eee;
+  border-bottom: 1px solid #264373;
+  margin-bottom: 20px;
 }
 .posts_header h2 {
   margin: 0;
   font-size: 20px;
   font-weight: bold;
+  color: #264373;
 }
 .posts_header button {
   background-color: #6EAEFF;
