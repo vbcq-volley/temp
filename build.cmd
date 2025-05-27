@@ -79,3 +79,5 @@ npx esbuild ./dist/hexo --bundle --platform=node --outfile=../../dist/hexo-cli.j
 npx esbuild ./lib/front_matter --bundle --platform=node --outfile=../../dist/hexo-front-matter.js
 npx esbuild ./lib/fs --bundle --platform=node --outfile=../../dist/hexo-fs.js
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-generator-archive.js
+npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-generator-category.js
+npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-generator-index.js
