@@ -114,7 +114,7 @@ var console = new console_1.Console({
 var Logger = class {
   constructor({ debug = false, silent = false } = {}) {
     this._silent = silent || false;
-    this._debug = true;
+    this._debug = debug || false;
     this.level = INFO;
     if (silent) {
       this.level = FATAL + 10;
