@@ -71,7 +71,6 @@ body > div:first-of-type {
   min-height: 0;
 }
 .posts_header {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
