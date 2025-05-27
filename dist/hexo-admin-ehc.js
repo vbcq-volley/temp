@@ -56216,6 +56216,7 @@ ${err.stack}`);
         if (!modelName) {
           return res.send(400, "Model name is required");
         }
+        hexo2.log.d(req.method);
         switch (req.method) {
           case "POST":
             try {
@@ -56282,51 +56283,8 @@ ${err.stack}`);
               hexo2.log.e(`Error deleting entry: ${error.message}`);
               return res.send(400, `Bad Request: ${error.message}`);
             }
-            break;
           default:
             return res.send(405, "Method Not Allowed");
-        }
-      });
-      use("db/:model/:index", function(req, res) {
-        const modelName = req.url.split("/").filter(Boolean)[0];
-        const index = parseInt(req.url.split("/").filter(Boolean)[1]);
-        if (isNaN(index)) {
-          return res.send(400, "Invalid index");
-        }
-        if (req.method === "PUT") {
-          try {
-            if (!req.body) {
-              return res.send(400, "No update data provided");
-            }
-            const updatedEntry = db.update(modelName, index, req.body);
-            hexo2.log.d(`Updated entry in ${modelName} at index ${index}`);
-            return res.done(updatedEntry);
-          } catch (error) {
-            hexo2.log.e(`Error updating entry: ${error.message}`);
-            return res.send(400, `Bad Request: ${error.message}`);
-          }
-        } else if (req.method === "DELETE") {
-          try {
-            db.delete(modelName, index);
-            hexo2.log.d(`Deleted entry from ${modelName} at index ${index}`);
-            return res.done({ success: true });
-          } catch (error) {
-            hexo2.log.e(`Error deleting entry: ${error.message}`);
-            return res.send(400, `Bad Request: ${error.message}`);
-          }
-        } else if (req.method === "GET") {
-          try {
-            const entries = db.read(modelName);
-            const entry = entries.find((item) => item._id === req.url.split("/").filter(Boolean)[1]);
-            hexo2.log.d(`Retrieved entry from ${modelName} with id ${index}`);
-            hexo2.log.d(entry);
-            return res.done(entry);
-          } catch (error) {
-            hexo2.log.e(`Error getting entry: ${error.message}`);
-            return res.send(400, `Bad Request: ${error.message}`);
-          }
-        } else {
-          return res.send(405, "Method Not Allowed");
         }
       });
       use("pages/new", function(req, res, next) {
