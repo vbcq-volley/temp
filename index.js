@@ -36,8 +36,8 @@ async function main() {
     }))
     console.log(admin.log)
   //  admin.log._debug=true
-    console.log(admin)
-    admin.exit
+    console.log(admin.env)
+    admin.exit()
     admin.call("server",{i:"127.0.0.1",port:8080})
     
 }
