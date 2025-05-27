@@ -66,8 +66,6 @@ body > div:first-of-type {
   color: #6EAEFF;
 }
 .app_main {
-  display: flex;
-  flex: 1 1 auto;
   min-height: 0;
 }
 .posts_header {
