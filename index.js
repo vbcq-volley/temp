@@ -19,7 +19,7 @@ const parsepath=(p)=>{
 const admin=new hexo(process.cwd(), {
     
 })
-require("./hs")(admin)
+
 async function main() {
    
     await admin.init()
