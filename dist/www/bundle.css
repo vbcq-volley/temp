@@ -9,50 +9,42 @@ body > div:first-of-type {
   height: 100%;
 }
 .app {
+  display: flex;
+  flex-direction: column;
   font-family: "Open Sans";
   height: 100%;
 }
 .app_header {
   background-color: #0d1626;
   height: 52px;
-  align-items: center;
-  padding: 0 20px;
 }
 .app_header,
 .app_header a {
   color: #eee;
 }
-.app_header-left {
-  align-items: center;
-  margin-right: 30px;
-}
 .app_logo {
   width: 25px;
   vertical-align: middle;
-  margin-right: 10px;
-}
-.app_title {
-  font-size: 18px;
-  font-weight: bold;
+  margin: -4px 10px 0;
 }
 .app_nav {
   list-style: none;
-  margin: 0;
+  margin: 0 10px;
   padding: 0;
-  align-items: center;
+  display: inline-block;
 }
 .app_nav li {
   color: #eee;
   font-weight: bold;
-  margin: 0 5px;
+  display: inline-block;
+  cursor: pointer;
 }
 .app_nav li a {
   color: #eee;
   text-decoration: none;
-  padding: 10px 15px;
+  padding: 10px 20px 7px;
   display: inline-block;
   border-bottom: 3px solid transparent;
-  transition: all 0.3s ease;
 }
 .app_nav li a.active,
 .app_nav li a:hover {
@@ -60,44 +52,9 @@ body > div:first-of-type {
   color: #6EAEFF;
 }
 .app_main {
-  min-height: 0;
-}
-.posts_header {
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background-color: #0d1626;
-  color: #eee;
-}
-.posts_header h2 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: bold;
-}
-.posts_header button {
-  background-color: #6EAEFF;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
   display: flex;
-  align-items: center;
-  transition: background-color 0.3s ease;
-}
-.posts_header button i {
-  margin-right: 5px;
-}
-.posts_header button:hover {
-  background-color: #3b92ff;
-}
-.new-team-form-container,
-.new-stade-form-container,
-.new-result-form-container {
-  padding: 20px;
-  background-color: #668ccc;
-  border-bottom: 1px solid #264373;
-  margin-bottom: 20px;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 .posts {
   display: flex;
