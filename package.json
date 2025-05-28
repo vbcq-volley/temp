@@ -15,6 +15,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@octokit/rest": "^22.0.0",
     "adminpanel": "file:",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.5.0",
@@ -25,6 +26,7 @@
     "ejs": "^3.1.10",
     "express-session": "^1.10.3",
     "extend": "^3.0.0",
+    "git-credential-node": "^1.1.0",
     "hexo": "^7.3.0",
     "hexo-front-matter": "^0.2.2",
     "hexo-fs": "0.2.3",
