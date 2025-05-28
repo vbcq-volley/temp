@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: issue link comment
-        uses: alphaleadership/add-issue-links@v2.0.3
+        uses: alphaleadership/add-issue-links@v2.0.4
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
          
