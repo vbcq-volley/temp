@@ -19,17 +19,13 @@ const parsepath=(p)=>{
 const admin=new hexo(process.cwd(), {
 debug: true,
 silent: false,
-safe: false,
-draft: false,
-drafts: false,
-output: './public',
-config: '_config.yml'
+
 })
 
 async function main() {
    
     await admin.init()
-    admin.env.debug=true
+   
     await admin.load()
     await admin.call("list", { _: ["post","pages","draft"] })
     await Promise.all(fs.readdirSync("./dist").filter((item)=>{
