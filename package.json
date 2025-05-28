@@ -1,6 +1,8 @@
 {
   "name": "adminpanel",
+
   "version": "0.2.0",
+
   "main": "index.js",
   "scripts": {
     "build": "hexo generate",
@@ -38,7 +40,6 @@
     "hexo-renderer-marked": "^7.0.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
-   
     "hexo-tag-bootstrap": "^0.2.2",
     "hexo-theme-landscape": "^1.0.0",
     "hexo-util": "^0.1.6",
