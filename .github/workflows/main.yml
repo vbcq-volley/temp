@@ -40,12 +40,16 @@ jobs:
         if: ${{ steps.release-label.outputs.level != null }}
         with:
           semver_only: true
-
+      - name: Get previous and current version
+        id: versions
+        run: |
+          echo "PREVIOUS_VERSION=$(git show HEAD~1:package.json | jq -r '.version')" >> $GITHUB_ENV
+          echo "CURRENT_VERSION=$(jq -r '.version' package.json)" >> $GITHUB_ENV
       - uses: actions-ecosystem/action-bump-semver@v1
         id: bump-semver
         if: ${{ steps.release-label.outputs.level != null }}
         with:
-          current_version: ${{ steps.get-latest-tag.outputs.tag }}
+          current_version: ${{ env.CURRENT_VERSION }}
           level: ${{ steps.release-label.outputs.level }}
       - name: Bump Version of package.json
         uses: ramonpaolo/bump-version@v2.3.1
