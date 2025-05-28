@@ -85,7 +85,7 @@ jobs:
         $env:GITHUB_OUTPUT
     - name: "build"   
       run: 
-       npm i && npx esbuild --bundle ./index.js --outfile=bundle.js --platform=node "--external:*.map"
+       npm i && npx esbuild --bundle ./index.js --outfile=bundle.js --platform=node "--external:*.map" --analyze
 
     - name: SEA
       id: sea
