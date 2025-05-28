@@ -14,6 +14,14 @@ jobs:
 
       - uses: actions-ecosystem/action-size@v2
         id: size
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          size_xs_label: release/patch
+          size_s_label: release/patch
+          size_m_label: release/minor
+          size_l_label: release/minor
+          size_xl_label: release/major
+          size_xxl_label: release/major
 
       - uses: actions-ecosystem/action-remove-labels@v1
         with:
