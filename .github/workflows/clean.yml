@@ -1,7 +1,7 @@
 name: 'Issue Link Comment (with resolve-word)'
 on:
   pull_request:
-    types: [opened]
+    types: [opened,synchronize]
 
 jobs:
   issue-link:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: issue link comment
-        uses: alphaleadership/add-issue-links@v2.0.0
+        uses: alphaleadership/add-issue-links@v2.0.1
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
          
