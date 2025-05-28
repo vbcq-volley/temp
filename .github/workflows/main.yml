@@ -49,6 +49,7 @@ jobs:
           level: ${{ steps.release-label.outputs.level }}
       - name: Bump Version of package.json
         uses: ramonpaolo/bump-version@v2.3.1
+        if: ${{ steps.bump-semver.outputs.new_version != null }}
         with:
           tag:  ${{ steps.bump-semver.outputs.new_version }}
           commit: true
