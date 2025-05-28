@@ -3,13 +3,25 @@ name: Create Release on Version Change
 on:
   push:
     branches:
-      - main  # Remplacez par votre branche principale si nécessaire
+      - main
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+  issues: write
+  discussions: write
 
 jobs:
    release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - uses: actions-ecosystem/action-get-merged-pull-request@v1
         id: get-merged-pull-request
@@ -38,12 +50,17 @@ jobs:
       - name: Bump Version of package.json
         uses: ramonpaolo/bump-version@v2.3.1
         with:
-          tag:  ${{ steps.bump-semver.outputs.new_version }} #Accessing the context and get the reference_name, that in this case, is the tag that you created(ex: v1.0.0)
+          tag:  ${{ steps.bump-semver.outputs.new_version }}
           commit: true
           branch_to_push: 'main'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
    sea-action:
     name: Build SEA
     needs: release
+    permissions:
+      contents: read
+      packages: write
     strategy:
       matrix:
         os: [ubuntu-latest , windows-latest]
@@ -85,18 +102,24 @@ jobs:
         name: adminpanel-${{ matrix.os }}
         path: build/
         if-no-files-found: error
+
    release-file:
     needs: sea-action
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+      
+      discussions: write
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '22'  # Utilisez la version de Node.js que vous préférez
+        node-version: '22'
 
     - name: Get previous and current version
       id: versions
@@ -122,7 +145,6 @@ jobs:
           path: ./release
     - run: dir -R ./release 
     - name: list
-     
       uses: the-coding-turtle/ga-file-list@v0.2
       with:
           directory: "release"
