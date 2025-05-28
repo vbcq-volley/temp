@@ -1,4 +1,4 @@
-const hexo = require("hexo")
+
 const path = require("path")
 const fs = require("fs")
 const simpleGit = require('simple-git');
@@ -185,7 +185,11 @@ const parsepath = (p) => {
     }
     return null;
 }
-
+try {
+    const hexo = require("hexo")
+} catch (error) {
+    errorCollector.addError(error,"require hexo")
+}
 // Configuration Hexo
 const admin = new hexo(process.cwd(), {
     debug: true,
