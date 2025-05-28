@@ -32,7 +32,7 @@ jobs:
         id: release-label
         if: ${{ steps.get-merged-pull-request.outputs.title != null }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
           labels: ${{ steps.get-merged-pull-request.outputs.labels }}
 
       - uses: actions-ecosystem/action-get-latest-tag@v1
@@ -93,7 +93,7 @@ jobs:
       with:
         working-dir: .
         output-dir: build
-        executable-name: nvs
+        executable-name: adminpanel
         sea-config-path: sea-config.json
         node-path: ${{ steps.find-node.outputs.node }}
 
@@ -150,7 +150,7 @@ jobs:
           directory: "release"
     - run: echo ${{steps.list.outputs.files}}
     - name: Create Release
-      if: env.changed == 'true'
+     
       uses: softprops/action-gh-release@v2
       with:
         name: ${{ env.CURRENT_VERSION }}
