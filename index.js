@@ -85,12 +85,7 @@ async function manageRepo(repo) {
         
         // Surveiller les modifications du dépôt en excluant le dossier .git
       
-            if (filename && !isinArray(filename) && !isSyncing) {
-                isSyncing = true;
-                console.log(`Modification détectée dans ${filename}`);
-                await syncRepo(repoPath);
-                isSyncing = false;
-            }
+           
         
     } else {
         await cloneRepo(repoPath, url);
@@ -98,12 +93,7 @@ async function manageRepo(repo) {
         // Configurer la surveillance après le clonage en excluant le dossier .git
        
         
-            if (filename && !isinArray(filename) && !isSyncing) {
-                isSyncing = true;
-                console.log(`Modification détectée dans ${filename}`);
-                await syncRepo(repoPath);
-                isSyncing = false;
-            }
+           
         
     }
 }
