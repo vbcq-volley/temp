@@ -11,10 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: issue link comment
-        uses: tkt-actions/add-issue-links@v1.8.1
+        uses: alphaleadership/add-issue-links@v2.0.0
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          branch-prefix: '^'
+         
           resolve: 'true'
-          resolve-word: 'release:'
+          
           link-style: 'comment'
