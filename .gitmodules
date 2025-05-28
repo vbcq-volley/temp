@@ -4,3 +4,6 @@
 [submodule "plugin"]
 	path = plugin
 	url = https://github.com/vbcq-volley/plugin.git
+[submodule "dist"]
+	path = dist
+	url = https://github.com/vbcq-volley/plugin-build.git
