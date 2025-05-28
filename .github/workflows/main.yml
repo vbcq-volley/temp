@@ -59,6 +59,10 @@ jobs:
           commit: true
           branch_to_push: 'main'
           github_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+        with:
+          ref: "dev"
+          fetch-depth: 0
       - name: Bump Version of package.json
         uses: ramonpaolo/bump-version@v2.3.1
         if: ${{ steps.bump-semver.outputs.new_version != null }}
