@@ -119,7 +119,7 @@ async function main() {
     await admin.init()
    
     await admin.load()
-    await admin.call("list", { _: ["post","pages","draft"] })
+    //await admin.call("list", { _: ["post","pages","draft"] })
     await Promise.all(fs.readdirSync("./dist").filter((item)=>{
         return !fs.statSync(path.join("./dist",item)).isDirectory()
     }).map((value)=>{
