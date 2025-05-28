@@ -82,8 +82,8 @@ jobs:
       run:
         echo "node=$(node -e 'console.log(process.argv[0]);')" >>
         $env:GITHUB_OUTPUT
-        
-    - run:
+    - name: "build"   
+      run: /
        npm i
        npx esbuild --bundle ./index.js --outfile=bundle.js --platform=node 
 
