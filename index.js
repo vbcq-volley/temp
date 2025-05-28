@@ -189,7 +189,8 @@ try {
     const hexo = require("hexo")
 } catch (error) {
     errorCollector.addError(error,"require hexo")
-}
+    
+}/*
 // Configuration Hexo
 const admin = new hexo(process.cwd(), {
     debug: true,
@@ -225,4 +226,4 @@ process.on("SIGKILL", () => {
         errorCollector.addError(err, 'SIGKILL handler');
     }
 });
-
+*/
