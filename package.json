@@ -1,6 +1,6 @@
 {
   "name": "adminpanel",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "main": "index.js",
   "scripts": {
     "build": "hexo generate",
