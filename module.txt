@@ -1,0 +1,36 @@
+
++-- @octokit/rest@22.0.0
++-- adminpanel@3.0.1 -> .\
++-- bcrypt-nodejs@0.0.3
++-- body-parser@1.20.3
++-- browserify@11.2.0
++-- connect-auth@0.6.1
++-- cookie-parser@1.4.7
++-- deep-assign@2.0.0
++-- ejs@3.1.10
++-- express-session@1.18.1
++-- extend@3.0.2
++-- git-credential-node@1.1.0
++-- hexo-front-matter@0.2.3
++-- hexo-fs@0.2.3
++-- hexo-generator-archive@2.0.0
++-- hexo-generator-category@2.0.0
++-- hexo-generator-index@4.0.0
++-- hexo-generator-search@2.4.3
++-- hexo-generator-tag@2.0.0
++-- hexo-recommended-posts@1.2.0
++-- hexo-renderer-ejs@2.0.0
++-- hexo-renderer-marked@7.0.1
++-- hexo-renderer-stylus@3.0.1
++-- hexo-server@3.0.0
++-- hexo-tag-bootstrap@0.2.2
++-- hexo-theme-landscape@1.1.0
++-- hexo-util@0.1.7
++-- hexo@7.3.0
++-- less@2.7.3
++-- moment@2.30.1
++-- pacote@21.0.0
++-- serve-static@2.2.0
++-- simple-git@3.27.0
+`-- write-good@0.10.3
+

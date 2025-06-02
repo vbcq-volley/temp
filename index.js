@@ -5,6 +5,9 @@ const simpleGit = require('simple-git');
 const { Octokit } = require('@octokit/rest');
 const t =require("git-credential-node")
 const login=t.fillSync("https://github.com")
+const packagemanager=require("pacote")
+
+
 async function getGitConfig() {
     const config = {};
     try {
@@ -58,7 +61,7 @@ async function createIssueForError(context,errorMessage) {
             body: `An error occurred:\n\n\`\`\`\n${errorMessage}\n\`\`\``,
             labels: ['bug']
         });
-
+        console.log(errorMessage)
         console.log(`Issue created: ${response.data.html_url}`);
     } catch (error) {
         console.error('Error creating issue:', error.message);
@@ -117,7 +120,7 @@ async function manageRepo(repo) {
             await simpleGit().clone(repoUrl, repoPath);
             console.log(`Dépôt ${repoUrl} cloné avec succès.`);
         } catch (err) {
-            errorCollector.addError(err, `cloneRepo(${repoUrl})`);
+           // errorCollector.addError(err, `cloneRepo(${repoUrl})`);
         }
     }
 
@@ -138,7 +141,7 @@ async function manageRepo(repo) {
                 return false;
             }
         } catch (err) {
-            errorCollector.addError(err, `commitChanges(${repoPath})`);
+           // errorCollector.addError(err, `commitChanges(${repoPath})`);
             return false;
         }
     }
@@ -156,7 +159,7 @@ async function manageRepo(repo) {
                 console.log(`Modifications poussées pour ${repoPath}.`);
             }
         } catch (err) {
-            errorCollector.addError(err, `syncRepo(${repoPath})`);
+           // errorCollector.addError(err, `syncRepo(${repoPath})`);
         }
     }
 
@@ -168,9 +171,41 @@ async function manageRepo(repo) {
             await cloneRepo(repoPath, url);
         }
     } catch (err) {
-        errorCollector.addError(err, `manageRepo(${name})`);
+       // errorCollector.addError(err, `manageRepo(${name})`);
     }
 }
+async function installTheme() {
+    try {
+        const themePath = path.join(process.cwd(), 'themes', 'hexo-theme-landscape');
+        if (!fs.existsSync(themePath)) {
+            console.log('Installation du thème landscape...');
+            await packagemanager.extract('hexo-theme-landscape', themePath);
+            console.log('Thème landscape installé avec succès.');
+        } else {
+            console.log('Le thème landscape est déjà installé.');
+        }
+    } catch (err) {
+        errorCollector.addError(err, 'installTheme()');
+    }
+}
+async function installhexo(modul) {
+    try {
+        const themePath = path.join(process.cwd(), 'node_modules', modul);
+        if (!fs.existsSync(themePath)) {
+            console.log('Installation du thème landscape...');
+            await packagemanager.extract(modul, themePath);
+            console.log('Thème landscape installé avec succès.');
+        } else {
+            console.log('Le thème landscape est déjà installé.');
+        }
+        return require(require.resolve(modul))
+    } catch (err) {
+        errorCollector.addError(err, 'installTheme()');
+    }
+}
+
+// Appel de la fonction d'installation du thème avant l'initialisation de Hexo
+
 
 const parsepath = (p) => {
     try {
@@ -185,32 +220,40 @@ const parsepath = (p) => {
     }
     return null;
 }
-try {
-    const hexo = require("hexo")
-} catch (error) {
-    errorCollector.addError(error,"require hexo")
-    
-}/*
+if (!fs.existsSync("./asset")) {
+    fs.mkdirSync("./asset", { recursive: true });
+}
+
+
+
 // Configuration Hexo
-const admin = new hexo(process.cwd(), {
-    debug: true,
-    silent: false,
-});
+const requir=(p)=>{
+    console.log(p)
+    return JSON.parse(fs.readFileSync(p).toString())
+}
 
 async function main() {
     try {
+        
+        const    hexo = require(require.resolve("hexo"))
+        console.log(hexo)
+        const admin = new hexo(process.cwd(), {
+            debug: true,
+            silent: false,
+        });
         await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
         await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
+        await installTheme()
+        await admin.init()
         
-        await admin.init();
-        await admin.load();
-        
+        await admin.load()
+    
         await Promise.all(fs.readdirSync("./dist")
             .filter(item => !fs.statSync(path.join("./dist", item)).isDirectory())
             .map(value => admin.loadPlugin(path.join("./dist", value))));
             
-        console.log(admin.log);
-        console.log(admin.env);
+        console.log(admin.log)
+        console.log(admin.env)
         await admin.call("server", { i: "127.0.0.1", port: 8080 });
     } catch (err) {
         errorCollector.addError(err, 'main()');
@@ -226,4 +269,4 @@ process.on("SIGKILL", () => {
         errorCollector.addError(err, 'SIGKILL handler');
     }
 });
-*/
+
