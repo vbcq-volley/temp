@@ -249,8 +249,7 @@ async function extractModule(moduleName) {
         
         // Extraire les dépendances
         const dependencies = {
-          ...packageJson.dependencies,
-          ...packageJson.devDependencies
+          ...packageJson.dependencies
         };
         
         // Extraire récursivement les dépendances
