@@ -2,12 +2,21 @@ const path = require("path")
 const fs = require("fs")
 const simpleGit = require('simple-git');
 const { Octokit } = require('@octokit/rest');
-const t =require("git-credential-node")
-const login=t.fillSync("https://github.com")
-const pacote=require("pacote")
+const t = require("git-credential-node")
+const login = t.fillSync("https://github.com")
+const pacote = require("pacote")
 const logger = require('./logger');
 
+// Map pour suivre les synchronisations en cours
+const syncInProgress = new Map();
 
+// Configuration des dossiers sécurisés pour Git
+const SAFE_DIRECTORIES = [
+    './dist',
+    './source',
+    './themes',
+    './node_modules'
+];
 async function getGitConfig() {
     const config = {};
     try {
@@ -18,6 +27,24 @@ async function getGitConfig() {
         logger.error(`Error getting Git config: ${error.message}`);
     }
     return config;
+}
+// Fonction pour configurer les dossiers sécurisés
+async function configureSafeDirectories() {
+    const git = simpleGit();
+    try {
+        // Configurer les dossiers comme étant sécurisés
+        for (const dir of SAFE_DIRECTORIES) {
+            const absolutePath = path.resolve(dir);
+            await git.raw(['config', '--global', '--add', 'safe.directory', absolutePath]);
+            logger.info(`Dossier configuré comme sécurisé: ${absolutePath}`);
+        }
+        
+        //config.user = login.username;
+       // config.remoteUrl = "https://github.com/vbcq-volley/temp.git";
+    } catch (error) {
+        logger.error(`Error getting Git config: ${error.message}`);
+    }
+    return /*config*/;
 }
 
 // Fonction pour extraire le propriétaire et le dépôt à partir de l'URL du dépôt distant
@@ -102,6 +129,7 @@ global.errorCollector = new ErrorCollector();
 // Exemple d'utilisation de la fonction manageRepo
 async function manageRepo(repo) {
     const { name, url, path: repoPath } = repo;
+    let isSyncing = false; // Flag pour suivre l'état de synchronisation
 
     // Fonction pour créer un répertoire s'il n'existe pas
     function ensureDirectoryExistence(dirPath) {
@@ -122,7 +150,7 @@ async function manageRepo(repo) {
             await simpleGit().clone(repoUrl, repoPath);
             logger.info(`Dépôt ${repoUrl} cloné avec succès.`);
         } catch (err) {
-           // global.errorCollector.addError(err, `cloneRepo(${repoUrl})`);
+            global.errorCollector.addError(err, `cloneRepo(${repoUrl})`);
         }
     }
 
@@ -133,8 +161,7 @@ async function manageRepo(repo) {
             const status = await git.status();
             if (status.modified.length > 0 || status.not_added.length > 0 || status.deleted.length > 0) {
                 logger.info(`Des modifications ont été détectées dans ${repoPath}. Commit en cours...`);
-                await git.add('*');
-                await git.add('*/*');
+                await git.add(['*', '*/*']);
                 await git.commit('Mise à jour automatique des fichiers');
                 logger.info(`Modifications commitées pour ${repoPath}.`);
                 return true;
@@ -143,13 +170,19 @@ async function manageRepo(repo) {
                 return false;
             }
         } catch (err) {
-           // global.errorCollector.addError(err, `commitChanges(${repoPath})`);
+            global.errorCollector.addError(err, `commitChanges(${repoPath})`);
             return false;
         }
     }
 
     // Fonction pour synchroniser un dépôt
     async function syncRepo(repoPath) {
+        if (isSyncing) {
+            logger.info(`Une synchronisation est déjà en cours pour ${repoPath}, nouvelle demande ignorée.`);
+            return;
+        }
+
+        isSyncing = true;
         const git = simpleGit(repoPath);
         try {
             logger.info(`Synchronisation du dépôt ${repoPath}...`);
@@ -161,16 +194,41 @@ async function manageRepo(repo) {
                 logger.info(`Modifications poussées pour ${repoPath}.`);
             }
         } catch (err) {
-           // global.errorCollector.addError(err, `syncRepo(${repoPath})`);
+            logger.error(`Erreur lors de la synchronisation: ${err.message}`);
+            global.errorCollector.addError(err, `syncRepo(${repoPath})`);
+        } finally {
+            isSyncing = false;
         }
+    }
+
+    // Fonction pour surveiller les changements
+    function watchRepo(repoPath) {
+        const watcher = fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
+            const FORBIDDEN_FILES = [
+                '.git',
+                '.gitignore', 
+                '.gitattributes',
+                'index.lock',
+                ".git\\index.lock"
+            ];
+
+            if (filename && !FORBIDDEN_FILES.some(forbidden => filename.endsWith(forbidden))) {
+                logger.info(`Changement détecté dans ${filename}`);
+                await syncRepo(repoPath);
+            }
+        });
+        logger.info(`Surveillance du dépôt ${repoPath} activée`);
+        return watcher;
     }
 
     try {
         ensureDirectoryExistence(repoPath);
         if (fs.existsSync(path.join(repoPath, '.git'))) {
             await syncRepo(repoPath);
+            watchRepo(repoPath);
         } else {
             await cloneRepo(repoPath, url);
+            watchRepo(repoPath);
         }
     } catch (err) {
         global.errorCollector.addError(err, `manageRepo(${name})`);
@@ -285,9 +343,11 @@ const requir=(p)=>{
 
 async function main() {
     try {
+        
         logger.info('Démarrage de l\'application...');
         await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
         await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
+        await configureSafeDirectories()
         await extractModule("hexo");
         const hexo = require(require.resolve("hexo"));
         logger.log('Hexo chargé avec succès');
