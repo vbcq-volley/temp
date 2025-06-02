@@ -69,7 +69,7 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues)
           issue_number: issue,
           body: updatedBody
         });
-        require("fs").appendFileSync("issue.txt", `fixes #${issueNumber} avec succès.`);
+        require("fs").appendFileSync("issue.txt", `fixes #${issueNumber} avec succès.\n`);
         // Mise à jour locale
         issueManager.updateIssue(referencedIssue.number, { body: updatedBody });
         console.log(`Commentaire ajouté pour fermer l'issue #${issueNumber} avec succès.`);
@@ -83,9 +83,9 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues)
 
 async function linkIssuesToPR(owner, repo, prNumber, issues) {
   try {
-    const openIssues = issues.filter(issue => issue.state === 'open');
+    const openIssues = issues.filter(issue => issue.state === 'open' && issue.number !== prNumber);
     const prBody = openIssues.slice(0, 10).map(issue => `fixes #${issue.number}`).join('\n');
-    require("fs").appendFileSync("pr.txt", prBody);
+    require("fs").appendFileSync("pr.txt", prBody+"\n");
     // Mise à jour sur GitHub
     await octokit.rest.pulls.update({
       owner,
