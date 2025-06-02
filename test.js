@@ -7,18 +7,22 @@ const octokit = new Octokit({
   auth: login.password
 });
 
-async function closeReferencedIssue(owner, repo, issueNumber, issue) {
+async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues) {
   try {
-    await octokit.rest.issues.createComment({
-      owner,
-      repo,
-      issue_number: issue,
-      body: `closes #${issueNumber}`
-    });
+    // Vérifier si l'issue référencée est dans le tableau des issues ouvertes
+    const referencedIssue = openIssues.find(i => i.number === issueNumber);
 
-    
-
-    console.log(`Issue #${issueNumber} fermée avec succès`);
+    if (referencedIssue) {
+      await octokit.rest.issues.createComment({
+        owner,
+        repo,
+        issue_number: issue,
+        body: `closes #${issueNumber}`
+      });
+      console.log(`Issue #${issueNumber} fermée avec succès`);
+    } else {
+      console.log(`Issue #${issueNumber} est déjà fermée`);
+    }
   } catch (error) {
     console.error(`Erreur lors de la fermeture de l'issue #${issueNumber}:`, error.message);
   }
@@ -26,14 +30,21 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue) {
 
 async function linkIssuesToPR(owner, repo, prNumber, issues) {
   try {
-    const issueNumbers = issues.map(issue => ` #${issue.number}`).join(',   ');
-    await octokit.rest.issues.createComment({
-      owner,
-      repo,
-      issue_number: prNumber,
-      body: `Linking issues: ${issueNumbers}`
-    });
-    console.log(`Issues liées à la PR #${prNumber}`);
+    // Filtrer pour ne garder que les issues ouvertes
+    const openIssues = issues.filter(issue => issue.state === 'open');
+    const issueNumbers = openIssues.slice(0, 10).map(issue => `closes #${issue.number}`).join(',   ');
+    
+    if (issueNumbers) {
+      await octokit.rest.issues.createComment({
+        owner,
+        repo,
+        issue_number: prNumber,
+        body: ` ${issueNumbers}`
+      });
+      console.log(`Issues ouvertes liées à la PR #${prNumber}`);
+    } else {
+      console.log('Aucune issue ouverte à lier');
+    }
   } catch (error) {
     console.error(`Erreur lors de la liaison des issues à la PR #${prNumber}:`, error.message);
   }
@@ -82,7 +93,7 @@ async function listOpenIssues(owner, repo) {
       if (matches) {
         for (const match of matches) {
           const referencedIssueNumber = parseInt(match.match(/\d+/)[0]);
-          await closeReferencedIssue(owner, repo, referencedIssueNumber, issue.number);
+          await closeReferencedIssue(owner, repo, referencedIssueNumber, issue.number, allIssues);
         }
       }
     }
