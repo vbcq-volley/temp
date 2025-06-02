@@ -119,3 +119,6 @@ fixes #982 avec succès.
 fixes #870 avec succès.
 fixes #671 avec succès.
 fixes #635 avec succès.
+fixes #599 avec succès.
+fixes #567 avec succès.
+fixes #531 avec succès.
