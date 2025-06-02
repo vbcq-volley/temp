@@ -110,3 +110,12 @@ fixes #323 avec succès.
 fixes #292 avec succès.
 fixes #1719 avec succès.
 fixes #1604 avec succès.
+fixes #1533 avec succès.
+fixes #1420 avec succès.
+fixes #1312 avec succès.
+fixes #1205 avec succès.
+fixes #1091 avec succès.
+fixes #982 avec succès.
+fixes #870 avec succès.
+fixes #671 avec succès.
+fixes #635 avec succès.
