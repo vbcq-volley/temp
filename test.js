@@ -8,43 +8,46 @@ const octokit = new Octokit({
 });
 
 async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues) {
-  try {
-    // Vérifier si l'issue référencée est dans le tableau des issues ouvertes
-    const referencedIssue = openIssues.find(i => i.number === issueNumber);
-
-    if (referencedIssue) {
-      await octokit.rest.issues.createComment({
-        owner,
-        repo,
-        issue_number: issue,
-        body: `closes #${issueNumber}`
-      });
-  //    console.log(`Issue #${issueNumber} fermée avec succès`);
-    } else {
-  //    console.log(`Issu#${issueNumber} est déjà fermée`);
+    try {
+      console.log(`Vérification de l'issue #${issueNumber}...`);
+      //console.log('Liste des issues ouvertes:', openIssues);
+  
+      // Vérifier si l'issue référencée est dans le tableau des issues ouvertes
+      const referencedIssue = openIssues.find(i => i.number === issueNumber);
+  
+      if (referencedIssue) {
+        console.log(`Issue #${issueNumber} trouvée et ouverte. Tentative de fermeture...`);
+        await octokit.rest.issues.createComment({
+          owner,
+          repo,
+          issue_number: issue,
+          body: `closes #${issueNumber}`
+        });
+        console.log(`Commentaire ajouté pour fermer l'issue #${issueNumber} avec succès.`);
+      } else {
+        console.log(`Issue #${issueNumber} non trouvée dans la liste des issues ouvertes.`);
+      }
+    } catch (error) {
+      console.error(`Erreur lors de la fermeture de l'issue #${issueNumber}:`, error.message);
     }
-  } catch (error) {
-    console.error(`Erreur lors de la fermeture de l'issue #${issueNumber}:`, error.message);
   }
-}
+  
 
 async function linkIssuesToPR(owner, repo, prNumber, issues) {
   try {
     // Filtrer pour ne garder que les issues ouvertes
     const openIssues = issues.filter(issue => issue.state === 'open');
-    const issueNumbers = openIssues.slice(0, 10).map(issue => `closes #${issue.number}`).join('\n   ');
-    console.log(issueNumbers);
-    if (issueNumbers) {
+    for (const issue of openIssues.slice(0, 10)) {
       await octokit.rest.issues.createComment({
         owner,
         repo,
         issue_number: prNumber,
-        body: ` ${issueNumbers}`
+        body: `fixes #${issue.number}`
       });
-      console.log(`Issues ouvertes liées à la PR #${prNumber}`);
-    } else {
-      console.log('Aucune issue ouverte à lier');
+      console.log(`Commentaire ajouté pour l'issue #${issue.number}`);
     }
+      console.log(`Issues ouvertes liées à la PR #${prNumber}`);
+   
   } catch (error) {
     console.error(`Erreur lors de la liaison des issues à la PR #${prNumber}:`, error.message);
   }
@@ -85,7 +88,8 @@ async function listOpenIssues(owner, repo) {
     }
 
     console.log('Issues ouvertes :');
-    for (const issue of allIssues) {
+    const issueNumbers = openIssues
+    for (const issue of allIssues.slice(0, 10)) {
       // console.log(`#${issue.number} - ${issue.title}`);
       
       // Recherche de références d'issues dans le titre
