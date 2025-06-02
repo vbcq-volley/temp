@@ -7,22 +7,65 @@ const octokit = new Octokit({
   auth: login.password
 });
 
+// Gestionnaire d'issues local
+class IssueManager {
+  constructor() {
+    this.issues = [];
+  }
+
+  // Mise à jour d'une issue dans le tableau local
+  updateIssue(issueNumber, updates) {
+    const issue = this.issues.find(i => i.number === issueNumber);
+    if (issue) {
+      Object.assign(issue, updates);
+    }
+  }
+
+  // Ajout d'une issue au tableau local
+  addIssue(issue) {
+    this.issues.push(issue);
+  }
+
+  // Récupération d'une issue par son numéro
+  getIssue(issueNumber) {
+    return this.issues.find(i => i.number === issueNumber);
+  }
+
+  // Mise à jour de plusieurs issues
+  updateIssues(issues) {
+    issues.forEach(issue => {
+      const existingIssue = this.issues.find(i => i.number === issue.number);
+      if (existingIssue) {
+        Object.assign(existingIssue, issue);
+      } else {
+        this.addIssue(issue);
+      }
+    });
+  }
+}
+
+const issueManager = new IssueManager();
+
 async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues) {
     try {
       console.log(`Vérification de l'issue #${issueNumber}...`);
-      //console.log('Liste des issues ouvertes:', openIssues);
   
-      // Vérifier si l'issue référencée est dans le tableau des issues ouvertes
-      const referencedIssue = openIssues.find(i => i.number === issueNumber);
+      const referencedIssue = issueManager.getIssue(issueNumber);
   
       if (referencedIssue) {
         console.log(`Issue #${issueNumber} trouvée et ouverte. Tentative de fermeture...`);
-        await octokit.rest.issues.createComment({
+        const updatedBody = `${referencedIssue.body} \nCette issue ferme l'issue #${issueNumber}`;
+        
+        // Mise à jour sur GitHub
+        await octokit.rest.issues.update({
           owner,
           repo,
           issue_number: issue,
-          body: `closes #${issueNumber}`
+          body: updatedBody
         });
+
+        // Mise à jour locale
+        issueManager.updateIssue(issue, { body: updatedBody });
         console.log(`Commentaire ajouté pour fermer l'issue #${issueNumber} avec succès.`);
       } else {
         console.log(`Issue #${issueNumber} non trouvée dans la liste des issues ouvertes.`);
@@ -30,24 +73,26 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues)
     } catch (error) {
       console.error(`Erreur lors de la fermeture de l'issue #${issueNumber}:`, error.message);
     }
-  }
-  
+}
 
 async function linkIssuesToPR(owner, repo, prNumber, issues) {
   try {
-    // Filtrer pour ne garder que les issues ouvertes
     const openIssues = issues.filter(issue => issue.state === 'open');
-    for (const issue of openIssues.slice(0, 10)) {
-      await octokit.rest.issues.createComment({
-        owner,
-        repo,
-        issue_number: prNumber,
-        body: `fixes #${issue.number}`
-      });
-      console.log(`Commentaire ajouté pour l'issue #${issue.number}`);
-    }
-      console.log(`Issues ouvertes liées à la PR #${prNumber}`);
-   
+    const prBody = openIssues.slice(0, 10).map(issue => `fixes #${issue.number}`).join('\n');
+    
+    // Mise à jour sur GitHub
+    await octokit.rest.pulls.update({
+      owner,
+      repo,
+      pull_number: prNumber,
+      body: prBody
+    });
+
+    // Mise à jour locale
+    issueManager.updateIssue(prNumber, { body: prBody });
+
+    console.log(`Commentaires ajoutés pour les issues #${openIssues.map(issue => issue.number).join(', #')}`);
+    console.log(`Issues ouvertes liées à la PR #${prNumber}`);
   } catch (error) {
     console.error(`Erreur lors de la liaison des issues à la PR #${prNumber}:`, error.message);
   }
@@ -55,7 +100,6 @@ async function linkIssuesToPR(owner, repo, prNumber, issues) {
 
 async function listOpenIssues(owner, repo) {
   try {
-    let allIssues = [];
     let page = 1;
     let hasMore = true;
 
@@ -68,9 +112,9 @@ async function listOpenIssues(owner, repo) {
         page: page
       });
 
-      allIssues = allIssues.concat(response.data);
+      // Mise à jour du gestionnaire d'issues
+      issueManager.updateIssues(response.data);
       
-      // Vérifie s'il y a plus de pages
       hasMore = response.data.length === 100;
       page++;
     }
@@ -83,21 +127,18 @@ async function listOpenIssues(owner, repo) {
     });
 
     if (prs.data.length > 0) {
-      // Lier toutes les issues à la première PR ouverte
-      await linkIssuesToPR(owner, repo, prs.data[0].number, allIssues);
+      await linkIssuesToPR(owner, repo, prs.data[0].number, issueManager.issues);
     }
 
     console.log('Issues ouvertes :');
-    const issueNumbers = openIssues
-    for (const issue of allIssues.slice(0, 10)) {
-      // console.log(`#${issue.number} - ${issue.title}`);
-      
-      // Recherche de références d'issues dans le titre
+    const openIssues = issueManager.issues.filter(issue => issue.state === 'open').slice(0, 10);
+    
+    for (const issue of openIssues) {
       const matches = issue.title.match(/\[#(\d+)\]/g);
       if (matches) {
         for (const match of matches) {
           const referencedIssueNumber = parseInt(match.match(/\d+/)[0]);
-          //await closeReferencedIssue(owner, repo, referencedIssueNumber, issue.number, allIssues);
+          await closeReferencedIssue(owner, repo, referencedIssueNumber, issue.number, issueManager.issues);
         }
       }
     }
