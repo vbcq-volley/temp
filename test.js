@@ -23,7 +23,7 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue) {
     console.error(`Erreur lors de la fermeture de l'issue #${issueNumber}:`, error.message);
   }
 }
-
+ 
 async function linkIssuesToPR(owner, repo, prNumber, issues) {
   try {
     const issueNumbers = issues.map(issue => {
