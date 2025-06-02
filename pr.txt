@@ -26,3 +26,13 @@ fixes #1836
 fixes #1835
 fixes #1834
 fixes #1833
+fixes #1832
+fixes #1831
+fixes #1830
+fixes #1829
+fixes #1828
+fixes #1827
+fixes #1826
+fixes #1825
+fixes #1824
+fixes #1823
