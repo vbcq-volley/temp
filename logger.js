@@ -95,7 +95,7 @@ class GlobalLogger {
         this.errorFile = path.join(this.logDir, 'error.log');
         this.maxFileSize = 5 * 1024 * 1024; // 5MB
         this.maxFiles = 5;
-        console.log(debug)
+        //console.log(debug)
         this._silent = silent || false;
         this._debug = debug || true;
         this.level = INFO;
@@ -135,8 +135,8 @@ class GlobalLogger {
     }
 
     _writeLogOutput(level, ...args) {
-        console.log(LEVEL_NAMES[level])
-        console.log(level < this.level)
+       // console.log(LEVEL_NAMES[level])
+       // console.log(level < this.level)
         if (level < this.level) return;
 
         let errArg;
