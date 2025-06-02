@@ -56,11 +56,11 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues)
     try {
       console.log(`Vérification de l'issue #${issueNumber}...`);
   
-      const referencedIssue = issueManager.getIssue(issueNumber);
+      const referencedIssue = issueManager.getIssue(issue);
   
       if (referencedIssue) {
         console.log(`Issue #${issueNumber} trouvée et ouverte. Tentative de fermeture...`);
-        const updatedBody = `${referencedIssue.body} \nCette issue ferme l'issue #${issueNumber}`;
+        const updatedBody = `${referencedIssue.body} \nCette issue ferme l'issue #${issueNumber} fixes #${issueNumber}`;
         
         // Mise à jour sur GitHub
         await octokit.rest.issues.update({
@@ -71,7 +71,7 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues)
         });
 
         // Mise à jour locale
-        issueManager.updateIssue(issue, { body: updatedBody });
+        issueManager.updateIssue(referencedIssue.number, { body: updatedBody });
         console.log(`Commentaire ajouté pour fermer l'issue #${issueNumber} avec succès.`);
       } else {
         console.log(`Issue #${issueNumber} non trouvée dans la liste des issues ouvertes.`);
