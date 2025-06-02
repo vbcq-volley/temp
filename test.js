@@ -15,9 +15,12 @@ class IssueManager {
 
   // Mise à jour d'une issue dans le tableau local
   updateIssue(issueNumber, updates) {
-    const issue = this.issues.find(i => i.number === issueNumber);
-    if (issue) {
-      Object.assign(issue, updates);
+    const issueIndex = this.issues.findIndex(i => i.number === issueNumber);
+    if (issueIndex !== -1) {
+      this.issues[issueIndex] = {
+        ...this.issues[issueIndex],
+        ...updates
+      };
     }
   }
 
@@ -34,9 +37,12 @@ class IssueManager {
   // Mise à jour de plusieurs issues
   updateIssues(issues) {
     issues.forEach(issue => {
-      const existingIssue = this.issues.find(i => i.number === issue.number);
-      if (existingIssue) {
-        Object.assign(existingIssue, issue);
+      const existingIssueIndex = this.issues.findIndex(i => i.number === issue.number);
+      if (existingIssueIndex !== -1) {
+        this.issues[existingIssueIndex] = {
+          ...this.issues[existingIssueIndex],
+          ...issue
+        };
       } else {
         this.addIssue(issue);
       }
