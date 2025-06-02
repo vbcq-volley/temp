@@ -23,17 +23,15 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue) {
     console.error(`Erreur lors de la fermeture de l'issue #${issueNumber}:`, error.message);
   }
 }
- 
+
 async function linkIssuesToPR(owner, repo, prNumber, issues) {
   try {
-    const issueNumbers = issues.map(issue => {
-        return `closes #${issue.number}`
-    }).join('\n ');
+    const issueNumbers = issues.map(issue => ` #${issue.number}`).join(',   ');
     await octokit.rest.issues.createComment({
       owner,
       repo,
       issue_number: prNumber,
-      body: ` ${issueNumbers}`
+      body: `Linking issues: ${issueNumbers}`
     });
     console.log(`Issues liées à la PR #${prNumber}`);
   } catch (error) {
@@ -77,14 +75,14 @@ async function listOpenIssues(owner, repo) {
 
     console.log('Issues ouvertes :');
     for (const issue of allIssues) {
-     // console.log(`#${issue.number} - ${issue.title}`);
+      // console.log(`#${issue.number} - ${issue.title}`);
       
       // Recherche de références d'issues dans le titre
       const matches = issue.title.match(/\[#(\d+)\]/g);
       if (matches) {
         for (const match of matches) {
           const referencedIssueNumber = parseInt(match.match(/\d+/)[0]);
-          await closeReferencedIssue(owner, repo, referencedIssueNumber,issue.number);
+          await closeReferencedIssue(owner, repo, referencedIssueNumber, issue.number);
         }
       }
     }
