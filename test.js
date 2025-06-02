@@ -13,7 +13,7 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue) {
       owner,
       repo,
       issue_number: issue,
-      body: `close #${issueNumber}`
+      body: `closes #${issueNumber}`
     });
 
     
