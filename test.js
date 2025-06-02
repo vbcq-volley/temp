@@ -69,7 +69,7 @@ async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues)
           issue_number: issue,
           body: updatedBody
         });
-
+        require("fs").appendFileSync("issue.txt", `fixes #${issueNumber} avec succès.`);
         // Mise à jour locale
         issueManager.updateIssue(referencedIssue.number, { body: updatedBody });
         console.log(`Commentaire ajouté pour fermer l'issue #${issueNumber} avec succès.`);
