@@ -95,9 +95,9 @@ class GlobalLogger {
         this.errorFile = path.join(this.logDir, 'error.log');
         this.maxFileSize = 5 * 1024 * 1024; // 5MB
         this.maxFiles = 5;
-        
+        console.log(debug)
         this._silent = silent || false;
-        this._debug = debug || false;
+        this._debug = debug || true;
         this.level = INFO;
 
         if (silent) {
@@ -135,6 +135,8 @@ class GlobalLogger {
     }
 
     _writeLogOutput(level, ...args) {
+        console.log(LEVEL_NAMES[level])
+        console.log(level < this.level)
         if (level < this.level) return;
 
         let errArg;
@@ -161,14 +163,14 @@ class GlobalLogger {
         }
 
         // Affichage console avec couleur
-        if (this._debug) {
+        
             const timeStr = timestamp.substring(11, 23) + ' ';
             if (level === TRACE || level >= WARN) {
                 process.stderr.write(picocolors[LEVEL_COLORS[DEBUG]](timeStr));
             } else {
                 process.stdout.write(picocolors[LEVEL_COLORS[DEBUG]](timeStr));
             }
-        }
+        
 
         const levelStr = picocolors[LEVEL_COLORS[level]](LEVEL_NAMES[level]) + ' ';
         if (level === TRACE || level >= WARN) {
@@ -202,7 +204,7 @@ class GlobalLogger {
         }
 
         // Créer une issue GitHub pour les erreurs
-        console.log(typeof createIssueForError)
+        //console.log(typeof createIssueForError)
         if (level >= ERROR && typeof createIssueForError === 'function') {
             createIssueForError(`Erreur dans ${args.join(' ')}:`, errArg || args.join(' '));
         }

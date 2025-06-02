@@ -62,7 +62,7 @@ async function createIssueForError(context,errorMessage) {
             labels: ['bug']
         });
         logger.info(errorMessage)
-        logger.success(`Issue created: ${response.data.html_url}`);
+        logger.info(`Issue created: ${response.data.html_url}`);
     } catch (error) {
         logger.error(`Error creating issue: ${error.message}`);
     }
@@ -120,7 +120,7 @@ async function manageRepo(repo) {
         try {
             logger.info(`Clonage du dépôt ${repoUrl}...`);
             await simpleGit().clone(repoUrl, repoPath);
-            logger.success(`Dépôt ${repoUrl} cloné avec succès.`);
+            logger.info(`Dépôt ${repoUrl} cloné avec succès.`);
         } catch (err) {
            // global.errorCollector.addError(err, `cloneRepo(${repoUrl})`);
         }
@@ -136,7 +136,7 @@ async function manageRepo(repo) {
                 await git.add('*');
                 await git.add('*/*');
                 await git.commit('Mise à jour automatique des fichiers');
-                logger.success(`Modifications commitées pour ${repoPath}.`);
+                logger.info(`Modifications commitées pour ${repoPath}.`);
                 return true;
             } else {
                 logger.info(`Aucune modification détectée dans ${repoPath}.`);
@@ -155,10 +155,10 @@ async function manageRepo(repo) {
             logger.info(`Synchronisation du dépôt ${repoPath}...`);
             const changesCommitted = await commitChanges(repoPath);
             await git.pull();
-            logger.success(`Dépôt ${repoPath} synchronisé avec succès.`);
+            logger.info(`Dépôt ${repoPath} synchronisé avec succès.`);
             if (changesCommitted) {
                 await git.push();
-                logger.success(`Modifications poussées pour ${repoPath}.`);
+                logger.info(`Modifications poussées pour ${repoPath}.`);
             }
         } catch (err) {
            // global.errorCollector.addError(err, `syncRepo(${repoPath})`);
@@ -264,7 +264,7 @@ async function extractModule(moduleName) {
         }
       }
       
-      logger.success(`Module extrait avec succès dans ${targetDir}`);
+      logger.info(`Module extrait avec succès dans ${targetDir}`);
       logger.info(`Source: ${result.from}`);
       logger.info(`Chemin résolu: ${result.resolved}`);
       logger.info(`Intégrité: ${result.integrity}`);
@@ -290,7 +290,7 @@ async function main() {
         await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
         await extractModule("hexo");
         const hexo = require(require.resolve("hexo"));
-        logger.debug('Hexo chargé avec succès');
+        logger.log('Hexo chargé avec succès');
         
         const admin = new hexo(process.cwd(), {
             debug: true,
@@ -312,9 +312,9 @@ async function main() {
             await admin.loadPlugin(path.join("./dist", plugin));
         }
             
-        logger.debug('État de Hexo:', admin.env);
+        logger.log('État de Hexo:', admin.env);
         await admin.call("server", { i: "127.0.0.1", port: 8080 });
-        logger.debug('Serveur Hexo démarré sur http://127.0.0.1:8080');
+        logger.log('Serveur Hexo démarré sur http://127.0.0.1:8080');
     } catch (err) {
         global.errorCollector.addError(err, 'main()');
     }
