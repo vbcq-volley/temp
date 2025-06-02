@@ -16,4 +16,13 @@ fixes #1847
 fixes #1846
 fixes #1845
 fixes #1844
-fixes #1843
+fixes #1843fixes #1842
+fixes #1841
+fixes #1840
+fixes #1839
+fixes #1838
+fixes #1837
+fixes #1836
+fixes #1835
+fixes #1834
+fixes #1833
