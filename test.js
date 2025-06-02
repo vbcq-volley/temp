@@ -85,7 +85,7 @@ async function linkIssuesToPR(owner, repo, prNumber, issues) {
   try {
     const openIssues = issues.filter(issue => issue.state === 'open');
     const prBody = openIssues.slice(0, 10).map(issue => `fixes #${issue.number}`).join('\n');
-    
+    require("fs").appendFileSync("pr.txt", prBody);
     // Mise à jour sur GitHub
     await octokit.rest.pulls.update({
       owner,
