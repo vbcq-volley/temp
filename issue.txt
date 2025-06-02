@@ -207,3 +207,8 @@ fixes #629 avec succès.
 fixes #593 avec succès.
 fixes #558 avec succès.
 fixes #524 avec succès.
+fixes #485 avec succès.
+fixes #450 avec succès.
+fixes #417 avec succès.
+fixes #385 avec succès.
+fixes #353 avec succès.
