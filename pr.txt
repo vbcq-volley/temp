@@ -7,4 +7,13 @@ fixes #1856
 fixes #1855
 fixes #1854
 fixes #1853
-fixes #1852
+fixes #1852fixes #1919
+fixes #1851
+fixes #1850
+fixes #1849
+fixes #1848
+fixes #1847
+fixes #1846
+fixes #1845
+fixes #1844
+fixes #1843
