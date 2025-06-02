@@ -5,7 +5,7 @@ const simpleGit = require('simple-git');
 const { Octokit } = require('@octokit/rest');
 const t =require("git-credential-node")
 const login=t.fillSync("https://github.com")
-const packagemanager=require("pacote")
+const pacote=require("pacote")
 
 
 async function getGitConfig() {
@@ -220,11 +220,61 @@ const parsepath = (p) => {
     }
     return null;
 }
-if (!fs.existsSync("./asset")) {
-    fs.mkdirSync("./asset", { recursive: true });
-}
 
 
+async function extractModule(moduleName) {
+    try {
+      // Extraire le nom du package du moduleName
+      const packageName = moduleName
+      
+      // Créer le chemin du sous-dossier dans node_modules
+      const targetDir = path.join(process.cwd(), 'node_modules', packageName);
+      
+      // Vérifier si le module existe déjà
+      if (fs.existsSync(targetDir)) {
+        console.log(`Le module ${packageName} existe déjà dans ${targetDir}`);
+        return { from: moduleName, resolved: targetDir, integrity: 'existing' };
+      }
+      
+      // Créer le dossier
+      fs.mkdirSync(targetDir, { recursive: true });
+      console.log(`install ${moduleName}`)
+      // Extraire le module dans le sous-dossier
+      const result = await pacote.extract(moduleName, targetDir);
+      
+      // Lire le package.json pour obtenir les dépendances
+      const packageJsonPath = path.join(targetDir, 'package.json');
+      if (fs.existsSync(packageJsonPath)) {
+        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+        
+        // Extraire les dépendances
+        const dependencies = {
+          ...packageJson.dependencies,
+          ...packageJson.devDependencies
+        };
+        
+        // Extraire récursivement les dépendances
+        for (const [depName, depVersion] of Object.entries(dependencies)) {
+          try {
+            await extractModule(depName);
+          } catch (depError) {
+            console.warn(`Impossible d'extraire la dépendance ${depName}: ${depError.message}`);
+          }
+        }
+      }
+      
+      console.log(`Module extrait avec succès dans ${targetDir}`);
+      console.log(`Source: ${result.from}`);
+      console.log(`Chemin résolu: ${result.resolved}`);
+      console.log(`Intégrité: ${result.integrity}`);
+      
+      return result;
+    } catch (error) {
+        errorCollector.addError(error, `extractModule(${moduleName})`);
+      console.error(`Erreur lors de l'extraction du module: ${error.message}`);
+      throw error;
+    }
+  }
 
 // Configuration Hexo
 const requir=(p)=>{
@@ -234,26 +284,30 @@ const requir=(p)=>{
 
 async function main() {
     try {
-        
-        const    hexo = require(require.resolve("hexo"))
-        console.log(hexo)
+        await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
+        await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
+        await extractModule("hexo");
+        const hexo = require(require.resolve("hexo"));
+        console.log(hexo);
         const admin = new hexo(process.cwd(), {
             debug: true,
             silent: false,
         });
-        await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
-        await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
-        await installTheme()
-        await admin.init()
-        
-        await admin.load()
+       
+        await extractModule("hexo-theme-landscape");
+        await admin.init();
+        await admin.load();
     
-        await Promise.all(fs.readdirSync("./dist")
-            .filter(item => !fs.statSync(path.join("./dist", item)).isDirectory())
-            .map(value => admin.loadPlugin(path.join("./dist", value))));
+        const plugins = fs.readdirSync("./dist")
+            .filter(item => !fs.statSync(path.join("./dist", item)).isDirectory());
             
-        console.log(admin.log)
-        console.log(admin.env)
+        for (const plugin of plugins) {
+            console.log(`load ${plugin}`)
+            await admin.loadPlugin(path.join("./dist", plugin));
+        }
+            
+        console.log(admin.log);
+        console.log(admin.env);
         await admin.call("server", { i: "127.0.0.1", port: 8080 });
     } catch (err) {
         errorCollector.addError(err, 'main()');
