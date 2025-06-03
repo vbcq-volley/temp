@@ -1,3 +1,5 @@
+const { createRequire } = require('node:module');
+require = createRequire(__filename);
 const path = require("path")
 const fs = require("fs")
 const simpleGit = require('simple-git');
@@ -524,9 +526,8 @@ async function checkForUpdates() {
                 
                 setTimeout(() => {
                     try {
-                        fs.copyFileSync('${newVersionFile}', '${path.normalize(process.execPath)}');
+                        fs.copyFileSync('${newVersionFile.replace(/\\/g, '/')}', '${path.normalize(process.execPath).replace(/\\/g, '/')}');
 
-                        exec('${path.normalize(process.execPath)}');
                     } catch (err) {
                         console.error('Erreur lors de la mise à jour:', err);
                     }
