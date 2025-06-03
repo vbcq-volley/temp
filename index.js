@@ -185,7 +185,7 @@ async function manageRepo(repo) {
         try {
             if (!fs.existsSync(dirPath)) {
                 fs.mkdirSync(dirPath, { recursive: true });
-                logger.success(`Répertoire créé: ${dirPath}`);
+                logger.log(`Répertoire créé: ${dirPath}`);
             }
         } catch (err) {
             global.errorCollector.addError(err, `ensureDirectoryExistence(${dirPath})`);
@@ -289,7 +289,7 @@ async function installTheme() {
         if (!fs.existsSync(themePath)) {
             logger.info('Installation du thème landscape...');
             await packagemanager.extract('hexo-theme-landscape', themePath);
-            logger.success('Thème landscape installé avec succès.');
+            logger.log('Thème landscape installé avec succès.');
         } else {
             logger.info('Le thème landscape est déjà installé.');
         }
