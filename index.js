@@ -358,6 +358,7 @@ async function main() {
         await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
         await configureSafeDirectories()
         await extractModule("hexo");
+        logger.log(typeof require.resolve)
         const hexo = require(require.resolve("hexo"));
         logger.log('Hexo chargé avec succès');
         
