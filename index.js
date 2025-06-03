@@ -38,6 +38,18 @@ const resolve = (moduleName) => {
             const mainPath = path.join(nodeModulesPath, mainFile);
             
             if (fs.existsSync(mainPath)) {
+                if (fs.statSync(mainPath).isDirectory()) {
+                    const packageJsonPath = path.join(mainPath, 'package.json');
+                    const indexJsPath = path.join(mainPath, 'index.js');
+                    
+                    if (fs.existsSync(packageJsonPath)) {
+                        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+                        const mainFile = packageJson.main || 'index.js';
+                        return path.join(mainPath, mainFile);
+                    } else if (fs.existsSync(indexJsPath)) {
+                        return indexJsPath;
+                    }
+                }
                 return mainPath;
             }
             if (fs.existsSync(mainPath + '.js')) {
