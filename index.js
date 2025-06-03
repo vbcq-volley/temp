@@ -6,6 +6,12 @@ const t = require("git-credential-node")
 const login = t.fillSync("https://github.com")
 const pacote = require("pacote")
 const logger = require('./logger');
+const semver = require('semver');
+const axios = require('axios');
+const AdmZip = require('adm-zip');
+const { exec } = require('child_process');
+const { promisify } = require('util');
+const execAsync = promisify(exec);
 
 // Map pour suivre les synchronisations en cours
 const syncInProgress = new Map();
@@ -343,8 +349,11 @@ const requir=(p)=>{
 
 async function main() {
     try {
-        
         logger.info('Démarrage de l\'application...');
+        
+        // Vérifier les mises à jour au démarrage
+        await checkForUpdates();
+        
         await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
         await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
         await configureSafeDirectories()
@@ -390,4 +399,76 @@ process.on("SIGKILL", () => {
         global.errorCollector.addError(err, 'SIGKILL handler');
     }
 });
+
+// Fonction pour vérifier les mises à jour
+async function checkForUpdates() {
+    try {
+        const octokit = new Octokit({
+            auth: login.password
+        });
+
+        // Récupérer la version actuelle
+        const currentVersion = require('./package.json').version;
+        
+        // Récupérer la dernière release depuis GitHub
+        const { data: releases } = await octokit.repos.listReleases({
+            owner: 'vbcq-volley',
+            repo: 'temp'
+        });
+
+        if (releases.length === 0) {
+            logger.info('Aucune release trouvée sur GitHub');
+            return;
+        }
+
+        const latestRelease = releases[0];
+        const latestVersion = latestRelease.tag_name.replace('v', '');
+
+        // Comparer les versions
+        if (semver.gt(latestVersion, currentVersion)) {
+            logger.info(`Une nouvelle version est disponible : ${latestVersion}`);
+            
+            // Obtenir le nom du fichier exécutable actuel
+            const currentExecutableName = path.basename(process.execPath);
+            
+            // Trouver l'asset qui correspond exactement au nom du fichier actuel
+            const asset = latestRelease.assets.find(a => a.name === currentExecutableName);
+            if (!asset) {
+                logger.error(`Aucun asset trouvé correspondant à ${currentExecutableName}`);
+                return;
+            }
+
+            logger.info('Téléchargement de la mise à jour...');
+            const response = await axios({
+                method: 'GET',
+                url: asset.browser_download_url,
+                responseType: 'arraybuffer'
+            });
+
+            // Sauvegarder l'ancienne version
+            const backupPath = path.join(process.cwd(), 'backup');
+            if (!fs.existsSync(backupPath)) {
+                fs.mkdirSync(backupPath);
+            }
+            
+            const backupFile = path.join(backupPath, `adminpanel-${currentVersion}.exe`);
+            fs.copyFileSync(process.execPath, backupFile);
+
+            // Écrire la nouvelle version
+            fs.writeFileSync(process.execPath, Buffer.from(response.data));
+
+            logger.log('Mise à jour installée avec succès. Redémarrage nécessaire.');
+            
+            // Redémarrer l'application
+            setTimeout(() => {
+                exec(process.execPath);
+                process.exit(0);
+            }, 2000);
+        } else {
+            logger.info('Vous utilisez la dernière version disponible');
+        }
+    } catch (error) {
+        logger.error(`Erreur lors de la vérification des mises à jour : ${error.message}`);
+    }
+}
 
