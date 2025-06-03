@@ -358,7 +358,7 @@ async function main() {
         await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
         await configureSafeDirectories()
         await extractModule("hexo");
-        logger.log(typeof require.resolve)
+        logger.log(typeof require)
         const hexo = require(require.resolve("hexo"));
         logger.log('Hexo chargé avec succès');
         
@@ -446,25 +446,37 @@ async function checkForUpdates() {
                 responseType: 'arraybuffer'
             });
 
-            // Sauvegarder l'ancienne version
-            const backupPath = path.join(process.cwd(), 'backup');
-            if (!fs.existsSync(backupPath)) {
-                fs.mkdirSync(backupPath);
-            }
-            
-            const backupFile = path.join(backupPath, `adminpanel-${currentVersion}.exe`);
+            // Sauvegarder l'ancienne version dans un dossier temporaire
+            const tempDir = os.tmpdir();
+            const backupFile = path.join(tempDir, `adminpanel-${currentVersion}.exe`);
             fs.copyFileSync(process.execPath, backupFile);
 
-            // Écrire la nouvelle version
-            fs.writeFileSync(process.execPath, Buffer.from(response.data));
+            // Écrire la nouvelle version dans un fichier temporaire
+            const newVersionFile = path.join(tempDir, 'new-version.exe');
+            fs.writeFileSync(newVersionFile, Buffer.from(response.data));
 
-            logger.log('Mise à jour installée avec succès. Redémarrage nécessaire.');
+            logger.log('Mise à jour téléchargée. Redémarrage nécessaire.');
             
-            // Redémarrer l'application
-            setTimeout(() => {
-                exec(process.execPath);
-                process.exit(0);
-            }, 2000);
+            // Lancer le script de mise à jour
+            const updateScript = path.join(tempDir, 'update.js');
+            fs.writeFileSync(updateScript, `
+                const fs = require('fs');
+                const path = require('path');
+                const { exec } = require('child_process');
+                
+                setTimeout(() => {
+                    try {
+                        fs.copyFileSync('${newVersionFile}', '${process.execPath}');
+                        exec('${process.execPath}');
+                    } catch (err) {
+                        console.error('Erreur lors de la mise à jour:', err);
+                    }
+                }, 2000);
+            `);
+
+            // Lancer le script de mise à jour
+            require('child_process').fork(updateScript);
+            process.exit(0);
         } else {
             logger.info('Vous utilisez la dernière version disponible');
         }
