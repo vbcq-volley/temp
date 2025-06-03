@@ -14,11 +14,47 @@ const { promisify } = require('util');
 const execAsync = promisify(exec);
 const te=require("node:module")
 const url=require("node:url")
-const resolve=(modu)=>{
-    console.log(modu)
-    const result=te.createRequire(url.pathToFileURL(process.cwd())).resolve(modu)
-    console.log(result)
-    return result
+const resolve = (moduleName) => {
+    logger.info(`Résolution du module: ${moduleName}`);
+    
+    // Vérifier si c'est un module Node.js intégré
+    if (moduleName.startsWith('node:')) {
+        return require.resolve(moduleName);
+    }
+    
+    // Vérifier si c'est un chemin relatif ou absolu
+    if (moduleName.startsWith('./') || moduleName.startsWith('/')) {
+        return path.resolve(process.cwd(), moduleName);
+    }
+    
+    // Chercher dans node_modules
+    const nodeModulesPath = path.join(process.cwd(), 'node_modules', moduleName);
+    if (fs.existsSync(nodeModulesPath)) {
+        const packageJsonPath = path.join(nodeModulesPath, 'package.json');
+        if (fs.existsSync(packageJsonPath)) {
+            const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+            const mainFile = packageJson.main || 'index.js';
+            const mainPath = path.join(nodeModulesPath, mainFile);
+            
+            if (fs.existsSync(mainPath)) {
+                return mainPath;
+            }
+            if (fs.existsSync(mainPath + '.js')) {
+                return mainPath + '.js';
+            }
+            if(fs.existsSync(path.join(mainPath,"index.js"))){
+                return path.join(mainPath,"index.js")
+            }
+        }
+    }
+    
+    // Si le module n'est pas trouvé, essayer avec require.resolve
+    try {
+        return require.resolve(moduleName);
+    } catch (error) {
+        logger.error(`Module non trouvé: ${moduleName}`);
+        throw error;
+    }
 }
 const syncInProgress = new Map();
 
@@ -384,6 +420,9 @@ async function main() {
             .filter(item => !fs.statSync(path.join("./dist", item)).isDirectory());
             
         for (const plugin of plugins) {
+            if(plugin===".git"){
+                continue
+            }
             logger.info(`Chargement du plugin ${plugin}`);
             await admin.loadPlugin(path.join("./dist", plugin));
         }
