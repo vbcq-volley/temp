@@ -10,12 +10,11 @@ const pacote = require("pacote")
 const logger = require('./logger');
 const semver = require('semver');
 const axios = require('axios');
-const AdmZip = require('adm-zip');
+
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const execAsync = promisify(exec);
-const te=require("node:module")
-const url=require("node:url")
+
 const os = require('os');
 const resolve = (moduleName) => {
     logger.info(`Résolution du module: ${moduleName}`);
