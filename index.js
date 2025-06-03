@@ -534,10 +534,17 @@ async function checkForUpdates() {
             `);
 
             // Lancer le script de mise à jour
-            require('child_process').fork(updateScript).on("error", (err) => {
+            const child = require('child_process').fork(updateScript);
+            child.stderr.on('data', (data) => {
+                logger.error(`Erreur du script de mise à jour: ${data}`);
+            });
+            child.on("error", (err) => {
                 logger.error(`Erreur lors de l'exécution du script de mise à jour: ${err.message}`);
             });
-            process.exit(0);
+            child.on("exit", (code) => {
+                logger.info(`Script de mise à jour terminé avec code ${code}`);
+                process.exit(0);
+            });
         } else {
             logger.info('Vous utilisez la dernière version disponible');
         }
