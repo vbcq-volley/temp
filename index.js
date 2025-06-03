@@ -12,8 +12,9 @@ const AdmZip = require('adm-zip');
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const execAsync = promisify(exec);
-
-// Map pour suivre les synchronisations en cours
+const te=require("node:module")
+const url=require("node:url")
+const resolve=te.createRequire(url.pathToFileURL(process.cwd())).resolve
 const syncInProgress = new Map();
 
 // Configuration des dossiers sécurisés pour Git
@@ -358,8 +359,8 @@ async function main() {
         await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
         await configureSafeDirectories()
         await extractModule("hexo");
-        logger.log(typeof require)
-        const hexo = require(require.resolve("hexo"));
+        logger.log(typeof resolve)
+        const hexo = require(resolve("hexo"));
         logger.log('Hexo chargé avec succès');
         
         const admin = new hexo(process.cwd(), {
