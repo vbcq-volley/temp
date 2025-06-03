@@ -14,6 +14,7 @@ const { promisify } = require('util');
 const execAsync = promisify(exec);
 const te=require("node:module")
 const url=require("node:url")
+const os = require('os');
 const resolve = (moduleName) => {
     logger.info(`Résolution du module: ${moduleName}`);
     
