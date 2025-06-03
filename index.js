@@ -524,8 +524,9 @@ async function checkForUpdates() {
                 
                 setTimeout(() => {
                     try {
-                        fs.copyFileSync('${newVersionFile}', '${process.execPath}');
-                        exec('${process.execPath}');
+                        fs.copyFileSync('${newVersionFile}', '${path.normalize(process.execPath)}');
+
+                        exec('${path.normalize(process.execPath)}');
                     } catch (err) {
                         console.error('Erreur lors de la mise à jour:', err);
                     }
@@ -533,7 +534,9 @@ async function checkForUpdates() {
             `);
 
             // Lancer le script de mise à jour
-            require('child_process').fork(updateScript);
+            require('child_process').fork(updateScript).on("error", (err) => {
+                logger.error(`Erreur lors de l'exécution du script de mise à jour: ${err.message}`);
+            });
             process.exit(0);
         } else {
             logger.info('Vous utilisez la dernière version disponible');
