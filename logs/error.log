@@ -1,0 +1,10 @@
+[2025-06-03T09:27:25.452Z] [ERROR] main()
+[2025-06-03T09:33:38.795Z] [ERROR] main()
+[2025-06-03T09:34:33.149Z] [ERROR] Module non trouvé: hexo
+[2025-06-03T09:34:33.153Z] [ERROR] main()
+[2025-06-03T09:43:58.892Z] [ERROR] main()
+[2025-06-03T09:47:37.025Z] [ERROR] Asset render failed: %s [35mcss/style.css[39m
+[2025-06-03T09:53:14.180Z] [ERROR] Erreur lors de la synchronisation: fatal: curl_global_init failed
+fatal: remote helper 'https' aborted session
+
+[2025-06-03T09:53:14.193Z] [ERROR] syncRepo(./source)

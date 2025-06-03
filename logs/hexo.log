@@ -1,0 +1,1119 @@
+[2025-06-03T09:27:18.910Z] [INFO ] Démarrage de l'application...
+[2025-06-03T09:27:19.523Z] [INFO ] Vous utilisez la dernière version disponible
+[2025-06-03T09:27:19.550Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:27:19.791Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:27:21.240Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:27:21.244Z] [INFO ] Surveillance du dépôt ./dist activée
+[2025-06-03T09:27:21.246Z] [INFO ] Synchronisation du dépôt ./source...
+[2025-06-03T09:27:21.511Z] [INFO ] Aucune modification détectée dans ./source.
+[2025-06-03T09:27:24.737Z] [INFO ] Dépôt ./source synchronisé avec succès.
+[2025-06-03T09:27:24.740Z] [INFO ] Surveillance du dépôt ./source activée
+[2025-06-03T09:27:24.911Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\dist
+[2025-06-03T09:27:25.094Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\source
+[2025-06-03T09:27:25.271Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\themes
+[2025-06-03T09:27:25.440Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\node_modules
+[2025-06-03T09:27:25.443Z] [INFO ] Le module hexo existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo
+[2025-06-03T09:27:25.444Z] [INFO ] function
+[2025-06-03T09:27:25.452Z] [ERROR] main()
+[2025-06-03T09:27:25.952Z] [INFO ] 
+[2025-06-03T09:27:25.955Z] [INFO ] Issue created: https://github.com/vbcq-volley/temp/issues/1979
+[2025-06-03T09:28:21.864Z] [INFO ] Changement détecté dans _posts\test.md
+[2025-06-03T09:28:21.899Z] [INFO ] Synchronisation du dépôt ./source...
+[2025-06-03T09:28:22.012Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_variables.scss
+[2025-06-03T09:28:22.015Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:28:22.036Z] [INFO ] Changement détecté dans _data\db.json
+[2025-06-03T09:28:22.038Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.070Z] [INFO ] Changement détecté dans testpage\index.md
+[2025-06-03T09:28:22.129Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.196Z] [INFO ] Changement détecté dans test2358\index.md
+[2025-06-03T09:28:22.250Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.333Z] [INFO ] Changement détecté dans test2357\index.md
+[2025-06-03T09:28:22.335Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.353Z] [INFO ] Changement détecté dans teams\test charli.md
+[2025-06-03T09:28:22.360Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.367Z] [INFO ] Changement détecté dans teams\test charli\index.md
+[2025-06-03T09:28:22.372Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.385Z] [INFO ] Changement détecté dans teams\test béta.md
+[2025-06-03T09:28:22.387Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.401Z] [INFO ] Changement détecté dans teams\test béta\index.md
+[2025-06-03T09:28:22.405Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.411Z] [INFO ] Changement détecté dans teams\test alpha.md
+[2025-06-03T09:28:22.420Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.431Z] [INFO ] Changement détecté dans teams\test alpha\index.md
+[2025-06-03T09:28:22.433Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.437Z] [INFO ] Changement détecté dans teams\delta.md
+[2025-06-03T09:28:22.452Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.461Z] [INFO ] Changement détecté dans teams\delta\index.md
+[2025-06-03T09:28:22.465Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.469Z] [INFO ] Changement détecté dans scores-session-3\index.md
+[2025-06-03T09:28:22.481Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.485Z] [INFO ] Changement détecté dans scores-session-1\index.md
+[2025-06-03T09:28:22.490Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.501Z] [INFO ] Changement détecté dans scores\session-3\groupe-3\retour\index.md
+[2025-06-03T09:28:22.503Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.508Z] [INFO ] Changement détecté dans scores\session-3\groupe-3\aller\index.md
+[2025-06-03T09:28:22.512Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.516Z] [INFO ] Changement détecté dans scores\session-3\groupe-2\retour\index.md
+[2025-06-03T09:28:22.517Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.521Z] [INFO ] Changement détecté dans scores\session-3\groupe-2\aller\index.md
+[2025-06-03T09:28:22.524Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.532Z] [INFO ] Changement détecté dans scores\session-3\groupe-1\retour\index.md
+[2025-06-03T09:28:22.534Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.537Z] [INFO ] Changement détecté dans scores\session-3\groupe-1\aller\index.md
+[2025-06-03T09:28:22.538Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.543Z] [INFO ] Changement détecté dans scores\session-1\groupe-3\retour\index.md
+[2025-06-03T09:28:22.545Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.552Z] [INFO ] Changement détecté dans scores\session-1\groupe-3\aller\index.md
+[2025-06-03T09:28:22.553Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.559Z] [INFO ] Changement détecté dans scores\session-1\groupe-2\retour\index.md
+[2025-06-03T09:28:22.560Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.565Z] [INFO ] Changement détecté dans scores\session-1\groupe-2\aller\index.md
+[2025-06-03T09:28:22.566Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.569Z] [INFO ] Changement détecté dans scores\session-1\groupe-1\retour\index.md
+[2025-06-03T09:28:22.570Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.575Z] [INFO ] Changement détecté dans scores\session-1\groupe-1\aller\index.md
+[2025-06-03T09:28:22.576Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.581Z] [INFO ] Changement détecté dans hexo-admin-ehc-images.json
+[2025-06-03T09:28:22.583Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.586Z] [INFO ] Changement détecté dans groupe-3\index.md
+[2025-06-03T09:28:22.587Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.591Z] [INFO ] Changement détecté dans groupe-2\index.md
+[2025-06-03T09:28:22.594Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.602Z] [INFO ] Changement détecté dans groupe-1\index.md
+[2025-06-03T09:28:22.603Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:28:22.610Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_stacked.scss
+[2025-06-03T09:28:22.616Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.620Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_spinning.scss
+[2025-06-03T09:28:22.621Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.628Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_rotated-flipped.scss
+[2025-06-03T09:28:22.633Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.645Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_path.scss
+[2025-06-03T09:28:22.650Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.653Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_mixins.scss
+[2025-06-03T09:28:22.655Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.665Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_list.scss
+[2025-06-03T09:28:22.667Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.671Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_larger.scss
+[2025-06-03T09:28:22.673Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.680Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_icons.scss
+[2025-06-03T09:28:22.682Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.688Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_fixed-width.scss
+[2025-06-03T09:28:22.697Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.705Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_core.scss
+[2025-06-03T09:28:22.714Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.717Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\_bordered-pulled.scss
+[2025-06-03T09:28:22.718Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.721Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\scss\font-awesome.scss
+[2025-06-03T09:28:22.724Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.728Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\variables.less
+[2025-06-03T09:28:22.732Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.735Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\stacked.less
+[2025-06-03T09:28:22.737Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.742Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\spinning.less
+[2025-06-03T09:28:22.746Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.750Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\rotated-flipped.less
+[2025-06-03T09:28:22.751Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.755Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\path.less
+[2025-06-03T09:28:22.757Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.760Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\mixins.less
+[2025-06-03T09:28:22.763Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.766Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\list.less
+[2025-06-03T09:28:22.767Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.770Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\larger.less
+[2025-06-03T09:28:22.771Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.776Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\icons.less
+[2025-06-03T09:28:22.777Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.782Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\font-awesome.less
+[2025-06-03T09:28:22.783Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.787Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\fixed-width.less
+[2025-06-03T09:28:22.790Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.795Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\core.less
+[2025-06-03T09:28:22.798Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.802Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\less\bordered-pulled.less
+[2025-06-03T09:28:22.803Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.806Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\css\font-awesome.min.css
+[2025-06-03T09:28:22.809Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.813Z] [INFO ] Changement détecté dans www\vendor\font-awesome-4.0.3\css\font-awesome.css
+[2025-06-03T09:28:22.815Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.818Z] [INFO ] Changement détecté dans www\login\index.html
+[2025-06-03T09:28:22.820Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.825Z] [INFO ] Changement détecté dans www\index.html
+[2025-06-03T09:28:22.826Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.845Z] [INFO ] Changement détecté dans www\css\screen.css
+[2025-06-03T09:28:22.848Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.852Z] [INFO ] Changement détecté dans www\css\normalize.css
+[2025-06-03T09:28:22.853Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.856Z] [INFO ] Changement détecté dans www\bundle.css
+[2025-06-03T09:28:22.861Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.864Z] [INFO ] Changement détecté dans types\node.types
+[2025-06-03T09:28:22.865Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.869Z] [INFO ] Changement détecté dans types\mime.types
+[2025-06-03T09:28:22.871Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.878Z] [INFO ] Changement détecté dans templates\search.xml
+[2025-06-03T09:28:22.882Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.885Z] [INFO ] Changement détecté dans assets\_config.yml
+[2025-06-03T09:28:22.887Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.890Z] [INFO ] Changement détecté dans assets\source\_posts\hello-world.md
+[2025-06-03T09:28:22.895Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.899Z] [INFO ] Changement détecté dans assets\scaffolds\post.md
+[2025-06-03T09:28:22.901Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.904Z] [INFO ] Changement détecté dans assets\scaffolds\page.md
+[2025-06-03T09:28:22.906Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.915Z] [INFO ] Changement détecté dans assets\scaffolds\draft.md
+[2025-06-03T09:28:22.919Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.924Z] [INFO ] Changement détecté dans assets\package.json
+[2025-06-03T09:28:22.932Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.937Z] [INFO ] Changement détecté dans assets\.github\dependabot.yml
+[2025-06-03T09:28:22.952Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:28:22.980Z] [INFO ] Aucune modification détectée dans ./source.
+[2025-06-03T09:28:23.013Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:28:24.736Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:28:24.813Z] [INFO ] Dépôt ./source synchronisé avec succès.
+[2025-06-03T09:32:47.887Z] [INFO ] Changement détecté dans hexo-renderer-ejs.js
+[2025-06-03T09:32:48.045Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:32:48.500Z] [INFO ] Changement détecté dans hexo-generator-tag.js
+[2025-06-03T09:32:48.608Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:48.672Z] [INFO ] Changement détecté dans hexo-pagination.js
+[2025-06-03T09:32:48.684Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:48.692Z] [INFO ] Changement détecté dans hexo-generator-category.js
+[2025-06-03T09:32:48.729Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:48.841Z] [INFO ] Changement détecté dans hexo-generator-index.js
+[2025-06-03T09:32:48.939Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.111Z] [INFO ] Changement détecté dans hexo-i18n.js
+[2025-06-03T09:32:49.232Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.276Z] [INFO ] Changement détecté dans hexo-generator-archive.js
+[2025-06-03T09:32:49.278Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.314Z] [INFO ] Changement détecté dans hexo-log.js
+[2025-06-03T09:32:49.335Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.444Z] [INFO ] Changement détecté dans hexo-generator-search.js
+[2025-06-03T09:32:49.519Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.571Z] [INFO ] Changement détecté dans hexo-front-matter.js
+[2025-06-03T09:32:49.578Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.581Z] [INFO ] Changement détecté dans hexo-renderer-stylus.js
+[2025-06-03T09:32:49.582Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.585Z] [INFO ] Changement détecté dans hexo-fs.js
+[2025-06-03T09:32:49.587Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.590Z] [INFO ] Changement détecté dans hexo-recommended-posts.js
+[2025-06-03T09:32:49.592Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.597Z] [INFO ] Changement détecté dans hexo-cli.js
+[2025-06-03T09:32:49.599Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.602Z] [INFO ] Changement détecté dans hexo-admin-ehc.js
+[2025-06-03T09:32:49.604Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.715Z] [INFO ] Changement détecté dans www\bundle.js
+[2025-06-03T09:32:49.831Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.847Z] [INFO ] Changement détecté dans hexo-renderer-marked.js
+[2025-06-03T09:32:49.856Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:32:49.888Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:32:52.550Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:33:34.223Z] [INFO ] Démarrage de l'application...
+[2025-06-03T09:33:34.829Z] [INFO ] Vous utilisez la dernière version disponible
+[2025-06-03T09:33:34.838Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:33:35.006Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:33:36.506Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:33:36.509Z] [INFO ] Surveillance du dépôt ./dist activée
+[2025-06-03T09:33:36.512Z] [INFO ] Synchronisation du dépôt ./source...
+[2025-06-03T09:33:36.657Z] [INFO ] Aucune modification détectée dans ./source.
+[2025-06-03T09:33:37.946Z] [INFO ] Dépôt ./source synchronisé avec succès.
+[2025-06-03T09:33:37.948Z] [INFO ] Surveillance du dépôt ./source activée
+[2025-06-03T09:33:38.119Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\dist
+[2025-06-03T09:33:38.382Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\source
+[2025-06-03T09:33:38.582Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\themes
+[2025-06-03T09:33:38.770Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\node_modules
+[2025-06-03T09:33:38.773Z] [INFO ] Le module hexo existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo
+[2025-06-03T09:33:38.776Z] [INFO ] function
+[2025-06-03T09:33:38.785Z] [INFO ] Résolution du module: hexo
+[2025-06-03T09:33:38.795Z] [ERROR] main()
+[2025-06-03T09:33:39.265Z] [INFO ] 
+[2025-06-03T09:33:39.269Z] [INFO ] Issue created: https://github.com/vbcq-volley/temp/issues/1981
+[2025-06-03T09:34:15.715Z] [INFO ] Changement détecté dans hexo-server.js
+[2025-06-03T09:34:15.719Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:34:15.806Z] [INFO ] Changement détecté dans hexo-util.js
+[2025-06-03T09:34:15.812Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:34:16.299Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:34:20.650Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:34:28.069Z] [INFO ] Démarrage de l'application...
+[2025-06-03T09:34:28.692Z] [INFO ] Vous utilisez la dernière version disponible
+[2025-06-03T09:34:28.707Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:34:28.851Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:34:30.407Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:34:30.410Z] [INFO ] Surveillance du dépôt ./dist activée
+[2025-06-03T09:34:30.412Z] [INFO ] Synchronisation du dépôt ./source...
+[2025-06-03T09:34:30.562Z] [INFO ] Aucune modification détectée dans ./source.
+[2025-06-03T09:34:32.366Z] [INFO ] Dépôt ./source synchronisé avec succès.
+[2025-06-03T09:34:32.369Z] [INFO ] Surveillance du dépôt ./source activée
+[2025-06-03T09:34:32.545Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\dist
+[2025-06-03T09:34:32.783Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\source
+[2025-06-03T09:34:32.940Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\themes
+[2025-06-03T09:34:33.131Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\node_modules
+[2025-06-03T09:34:33.133Z] [INFO ] Le module hexo existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo
+[2025-06-03T09:34:33.135Z] [INFO ] function
+[2025-06-03T09:34:33.136Z] [INFO ] Résolution du module: hexo
+[2025-06-03T09:34:33.149Z] [ERROR] Module non trouvé: hexo
+[2025-06-03T09:34:33.153Z] [ERROR] main()
+[2025-06-03T09:34:33.643Z] [INFO ] Module non trouvé: hexo
+[2025-06-03T09:34:33.644Z] [INFO ] Issue created: https://github.com/vbcq-volley/temp/issues/1982
+[2025-06-03T09:34:33.714Z] [INFO ] 
+[2025-06-03T09:34:33.718Z] [INFO ] Issue created: https://github.com/vbcq-volley/temp/issues/1983
+[2025-06-03T09:43:15.459Z] [INFO ] Démarrage de l'application...
+[2025-06-03T09:43:16.317Z] [INFO ] Vous utilisez la dernière version disponible
+[2025-06-03T09:43:16.349Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:43:16.836Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:43:19.177Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:43:19.181Z] [INFO ] Surveillance du dépôt ./dist activée
+[2025-06-03T09:43:19.185Z] [INFO ] Synchronisation du dépôt ./source...
+[2025-06-03T09:43:19.365Z] [INFO ] Aucune modification détectée dans ./source.
+[2025-06-03T09:43:21.169Z] [INFO ] Dépôt ./source synchronisé avec succès.
+[2025-06-03T09:43:21.173Z] [INFO ] Surveillance du dépôt ./source activée
+[2025-06-03T09:43:21.400Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\dist
+[2025-06-03T09:43:21.650Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\source
+[2025-06-03T09:43:21.876Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\themes
+[2025-06-03T09:43:22.107Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\node_modules
+[2025-06-03T09:43:22.110Z] [INFO ] Le module hexo existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo
+[2025-06-03T09:43:22.112Z] [INFO ] function
+[2025-06-03T09:43:22.115Z] [INFO ] Résolution du module: hexo
+[2025-06-03T09:43:29.417Z] [INFO ] Hexo chargé avec succès
+[2025-06-03T09:43:29.428Z] [INFO ] Le module hexo-theme-landscape existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo-theme-landscape
+[2025-06-03T09:43:29.436Z] [DEBUG] Hexo version: %s [35m7.3.0[39m
+[2025-06-03T09:43:29.440Z] [DEBUG] Working directory: %s [35m~\adminpanel\[39m
+[2025-06-03T09:43:30.239Z] [DEBUG] Config loaded: %s [35m~\adminpanel\_config.yml[39m
+[2025-06-03T09:43:30.243Z] [INFO ] Validating config
+[2025-06-03T09:43:40.254Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-archive[39m
+[2025-06-03T09:43:40.263Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-category[39m
+[2025-06-03T09:43:40.283Z] [DEBUG] Plugin loaded: %s [35mhexo-front-matter[39m
+[2025-06-03T09:43:40.297Z] [DEBUG] Plugin loaded: %s [35mhexo-fs[39m
+[2025-06-03T09:43:40.300Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-index[39m
+[2025-06-03T09:43:40.316Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-search[39m
+[2025-06-03T09:43:50.974Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-tag[39m
+[2025-06-03T09:43:50.989Z] [DEBUG] Plugin loaded: %s [35mhexo-recommended-posts[39m
+[2025-06-03T09:43:50.995Z] [DEBUG] Plugin loaded: %s [35mhexo-renderer-stylus[39m
+[2025-06-03T09:43:51.001Z] [DEBUG] Plugin loaded: %s [35mhexo-renderer-ejs[39m
+[2025-06-03T09:43:51.003Z] [DEBUG] Plugin loaded: %s [35mhexo-renderer-marked[39m
+[2025-06-03T09:43:55.861Z] [DEBUG] Plugin loaded: %s [35mhexo-util[39m
+[2025-06-03T09:43:55.863Z] [DEBUG] Plugin loaded: %s [35mhexo-tag-bootstrap[39m
+[2025-06-03T09:43:55.865Z] [DEBUG] Plugin loaded: %s [35mhexo-server[39m
+[2025-06-03T09:43:55.907Z] [DEBUG] Script loaded: %s [35mnode_modules\hexo-theme-landscape\scripts\fancybox.js[39m
+[2025-06-03T09:43:55.911Z] [DEBUG] Loading database.
+[2025-06-03T09:43:55.993Z] [INFO ] Start processing
+[2025-06-03T09:43:56.182Z] [DEBUG] Processed: %s [35mhexo-admin-ehc-images.json[39m
+[2025-06-03T09:43:56.183Z] [DEBUG] Processed: %s [35m_posts/test.md[39m
+[2025-06-03T09:43:56.186Z] [DEBUG] Processed: %s [35mteams/delta.md[39m
+[2025-06-03T09:43:56.187Z] [DEBUG] Processed: %s [35mteams/test alpha.md[39m
+[2025-06-03T09:43:56.189Z] [DEBUG] Processed: %s [35mteams/test béta.md[39m
+[2025-06-03T09:43:56.191Z] [DEBUG] Processed: %s [35mteams/test charli.md[39m
+[2025-06-03T09:43:56.193Z] [DEBUG] Processed: %s [35mtestpage/index.md[39m
+[2025-06-03T09:43:57.175Z] [DEBUG] Processed: %s [35mgroupe-1/index.md[39m
+[2025-06-03T09:43:57.178Z] [DEBUG] Processed: %s [35m_data/db.json[39m
+[2025-06-03T09:43:57.242Z] [DEBUG] Processed: %s [35mgroupe-2/index.md[39m
+[2025-06-03T09:43:57.332Z] [DEBUG] Processed: %s [35mgroupe-3/index.md[39m
+[2025-06-03T09:43:57.368Z] [DEBUG] Processed: %s [35mscores-session-1/index.md[39m
+[2025-06-03T09:43:57.373Z] [DEBUG] Processed: %s [35mscores-session-3/index.md[39m
+[2025-06-03T09:43:57.376Z] [DEBUG] Processed: %s [35mtest2357/index.md[39m
+[2025-06-03T09:43:57.379Z] [DEBUG] Processed: %s [35mtest2358/index.md[39m
+[2025-06-03T09:43:57.382Z] [DEBUG] Processed: %s [35mteams/delta/index.md[39m
+[2025-06-03T09:43:57.386Z] [DEBUG] Processed: %s [35mteams/test alpha/index.md[39m
+[2025-06-03T09:43:57.397Z] [DEBUG] Processed: %s [35mteams/test béta/index.md[39m
+[2025-06-03T09:43:57.649Z] [DEBUG] Processed: %s [35mteams/test charli/index.md[39m
+[2025-06-03T09:43:57.730Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:43:57.828Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:43:57.831Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:43:57.837Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:43:57.848Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:43:57.863Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:43:57.874Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/aller/index.md[39m
+[2025-06-03T09:43:57.926Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/retour/index.md[39m
+[2025-06-03T09:43:57.930Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/aller/index.md[39m
+[2025-06-03T09:43:57.933Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/retour/index.md[39m
+[2025-06-03T09:43:57.944Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/aller/index.md[39m
+[2025-06-03T09:43:57.946Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/retour/index.md[39m
+[2025-06-03T09:43:57.955Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:43:57.962Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:43:57.966Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:43:57.974Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:43:57.980Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:43:57.982Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:43:57.994Z] [DEBUG] Processed: %s [35m_data/test.json[39m
+[2025-06-03T09:43:58.032Z] [DEBUG] Processed: %s [35msource/css/style.styl[39m
+[2025-06-03T09:43:58.037Z] [DEBUG] Processed: %s [35msource/js/jquery-3.6.4.min.js[39m
+[2025-06-03T09:43:58.040Z] [DEBUG] Processed: %s [35msource/js/script.js[39m
+[2025-06-03T09:43:58.042Z] [DEBUG] Processed: %s [35msource/css/images/banner.jpg[39m
+[2025-06-03T09:43:58.044Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.css[39m
+[2025-06-03T09:43:58.045Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.js[39m
+[2025-06-03T09:43:58.102Z] [DEBUG] Theme config loaded.
+[2025-06-03T09:43:58.105Z] [DEBUG] Processed: %s [35mlayout/archive.ejs[39m
+[2025-06-03T09:43:58.108Z] [DEBUG] Processed: %s [35mlayout/category.ejs[39m
+[2025-06-03T09:43:58.111Z] [DEBUG] Processed: %s [35mlayout/index.ejs[39m
+[2025-06-03T09:43:58.113Z] [DEBUG] Processed: %s [35mlayout/layout.ejs[39m
+[2025-06-03T09:43:58.115Z] [DEBUG] Processed: %s [35mlayout/page.ejs[39m
+[2025-06-03T09:43:58.116Z] [DEBUG] Processed: %s [35mlayout/post.ejs[39m
+[2025-06-03T09:43:58.133Z] [DEBUG] Processed: %s [35mlayout/tag.ejs[39m
+[2025-06-03T09:43:58.156Z] [DEBUG] Processed: %s [35mlayout/_partial/after-footer.ejs[39m
+[2025-06-03T09:43:58.171Z] [DEBUG] Processed: %s [35mlayout/_partial/archive.ejs[39m
+[2025-06-03T09:43:58.176Z] [DEBUG] Processed: %s [35mlayout/_partial/archive-post.ejs[39m
+[2025-06-03T09:43:58.183Z] [DEBUG] Processed: %s [35mlayout/_partial/footer.ejs[39m
+[2025-06-03T09:43:58.194Z] [DEBUG] Processed: %s [35mlayout/_partial/gauges-analytics.ejs[39m
+[2025-06-03T09:43:58.199Z] [DEBUG] Processed: %s [35mlayout/_partial/article.ejs[39m
+[2025-06-03T09:43:58.208Z] [DEBUG] Processed: %s [35mlayout/_partial/google-analytics.ejs[39m
+[2025-06-03T09:43:58.210Z] [DEBUG] Processed: %s [35mlayout/_partial/header.ejs[39m
+[2025-06-03T09:43:58.266Z] [DEBUG] Processed: %s [35mlayout/_partial/head.ejs[39m
+[2025-06-03T09:43:58.280Z] [DEBUG] Processed: %s [35mlayout/_partial/mobile-nav.ejs[39m
+[2025-06-03T09:43:58.282Z] [DEBUG] Processed: %s [35mlayout/_partial/sidebar.ejs[39m
+[2025-06-03T09:43:58.295Z] [DEBUG] Processed: %s [35mlayout/_widget/recent_posts.ejs[39m
+[2025-06-03T09:43:58.298Z] [DEBUG] Processed: %s [35mlayout/_widget/archive.ejs[39m
+[2025-06-03T09:43:58.303Z] [DEBUG] Processed: %s [35mlayout/_widget/category.ejs[39m
+[2025-06-03T09:43:58.309Z] [DEBUG] Processed: %s [35mlayout/_widget/tag.ejs[39m
+[2025-06-03T09:43:58.311Z] [DEBUG] Processed: %s [35mlayout/_widget/tagcloud.ejs[39m
+[2025-06-03T09:43:58.313Z] [DEBUG] Processed: %s [35mlayout/_partial/post/category.ejs[39m
+[2025-06-03T09:43:58.315Z] [DEBUG] Processed: %s [35mlayout/_partial/post/date.ejs[39m
+[2025-06-03T09:43:58.325Z] [DEBUG] Processed: %s [35mlayout/_partial/post/nav.ejs[39m
+[2025-06-03T09:43:58.327Z] [DEBUG] Processed: %s [35mlayout/_partial/post/tag.ejs[39m
+[2025-06-03T09:43:58.329Z] [DEBUG] Processed: %s [35mlanguages/de.yml[39m
+[2025-06-03T09:43:58.331Z] [DEBUG] Processed: %s [35mlanguages/en-GB.yml[39m
+[2025-06-03T09:43:58.334Z] [DEBUG] Processed: %s [35mlanguages/default.yml[39m
+[2025-06-03T09:43:58.339Z] [DEBUG] Processed: %s [35mlanguages/en-US.yml[39m
+[2025-06-03T09:43:58.341Z] [DEBUG] Processed: %s [35mlanguages/es.yml[39m
+[2025-06-03T09:43:58.343Z] [DEBUG] Processed: %s [35mlanguages/fr-FR.yml[39m
+[2025-06-03T09:43:58.346Z] [DEBUG] Processed: %s [35mlanguages/fr.yml[39m
+[2025-06-03T09:43:58.348Z] [DEBUG] Processed: %s [35mlanguages/hu-HU.yml[39m
+[2025-06-03T09:43:58.350Z] [DEBUG] Processed: %s [35mlanguages/hu.yml[39m
+[2025-06-03T09:43:58.360Z] [DEBUG] Processed: %s [35mlanguages/it-IT.yml[39m
+[2025-06-03T09:43:58.362Z] [DEBUG] Processed: %s [35mlanguages/it.yml[39m
+[2025-06-03T09:43:58.364Z] [DEBUG] Processed: %s [35mlanguages/ja.yml[39m
+[2025-06-03T09:43:58.366Z] [DEBUG] Processed: %s [35mlanguages/ja-JP.yml[39m
+[2025-06-03T09:43:58.373Z] [DEBUG] Processed: %s [35mlanguages/ko.yml[39m
+[2025-06-03T09:43:58.375Z] [DEBUG] Processed: %s [35mlanguages/mn.yml[39m
+[2025-06-03T09:43:58.378Z] [DEBUG] Processed: %s [35mlanguages/mn-MN.yml[39m
+[2025-06-03T09:43:58.380Z] [DEBUG] Processed: %s [35mlanguages/es-ES.yml[39m
+[2025-06-03T09:43:58.381Z] [DEBUG] Processed: %s [35mlanguages/en.yml[39m
+[2025-06-03T09:43:58.385Z] [DEBUG] Processed: %s [35mlanguages/nl-NL.yml[39m
+[2025-06-03T09:43:58.391Z] [DEBUG] Processed: %s [35mlanguages/ru-RU.yml[39m
+[2025-06-03T09:43:58.393Z] [DEBUG] Processed: %s [35mlanguages/ru.yml[39m
+[2025-06-03T09:43:58.395Z] [DEBUG] Processed: %s [35mlanguages/de-DE.yml[39m
+[2025-06-03T09:43:58.397Z] [DEBUG] Processed: %s [35mlanguages/th-TH.yml[39m
+[2025-06-03T09:43:58.399Z] [DEBUG] Processed: %s [35mlanguages/th.yml[39m
+[2025-06-03T09:43:58.409Z] [DEBUG] Processed: %s [35mlanguages/tr.yml[39m
+[2025-06-03T09:43:58.411Z] [DEBUG] Processed: %s [35mlanguages/zh-CN.yml[39m
+[2025-06-03T09:43:58.413Z] [DEBUG] Processed: %s [35mlanguages/zh-TW.yml[39m
+[2025-06-03T09:43:58.414Z] [DEBUG] Processed: %s [35mlanguages/nl.yml[39m
+[2025-06-03T09:43:58.418Z] [DEBUG] Processed: %s [35mlanguages/no.yml[39m
+[2025-06-03T09:43:58.420Z] [DEBUG] Processed: %s [35mlanguages/pt-PT.yml[39m
+[2025-06-03T09:43:58.427Z] [DEBUG] Processed: %s [35mlanguages/pt.yml[39m
+[2025-06-03T09:43:58.429Z] [DEBUG] Processed: %s [35m_config.yml[39m
+[2025-06-03T09:43:58.432Z] [DEBUG] Processed: %s [35mlayout/_partial/post/gallery.ejs[39m
+[2025-06-03T09:43:58.436Z] [DEBUG] Processed: %s [35mlayout/_partial/post/title.ejs[39m
+[2025-06-03T09:43:58.440Z] [DEBUG] Processed: %s [35mlanguages/ko-KR.yml[39m
+[2025-06-03T09:43:58.458Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\groupe-3\index.md[39m
+[2025-06-03T09:43:58.462Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\groupe-2\index.md[39m
+[2025-06-03T09:43:58.464Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\groupe-1\index.md[39m
+[2025-06-03T09:43:58.466Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores-session-1\index.md[39m
+[2025-06-03T09:43:58.472Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-1\retour\index.md[39m
+[2025-06-03T09:43:58.474Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-3\aller\index.md[39m
+[2025-06-03T09:43:58.476Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-1\aller\index.md[39m
+[2025-06-03T09:43:58.479Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-2\retour\index.md[39m
+[2025-06-03T09:43:58.490Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-2\aller\index.md[39m
+[2025-06-03T09:43:58.492Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-3\retour\index.md[39m
+[2025-06-03T09:43:58.495Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores-session-3\index.md[39m
+[2025-06-03T09:43:58.522Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\delta\index.md[39m
+[2025-06-03T09:43:58.532Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\test béta\index.md[39m
+[2025-06-03T09:43:58.543Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\test charli\index.md[39m
+[2025-06-03T09:43:58.545Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\test alpha\index.md[39m
+[2025-06-03T09:43:58.547Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-1\aller\index.md[39m
+[2025-06-03T09:43:58.550Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-2\retour\index.md[39m
+[2025-06-03T09:43:58.557Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-3\aller\index.md[39m
+[2025-06-03T09:43:58.559Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-1\retour\index.md[39m
+[2025-06-03T09:43:58.561Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-3\retour\index.md[39m
+[2025-06-03T09:43:58.563Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-2\aller\index.md[39m
+[2025-06-03T09:43:58.565Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\test2357\index.md[39m
+[2025-06-03T09:43:58.573Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\test2358\index.md[39m
+[2025-06-03T09:43:58.710Z] [DEBUG] Generator: %s [35masset[39m
+[2025-06-03T09:43:58.713Z] [DEBUG] Generator: %s [35mpage[39m
+[2025-06-03T09:43:58.716Z] [DEBUG] Generator: %s [35mpost[39m
+[2025-06-03T09:43:58.725Z] [DEBUG] Generator: %s [35marchive[39m
+[2025-06-03T09:43:58.728Z] [DEBUG] Generator: %s [35mcategory[39m
+[2025-06-03T09:43:58.730Z] [DEBUG] Generator: %s [35mindex[39m
+[2025-06-03T09:43:58.732Z] [DEBUG] Generator: %s [35mxml[39m
+[2025-06-03T09:43:58.814Z] [DEBUG] Generator: %s [35mtag[39m
+[2025-06-03T09:43:58.865Z] [INFO ] Chargement du plugin .git
+[2025-06-03T09:43:58.892Z] [ERROR] main()
+[2025-06-03T09:43:59.616Z] [INFO ] 
+[2025-06-03T09:43:59.623Z] [INFO ] Issue created: https://github.com/vbcq-volley/temp/issues/1984
+[2025-06-03T09:46:49.750Z] [INFO ] Démarrage de l'application...
+[2025-06-03T09:46:50.537Z] [INFO ] Vous utilisez la dernière version disponible
+[2025-06-03T09:46:50.554Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:46:50.852Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:46:52.795Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:46:52.799Z] [INFO ] Surveillance du dépôt ./dist activée
+[2025-06-03T09:46:52.801Z] [INFO ] Synchronisation du dépôt ./source...
+[2025-06-03T09:46:52.971Z] [INFO ] Aucune modification détectée dans ./source.
+[2025-06-03T09:46:54.913Z] [INFO ] Dépôt ./source synchronisé avec succès.
+[2025-06-03T09:46:54.916Z] [INFO ] Surveillance du dépôt ./source activée
+[2025-06-03T09:46:55.106Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\dist
+[2025-06-03T09:46:55.328Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\source
+[2025-06-03T09:46:55.559Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\themes
+[2025-06-03T09:46:56.024Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\node_modules
+[2025-06-03T09:46:56.027Z] [INFO ] Le module hexo existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo
+[2025-06-03T09:46:56.029Z] [INFO ] function
+[2025-06-03T09:46:56.030Z] [INFO ] Résolution du module: hexo
+[2025-06-03T09:46:57.070Z] [INFO ] Hexo chargé avec succès
+[2025-06-03T09:46:57.081Z] [INFO ] Le module hexo-theme-landscape existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo-theme-landscape
+[2025-06-03T09:46:57.084Z] [DEBUG] Hexo version: %s [35m7.3.0[39m
+[2025-06-03T09:46:57.087Z] [DEBUG] Working directory: %s [35m~\adminpanel\[39m
+[2025-06-03T09:46:57.475Z] [DEBUG] Config loaded: %s [35m~\adminpanel\_config.yml[39m
+[2025-06-03T09:46:57.479Z] [INFO ] Validating config
+[2025-06-03T09:46:59.419Z] [DEBUG] Plugin loaded: %s [35mhexo-front-matter[39m
+[2025-06-03T09:46:59.421Z] [DEBUG] Plugin loaded: %s [35mhexo-fs[39m
+[2025-06-03T09:46:59.423Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-index[39m
+[2025-06-03T09:46:59.436Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-category[39m
+[2025-06-03T09:46:59.455Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-archive[39m
+[2025-06-03T09:46:59.461Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-search[39m
+[2025-06-03T09:46:59.468Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-tag[39m
+[2025-06-03T09:46:59.473Z] [DEBUG] Plugin loaded: %s [35mhexo-recommended-posts[39m
+[2025-06-03T09:46:59.475Z] [DEBUG] Plugin loaded: %s [35mhexo-renderer-ejs[39m
+[2025-06-03T09:46:59.477Z] [DEBUG] Plugin loaded: %s [35mhexo-renderer-marked[39m
+[2025-06-03T09:46:59.479Z] [DEBUG] Plugin loaded: %s [35mhexo-tag-bootstrap[39m
+[2025-06-03T09:46:59.819Z] [DEBUG] Plugin loaded: %s [35mhexo-renderer-stylus[39m
+[2025-06-03T09:47:00.237Z] [DEBUG] Plugin loaded: %s [35mhexo-server[39m
+[2025-06-03T09:47:00.240Z] [DEBUG] Plugin loaded: %s [35mhexo-util[39m
+[2025-06-03T09:47:00.251Z] [DEBUG] Script loaded: %s [35mnode_modules\hexo-theme-landscape\scripts\fancybox.js[39m
+[2025-06-03T09:47:00.302Z] [DEBUG] Loading database.
+[2025-06-03T09:47:00.391Z] [INFO ] Start processing
+[2025-06-03T09:47:00.600Z] [DEBUG] Processed: %s [35mhexo-admin-ehc-images.json[39m
+[2025-06-03T09:47:00.602Z] [DEBUG] Processed: %s [35m_posts/test.md[39m
+[2025-06-03T09:47:00.604Z] [DEBUG] Processed: %s [35mteams/delta.md[39m
+[2025-06-03T09:47:00.605Z] [DEBUG] Processed: %s [35mteams/test alpha.md[39m
+[2025-06-03T09:47:00.606Z] [DEBUG] Processed: %s [35mteams/test béta.md[39m
+[2025-06-03T09:47:00.609Z] [DEBUG] Processed: %s [35mteams/test charli.md[39m
+[2025-06-03T09:47:00.610Z] [DEBUG] Processed: %s [35mtestpage/index.md[39m
+[2025-06-03T09:47:00.628Z] [DEBUG] Processed: %s [35msource/css/style.styl[39m
+[2025-06-03T09:47:00.634Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.css[39m
+[2025-06-03T09:47:00.636Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.js[39m
+[2025-06-03T09:47:00.638Z] [DEBUG] Processed: %s [35msource/js/jquery-3.6.4.min.js[39m
+[2025-06-03T09:47:00.640Z] [DEBUG] Processed: %s [35msource/js/script.js[39m
+[2025-06-03T09:47:00.641Z] [DEBUG] Processed: %s [35msource/css/images/banner.jpg[39m
+[2025-06-03T09:47:00.703Z] [DEBUG] Processed: %s [35mgroupe-1/index.md[39m
+[2025-06-03T09:47:00.706Z] [DEBUG] Processed: %s [35m_data/db.json[39m
+[2025-06-03T09:47:00.710Z] [DEBUG] Processed: %s [35mgroupe-2/index.md[39m
+[2025-06-03T09:47:00.720Z] [DEBUG] Processed: %s [35mscores-session-1/index.md[39m
+[2025-06-03T09:47:00.726Z] [DEBUG] Processed: %s [35mscores-session-3/index.md[39m
+[2025-06-03T09:47:00.735Z] [DEBUG] Processed: %s [35mtest2357/index.md[39m
+[2025-06-03T09:47:00.759Z] [DEBUG] Processed: %s [35mtest2358/index.md[39m
+[2025-06-03T09:47:00.768Z] [DEBUG] Processed: %s [35mgroupe-3/index.md[39m
+[2025-06-03T09:47:00.785Z] [DEBUG] Processed: %s [35mteams/delta/index.md[39m
+[2025-06-03T09:47:00.849Z] [DEBUG] Processed: %s [35mteams/test alpha/index.md[39m
+[2025-06-03T09:47:00.972Z] [DEBUG] Processed: %s [35mteams/test béta/index.md[39m
+[2025-06-03T09:47:00.981Z] [DEBUG] Processed: %s [35mteams/test charli/index.md[39m
+[2025-06-03T09:47:01.011Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:47:01.052Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:47:01.088Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:47:01.093Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:47:01.105Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:47:01.118Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:47:01.134Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/aller/index.md[39m
+[2025-06-03T09:47:01.145Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/retour/index.md[39m
+[2025-06-03T09:47:01.171Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/aller/index.md[39m
+[2025-06-03T09:47:01.223Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/retour/index.md[39m
+[2025-06-03T09:47:01.242Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/aller/index.md[39m
+[2025-06-03T09:47:01.260Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/retour/index.md[39m
+[2025-06-03T09:47:01.286Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:47:01.292Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:47:01.297Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:47:01.301Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:47:01.303Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:47:01.305Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:47:01.307Z] [DEBUG] Processed: %s [35m_data/test.json[39m
+[2025-06-03T09:47:01.354Z] [DEBUG] Theme config loaded.
+[2025-06-03T09:47:01.356Z] [DEBUG] Processed: %s [35mlayout/archive.ejs[39m
+[2025-06-03T09:47:01.358Z] [DEBUG] Processed: %s [35mlayout/category.ejs[39m
+[2025-06-03T09:47:01.360Z] [DEBUG] Processed: %s [35mlayout/index.ejs[39m
+[2025-06-03T09:47:01.365Z] [DEBUG] Processed: %s [35mlayout/layout.ejs[39m
+[2025-06-03T09:47:01.367Z] [DEBUG] Processed: %s [35mlayout/page.ejs[39m
+[2025-06-03T09:47:01.368Z] [DEBUG] Processed: %s [35mlayout/tag.ejs[39m
+[2025-06-03T09:47:01.370Z] [DEBUG] Processed: %s [35mlayout/post.ejs[39m
+[2025-06-03T09:47:01.372Z] [DEBUG] Processed: %s [35mlayout/_partial/after-footer.ejs[39m
+[2025-06-03T09:47:01.374Z] [DEBUG] Processed: %s [35mlayout/_partial/archive-post.ejs[39m
+[2025-06-03T09:47:01.375Z] [DEBUG] Processed: %s [35mlayout/_partial/archive.ejs[39m
+[2025-06-03T09:47:01.377Z] [DEBUG] Processed: %s [35mlayout/_partial/footer.ejs[39m
+[2025-06-03T09:47:01.384Z] [DEBUG] Processed: %s [35mlayout/_partial/gauges-analytics.ejs[39m
+[2025-06-03T09:47:01.386Z] [DEBUG] Processed: %s [35mlayout/_partial/google-analytics.ejs[39m
+[2025-06-03T09:47:01.388Z] [DEBUG] Processed: %s [35mlayout/_partial/article.ejs[39m
+[2025-06-03T09:47:01.389Z] [DEBUG] Processed: %s [35mlayout/_partial/head.ejs[39m
+[2025-06-03T09:47:01.391Z] [DEBUG] Processed: %s [35mlayout/_partial/header.ejs[39m
+[2025-06-03T09:47:01.394Z] [DEBUG] Processed: %s [35mlayout/_partial/mobile-nav.ejs[39m
+[2025-06-03T09:47:01.405Z] [DEBUG] Processed: %s [35mlayout/_partial/sidebar.ejs[39m
+[2025-06-03T09:47:01.408Z] [DEBUG] Processed: %s [35mlayout/_widget/archive.ejs[39m
+[2025-06-03T09:47:01.413Z] [DEBUG] Processed: %s [35mlayout/_widget/recent_posts.ejs[39m
+[2025-06-03T09:47:01.424Z] [DEBUG] Processed: %s [35mlayout/_widget/tagcloud.ejs[39m
+[2025-06-03T09:47:01.428Z] [DEBUG] Processed: %s [35mlayout/_partial/post/category.ejs[39m
+[2025-06-03T09:47:01.435Z] [DEBUG] Processed: %s [35mlayout/_partial/post/date.ejs[39m
+[2025-06-03T09:47:01.438Z] [DEBUG] Processed: %s [35mlayout/_partial/post/gallery.ejs[39m
+[2025-06-03T09:47:01.444Z] [DEBUG] Processed: %s [35mlayout/_partial/post/nav.ejs[39m
+[2025-06-03T09:47:01.453Z] [DEBUG] Processed: %s [35mlayout/_partial/post/tag.ejs[39m
+[2025-06-03T09:47:01.456Z] [DEBUG] Processed: %s [35mlayout/_partial/post/title.ejs[39m
+[2025-06-03T09:47:01.460Z] [DEBUG] Processed: %s [35mlayout/_widget/tag.ejs[39m
+[2025-06-03T09:47:01.469Z] [DEBUG] Processed: %s [35mlayout/_widget/category.ejs[39m
+[2025-06-03T09:47:01.472Z] [DEBUG] Processed: %s [35mlanguages/de-DE.yml[39m
+[2025-06-03T09:47:01.474Z] [DEBUG] Processed: %s [35mlanguages/de.yml[39m
+[2025-06-03T09:47:01.476Z] [DEBUG] Processed: %s [35mlanguages/default.yml[39m
+[2025-06-03T09:47:01.480Z] [DEBUG] Processed: %s [35mlanguages/en-GB.yml[39m
+[2025-06-03T09:47:01.487Z] [DEBUG] Processed: %s [35mlanguages/en.yml[39m
+[2025-06-03T09:47:01.490Z] [DEBUG] Processed: %s [35mlanguages/en-US.yml[39m
+[2025-06-03T09:47:01.499Z] [DEBUG] Processed: %s [35mlanguages/es-ES.yml[39m
+[2025-06-03T09:47:01.505Z] [DEBUG] Processed: %s [35mlanguages/fr-FR.yml[39m
+[2025-06-03T09:47:01.557Z] [DEBUG] Processed: %s [35mlanguages/hu-HU.yml[39m
+[2025-06-03T09:47:01.559Z] [DEBUG] Processed: %s [35mlanguages/fr.yml[39m
+[2025-06-03T09:47:01.561Z] [DEBUG] Processed: %s [35mlanguages/hu.yml[39m
+[2025-06-03T09:47:01.588Z] [DEBUG] Processed: %s [35mlanguages/es.yml[39m
+[2025-06-03T09:47:01.591Z] [DEBUG] Processed: %s [35mlanguages/it-IT.yml[39m
+[2025-06-03T09:47:01.594Z] [DEBUG] Processed: %s [35mlanguages/ja-JP.yml[39m
+[2025-06-03T09:47:01.600Z] [DEBUG] Processed: %s [35mlanguages/ja.yml[39m
+[2025-06-03T09:47:01.602Z] [DEBUG] Processed: %s [35mlanguages/ko-KR.yml[39m
+[2025-06-03T09:47:01.606Z] [DEBUG] Processed: %s [35mlanguages/ko.yml[39m
+[2025-06-03T09:47:01.608Z] [DEBUG] Processed: %s [35mlanguages/it.yml[39m
+[2025-06-03T09:47:01.610Z] [DEBUG] Processed: %s [35mlanguages/mn-MN.yml[39m
+[2025-06-03T09:47:01.616Z] [DEBUG] Processed: %s [35mlanguages/mn.yml[39m
+[2025-06-03T09:47:01.617Z] [DEBUG] Processed: %s [35mlanguages/nl.yml[39m
+[2025-06-03T09:47:01.619Z] [DEBUG] Processed: %s [35mlanguages/no.yml[39m
+[2025-06-03T09:47:01.621Z] [DEBUG] Processed: %s [35mlanguages/nl-NL.yml[39m
+[2025-06-03T09:47:01.622Z] [DEBUG] Processed: %s [35mlanguages/pt.yml[39m
+[2025-06-03T09:47:01.625Z] [DEBUG] Processed: %s [35mlanguages/pt-PT.yml[39m
+[2025-06-03T09:47:01.627Z] [DEBUG] Processed: %s [35mlanguages/ru-RU.yml[39m
+[2025-06-03T09:47:01.634Z] [DEBUG] Processed: %s [35mlanguages/ru.yml[39m
+[2025-06-03T09:47:01.636Z] [DEBUG] Processed: %s [35mlanguages/th-TH.yml[39m
+[2025-06-03T09:47:01.638Z] [DEBUG] Processed: %s [35mlanguages/th.yml[39m
+[2025-06-03T09:47:01.639Z] [DEBUG] Processed: %s [35mlanguages/zh-CN.yml[39m
+[2025-06-03T09:47:01.641Z] [DEBUG] Processed: %s [35mlanguages/tr.yml[39m
+[2025-06-03T09:47:01.643Z] [DEBUG] Processed: %s [35mlanguages/zh-TW.yml[39m
+[2025-06-03T09:47:01.646Z] [DEBUG] Processed: %s [35m_config.yml[39m
+[2025-06-03T09:47:01.663Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\groupe-3\index.md[39m
+[2025-06-03T09:47:01.668Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\groupe-2\index.md[39m
+[2025-06-03T09:47:01.669Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\groupe-1\index.md[39m
+[2025-06-03T09:47:01.671Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores-session-1\index.md[39m
+[2025-06-03T09:47:01.673Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-1\retour\index.md[39m
+[2025-06-03T09:47:01.675Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-3\aller\index.md[39m
+[2025-06-03T09:47:01.677Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-1\aller\index.md[39m
+[2025-06-03T09:47:01.684Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-2\retour\index.md[39m
+[2025-06-03T09:47:01.687Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-2\aller\index.md[39m
+[2025-06-03T09:47:01.688Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-3\retour\index.md[39m
+[2025-06-03T09:47:01.690Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores-session-3\index.md[39m
+[2025-06-03T09:47:01.691Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\delta\index.md[39m
+[2025-06-03T09:47:01.697Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\test béta\index.md[39m
+[2025-06-03T09:47:01.700Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\test charli\index.md[39m
+[2025-06-03T09:47:01.702Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\test alpha\index.md[39m
+[2025-06-03T09:47:01.704Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-1\aller\index.md[39m
+[2025-06-03T09:47:01.705Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-2\retour\index.md[39m
+[2025-06-03T09:47:01.707Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-3\aller\index.md[39m
+[2025-06-03T09:47:01.709Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-1\retour\index.md[39m
+[2025-06-03T09:47:01.713Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-3\retour\index.md[39m
+[2025-06-03T09:47:01.716Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-2\aller\index.md[39m
+[2025-06-03T09:47:01.718Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\test2357\index.md[39m
+[2025-06-03T09:47:01.720Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\test2358\index.md[39m
+[2025-06-03T09:47:01.821Z] [DEBUG] Generator: %s [35masset[39m
+[2025-06-03T09:47:01.823Z] [DEBUG] Generator: %s [35mpage[39m
+[2025-06-03T09:47:01.826Z] [DEBUG] Generator: %s [35mpost[39m
+[2025-06-03T09:47:01.833Z] [DEBUG] Generator: %s [35mindex[39m
+[2025-06-03T09:47:01.835Z] [DEBUG] Generator: %s [35mcategory[39m
+[2025-06-03T09:47:01.837Z] [DEBUG] Generator: %s [35marchive[39m
+[2025-06-03T09:47:01.840Z] [DEBUG] Generator: %s [35mxml[39m
+[2025-06-03T09:47:01.865Z] [DEBUG] Generator: %s [35mtag[39m
+[2025-06-03T09:47:01.886Z] [INFO ] Chargement du plugin hexo-admin-ehc.js
+[2025-06-03T09:47:02.137Z] [INFO ] Changement détecté dans _data\db.json
+[2025-06-03T09:47:02.140Z] [INFO ] Synchronisation du dépôt ./source...
+[2025-06-03T09:47:02.159Z] [INFO ] Chargement du plugin hexo-cli.js
+[2025-06-03T09:47:02.172Z] [INFO ] Changement détecté dans _data\db.json
+[2025-06-03T09:47:02.176Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:47:02.185Z] [INFO ] Changement détecté dans _data\db.json
+[2025-06-03T09:47:02.189Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:47:02.200Z] [INFO ] Changement détecté dans _data\db.json
+[2025-06-03T09:47:02.210Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:47:02.454Z] [INFO ] Chargement du plugin hexo-front-matter.js
+[2025-06-03T09:47:02.458Z] [INFO ] Des modifications ont été détectées dans ./source. Commit en cours...
+[2025-06-03T09:47:02.497Z] [INFO ] Chargement du plugin hexo-fs.js
+[2025-06-03T09:47:02.605Z] [INFO ] Chargement du plugin hexo-generator-archive.js
+[2025-06-03T09:47:02.611Z] [INFO ] Chargement du plugin hexo-generator-category.js
+[2025-06-03T09:47:02.616Z] [INFO ] Chargement du plugin hexo-generator-index.js
+[2025-06-03T09:47:02.620Z] [INFO ] Chargement du plugin hexo-generator-search.js
+[2025-06-03T09:47:02.658Z] [INFO ] Chargement du plugin hexo-generator-tag.js
+[2025-06-03T09:47:02.664Z] [INFO ] Chargement du plugin hexo-i18n.js
+[2025-06-03T09:47:02.669Z] [INFO ] Chargement du plugin hexo-log.js
+[2025-06-03T09:47:02.674Z] [INFO ] Chargement du plugin hexo-pagination.js
+[2025-06-03T09:47:02.680Z] [INFO ] Chargement du plugin hexo-recommended-posts.js
+[2025-06-03T09:47:02.999Z] [INFO ] Chargement du plugin hexo-renderer-ejs.js
+[2025-06-03T09:47:03.020Z] [INFO ] Chargement du plugin hexo-renderer-marked.js
+[2025-06-03T09:47:03.537Z] [INFO ] Chargement du plugin hexo-renderer-stylus.js
+[2025-06-03T09:47:03.540Z] [INFO ] Modifications commitées pour ./source.
+[2025-06-03T09:47:03.633Z] [INFO ] Chargement du plugin hexo-server.js
+[2025-06-03T09:47:03.828Z] [INFO ] Chargement du plugin hexo-util.js
+[2025-06-03T09:47:03.928Z] [INFO ] État de Hexo: [object Object]
+[2025-06-03T09:47:03.964Z] [INFO ] Start processing
+[2025-06-03T09:47:04.127Z] [DEBUG] Processed: %s [35mhexo-admin-ehc-images.json[39m
+[2025-06-03T09:47:04.199Z] [DEBUG] Processed: %s [35m_posts/test.md[39m
+[2025-06-03T09:47:04.221Z] [DEBUG] Processed: %s [35mgroupe-1/index.md[39m
+[2025-06-03T09:47:04.223Z] [DEBUG] Processed: %s [35mgroupe-2/index.md[39m
+[2025-06-03T09:47:04.230Z] [DEBUG] Processed: %s [35mgroupe-3/index.md[39m
+[2025-06-03T09:47:04.237Z] [DEBUG] Processed: %s [35mscores-session-1/index.md[39m
+[2025-06-03T09:47:04.242Z] [DEBUG] Processed: %s [35mscores-session-3/index.md[39m
+[2025-06-03T09:47:04.252Z] [DEBUG] Processed: %s [35mteams/delta.md[39m
+[2025-06-03T09:47:04.254Z] [DEBUG] Processed: %s [35mteams/test alpha.md[39m
+[2025-06-03T09:47:04.256Z] [DEBUG] Processed: %s [35mteams/test béta.md[39m
+[2025-06-03T09:47:04.258Z] [DEBUG] Processed: %s [35mteams/test charli.md[39m
+[2025-06-03T09:47:04.266Z] [DEBUG] Processed: %s [35mtest2357/index.md[39m
+[2025-06-03T09:47:04.269Z] [DEBUG] Processed: %s [35mtest2358/index.md[39m
+[2025-06-03T09:47:04.271Z] [DEBUG] Processed: %s [35mtestpage/index.md[39m
+[2025-06-03T09:47:04.273Z] [DEBUG] Processed: %s [35mteams/delta/index.md[39m
+[2025-06-03T09:47:04.281Z] [DEBUG] Processed: %s [35mteams/test alpha/index.md[39m
+[2025-06-03T09:47:04.283Z] [DEBUG] Processed: %s [35mteams/test béta/index.md[39m
+[2025-06-03T09:47:04.285Z] [DEBUG] Processed: %s [35mteams/test charli/index.md[39m
+[2025-06-03T09:47:04.287Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:47:04.290Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:47:04.292Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:47:04.301Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:47:04.303Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:47:04.305Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/aller/index.md[39m
+[2025-06-03T09:47:04.307Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:47:04.315Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/retour/index.md[39m
+[2025-06-03T09:47:04.317Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/aller/index.md[39m
+[2025-06-03T09:47:04.319Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/retour/index.md[39m
+[2025-06-03T09:47:04.321Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/aller/index.md[39m
+[2025-06-03T09:47:04.324Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/retour/index.md[39m
+[2025-06-03T09:47:04.349Z] [DEBUG] Processed: %s [35msource/css/style.styl[39m
+[2025-06-03T09:47:04.354Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.css[39m
+[2025-06-03T09:47:04.357Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.js[39m
+[2025-06-03T09:47:04.366Z] [DEBUG] Processed: %s [35msource/js/jquery-3.6.4.min.js[39m
+[2025-06-03T09:47:04.368Z] [DEBUG] Processed: %s [35msource/js/script.js[39m
+[2025-06-03T09:47:04.371Z] [DEBUG] Processed: %s [35msource/css/images/banner.jpg[39m
+[2025-06-03T09:47:04.391Z] [DEBUG] Processed: %s [35m_data/db.json[39m
+[2025-06-03T09:47:04.403Z] [DEBUG] Processed: %s [35m_data/test.json[39m
+[2025-06-03T09:47:04.406Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:47:04.408Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:47:04.414Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:47:04.417Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:47:04.422Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:47:04.428Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:47:04.470Z] [DEBUG] Theme config loaded.
+[2025-06-03T09:47:04.481Z] [DEBUG] Processed: %s [35mlayout/archive.ejs[39m
+[2025-06-03T09:47:04.504Z] [DEBUG] Processed: %s [35mlayout/category.ejs[39m
+[2025-06-03T09:47:04.515Z] [DEBUG] Processed: %s [35mlayout/index.ejs[39m
+[2025-06-03T09:47:04.530Z] [DEBUG] Processed: %s [35mlayout/page.ejs[39m
+[2025-06-03T09:47:04.541Z] [DEBUG] Processed: %s [35mlayout/layout.ejs[39m
+[2025-06-03T09:47:04.556Z] [DEBUG] Processed: %s [35mlayout/post.ejs[39m
+[2025-06-03T09:47:04.565Z] [DEBUG] Processed: %s [35mlayout/tag.ejs[39m
+[2025-06-03T09:47:04.573Z] [DEBUG] Processed: %s [35mlayout/_partial/after-footer.ejs[39m
+[2025-06-03T09:47:04.579Z] [DEBUG] Processed: %s [35mlayout/_partial/archive-post.ejs[39m
+[2025-06-03T09:47:04.581Z] [DEBUG] Processed: %s [35mlayout/_partial/archive.ejs[39m
+[2025-06-03T09:47:04.584Z] [DEBUG] Processed: %s [35mlayout/_partial/footer.ejs[39m
+[2025-06-03T09:47:04.589Z] [DEBUG] Processed: %s [35mlayout/_partial/gauges-analytics.ejs[39m
+[2025-06-03T09:47:04.600Z] [DEBUG] Processed: %s [35mlayout/_partial/google-analytics.ejs[39m
+[2025-06-03T09:47:04.631Z] [DEBUG] Processed: %s [35mlayout/_partial/head.ejs[39m
+[2025-06-03T09:47:04.655Z] [DEBUG] Processed: %s [35mlayout/_partial/mobile-nav.ejs[39m
+[2025-06-03T09:47:04.680Z] [DEBUG] Processed: %s [35mlayout/_partial/header.ejs[39m
+[2025-06-03T09:47:04.687Z] [DEBUG] Processed: %s [35mlayout/_partial/sidebar.ejs[39m
+[2025-06-03T09:47:04.690Z] [DEBUG] Processed: %s [35mlayout/_partial/article.ejs[39m
+[2025-06-03T09:47:04.700Z] [DEBUG] Processed: %s [35mlayout/_widget/archive.ejs[39m
+[2025-06-03T09:47:04.713Z] [DEBUG] Processed: %s [35mlayout/_widget/category.ejs[39m
+[2025-06-03T09:47:04.718Z] [DEBUG] Processed: %s [35mlayout/_widget/recent_posts.ejs[39m
+[2025-06-03T09:47:04.722Z] [DEBUG] Processed: %s [35mlayout/_widget/tag.ejs[39m
+[2025-06-03T09:47:04.724Z] [DEBUG] Processed: %s [35mlayout/_widget/tagcloud.ejs[39m
+[2025-06-03T09:47:04.773Z] [DEBUG] Processed: %s [35mlayout/_partial/post/category.ejs[39m
+[2025-06-03T09:47:04.900Z] [DEBUG] Processed: %s [35mlayout/_partial/post/date.ejs[39m
+[2025-06-03T09:47:04.997Z] [DEBUG] Processed: %s [35mlayout/_partial/post/gallery.ejs[39m
+[2025-06-03T09:47:05.061Z] [DEBUG] Processed: %s [35mlayout/_partial/post/nav.ejs[39m
+[2025-06-03T09:47:05.088Z] [DEBUG] Processed: %s [35mlayout/_partial/post/tag.ejs[39m
+[2025-06-03T09:47:05.499Z] [DEBUG] Processed: %s [35mlanguages/de-DE.yml[39m
+[2025-06-03T09:47:05.771Z] [DEBUG] Processed: %s [35mlanguages/de.yml[39m
+[2025-06-03T09:47:06.171Z] [DEBUG] Processed: %s [35mlanguages/default.yml[39m
+[2025-06-03T09:47:06.312Z] [DEBUG] Processed: %s [35mlanguages/en-GB.yml[39m
+[2025-06-03T09:47:06.347Z] [DEBUG] Processed: %s [35mlanguages/en-US.yml[39m
+[2025-06-03T09:47:06.402Z] [DEBUG] Processed: %s [35mlanguages/es-ES.yml[39m
+[2025-06-03T09:47:06.453Z] [DEBUG] Processed: %s [35mlanguages/es.yml[39m
+[2025-06-03T09:47:06.543Z] [DEBUG] Processed: %s [35mlanguages/en.yml[39m
+[2025-06-03T09:47:06.601Z] [DEBUG] Processed: %s [35mlanguages/fr-FR.yml[39m
+[2025-06-03T09:47:06.610Z] [DEBUG] Processed: %s [35mlanguages/fr.yml[39m
+[2025-06-03T09:47:06.616Z] [DEBUG] Processed: %s [35mlanguages/hu-HU.yml[39m
+[2025-06-03T09:47:06.619Z] [DEBUG] Processed: %s [35mlanguages/hu.yml[39m
+[2025-06-03T09:47:06.627Z] [DEBUG] Processed: %s [35mlanguages/it.yml[39m
+[2025-06-03T09:47:06.647Z] [DEBUG] Processed: %s [35mlanguages/ja-JP.yml[39m
+[2025-06-03T09:47:06.653Z] [DEBUG] Processed: %s [35mlanguages/ja.yml[39m
+[2025-06-03T09:47:06.665Z] [DEBUG] Processed: %s [35mlanguages/ko-KR.yml[39m
+[2025-06-03T09:47:06.667Z] [DEBUG] Processed: %s [35mlanguages/it-IT.yml[39m
+[2025-06-03T09:47:06.670Z] [DEBUG] Processed: %s [35mlanguages/ko.yml[39m
+[2025-06-03T09:47:06.681Z] [DEBUG] Processed: %s [35mlanguages/mn-MN.yml[39m
+[2025-06-03T09:47:06.684Z] [DEBUG] Processed: %s [35mlanguages/mn.yml[39m
+[2025-06-03T09:47:06.686Z] [DEBUG] Processed: %s [35mlanguages/nl-NL.yml[39m
+[2025-06-03T09:47:06.690Z] [DEBUG] Processed: %s [35mlanguages/nl.yml[39m
+[2025-06-03T09:47:06.699Z] [DEBUG] Processed: %s [35mlanguages/no.yml[39m
+[2025-06-03T09:47:06.701Z] [DEBUG] Processed: %s [35mlanguages/pt-PT.yml[39m
+[2025-06-03T09:47:06.703Z] [DEBUG] Processed: %s [35mlanguages/pt.yml[39m
+[2025-06-03T09:47:06.705Z] [DEBUG] Processed: %s [35mlanguages/ru-RU.yml[39m
+[2025-06-03T09:47:06.796Z] [DEBUG] Processed: %s [35mlanguages/ru.yml[39m
+[2025-06-03T09:47:06.818Z] [DEBUG] Processed: %s [35mlanguages/th-TH.yml[39m
+[2025-06-03T09:47:06.822Z] [DEBUG] Processed: %s [35mlanguages/th.yml[39m
+[2025-06-03T09:47:06.828Z] [DEBUG] Processed: %s [35mlanguages/tr.yml[39m
+[2025-06-03T09:47:06.830Z] [DEBUG] Processed: %s [35mlanguages/zh-CN.yml[39m
+[2025-06-03T09:47:06.847Z] [DEBUG] Processed: %s [35mlanguages/zh-TW.yml[39m
+[2025-06-03T09:47:06.849Z] [DEBUG] Processed: %s [35m_config.yml[39m
+[2025-06-03T09:47:06.853Z] [DEBUG] Processed: %s [35mlayout/_partial/post/title.ejs[39m
+[2025-06-03T09:47:07.271Z] [DEBUG] Generator: %s [35masset[39m
+[2025-06-03T09:47:07.275Z] [DEBUG] Generator: %s [35mpage[39m
+[2025-06-03T09:47:07.276Z] [DEBUG] Generator: %s [35mpost[39m
+[2025-06-03T09:47:07.279Z] [DEBUG] Generator: %s [35mindex[39m
+[2025-06-03T09:47:07.282Z] [DEBUG] Generator: %s [35mcategory[39m
+[2025-06-03T09:47:07.285Z] [DEBUG] Generator: %s [35marchive[39m
+[2025-06-03T09:47:07.288Z] [DEBUG] Generator: %s [35mxml[39m
+[2025-06-03T09:47:07.347Z] [DEBUG] Generator: %s [35mtag[39m
+[2025-06-03T09:47:07.401Z] [INFO ] Hexo is running at %s . Press Ctrl+C to stop. [4mhttp://127.0.0.1:8080/[24m
+[2025-06-03T09:47:07.403Z] [INFO ] Serveur Hexo démarré sur http://127.0.0.1:8080
+[2025-06-03T09:47:07.730Z] [INFO ] Dépôt ./source synchronisé avec succès.
+[2025-06-03T09:47:11.253Z] [INFO ] Modifications poussées pour ./source.
+[2025-06-03T09:47:36.008Z] [DEBUG] Rendering HTML index: [35mindex.html[39m
+[2025-06-03T09:47:37.025Z] [ERROR] Asset render failed: %s [35mcss/style.css[39m
+[2025-06-03T09:47:37.245Z] [INFO ] Changement détecté dans www\images\DASHENG-900x700-1.png
+[2025-06-03T09:47:37.252Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:47:37.772Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:47:38.006Z] [INFO ] 
+[2025-06-03T09:47:38.016Z] [INFO ] Issue created: https://github.com/vbcq-volley/temp/issues/1985
+[2025-06-03T09:47:41.050Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:50:13.679Z] [INFO ] Changement détecté dans hexo-admin-ehc.js
+[2025-06-03T09:50:13.809Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:50:13.967Z] [INFO ] Changement détecté dans hexo-admin-ehc.js
+[2025-06-03T09:50:13.972Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:50:13.976Z] [INFO ] Changement détecté dans hexo-admin-ehc.js
+[2025-06-03T09:50:14.055Z] [INFO ] Une synchronisation est déjà en cours pour ./dist, nouvelle demande ignorée.
+[2025-06-03T09:50:14.884Z] [INFO ] Des modifications ont été détectées dans ./dist. Commit en cours...
+[2025-06-03T09:50:23.868Z] [INFO ] Modifications commitées pour ./dist.
+[2025-06-03T09:50:27.359Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:50:33.255Z] [INFO ] Modifications poussées pour ./dist.
+[2025-06-03T09:52:29.429Z] [INFO ] Démarrage de l'application...
+[2025-06-03T09:52:30.642Z] [INFO ] Vous utilisez la dernière version disponible
+[2025-06-03T09:52:31.058Z] [INFO ] Synchronisation du dépôt ./dist...
+[2025-06-03T09:52:33.034Z] [INFO ] Aucune modification détectée dans ./dist.
+[2025-06-03T09:52:38.494Z] [INFO ] Dépôt ./dist synchronisé avec succès.
+[2025-06-03T09:52:38.500Z] [INFO ] Surveillance du dépôt ./dist activée
+[2025-06-03T09:52:38.503Z] [INFO ] Synchronisation du dépôt ./source...
+[2025-06-03T09:52:39.101Z] [INFO ] Aucune modification détectée dans ./source.
+[2025-06-03T09:52:45.309Z] [INFO ] Dépôt ./source synchronisé avec succès.
+[2025-06-03T09:52:45.342Z] [INFO ] Surveillance du dépôt ./source activée
+[2025-06-03T09:52:46.316Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\dist
+[2025-06-03T09:52:48.174Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\source
+[2025-06-03T09:52:49.808Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\themes
+[2025-06-03T09:52:50.213Z] [INFO ] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\node_modules
+[2025-06-03T09:52:50.223Z] [INFO ] Le module hexo existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo
+[2025-06-03T09:52:50.236Z] [INFO ] function
+[2025-06-03T09:52:50.240Z] [INFO ] Résolution du module: hexo
+[2025-06-03T09:52:52.239Z] [INFO ] Hexo chargé avec succès
+[2025-06-03T09:52:52.256Z] [INFO ] Le module hexo-theme-landscape existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo-theme-landscape
+[2025-06-03T09:52:52.380Z] [DEBUG] Hexo version: %s [35m7.3.0[39m
+[2025-06-03T09:52:52.676Z] [DEBUG] Working directory: %s [35m~\adminpanel\[39m
+[2025-06-03T09:52:53.598Z] [DEBUG] Config loaded: %s [35m~\adminpanel\_config.yml[39m
+[2025-06-03T09:52:53.661Z] [INFO ] Validating config
+[2025-06-03T09:52:55.523Z] [DEBUG] Plugin loaded: %s [35mhexo-front-matter[39m
+[2025-06-03T09:52:55.535Z] [DEBUG] Plugin loaded: %s [35mhexo-fs[39m
+[2025-06-03T09:52:55.544Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-category[39m
+[2025-06-03T09:52:55.552Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-index[39m
+[2025-06-03T09:52:58.413Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-archive[39m
+[2025-06-03T09:52:58.438Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-tag[39m
+[2025-06-03T09:52:58.447Z] [DEBUG] Plugin loaded: %s [35mhexo-generator-search[39m
+[2025-06-03T09:52:58.451Z] [DEBUG] Plugin loaded: %s [35mhexo-recommended-posts[39m
+[2025-06-03T09:52:58.459Z] [DEBUG] Plugin loaded: %s [35mhexo-renderer-ejs[39m
+[2025-06-03T09:52:58.472Z] [DEBUG] Plugin loaded: %s [35mhexo-renderer-stylus[39m
+[2025-06-03T09:52:58.507Z] [DEBUG] Plugin loaded: %s [35mhexo-renderer-marked[39m
+[2025-06-03T09:52:59.331Z] [DEBUG] Plugin loaded: %s [35mhexo-util[39m
+[2025-06-03T09:52:59.677Z] [DEBUG] Plugin loaded: %s [35mhexo-tag-bootstrap[39m
+[2025-06-03T09:52:59.777Z] [DEBUG] Plugin loaded: %s [35mhexo-server[39m
+[2025-06-03T09:53:00.021Z] [DEBUG] Script loaded: %s [35mnode_modules\hexo-theme-landscape\scripts\fancybox.js[39m
+[2025-06-03T09:53:00.186Z] [DEBUG] Loading database.
+[2025-06-03T09:53:00.331Z] [INFO ] Start processing
+[2025-06-03T09:53:01.078Z] [DEBUG] Processed: %s [35mhexo-admin-ehc-images.json[39m
+[2025-06-03T09:53:01.148Z] [DEBUG] Processed: %s [35mteams/delta.md[39m
+[2025-06-03T09:53:01.191Z] [DEBUG] Processed: %s [35mteams/test alpha.md[39m
+[2025-06-03T09:53:01.236Z] [DEBUG] Processed: %s [35mteams/test béta.md[39m
+[2025-06-03T09:53:01.264Z] [DEBUG] Processed: %s [35mteams/test charli.md[39m
+[2025-06-03T09:53:01.310Z] [DEBUG] Processed: %s [35mtestpage/index.md[39m
+[2025-06-03T09:53:01.312Z] [DEBUG] Processed: %s [35m_posts/test.md[39m
+[2025-06-03T09:53:01.335Z] [DEBUG] Processed: %s [35msource/css/style.styl[39m
+[2025-06-03T09:53:01.344Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.css[39m
+[2025-06-03T09:53:01.385Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.js[39m
+[2025-06-03T09:53:01.394Z] [DEBUG] Processed: %s [35msource/js/jquery-3.6.4.min.js[39m
+[2025-06-03T09:53:01.401Z] [DEBUG] Processed: %s [35msource/js/script.js[39m
+[2025-06-03T09:53:01.405Z] [DEBUG] Processed: %s [35msource/css/images/banner.jpg[39m
+[2025-06-03T09:53:01.476Z] [DEBUG] Processed: %s [35mgroupe-2/index.md[39m
+[2025-06-03T09:53:01.479Z] [DEBUG] Processed: %s [35m_data/db.json[39m
+[2025-06-03T09:53:01.488Z] [DEBUG] Processed: %s [35mgroupe-1/index.md[39m
+[2025-06-03T09:53:01.505Z] [DEBUG] Processed: %s [35mscores-session-1/index.md[39m
+[2025-06-03T09:53:01.512Z] [DEBUG] Processed: %s [35mscores-session-3/index.md[39m
+[2025-06-03T09:53:01.522Z] [DEBUG] Processed: %s [35mtest2357/index.md[39m
+[2025-06-03T09:53:01.531Z] [DEBUG] Processed: %s [35mtest2358/index.md[39m
+[2025-06-03T09:53:01.552Z] [DEBUG] Processed: %s [35mgroupe-3/index.md[39m
+[2025-06-03T09:53:01.558Z] [DEBUG] Processed: %s [35mteams/delta/index.md[39m
+[2025-06-03T09:53:01.564Z] [DEBUG] Processed: %s [35mteams/test béta/index.md[39m
+[2025-06-03T09:53:01.573Z] [DEBUG] Processed: %s [35mteams/test alpha/index.md[39m
+[2025-06-03T09:53:01.577Z] [DEBUG] Processed: %s [35mteams/test charli/index.md[39m
+[2025-06-03T09:53:01.589Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/aller/index.md[39m
+[2025-06-03T09:53:01.597Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/retour/index.md[39m
+[2025-06-03T09:53:01.606Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/aller/index.md[39m
+[2025-06-03T09:53:01.614Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/retour/index.md[39m
+[2025-06-03T09:53:01.624Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/aller/index.md[39m
+[2025-06-03T09:53:01.635Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:53:01.653Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/retour/index.md[39m
+[2025-06-03T09:53:01.667Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:53:01.680Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:53:01.989Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:53:02.332Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:53:02.507Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:53:02.585Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:53:02.610Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:53:02.624Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:53:02.641Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:53:02.646Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:53:02.653Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:53:02.659Z] [DEBUG] Processed: %s [35m_data/test.json[39m
+[2025-06-03T09:53:02.748Z] [DEBUG] Theme config loaded.
+[2025-06-03T09:53:02.751Z] [DEBUG] Processed: %s [35mlayout/archive.ejs[39m
+[2025-06-03T09:53:02.756Z] [DEBUG] Processed: %s [35mlayout/category.ejs[39m
+[2025-06-03T09:53:02.760Z] [DEBUG] Processed: %s [35mlayout/index.ejs[39m
+[2025-06-03T09:53:02.769Z] [DEBUG] Processed: %s [35mlayout/layout.ejs[39m
+[2025-06-03T09:53:02.772Z] [DEBUG] Processed: %s [35mlayout/page.ejs[39m
+[2025-06-03T09:53:02.775Z] [DEBUG] Processed: %s [35mlayout/post.ejs[39m
+[2025-06-03T09:53:02.778Z] [DEBUG] Processed: %s [35mlayout/tag.ejs[39m
+[2025-06-03T09:53:02.787Z] [DEBUG] Processed: %s [35mlayout/_partial/after-footer.ejs[39m
+[2025-06-03T09:53:02.793Z] [DEBUG] Processed: %s [35mlayout/_partial/archive-post.ejs[39m
+[2025-06-03T09:53:02.796Z] [DEBUG] Processed: %s [35mlayout/_partial/archive.ejs[39m
+[2025-06-03T09:53:02.817Z] [DEBUG] Processed: %s [35mlayout/_partial/article.ejs[39m
+[2025-06-03T09:53:02.852Z] [DEBUG] Processed: %s [35mlayout/_partial/footer.ejs[39m
+[2025-06-03T09:53:02.973Z] [DEBUG] Processed: %s [35mlayout/_partial/head.ejs[39m
+[2025-06-03T09:53:02.992Z] [DEBUG] Processed: %s [35mlayout/_partial/header.ejs[39m
+[2025-06-03T09:53:03.001Z] [DEBUG] Processed: %s [35mlayout/_partial/google-analytics.ejs[39m
+[2025-06-03T09:53:03.006Z] [DEBUG] Processed: %s [35mlayout/_widget/archive.ejs[39m
+[2025-06-03T09:53:03.009Z] [DEBUG] Processed: %s [35mlayout/_partial/sidebar.ejs[39m
+[2025-06-03T09:53:03.013Z] [DEBUG] Processed: %s [35mlayout/_widget/category.ejs[39m
+[2025-06-03T09:53:03.022Z] [DEBUG] Processed: %s [35mlayout/_widget/recent_posts.ejs[39m
+[2025-06-03T09:53:03.028Z] [DEBUG] Processed: %s [35mlayout/_widget/tagcloud.ejs[39m
+[2025-06-03T09:53:03.043Z] [DEBUG] Processed: %s [35mlayout/_partial/gauges-analytics.ejs[39m
+[2025-06-03T09:53:03.054Z] [DEBUG] Processed: %s [35mlayout/_partial/mobile-nav.ejs[39m
+[2025-06-03T09:53:03.058Z] [DEBUG] Processed: %s [35mlayout/_widget/tag.ejs[39m
+[2025-06-03T09:53:03.067Z] [DEBUG] Processed: %s [35mlayout/_partial/post/date.ejs[39m
+[2025-06-03T09:53:03.076Z] [DEBUG] Processed: %s [35mlayout/_partial/post/category.ejs[39m
+[2025-06-03T09:53:03.104Z] [DEBUG] Processed: %s [35mlayout/_partial/post/gallery.ejs[39m
+[2025-06-03T09:53:03.112Z] [DEBUG] Processed: %s [35mlayout/_partial/post/nav.ejs[39m
+[2025-06-03T09:53:03.138Z] [DEBUG] Processed: %s [35mlayout/_partial/post/tag.ejs[39m
+[2025-06-03T09:53:03.185Z] [DEBUG] Processed: %s [35mlanguages/de.yml[39m
+[2025-06-03T09:53:03.193Z] [DEBUG] Processed: %s [35mlanguages/de-DE.yml[39m
+[2025-06-03T09:53:03.202Z] [DEBUG] Processed: %s [35mlanguages/default.yml[39m
+[2025-06-03T09:53:03.205Z] [DEBUG] Processed: %s [35mlanguages/en-US.yml[39m
+[2025-06-03T09:53:03.209Z] [DEBUG] Processed: %s [35mlanguages/en-GB.yml[39m
+[2025-06-03T09:53:03.218Z] [DEBUG] Processed: %s [35mlanguages/en.yml[39m
+[2025-06-03T09:53:03.222Z] [DEBUG] Processed: %s [35mlanguages/es.yml[39m
+[2025-06-03T09:53:03.230Z] [DEBUG] Processed: %s [35mlanguages/es-ES.yml[39m
+[2025-06-03T09:53:03.240Z] [DEBUG] Processed: %s [35mlanguages/fr.yml[39m
+[2025-06-03T09:53:03.259Z] [DEBUG] Processed: %s [35mlanguages/fr-FR.yml[39m
+[2025-06-03T09:53:03.270Z] [DEBUG] Processed: %s [35mlanguages/hu-HU.yml[39m
+[2025-06-03T09:53:03.335Z] [DEBUG] Processed: %s [35mlanguages/it-IT.yml[39m
+[2025-06-03T09:53:03.492Z] [DEBUG] Processed: %s [35mlanguages/hu.yml[39m
+[2025-06-03T09:53:03.666Z] [DEBUG] Processed: %s [35mlanguages/it.yml[39m
+[2025-06-03T09:53:03.787Z] [DEBUG] Processed: %s [35mlanguages/ja-JP.yml[39m
+[2025-06-03T09:53:03.793Z] [DEBUG] Processed: %s [35mlanguages/ko-KR.yml[39m
+[2025-06-03T09:53:03.820Z] [DEBUG] Processed: %s [35mlanguages/ko.yml[39m
+[2025-06-03T09:53:03.833Z] [DEBUG] Processed: %s [35mlanguages/mn-MN.yml[39m
+[2025-06-03T09:53:03.837Z] [DEBUG] Processed: %s [35mlanguages/mn.yml[39m
+[2025-06-03T09:53:04.045Z] [DEBUG] Processed: %s [35mlanguages/ja.yml[39m
+[2025-06-03T09:53:04.116Z] [DEBUG] Processed: %s [35mlanguages/nl.yml[39m
+[2025-06-03T09:53:04.167Z] [DEBUG] Processed: %s [35mlanguages/no.yml[39m
+[2025-06-03T09:53:04.184Z] [DEBUG] Processed: %s [35mlanguages/pt-PT.yml[39m
+[2025-06-03T09:53:04.200Z] [DEBUG] Processed: %s [35mlanguages/pt.yml[39m
+[2025-06-03T09:53:04.223Z] [DEBUG] Processed: %s [35mlanguages/ru-RU.yml[39m
+[2025-06-03T09:53:04.244Z] [DEBUG] Processed: %s [35mlanguages/ru.yml[39m
+[2025-06-03T09:53:04.291Z] [DEBUG] Processed: %s [35mlanguages/th-TH.yml[39m
+[2025-06-03T09:53:04.334Z] [DEBUG] Processed: %s [35mlanguages/th.yml[39m
+[2025-06-03T09:53:04.362Z] [DEBUG] Processed: %s [35mlanguages/tr.yml[39m
+[2025-06-03T09:53:04.375Z] [DEBUG] Processed: %s [35mlanguages/zh-CN.yml[39m
+[2025-06-03T09:53:04.390Z] [DEBUG] Processed: %s [35mlanguages/zh-TW.yml[39m
+[2025-06-03T09:53:04.394Z] [DEBUG] Processed: %s [35mlanguages/nl-NL.yml[39m
+[2025-06-03T09:53:04.418Z] [DEBUG] Processed: %s [35m_config.yml[39m
+[2025-06-03T09:53:04.564Z] [DEBUG] Processed: %s [35mlayout/_partial/post/title.ejs[39m
+[2025-06-03T09:53:04.675Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\groupe-3\index.md[39m
+[2025-06-03T09:53:04.678Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\groupe-2\index.md[39m
+[2025-06-03T09:53:04.703Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\groupe-1\index.md[39m
+[2025-06-03T09:53:04.709Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores-session-1\index.md[39m
+[2025-06-03T09:53:04.723Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-1\retour\index.md[39m
+[2025-06-03T09:53:04.737Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-3\aller\index.md[39m
+[2025-06-03T09:53:04.741Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-1\aller\index.md[39m
+[2025-06-03T09:53:04.752Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-2\retour\index.md[39m
+[2025-06-03T09:53:04.755Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-2\aller\index.md[39m
+[2025-06-03T09:53:04.759Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-1\groupe-3\retour\index.md[39m
+[2025-06-03T09:53:04.769Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores-session-3\index.md[39m
+[2025-06-03T09:53:04.773Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\delta\index.md[39m
+[2025-06-03T09:53:04.777Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\test béta\index.md[39m
+[2025-06-03T09:53:04.789Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\test charli\index.md[39m
+[2025-06-03T09:53:04.801Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\teams\test alpha\index.md[39m
+[2025-06-03T09:53:04.805Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-1\aller\index.md[39m
+[2025-06-03T09:53:04.822Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-2\retour\index.md[39m
+[2025-06-03T09:53:04.834Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-3\aller\index.md[39m
+[2025-06-03T09:53:04.838Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-1\retour\index.md[39m
+[2025-06-03T09:53:05.017Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-3\retour\index.md[39m
+[2025-06-03T09:53:05.217Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\scores\session-3\groupe-2\aller\index.md[39m
+[2025-06-03T09:53:05.287Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\test2357\index.md[39m
+[2025-06-03T09:53:05.290Z] [DEBUG] Rendering post: %s [35mC:\Users\MPA\adminpanel\source\test2358\index.md[39m
+[2025-06-03T09:53:05.516Z] [DEBUG] Generator: %s [35masset[39m
+[2025-06-03T09:53:05.522Z] [DEBUG] Generator: %s [35mpage[39m
+[2025-06-03T09:53:05.534Z] [DEBUG] Generator: %s [35mpost[39m
+[2025-06-03T09:53:05.559Z] [DEBUG] Generator: %s [35mcategory[39m
+[2025-06-03T09:53:05.567Z] [DEBUG] Generator: %s [35mindex[39m
+[2025-06-03T09:53:05.570Z] [DEBUG] Generator: %s [35marchive[39m
+[2025-06-03T09:53:05.573Z] [DEBUG] Generator: %s [35mtag[39m
+[2025-06-03T09:53:05.582Z] [DEBUG] Generator: %s [35mxml[39m
+[2025-06-03T09:53:05.679Z] [INFO ] Chargement du plugin hexo-admin-ehc.js
+[2025-06-03T09:53:06.415Z] [INFO ] Changement détecté dans _data\db.json
+[2025-06-03T09:53:06.419Z] [INFO ] Synchronisation du dépôt ./source...
+[2025-06-03T09:53:06.467Z] [INFO ] Chargement du plugin hexo-cli.js
+[2025-06-03T09:53:06.516Z] [INFO ] Changement détecté dans _data\db.json
+[2025-06-03T09:53:06.567Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:53:06.609Z] [INFO ] Changement détecté dans _data\db.json
+[2025-06-03T09:53:06.655Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:53:06.697Z] [INFO ] Changement détecté dans _data\db.json
+[2025-06-03T09:53:06.724Z] [INFO ] Une synchronisation est déjà en cours pour ./source, nouvelle demande ignorée.
+[2025-06-03T09:53:07.577Z] [INFO ] Chargement du plugin hexo-front-matter.js
+[2025-06-03T09:53:07.730Z] [INFO ] Chargement du plugin hexo-fs.js
+[2025-06-03T09:53:08.277Z] [INFO ] Chargement du plugin hexo-generator-archive.js
+[2025-06-03T09:53:08.515Z] [INFO ] Des modifications ont été détectées dans ./source. Commit en cours...
+[2025-06-03T09:53:08.972Z] [INFO ] Chargement du plugin hexo-generator-category.js
+[2025-06-03T09:53:09.116Z] [INFO ] Chargement du plugin hexo-generator-index.js
+[2025-06-03T09:53:09.222Z] [INFO ] Chargement du plugin hexo-generator-search.js
+[2025-06-03T09:53:09.379Z] [INFO ] Chargement du plugin hexo-generator-tag.js
+[2025-06-03T09:53:09.464Z] [INFO ] Chargement du plugin hexo-i18n.js
+[2025-06-03T09:53:09.578Z] [INFO ] Chargement du plugin hexo-log.js
+[2025-06-03T09:53:09.639Z] [INFO ] Chargement du plugin hexo-pagination.js
+[2025-06-03T09:53:09.701Z] [INFO ] Chargement du plugin hexo-recommended-posts.js
+[2025-06-03T09:53:10.618Z] [INFO ] Chargement du plugin hexo-renderer-ejs.js
+[2025-06-03T09:53:10.664Z] [INFO ] Chargement du plugin hexo-renderer-marked.js
+[2025-06-03T09:53:11.760Z] [INFO ] Chargement du plugin hexo-renderer-stylus.js
+[2025-06-03T09:53:12.032Z] [INFO ] Modifications commitées pour ./source.
+[2025-06-03T09:53:12.267Z] [INFO ] Chargement du plugin hexo-server.js
+[2025-06-03T09:53:12.598Z] [INFO ] Chargement du plugin hexo-util.js
+[2025-06-03T09:53:12.992Z] [INFO ] État de Hexo: [object Object]
+[2025-06-03T09:53:13.223Z] [INFO ] Start processing
+[2025-06-03T09:53:13.422Z] [DEBUG] Processed: %s [35mhexo-admin-ehc-images.json[39m
+[2025-06-03T09:53:13.428Z] [DEBUG] Processed: %s [35mgroupe-1/index.md[39m
+[2025-06-03T09:53:13.430Z] [DEBUG] Processed: %s [35mgroupe-3/index.md[39m
+[2025-06-03T09:53:13.432Z] [DEBUG] Processed: %s [35mscores-session-3/index.md[39m
+[2025-06-03T09:53:13.434Z] [DEBUG] Processed: %s [35mscores-session-1/index.md[39m
+[2025-06-03T09:53:13.436Z] [DEBUG] Processed: %s [35mtest2357/index.md[39m
+[2025-06-03T09:53:13.442Z] [DEBUG] Processed: %s [35mtest2358/index.md[39m
+[2025-06-03T09:53:13.444Z] [DEBUG] Processed: %s [35mtestpage/index.md[39m
+[2025-06-03T09:53:13.447Z] [DEBUG] Processed: %s [35mteams/delta.md[39m
+[2025-06-03T09:53:13.449Z] [DEBUG] Processed: %s [35mteams/test alpha.md[39m
+[2025-06-03T09:53:13.451Z] [DEBUG] Processed: %s [35mteams/test béta.md[39m
+[2025-06-03T09:53:13.454Z] [DEBUG] Processed: %s [35mteams/test charli.md[39m
+[2025-06-03T09:53:13.456Z] [DEBUG] Processed: %s [35m_posts/test.md[39m
+[2025-06-03T09:53:13.459Z] [DEBUG] Processed: %s [35mgroupe-2/index.md[39m
+[2025-06-03T09:53:13.461Z] [DEBUG] Processed: %s [35mteams/delta/index.md[39m
+[2025-06-03T09:53:13.463Z] [DEBUG] Processed: %s [35mteams/test alpha/index.md[39m
+[2025-06-03T09:53:13.465Z] [DEBUG] Processed: %s [35mteams/test béta/index.md[39m
+[2025-06-03T09:53:13.467Z] [DEBUG] Processed: %s [35mteams/test charli/index.md[39m
+[2025-06-03T09:53:13.470Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:53:13.473Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:53:13.476Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:53:13.480Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:53:13.483Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:53:13.487Z] [DEBUG] Processed: %s [35mscores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:53:13.491Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/aller/index.md[39m
+[2025-06-03T09:53:13.494Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-1/retour/index.md[39m
+[2025-06-03T09:53:13.496Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/aller/index.md[39m
+[2025-06-03T09:53:13.498Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-2/retour/index.md[39m
+[2025-06-03T09:53:13.500Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/retour/index.md[39m
+[2025-06-03T09:53:13.504Z] [DEBUG] Processed: %s [35mscores/session-3/groupe-3/aller/index.md[39m
+[2025-06-03T09:53:13.509Z] [INFO ] Dépôt ./source synchronisé avec succès.
+[2025-06-03T09:53:13.540Z] [DEBUG] Processed: %s [35msource/css/style.styl[39m
+[2025-06-03T09:53:13.542Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.css[39m
+[2025-06-03T09:53:13.544Z] [DEBUG] Processed: %s [35msource/fancybox/jquery.fancybox.min.js[39m
+[2025-06-03T09:53:13.546Z] [DEBUG] Processed: %s [35msource/js/jquery-3.6.4.min.js[39m
+[2025-06-03T09:53:13.548Z] [DEBUG] Processed: %s [35msource/js/script.js[39m
+[2025-06-03T09:53:13.550Z] [DEBUG] Processed: %s [35msource/css/images/banner.jpg[39m
+[2025-06-03T09:53:13.557Z] [DEBUG] Processed: %s [35m_data/db.json[39m
+[2025-06-03T09:53:13.579Z] [DEBUG] Processed: %s [35m_data/test.json[39m
+[2025-06-03T09:53:13.592Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/aller/index.md[39m
+[2025-06-03T09:53:13.608Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/retour/index.md[39m
+[2025-06-03T09:53:13.623Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-3/retour/index.md[39m
+[2025-06-03T09:53:13.633Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/aller/index.md[39m
+[2025-06-03T09:53:13.666Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-2/aller/index.md[39m
+[2025-06-03T09:53:13.688Z] [DEBUG] Processed: %s [35m_posts/scores/session-1/groupe-1/retour/index.md[39m
+[2025-06-03T09:53:13.761Z] [DEBUG] Theme config loaded.
+[2025-06-03T09:53:13.790Z] [DEBUG] Processed: %s [35mlayout/archive.ejs[39m
+[2025-06-03T09:53:13.801Z] [DEBUG] Processed: %s [35mlayout/index.ejs[39m
+[2025-06-03T09:53:13.838Z] [DEBUG] Processed: %s [35mlayout/layout.ejs[39m
+[2025-06-03T09:53:13.902Z] [DEBUG] Processed: %s [35mlayout/page.ejs[39m
+[2025-06-03T09:53:13.961Z] [DEBUG] Processed: %s [35mlayout/post.ejs[39m
+[2025-06-03T09:53:13.963Z] [DEBUG] Processed: %s [35mlayout/tag.ejs[39m
+[2025-06-03T09:53:13.967Z] [DEBUG] Processed: %s [35mlayout/_partial/after-footer.ejs[39m
+[2025-06-03T09:53:13.969Z] [DEBUG] Processed: %s [35mlayout/category.ejs[39m
+[2025-06-03T09:53:13.971Z] [DEBUG] Processed: %s [35mlayout/_partial/archive-post.ejs[39m
+[2025-06-03T09:53:13.972Z] [DEBUG] Processed: %s [35mlayout/_partial/archive.ejs[39m
+[2025-06-03T09:53:13.974Z] [DEBUG] Processed: %s [35mlayout/_partial/footer.ejs[39m
+[2025-06-03T09:53:13.976Z] [DEBUG] Processed: %s [35mlayout/_partial/gauges-analytics.ejs[39m
+[2025-06-03T09:53:13.977Z] [DEBUG] Processed: %s [35mlayout/_partial/google-analytics.ejs[39m
+[2025-06-03T09:53:13.979Z] [DEBUG] Processed: %s [35mlayout/_partial/head.ejs[39m
+[2025-06-03T09:53:13.981Z] [DEBUG] Processed: %s [35mlayout/_partial/header.ejs[39m
+[2025-06-03T09:53:13.982Z] [DEBUG] Processed: %s [35mlayout/_partial/mobile-nav.ejs[39m
+[2025-06-03T09:53:13.984Z] [DEBUG] Processed: %s [35mlayout/_partial/sidebar.ejs[39m
+[2025-06-03T09:53:13.990Z] [DEBUG] Processed: %s [35mlayout/_widget/archive.ejs[39m
+[2025-06-03T09:53:13.993Z] [DEBUG] Processed: %s [35mlayout/_widget/category.ejs[39m
+[2025-06-03T09:53:13.997Z] [DEBUG] Processed: %s [35mlayout/_partial/article.ejs[39m
+[2025-06-03T09:53:14.000Z] [DEBUG] Processed: %s [35mlayout/_widget/recent_posts.ejs[39m
+[2025-06-03T09:53:14.002Z] [DEBUG] Processed: %s [35mlayout/_widget/tag.ejs[39m
+[2025-06-03T09:53:14.003Z] [DEBUG] Processed: %s [35mlayout/_widget/tagcloud.ejs[39m
+[2025-06-03T09:53:14.005Z] [DEBUG] Processed: %s [35mlayout/_partial/post/category.ejs[39m
+[2025-06-03T09:53:14.008Z] [DEBUG] Processed: %s [35mlayout/_partial/post/date.ejs[39m
+[2025-06-03T09:53:14.009Z] [DEBUG] Processed: %s [35mlayout/_partial/post/gallery.ejs[39m
+[2025-06-03T09:53:14.013Z] [DEBUG] Processed: %s [35mlayout/_partial/post/nav.ejs[39m
+[2025-06-03T09:53:14.017Z] [DEBUG] Processed: %s [35mlanguages/de-DE.yml[39m
+[2025-06-03T09:53:14.022Z] [DEBUG] Processed: %s [35mlanguages/de.yml[39m
+[2025-06-03T09:53:14.026Z] [DEBUG] Processed: %s [35mlanguages/default.yml[39m
+[2025-06-03T09:53:14.029Z] [DEBUG] Processed: %s [35mlanguages/en-GB.yml[39m
+[2025-06-03T09:53:14.034Z] [DEBUG] Processed: %s [35mlanguages/en-US.yml[39m
+[2025-06-03T09:53:14.040Z] [DEBUG] Processed: %s [35mlanguages/en.yml[39m
+[2025-06-03T09:53:14.043Z] [DEBUG] Processed: %s [35mlanguages/es-ES.yml[39m
+[2025-06-03T09:53:14.046Z] [DEBUG] Processed: %s [35mlanguages/es.yml[39m
+[2025-06-03T09:53:14.049Z] [DEBUG] Processed: %s [35mlanguages/hu-HU.yml[39m
+[2025-06-03T09:53:14.052Z] [DEBUG] Processed: %s [35mlanguages/fr.yml[39m
+[2025-06-03T09:53:14.056Z] [DEBUG] Processed: %s [35mlanguages/it-IT.yml[39m
+[2025-06-03T09:53:14.062Z] [DEBUG] Processed: %s [35mlanguages/it.yml[39m
+[2025-06-03T09:53:14.066Z] [DEBUG] Processed: %s [35mlanguages/ja-JP.yml[39m
+[2025-06-03T09:53:14.072Z] [DEBUG] Processed: %s [35mlanguages/fr-FR.yml[39m
+[2025-06-03T09:53:14.080Z] [DEBUG] Processed: %s [35mlanguages/ja.yml[39m
+[2025-06-03T09:53:14.090Z] [DEBUG] Processed: %s [35mlanguages/hu.yml[39m
+[2025-06-03T09:53:14.099Z] [DEBUG] Processed: %s [35mlanguages/ko-KR.yml[39m
+[2025-06-03T09:53:14.104Z] [DEBUG] Processed: %s [35mlanguages/ko.yml[39m
+[2025-06-03T09:53:14.110Z] [DEBUG] Processed: %s [35mlanguages/mn.yml[39m
+[2025-06-03T09:53:14.113Z] [DEBUG] Processed: %s [35mlanguages/mn-MN.yml[39m
+[2025-06-03T09:53:14.115Z] [DEBUG] Processed: %s [35mlanguages/nl-NL.yml[39m
+[2025-06-03T09:53:14.118Z] [DEBUG] Processed: %s [35mlanguages/nl.yml[39m
+[2025-06-03T09:53:14.122Z] [DEBUG] Processed: %s [35mlanguages/no.yml[39m
+[2025-06-03T09:53:14.126Z] [DEBUG] Processed: %s [35mlanguages/pt-PT.yml[39m
+[2025-06-03T09:53:14.130Z] [DEBUG] Processed: %s [35mlanguages/pt.yml[39m
+[2025-06-03T09:53:14.133Z] [DEBUG] Processed: %s [35mlanguages/ru-RU.yml[39m
+[2025-06-03T09:53:14.141Z] [DEBUG] Processed: %s [35mlanguages/ru.yml[39m
+[2025-06-03T09:53:14.144Z] [DEBUG] Processed: %s [35mlanguages/th-TH.yml[39m
+[2025-06-03T09:53:14.146Z] [DEBUG] Processed: %s [35mlanguages/th.yml[39m
+[2025-06-03T09:53:14.149Z] [DEBUG] Processed: %s [35mlanguages/zh-CN.yml[39m
+[2025-06-03T09:53:14.155Z] [DEBUG] Processed: %s [35mlanguages/zh-TW.yml[39m
+[2025-06-03T09:53:14.159Z] [DEBUG] Processed: %s [35m_config.yml[39m
+[2025-06-03T09:53:14.168Z] [DEBUG] Processed: %s [35mlayout/_partial/post/tag.ejs[39m
+[2025-06-03T09:53:14.172Z] [DEBUG] Processed: %s [35mlayout/_partial/post/title.ejs[39m
+[2025-06-03T09:53:14.174Z] [DEBUG] Processed: %s [35mlanguages/tr.yml[39m
+[2025-06-03T09:53:14.180Z] [ERROR] Erreur lors de la synchronisation: fatal: curl_global_init failed
+fatal: remote helper 'https' aborted session
+
+[2025-06-03T09:53:14.193Z] [ERROR] syncRepo(./source)
+[2025-06-03T09:53:14.739Z] [DEBUG] Generator: %s [35masset[39m
+[2025-06-03T09:53:14.742Z] [DEBUG] Generator: %s [35mpage[39m
+[2025-06-03T09:53:14.745Z] [DEBUG] Generator: %s [35mpost[39m
+[2025-06-03T09:53:14.749Z] [DEBUG] Generator: %s [35mcategory[39m
+[2025-06-03T09:53:14.752Z] [DEBUG] Generator: %s [35mindex[39m
+[2025-06-03T09:53:14.758Z] [DEBUG] Generator: %s [35marchive[39m
+[2025-06-03T09:53:14.763Z] [DEBUG] Generator: %s [35mtag[39m
+[2025-06-03T09:53:14.770Z] [DEBUG] Generator: %s [35mxml[39m
+[2025-06-03T09:53:14.934Z] [INFO ] Hexo is running at %s . Press Ctrl+C to stop. [4mhttp://127.0.0.1:8080/[24m
+[2025-06-03T09:53:15.075Z] [INFO ] 
+[2025-06-03T09:53:15.080Z] [INFO ] Issue created: https://github.com/vbcq-volley/temp/issues/1986
+[2025-06-03T09:53:15.089Z] [INFO ] Erreur lors de la synchronisation: fatal: curl_global_init failed
+fatal: remote helper 'https' aborted session
+
+[2025-06-03T09:53:15.093Z] [INFO ] Issue created: https://github.com/vbcq-volley/temp/issues/1987
+[2025-06-03T09:53:15.154Z] [INFO ] Serveur Hexo démarré sur http://127.0.0.1:8080

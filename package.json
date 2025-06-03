@@ -16,7 +16,9 @@
   "description": "",
   "dependencies": {
     "@octokit/rest": "^22.0.0",
+    "adm-zip": "^0.5.10",
     "adminpanel": "file:",
+    "axios": "^1.6.7",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.5.0",
     "browserify": "^11.2.0",
@@ -27,7 +29,7 @@
     "express-session": "^1.10.3",
     "extend": "^3.0.0",
     "git-credential-node": "^1.1.0",
-    "hexo": "github:alphaleadership/hexo",
+    "hexo": "^7.3.0",
     "hexo-front-matter": "^0.2.2",
     "hexo-fs": "0.2.3",
     "hexo-generator-archive": "^2.0.0",
@@ -46,11 +48,9 @@
     "less": "^2.5.1",
     "moment": "^2.7.0",
     "pacote": "^21.0.0",
+    "semver": "^7.5.4",
     "serve-static": "^2.2.0",
     "simple-git": "^3.27.0",
-    "write-good": "^0.10.0",
-    "semver": "^7.5.4",
-    "axios": "^1.6.7",
-    "adm-zip": "^0.5.10"
+    "write-good": "^0.10.0"
   }
 }
