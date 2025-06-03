@@ -1,155 +1,55 @@
 const { Octokit } = require("@octokit/rest");
 const t = require("git-credential-node")
 const login = t.fillSync("https://github.com")
+const fs = require('fs');
 
 // Initialisation du client Octokit
 const octokit = new Octokit({
   auth: login.password
 });
 
-// Gestionnaire d'issues local
-class IssueManager {
-  constructor() {
-    this.issues = [];
-  }
-
-  // Mise à jour d'une issue dans le tableau local
-  updateIssue(issueNumber, updates) {
-    const issueIndex = this.issues.findIndex(i => i.number === issueNumber);
-    if (issueIndex !== -1) {
-      this.issues[issueIndex] = {
-        ...this.issues[issueIndex],
-        ...updates
-      };
-    }
-  }
-
-  // Ajout d'une issue au tableau local
-  addIssue(issue) {
-    this.issues.push(issue);
-  }
-
-  // Récupération d'une issue par son numéro
-  getIssue(issueNumber) {
-    return this.issues.find(i => i.number === issueNumber);
-  }
-
-  // Mise à jour de plusieurs issues
-  updateIssues(issues) {
-    issues.forEach(issue => {
-      const existingIssueIndex = this.issues.findIndex(i => i.number === issue.number);
-      if (existingIssueIndex !== -1) {
-        this.issues[existingIssueIndex] = {
-          ...this.issues[existingIssueIndex],
-          ...issue
-        };
-      } else {
-        this.addIssue(issue);
-      }
-    });
-  }
-}
-
-const issueManager = new IssueManager();
-
-async function closeReferencedIssue(owner, repo, issueNumber, issue, openIssues) {
-    try {
-      console.log(`Vérification de l'issue #${issueNumber}...`);
-  
-      const referencedIssue = issueManager.getIssue(issue);
-  
-      if (referencedIssue) {
-        console.log(`Issue #${issueNumber} trouvée et ouverte. Tentative de fermeture...`);
-        const updatedBody = `${referencedIssue.body} \nCette issue ferme l'issue #${issueNumber} fixes #${issueNumber}`;
-        
-        // Mise à jour sur GitHub
-        await octokit.rest.issues.update({
-          owner,
-          repo,
-          issue_number: issue,
-          body: updatedBody
-        });
-        require("fs").appendFileSync("issue.txt", `fixes #${issueNumber} avec succès.\n`);
-        // Mise à jour locale
-        issueManager.updateIssue(referencedIssue.number, { body: updatedBody });
-        console.log(`Commentaire ajouté pour fermer l'issue #${issueNumber} avec succès.`);
-      } else {
-        console.log(`Issue #${issueNumber} non trouvée dans la liste des issues ouvertes.`);
-      }
-    } catch (error) {
-      console.error(`Erreur lors de la fermeture de l'issue #${issueNumber}:`, error.message);
-    }
-}
-
-async function linkIssuesToPR(owner, repo, prNumber, issues) {
+async function deleteAllReleases(owner, repo) {
   try {
-    const openIssues = issues.filter(issue => issue.state === 'open' && issue.number !== prNumber);
-    const prBody = openIssues.slice(0, 20).map(issue => `fixes #${issue.number}`).join('\n');
-    require("fs").appendFileSync("pr.txt", prBody+"\n");
-    // Mise à jour sur GitHub
-    await octokit.rest.pulls.update({
+    // Récupérer toutes les releases
+    const releases = await octokit.rest.repos.listReleases({
       owner,
-      repo,
-      pull_number: prNumber,
-      body: prBody
+      repo
     });
 
-    // Mise à jour locale
-    issueManager.updateIssue(prNumber, { body: prBody });
-
-    console.log(`Commentaires ajoutés pour les issues #${openIssues.map(issue => issue.number).join(', #')}`);
-    console.log(`Issues ouvertes liées à la PR #${prNumber}`);
-  } catch (error) {
-    console.error(`Erreur lors de la liaison des issues à la PR #${prNumber}:`, error.message);
-  }
-}
-
-async function listOpenIssues(owner, repo) {
-  try {
-    let page = 1;
-    let hasMore = true;
-
-    while (hasMore) {
-      const response = await octokit.rest.issues.listForRepo({
-        owner: owner,
-        repo: repo,
-        state: 'open',
-        per_page: 100,
-        page: page
+    // Supprimer chaque release
+    for (const release of releases.data) {
+      await octokit.rest.repos.deleteRelease({
+        owner,
+        repo,
+        release_id: release.id
       });
-
-      // Mise à jour du gestionnaire d'issues
-      issueManager.updateIssues(response.data);
-      
-      hasMore = response.data.length === 100;
-      page++;
+      console.log(`Release ${release.tag_name} supprimée`);
     }
 
-    // Vérifier s'il y a une PR ouverte
-    const prs = await octokit.rest.pulls.list({
+    // Récupérer tous les tags
+    const tags = await octokit.rest.repos.listTags({
       owner,
-      repo,
-      state: 'open'
+      repo
     });
 
-    if (prs.data.length > 0) {
-      await linkIssuesToPR(owner, repo, prs.data[0].number, issueManager.issues);
+    // Supprimer chaque tag
+    for (const tag of tags.data) {
+      await octokit.rest.git.deleteRef({
+        owner,
+        repo,
+        ref: `tags/${tag.name}`
+      });
+      console.log(`Tag ${tag.name} supprimé`);
     }
 
-    console.log('Issues ouvertes :');
-    const openIssues = issueManager.issues.filter(issue => issue.state === 'open').slice(0, 10);
-    
-    for (const issue of openIssues) {
-      const matches = issue.title.match(/\[#(\d+)\]/g);
-      if (matches) {
-        for (const match of matches) {
-          const referencedIssueNumber = parseInt(match.match(/\d+/)[0]);
-          await closeReferencedIssue(owner, repo, referencedIssueNumber, issue.number, issueManager.issues);
-        }
-      }
-    }
+    // Mettre à jour la version dans package.json
+    const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+    packageJson.version = '1.0.0';
+    fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2));
+    console.log('Version mise à jour à 1.0.0 dans package.json');
+
   } catch (error) {
-    console.error('Erreur lors de la récupération des issues:', error.message);
+    console.error('Erreur lors de la suppression des releases et tags:', error.message);
   }
 }
 
@@ -157,4 +57,4 @@ async function listOpenIssues(owner, repo) {
 const owner = 'vbcq-volley';
 const repo = 'temp';
 
-listOpenIssues(owner, repo);
+deleteAllReleases(owner, repo);
