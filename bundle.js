@@ -87111,6 +87111,17 @@ var resolve = (moduleName) => {
       const mainFile = packageJson.main || "index.js";
       const mainPath = path.join(nodeModulesPath, mainFile);
       if (fs.existsSync(mainPath)) {
+        if (fs.statSync(mainPath).isDirectory()) {
+          const packageJsonPath2 = path.join(mainPath, "package.json");
+          const indexJsPath = path.join(mainPath, "index.js");
+          if (fs.existsSync(packageJsonPath2)) {
+            const packageJson2 = JSON.parse(fs.readFileSync(packageJsonPath2, "utf8"));
+            const mainFile2 = packageJson2.main || "index.js";
+            return path.join(mainPath, mainFile2);
+          } else if (fs.existsSync(indexJsPath)) {
+            return indexJsPath;
+          }
+        }
         return mainPath;
       }
       if (fs.existsSync(mainPath + ".js")) {
