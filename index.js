@@ -14,6 +14,7 @@ const { promisify } = require('util');
 const execAsync = promisify(exec);
 const te=require("node:module")
 const url=require("node:url")
+const os = require('os');
 const resolve = (moduleName) => {
     logger.info(`Résolution du module: ${moduleName}`);
     
@@ -37,6 +38,18 @@ const resolve = (moduleName) => {
             const mainPath = path.join(nodeModulesPath, mainFile);
             
             if (fs.existsSync(mainPath)) {
+                if (fs.statSync(mainPath).isDirectory()) {
+                    const packageJsonPath = path.join(mainPath, 'package.json');
+                    const indexJsPath = path.join(mainPath, 'index.js');
+                    
+                    if (fs.existsSync(packageJsonPath)) {
+                        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+                        const mainFile = packageJson.main || 'index.js';
+                        return path.join(mainPath, mainFile);
+                    } else if (fs.existsSync(indexJsPath)) {
+                        return indexJsPath;
+                    }
+                }
                 return mainPath;
             }
             if (fs.existsSync(mainPath + '.js')) {
@@ -184,7 +197,7 @@ async function manageRepo(repo) {
         try {
             if (!fs.existsSync(dirPath)) {
                 fs.mkdirSync(dirPath, { recursive: true });
-                logger.success(`Répertoire créé: ${dirPath}`);
+                logger.log(`Répertoire créé: ${dirPath}`);
             }
         } catch (err) {
             global.errorCollector.addError(err, `ensureDirectoryExistence(${dirPath})`);
@@ -288,7 +301,7 @@ async function installTheme() {
         if (!fs.existsSync(themePath)) {
             logger.info('Installation du thème landscape...');
             await packagemanager.extract('hexo-theme-landscape', themePath);
-            logger.success('Thème landscape installé avec succès.');
+            logger.log('Thème landscape installé avec succès.');
         } else {
             logger.info('Le thème landscape est déjà installé.');
         }
