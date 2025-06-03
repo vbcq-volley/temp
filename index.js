@@ -14,7 +14,7 @@ const { promisify } = require('util');
 const execAsync = promisify(exec);
 const te=require("node:module")
 const url=require("node:url")
-const resolve=te.createRequire(url.pathToFileURL(process.cwd())).resolve
+const resolve=(module)=>te.createRequire(url.pathToFileURL(process.cwd())).resolve(module)
 const syncInProgress = new Map();
 
 // Configuration des dossiers sécurisés pour Git
