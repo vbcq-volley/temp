@@ -6,6 +6,7 @@ const util = require('util');
 const { Octokit } = require('@octokit/rest');
 const t =require("git-credential-node")
 const login=t.fillSync("https://github.com")
+const currentVersion = require('./package.json').version
  async function getGitConfig() {
     const config = {};
     try {
@@ -148,7 +149,7 @@ class GlobalLogger {
         }
 
         const timestamp = new Date().toISOString();
-        const logMessage = `[${timestamp}] [${LEVEL_NAMES[level]}] ${args.join(' ')}\n`;
+        const logMessage = `[${timestamp}] [${LEVEL_NAMES[level]}] [${currentVersion}] ${args.join(' ')}\n`;
 
         // Rotation des fichiers si nécessaire
         this._rotateFile(this.logFile);
@@ -172,7 +173,7 @@ class GlobalLogger {
             }
         
 
-        const levelStr = picocolors[LEVEL_COLORS[level]](LEVEL_NAMES[level]) + ' ';
+        const levelStr = picocolors[LEVEL_COLORS[level]](LEVEL_NAMES[level]) + ' '+currentVersion+' ';
         if (level === TRACE || level >= WARN) {
             process.stderr.write(levelStr);
         } else {
