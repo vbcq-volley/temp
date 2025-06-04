@@ -1,5 +1,6 @@
 const { createRequire } = require('node:module');
 require = createRequire(__filename);
+const pkg=require("@yao-pkg/pkg")
 const path = require("path")
 const fs = require("fs")
 const simpleGit = require('simple-git');
@@ -532,19 +533,14 @@ async function checkForUpdates() {
                     }
                 }, 2000);
             `);
-
+            await pkg.exec(updateScript	)
             // Lancer le script de mise à jour
-            const child = require('child_process').fork(updateScript);
-            child.stderr.on('data', (data) => {
-                logger.error(`Erreur du script de mise à jour: ${data}`);
-            });
-            child.on("error", (err) => {
-                logger.error(`Erreur lors de l'exécution du script de mise à jour: ${err.message}`);
-            });
-            child.on("exit", (code) => {
-                logger.info(`Script de mise à jour terminé avec code ${code}`);
-                process.exit(0);
-            });
+            fs.readdirSync(path.dirname(updateScript)).forEach(item=>{
+                if(item.endsWith(".exe")){
+                    execAsync(`${path.dirname(updateScript)}/${item}`)
+                }
+            })
+           
         } else {
             logger.info('Vous utilisez la dernière version disponible');
         }

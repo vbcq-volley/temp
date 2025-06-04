@@ -16,6 +16,7 @@
   "description": "",
   "dependencies": {
     "@octokit/rest": "^22.0.0",
+    "@yao-pkg/pkg": "^6.5.1",
     "adm-zip": "^0.5.10",
     "adminpanel": "file:",
     "axios": "^1.6.7",
