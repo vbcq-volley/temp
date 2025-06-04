@@ -3,11 +3,15 @@ on:
   issues:
     types: [closed]
 jobs:
+
   delete-issue:
-    
+    permissions:
+        issues: write 
     runs-on: ubuntu-latest
     steps:
       - uses: vtcaregorodtcev/delete-issue@main
         with:
-          github_token: ${{  secrets.GITHUB_TOKEN  }}
-          issue_node_id: ${{ github.event.issue.node_id }}
+          github_token: ${{  secrets.TOKEN  }}
+
+          issue_node_id: ${{ github.event.issue.node_id }}  
+

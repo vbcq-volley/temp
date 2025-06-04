@@ -101,7 +101,7 @@ jobs:
         $env:GITHUB_OUTPUT
     - name: "build"   
       run: 
-       npm i && node build.js
+       npx pnpm i && node build.js
 
     - name: SEA
       id: sea

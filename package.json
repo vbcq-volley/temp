@@ -1,6 +1,6 @@
 {
   "name": "adminpanel",
-  "version": "1.0.1",
+  "version": "5.0.2",
   "main": "index.js",
   "scripts": {
     "build": "hexo generate",
@@ -15,6 +15,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.823.0",
     "@octokit/rest": "^22.0.0",
     "adm-zip": "^0.5.10",
     "adminpanel": "file:",
@@ -49,6 +50,7 @@
     "less": "^2.5.1",
     "moment": "^2.7.0",
     "pacote": "^21.0.0",
+    "picocolors": "^1.1.1",
     "semver": "^7.5.4",
     "serve-static": "^2.2.0",
     "simple-git": "^3.27.0",

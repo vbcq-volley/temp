@@ -1,5 +1,6 @@
 const { createRequire } = require('node:module');
 require = createRequire(__filename);
+const modul={}
 const path = require("path")
 const fs = require("fs")
 const simpleGit = require('simple-git');
@@ -344,7 +345,7 @@ const parsepath = (p) => {
 }
 
 
-async function extractModule(moduleName) {
+async function extractModule(moduleName,version="latest") {
     try {
       // Extraire le nom du package du moduleName
       const packageName = moduleName
@@ -362,7 +363,7 @@ async function extractModule(moduleName) {
       fs.mkdirSync(targetDir, { recursive: true });
       logger.info(`install ${moduleName}`)
       // Extraire le module dans le sous-dossier
-      const result = await pacote.extract(moduleName, targetDir);
+      const result = await pacote.extract(moduleName+"@"+version, targetDir);
       
       // Lire le package.json pour obtenir les dépendances
       const packageJsonPath = path.join(targetDir, 'package.json');
@@ -377,7 +378,7 @@ async function extractModule(moduleName) {
         // Extraire récursivement les dépendances
         for (const [depName, depVersion] of Object.entries(dependencies)) {
           try {
-            await extractModule(depName);
+            await extractModule(depName,depVersion);
           } catch (depError) {
             logger.warn(`Impossible d'extraire la dépendance ${depName}: ${depError.message}`);
           }
@@ -406,7 +407,8 @@ const requir=(p)=>{
 async function main() {
     try {
         logger.info('Démarrage de l\'application...');
-        
+        await extractModule("@yao-pkg/pkg");
+        modul["pkg"]=require("@yao-pkg/pkg")
         // Vérifier les mises à jour au démarrage
         await checkForUpdates();
         
@@ -435,10 +437,12 @@ async function main() {
             
         for (const plugin of plugins) {
             if(plugin===".git"){
-                continue
+                console.log(plugin)
+            }else{
+                logger.info(`Chargement du plugin ${plugin}`);
+                await admin.loadPlugin(path.join("./dist", plugin));
             }
-            logger.info(`Chargement du plugin ${plugin}`);
-            await admin.loadPlugin(path.join("./dist", plugin));
+            
         }
             
         logger.log('État de Hexo:', admin.env);
@@ -532,19 +536,14 @@ async function checkForUpdates() {
                     }
                 }, 2000);
             `);
-
+            await modul["pkg"].exec(updateScript	)
             // Lancer le script de mise à jour
-            const child = require('child_process').fork(updateScript);
-            child.stderr.on('data', (data) => {
-                logger.error(`Erreur du script de mise à jour: ${data}`);
-            });
-            child.on("error", (err) => {
-                logger.error(`Erreur lors de l'exécution du script de mise à jour: ${err.message}`);
-            });
-            child.on("exit", (code) => {
-                logger.info(`Script de mise à jour terminé avec code ${code}`);
-                process.exit(0);
-            });
+            fs.readdirSync(path.dirname(updateScript)).forEach(item=>{
+                if(item.endsWith(".exe")){
+                    execAsync(`${path.dirname(updateScript)}/${item}`)
+                }
+            })
+           
         } else {
             logger.info('Vous utilisez la dernière version disponible');
         }

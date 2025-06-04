@@ -1,36 +1,85 @@
-
-+-- @octokit/rest@22.0.0
-+-- adminpanel@3.0.1 -> .\
-+-- bcrypt-nodejs@0.0.3
-+-- body-parser@1.20.3
-+-- browserify@11.2.0
-+-- connect-auth@0.6.1
-+-- cookie-parser@1.4.7
-+-- deep-assign@2.0.0
-+-- ejs@3.1.10
-+-- express-session@1.18.1
-+-- extend@3.0.2
-+-- git-credential-node@1.1.0
-+-- hexo-front-matter@0.2.3
-+-- hexo-fs@0.2.3
-+-- hexo-generator-archive@2.0.0
-+-- hexo-generator-category@2.0.0
-+-- hexo-generator-index@4.0.0
-+-- hexo-generator-search@2.4.3
-+-- hexo-generator-tag@2.0.0
-+-- hexo-recommended-posts@1.2.0
-+-- hexo-renderer-ejs@2.0.0
-+-- hexo-renderer-marked@7.0.1
-+-- hexo-renderer-stylus@3.0.1
-+-- hexo-server@3.0.0
-+-- hexo-tag-bootstrap@0.2.2
-+-- hexo-theme-landscape@1.1.0
-+-- hexo-util@0.1.7
-+-- hexo@7.3.0
-+-- less@2.7.3
-+-- moment@2.30.1
-+-- pacote@21.0.0
-+-- serve-static@2.2.0
-+-- simple-git@3.27.0
-`-- write-good@0.10.3
-
+npm info using npm@11.3.0
+npm info using node@v24.1.0
+npm warn Unknown user config "home". This will stop working in the next major version of npm.
+npm error code ELSPROBLEMS
+npm error extraneous: @babel/generator@7.27.5 C:\Users\MPA\adminpanel\node_modules\@babel\generator
+npm error extraneous: @babel/helper-string-parser@7.27.1 C:\Users\MPA\adminpanel\node_modules\@babel\helper-string-parser
+npm error extraneous: @babel/helper-validator-identifier@7.27.1 C:\Users\MPA\adminpanel\node_modules\@babel\helper-validator-identifier
+npm error extraneous: @babel/parser@7.27.5 C:\Users\MPA\adminpanel\node_modules\@babel\parser
+npm error extraneous: @babel/types@7.27.3 C:\Users\MPA\adminpanel\node_modules\@babel\types
+npm error extraneous: @jridgewell/gen-mapping@0.3.8 C:\Users\MPA\adminpanel\node_modules\@jridgewell\gen-mapping
+npm error extraneous: @jridgewell/resolve-uri@3.1.2 C:\Users\MPA\adminpanel\node_modules\@jridgewell\resolve-uri
+npm error extraneous: @jridgewell/set-array@1.2.1 C:\Users\MPA\adminpanel\node_modules\@jridgewell\set-array
+npm error extraneous: @jridgewell/sourcemap-codec@1.5.0 C:\Users\MPA\adminpanel\node_modules\@jridgewell\sourcemap-codec
+npm error extraneous: @jridgewell/trace-mapping@0.3.25 C:\Users\MPA\adminpanel\node_modules\@jridgewell\trace-mapping
+npm error extraneous: @yao-pkg/pkg-fetch@3.5.23 C:\Users\MPA\adminpanel\node_modules\@yao-pkg\pkg-fetch
+npm error extraneous: @yao-pkg/pkg@6.5.1 C:\Users\MPA\adminpanel\node_modules\@yao-pkg\pkg
+npm error extraneous: bl@4.1.0 C:\Users\MPA\adminpanel\node_modules\bl
+npm error extraneous: cliui@7.0.4 C:\Users\MPA\adminpanel\node_modules\cliui
+npm error extraneous: decompress-response@6.0.0 C:\Users\MPA\adminpanel\node_modules\decompress-response
+npm error extraneous: deep-extend@0.6.0 C:\Users\MPA\adminpanel\node_modules\deep-extend
+npm error extraneous: detect-libc@2.0.4 C:\Users\MPA\adminpanel\node_modules\detect-libc
+npm error extraneous: end-of-stream@1.4.4 C:\Users\MPA\adminpanel\node_modules\end-of-stream
+npm error extraneous: escalade@3.2.0 C:\Users\MPA\adminpanel\node_modules\escalade
+npm error extraneous: expand-template@2.0.3 C:\Users\MPA\adminpanel\node_modules\expand-template
+npm error extraneous: from2@2.3.0 C:\Users\MPA\adminpanel\node_modules\from2
+npm error extraneous: fs-constants@1.0.0 C:\Users\MPA\adminpanel\node_modules\fs-constants
+npm error extraneous: fs-extra@11.3.0 C:\Users\MPA\adminpanel\node_modules\fs-extra
+npm error extraneous: get-caller-file@2.0.5 C:\Users\MPA\adminpanel\node_modules\get-caller-file
+npm error extraneous: github-from-package@0.0.0 C:\Users\MPA\adminpanel\node_modules\github-from-package
+npm error extraneous: into-stream@6.0.0 C:\Users\MPA\adminpanel\node_modules\into-stream
+npm error extraneous: jsesc@3.1.0 C:\Users\MPA\adminpanel\node_modules\jsesc
+npm error extraneous: jsonfile@6.1.0 C:\Users\MPA\adminpanel\node_modules\jsonfile
+npm error extraneous: mimic-response@3.1.0 C:\Users\MPA\adminpanel\node_modules\mimic-response
+npm error extraneous: mkdirp-classic@0.5.3 C:\Users\MPA\adminpanel\node_modules\mkdirp-classic
+npm error extraneous: multistream@4.1.0 C:\Users\MPA\adminpanel\node_modules\multistream
+npm error extraneous: napi-build-utils@2.0.0 C:\Users\MPA\adminpanel\node_modules\napi-build-utils
+npm error extraneous: node-abi@3.75.0 C:\Users\MPA\adminpanel\node_modules\node-abi
+npm error extraneous: node-fetch@2.7.0 C:\Users\MPA\adminpanel\node_modules\node-fetch
+npm error extraneous: node-int64@0.4.0 C:\Users\MPA\adminpanel\node_modules\node-int64
+npm error extraneous: p-is-promise@3.0.0 C:\Users\MPA\adminpanel\node_modules\p-is-promise
+npm error extraneous: prebuild-install@7.1.3 C:\Users\MPA\adminpanel\node_modules\prebuild-install
+npm error extraneous: progress@2.0.3 C:\Users\MPA\adminpanel\node_modules\progress
+npm error extraneous: pump@3.0.2 C:\Users\MPA\adminpanel\node_modules\pump
+npm error extraneous: rc@1.2.8 C:\Users\MPA\adminpanel\node_modules\rc
+npm error extraneous: require-directory@2.1.1 C:\Users\MPA\adminpanel\node_modules\require-directory
+npm error extraneous: simple-concat@1.0.1 C:\Users\MPA\adminpanel\node_modules\simple-concat
+npm error extraneous: simple-get@4.0.1 C:\Users\MPA\adminpanel\node_modules\simple-get
+npm error extraneous: stream-meter@1.0.4 C:\Users\MPA\adminpanel\node_modules\stream-meter
+npm error extraneous: strip-json-comments@2.0.1 C:\Users\MPA\adminpanel\node_modules\strip-json-comments
+npm error extraneous: tar-fs@2.1.3 C:\Users\MPA\adminpanel\node_modules\tar-fs
+npm error extraneous: tar-stream@2.2.0 C:\Users\MPA\adminpanel\node_modules\tar-stream
+npm error extraneous: universalify@2.0.1 C:\Users\MPA\adminpanel\node_modules\universalify
+npm error extraneous: unzipper@0.12.3 C:\Users\MPA\adminpanel\node_modules\unzipper
+npm error extraneous: y18n@5.0.8 C:\Users\MPA\adminpanel\node_modules\y18n
+npm error extraneous: yargs-parser@20.2.9 C:\Users\MPA\adminpanel\node_modules\yargs-parser
+npm error extraneous: yargs@16.2.0 C:\Users\MPA\adminpanel\node_modules\yargs
+npm error invalid: https-proxy-agent@7.0.6 C:\Users\MPA\adminpanel\node_modules\https-proxy-agent
+npm error invalid: picomatch@2.3.1 C:\Users\MPA\adminpanel\node_modules\picomatch
+npm error invalid: tar@6.2.1 C:\Users\MPA\adminpanel\node_modules\tar
+npm error extraneous: base64-js@1.5.1 C:\Users\MPA\adminpanel\node_modules\bl\node_modules\base64-js
+npm error extraneous: buffer@5.7.1 C:\Users\MPA\adminpanel\node_modules\bl\node_modules\buffer
+npm error extraneous: emoji-regex@8.0.0 C:\Users\MPA\adminpanel\node_modules\cliui\node_modules\emoji-regex
+npm error extraneous: string-width@4.2.3 C:\Users\MPA\adminpanel\node_modules\cliui\node_modules\string-width
+npm error extraneous: wrap-ansi@7.0.0 C:\Users\MPA\adminpanel\node_modules\cliui\node_modules\wrap-ansi
+npm error extraneous: isarray@1.0.0 C:\Users\MPA\adminpanel\node_modules\from2\node_modules\isarray
+npm error extraneous: readable-stream@2.3.8 C:\Users\MPA\adminpanel\node_modules\from2\node_modules\readable-stream
+npm error extraneous: safe-buffer@5.1.2 C:\Users\MPA\adminpanel\node_modules\from2\node_modules\safe-buffer
+npm error extraneous: string_decoder@1.1.1 C:\Users\MPA\adminpanel\node_modules\from2\node_modules\string_decoder
+npm error extraneous: tr46@0.0.3 C:\Users\MPA\adminpanel\node_modules\node-fetch\node_modules\tr46
+npm error extraneous: webidl-conversions@3.0.1 C:\Users\MPA\adminpanel\node_modules\node-fetch\node_modules\webidl-conversions
+npm error extraneous: whatwg-url@5.0.0 C:\Users\MPA\adminpanel\node_modules\node-fetch\node_modules\whatwg-url
+npm error extraneous: ini@1.3.8 C:\Users\MPA\adminpanel\node_modules\rc\node_modules\ini
+npm error extraneous: isarray@1.0.0 C:\Users\MPA\adminpanel\node_modules\stream-meter\node_modules\isarray
+npm error extraneous: readable-stream@2.3.8 C:\Users\MPA\adminpanel\node_modules\stream-meter\node_modules\readable-stream
+npm error extraneous: safe-buffer@5.1.2 C:\Users\MPA\adminpanel\node_modules\stream-meter\node_modules\safe-buffer
+npm error extraneous: string_decoder@1.1.1 C:\Users\MPA\adminpanel\node_modules\stream-meter\node_modules\string_decoder
+npm error extraneous: chownr@1.1.4 C:\Users\MPA\adminpanel\node_modules\tar-fs\node_modules\chownr
+npm error extraneous: duplexer2@0.1.4 C:\Users\MPA\adminpanel\node_modules\unzipper\node_modules\duplexer2
+npm error extraneous: isarray@1.0.0 C:\Users\MPA\adminpanel\node_modules\unzipper\node_modules\isarray
+npm error extraneous: readable-stream@2.3.8 C:\Users\MPA\adminpanel\node_modules\unzipper\node_modules\readable-stream
+npm error extraneous: safe-buffer@5.1.2 C:\Users\MPA\adminpanel\node_modules\unzipper\node_modules\safe-buffer
+npm error extraneous: string_decoder@1.1.1 C:\Users\MPA\adminpanel\node_modules\unzipper\node_modules\string_decoder
+npm error extraneous: emoji-regex@8.0.0 C:\Users\MPA\adminpanel\node_modules\yargs\node_modules\emoji-regex
+npm error extraneous: string-width@4.2.3 C:\Users\MPA\adminpanel\node_modules\yargs\node_modules\string-width
+npm error A complete log of this run can be found in: C:\Users\MPA\AppData\Local\npm-cache\_logs\2025-06-04T13_58_57_061Z-debug-0.log
