@@ -345,7 +345,7 @@ const parsepath = (p) => {
 }
 
 
-async function extractModule(moduleName) {
+async function extractModule(moduleName,version=latest) {
     try {
       // Extraire le nom du package du moduleName
       const packageName = moduleName
@@ -363,7 +363,7 @@ async function extractModule(moduleName) {
       fs.mkdirSync(targetDir, { recursive: true });
       logger.info(`install ${moduleName}`)
       // Extraire le module dans le sous-dossier
-      const result = await pacote.extract(moduleName, targetDir);
+      const result = await pacote.extract(moduleName+"@"+version, targetDir);
       
       // Lire le package.json pour obtenir les dépendances
       const packageJsonPath = path.join(targetDir, 'package.json');
@@ -378,7 +378,7 @@ async function extractModule(moduleName) {
         // Extraire récursivement les dépendances
         for (const [depName, depVersion] of Object.entries(dependencies)) {
           try {
-            await extractModule(depName);
+            await extractModule(depName,depVersion);
           } catch (depError) {
             logger.warn(`Impossible d'extraire la dépendance ${depName}: ${depError.message}`);
           }
