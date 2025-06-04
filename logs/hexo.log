@@ -6969,3 +6969,65 @@ error: Please commit or stash them.
 [2025-06-04T12:14:32.901Z] [INFO ] [1.0.2] Synchronisation du dépôt ./dist...
 [2025-06-04T12:14:35.038Z] [INFO ] [1.0.2] Aucune modification détectée dans ./dist.
 [2025-06-04T12:14:42.963Z] [INFO ] [1.0.2] Dépôt ./dist synchronisé avec succès.
+[2025-06-04T13:18:57.018Z] [INFO ] [3.0.0] Démarrage de l'application...
+[2025-06-04T13:18:57.030Z] [INFO ] [3.0.0] install @yao-pkg/pkg
+[2025-06-04T13:18:58.804Z] [INFO ] [3.0.0] Le module @babel/generator existe déjà dans C:\Users\MPA\adminpanel\node_modules\@babel\generator
+[2025-06-04T13:18:58.807Z] [INFO ] [3.0.0] Le module @babel/parser existe déjà dans C:\Users\MPA\adminpanel\node_modules\@babel\parser
+[2025-06-04T13:18:58.810Z] [INFO ] [3.0.0] Le module @babel/types existe déjà dans C:\Users\MPA\adminpanel\node_modules\@babel\types
+[2025-06-04T13:18:58.816Z] [INFO ] [3.0.0] install @yao-pkg/pkg-fetch
+[2025-06-04T13:18:59.724Z] [INFO ] [3.0.0] Le module https-proxy-agent existe déjà dans C:\Users\MPA\adminpanel\node_modules\https-proxy-agent
+[2025-06-04T13:18:59.726Z] [INFO ] [3.0.0] Le module node-fetch existe déjà dans C:\Users\MPA\adminpanel\node_modules\node-fetch
+[2025-06-04T13:18:59.731Z] [INFO ] [3.0.0] Le module picocolors existe déjà dans C:\Users\MPA\adminpanel\node_modules\picocolors
+[2025-06-04T13:18:59.734Z] [INFO ] [3.0.0] Le module progress existe déjà dans C:\Users\MPA\adminpanel\node_modules\progress
+[2025-06-04T13:18:59.736Z] [INFO ] [3.0.0] Le module semver existe déjà dans C:\Users\MPA\adminpanel\node_modules\semver
+[2025-06-04T13:18:59.738Z] [INFO ] [3.0.0] Le module tar-fs existe déjà dans C:\Users\MPA\adminpanel\node_modules\tar-fs
+[2025-06-04T13:18:59.741Z] [INFO ] [3.0.0] Le module yargs existe déjà dans C:\Users\MPA\adminpanel\node_modules\yargs
+[2025-06-04T13:18:59.757Z] [INFO ] [3.0.0] Module extrait avec succès dans C:\Users\MPA\adminpanel\node_modules\@yao-pkg\pkg-fetch
+[2025-06-04T13:18:59.760Z] [INFO ] [3.0.0] Source: @yao-pkg/pkg-fetch@*
+[2025-06-04T13:18:59.832Z] [INFO ] [3.0.0] Chemin résolu: https://registry.npmjs.org/@yao-pkg/pkg-fetch/-/pkg-fetch-3.5.23.tgz
+[2025-06-04T13:18:59.837Z] [INFO ] [3.0.0] Intégrité: sha512-rn45sqVQSkcJNSBdTnYze3n+kyub4CN8aiWYlPgA9yp9FZeEF+BlpL68kSIm3HaVuANniF+7RBMH5DkC4zlHZA==
+[2025-06-04T13:18:59.848Z] [INFO ] [3.0.0] Le module into-stream existe déjà dans C:\Users\MPA\adminpanel\node_modules\into-stream
+[2025-06-04T13:18:59.850Z] [INFO ] [3.0.0] Le module minimist existe déjà dans C:\Users\MPA\adminpanel\node_modules\minimist
+[2025-06-04T13:18:59.870Z] [INFO ] [3.0.0] Le module multistream existe déjà dans C:\Users\MPA\adminpanel\node_modules\multistream
+[2025-06-04T13:18:59.923Z] [INFO ] [3.0.0] Le module picocolors existe déjà dans C:\Users\MPA\adminpanel\node_modules\picocolors
+[2025-06-04T13:18:59.926Z] [INFO ] [3.0.0] Le module picomatch existe déjà dans C:\Users\MPA\adminpanel\node_modules\picomatch
+[2025-06-04T13:18:59.930Z] [INFO ] [3.0.0] Le module prebuild-install existe déjà dans C:\Users\MPA\adminpanel\node_modules\prebuild-install
+[2025-06-04T13:18:59.942Z] [INFO ] [3.0.0] Le module resolve existe déjà dans C:\Users\MPA\adminpanel\node_modules\resolve
+[2025-06-04T13:18:59.990Z] [INFO ] [3.0.0] Le module stream-meter existe déjà dans C:\Users\MPA\adminpanel\node_modules\stream-meter
+[2025-06-04T13:19:00.001Z] [INFO ] [3.0.0] Le module tar existe déjà dans C:\Users\MPA\adminpanel\node_modules\tar
+[2025-06-04T13:19:00.073Z] [INFO ] [3.0.0] Le module tinyglobby existe déjà dans C:\Users\MPA\adminpanel\node_modules\tinyglobby
+[2025-06-04T13:19:00.077Z] [INFO ] [3.0.0] Le module unzipper existe déjà dans C:\Users\MPA\adminpanel\node_modules\unzipper
+[2025-06-04T13:19:00.081Z] [INFO ] [3.0.0] Module extrait avec succès dans C:\Users\MPA\adminpanel\node_modules\@yao-pkg\pkg
+[2025-06-04T13:19:00.155Z] [INFO ] [3.0.0] Source: @yao-pkg/pkg@*
+[2025-06-04T13:19:00.175Z] [INFO ] [3.0.0] Chemin résolu: https://registry.npmjs.org/@yao-pkg/pkg/-/pkg-6.5.1.tgz
+[2025-06-04T13:19:00.204Z] [INFO ] [3.0.0] Intégrité: sha512-z6XlySYfnqfm1AfVlBN8A3yeAQniIwL7TKQfDCGsswYSVYLt2snbRefQYsfQQ3pw5lVXrZdLqgTjzaqID9IkWA==
+[2025-06-04T13:19:03.776Z] [INFO ] [3.0.0] Vous utilisez la dernière version disponible
+[2025-06-04T13:19:03.785Z] [INFO ] [3.0.0] Synchronisation du dépôt ./dist...
+[2025-06-04T13:19:04.130Z] [INFO ] [3.0.0] Aucune modification détectée dans ./dist.
+[2025-06-04T13:19:06.141Z] [INFO ] [3.0.0] Dépôt ./dist synchronisé avec succès.
+[2025-06-04T13:19:06.144Z] [INFO ] [3.0.0] Surveillance du dépôt ./dist activée
+[2025-06-04T13:19:06.147Z] [INFO ] [3.0.0] Synchronisation du dépôt ./source...
+[2025-06-04T13:19:06.337Z] [INFO ] [3.0.0] Des modifications ont été détectées dans ./source. Commit en cours...
+[2025-06-04T13:19:06.887Z] [INFO ] [3.0.0] Modifications commitées pour ./source.
+[2025-06-04T13:19:11.525Z] [INFO ] [3.0.0] Dépôt ./source synchronisé avec succès.
+[2025-06-04T13:19:15.029Z] [INFO ] [3.0.0] Modifications poussées pour ./source.
+[2025-06-04T13:19:15.031Z] [INFO ] [3.0.0] Surveillance du dépôt ./source activée
+[2025-06-04T13:19:15.214Z] [INFO ] [3.0.0] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\dist
+[2025-06-04T13:19:15.399Z] [INFO ] [3.0.0] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\source
+[2025-06-04T13:19:15.591Z] [INFO ] [3.0.0] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\themes
+[2025-06-04T13:19:15.842Z] [INFO ] [3.0.0] Dossier configuré comme sécurisé: C:\Users\MPA\adminpanel\node_modules
+[2025-06-04T13:19:15.844Z] [INFO ] [3.0.0] Le module hexo existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo
+[2025-06-04T13:19:15.846Z] [INFO ] [3.0.0] function
+[2025-06-04T13:19:15.848Z] [INFO ] [3.0.0] Résolution du module: hexo
+[2025-06-04T13:19:24.443Z] [INFO ] [3.0.0] Hexo chargé avec succès
+[2025-06-04T13:19:24.454Z] [INFO ] [3.0.0] Le module hexo-theme-landscape existe déjà dans C:\Users\MPA\adminpanel\node_modules\hexo-theme-landscape
+[2025-06-04T13:19:24.457Z] [DEBUG] [3.0.0] Hexo version: %s [35m7.3.0[39m
+[2025-06-04T13:19:24.460Z] [DEBUG] [3.0.0] Working directory: %s [35m~\adminpanel\[39m
+[2025-06-04T13:19:27.941Z] [DEBUG] [3.0.0] Config loaded: %s [35m~\adminpanel\_config.yml[39m
+[2025-06-04T13:19:28.025Z] [INFO ] [3.0.0] Validating config
+[2025-06-04T13:19:36.676Z] [DEBUG] [3.0.0] Plugin loaded: %s [35mhexo-generator-archive[39m
+[2025-06-04T13:19:36.681Z] [DEBUG] [3.0.0] Plugin loaded: %s [35mhexo-generator-category[39m
+[2025-06-04T13:19:36.685Z] [DEBUG] [3.0.0] Plugin loaded: %s [35mhexo-front-matter[39m
+[2025-06-04T13:19:36.688Z] [DEBUG] [3.0.0] Plugin loaded: %s [35mhexo-fs[39m
+[2025-06-04T13:19:36.690Z] [DEBUG] [3.0.0] Plugin loaded: %s [35mhexo-generator-index[39m
+[2025-06-04T13:19:36.697Z] [DEBUG] [3.0.0] Plugin loaded: %s [35mhexo-generator-search[39m
