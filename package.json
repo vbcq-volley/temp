@@ -50,6 +50,7 @@
     "less": "^2.5.1",
     "moment": "^2.7.0",
     "pacote": "^21.0.0",
+    "picocolors": "^1.1.1",
     "semver": "^7.5.4",
     "serve-static": "^2.2.0",
     "simple-git": "^3.27.0",
