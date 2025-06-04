@@ -345,7 +345,7 @@ const parsepath = (p) => {
 }
 
 
-async function extractModule(moduleName,version=latest) {
+async function extractModule(moduleName,version="latest") {
     try {
       // Extraire le nom du package du moduleName
       const packageName = moduleName
