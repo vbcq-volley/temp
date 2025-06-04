@@ -1,6 +1,6 @@
 {
   "name": "adminpanel",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "main": "index.js",
   "scripts": {
     "build": "hexo generate",
@@ -17,7 +17,6 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.823.0",
     "@octokit/rest": "^22.0.0",
-   
     "adm-zip": "^0.5.10",
     "adminpanel": "file:",
     "axios": "^1.6.7",
