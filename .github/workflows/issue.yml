@@ -10,4 +10,6 @@ jobs:
       - uses: vtcaregorodtcev/delete-issue@main
         with:
           github_token: ${{  secrets.GITHUB_TOKEN  }}
+
           issue_node_id: ${{ github.event.issue.node_id }}  
+
