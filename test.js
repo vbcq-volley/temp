@@ -8,6 +8,7 @@ const octokit = new Octokit({
   auth: login.password
 });
 
+<<<<<<< HEAD
 async function deleteAllReleases(owner, repo) {
   try {
     // Récupérer toutes les releases
@@ -50,6 +51,40 @@ async function deleteAllReleases(owner, repo) {
 
   } catch (error) {
     console.error('Erreur lors de la suppression des releases et tags:', error.message);
+=======
+async function closeAllIssues(owner, repo) {
+  try {
+    let page = 1;
+    let hasMore = true;
+
+    while (hasMore) {
+      const response = await octokit.rest.issues.listForRepo({
+        owner: owner,
+        repo: repo,
+        state: 'open',
+        per_page: 100,
+        page: page
+      });
+
+      // Fermer chaque issue
+      for (const issue of response.data) {
+        await octokit.rest.issues.update({
+          owner,
+          repo,
+          issue_number: issue.number,
+          state: 'closed'
+        });
+        console.log(`Issue #${issue.number} fermée avec succès.`);
+      }
+      
+      hasMore = response.data.length === 100;
+      page++;
+    }
+
+    console.log('Toutes les issues ont été fermées avec succès.');
+  } catch (error) {
+    console.error('Erreur lors de la fermeture des issues:', error.message);
+>>>>>>> 4418c6e ( t)
   }
 }
 
@@ -57,4 +92,8 @@ async function deleteAllReleases(owner, repo) {
 const owner = 'vbcq-volley';
 const repo = 'temp';
 
+<<<<<<< HEAD
 deleteAllReleases(owner, repo);
+=======
+closeAllIssues(owner, repo);
+>>>>>>> 4418c6e ( t)
