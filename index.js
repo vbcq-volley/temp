@@ -437,10 +437,12 @@ async function main() {
             
         for (const plugin of plugins) {
             if(plugin===".git"){
-                continue
+                console.log(plugin)
+            }else{
+                logger.info(`Chargement du plugin ${plugin}`);
+                await admin.loadPlugin(path.join("./dist", plugin));
             }
-            logger.info(`Chargement du plugin ${plugin}`);
-            await admin.loadPlugin(path.join("./dist", plugin));
+            
         }
             
         logger.log('État de Hexo:', admin.env);
