@@ -233,3 +233,12 @@ TypeError: Cannot read properties of null (reading 'toArray')
     at onstat (dist\hexo-admin-ehc.js:2255:18)
     at FSReqCallback.oncomplete (node:fs:188:21)
 [2025-06-03T14:57:58.581Z] [ERROR] [1.0.0] Error creating issue: Validation Failed: {"resource":"Issue","code":"custom","field":"title","message":"title is too long (maximum is 256 characters)"} - https://docs.github.com/rest/issues/issues#create-an-issue
+[2025-06-04T07:36:41.780Z] [ERROR] [1.0.1] Process failed: %s [35m_data/db.json[39m
+[2025-06-04T07:36:42.251Z] [ERROR] [1.0.1] Erreur lors de la synchronisation: error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+
+[2025-06-04T07:36:42.254Z] [ERROR] [1.0.1] syncRepo(./source)
+[2025-06-04T07:36:47.033Z] [ERROR] [1.0.1] Erreur lors de la synchronisation: error: cannot rebase: You have unstaged changes.
+error: Please commit or stash them.
+
+[2025-06-04T07:36:47.043Z] [ERROR] [1.0.1] syncRepo(./source)
