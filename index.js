@@ -550,4 +550,5 @@ async function checkForUpdates() {
     } catch (error) {
         logger.error(`Erreur lors de la vérification des mises à jour : ${error.message}`);
     }
-}
+}
+
