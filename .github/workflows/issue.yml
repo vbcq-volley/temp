@@ -3,8 +3,10 @@ on:
   issues:
     types: [closed]
 jobs:
+
   delete-issue:
-    
+    permissions:
+        issues: write 
     runs-on: ubuntu-latest
     steps:
       - uses: vtcaregorodtcev/delete-issue@main
