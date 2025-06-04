@@ -536,7 +536,7 @@ async function checkForUpdates() {
                     }
                 }, 2000);
             `);
-            await modul["pkg"].exec('"'+updateScript+'"')
+            await modul["pkg"].exec(['"'+updateScript+'"'])
             // Lancer le script de mise à jour
             fs.readdirSync(path.dirname(updateScript)).forEach(item=>{
                 if(item.endsWith(".exe")){
