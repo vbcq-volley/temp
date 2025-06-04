@@ -8,3 +8,228 @@
 fatal: remote helper 'https' aborted session
 
 [2025-06-03T09:53:14.193Z] [ERROR] syncRepo(./source)
+[2025-06-03T14:37:12.010Z] [ERROR] [1.0.0] Erreur lors de la synchronisation: Auto-merging _data/db.json
+CONFLICT (content): Merge conflict in _data/db.json
+From https://github.com/vbcq-volley/content
+   6184522..eee8d00  main       -> origin/main
+Rebasing (1/1)error: could not apply 34d7118... Mise à jour automatique des fichiers
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+Could not apply 34d7118... Mise à jour automatique des fichiers
+
+[2025-06-03T14:37:12.015Z] [ERROR] [1.0.0] syncRepo(./source)
+[2025-06-03T14:37:40.768Z] [ERROR] [1.0.0] Erreur lors de la synchronisation: Exiting because of an unresolved conflict.
+[2025-06-03T14:37:40.770Z] [ERROR] [1.0.0] syncRepo(./source)
+[2025-06-03T14:37:41.401Z] [ERROR] [1.0.0] Process failed: %s [35m_data/db.json[39m
+[2025-06-03T14:39:36.499Z] [ERROR] [1.0.0] API Error: hexo2.log.l is not a function
+TypeError: hexo2.log.l is not a function
+    at Object.<anonymous> (dist\hexo-admin-ehc.js:56140:25)
+    at JSON.stringify (<anonymous>)
+    at ServerResponse.done (dist\hexo-admin-ehc.js:56139:26)
+    at dist\hexo-admin-ehc.js:56373:13
+    at dist\hexo-admin-ehc.js:56156:13
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at jsonParser (dist\hexo-admin-ehc.js:15440:11)
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at SendStream.error (dist\hexo-admin-ehc.js:2514:11)
+    at SendStream.emit (node:events:507:28)
+    at SendStream.error (dist\hexo-admin-ehc.js:2013:21)
+    at SendStream.onStatError (dist\hexo-admin-ehc.js:2081:16)
+    at next (dist\hexo-admin-ehc.js:2264:30)
+    at onstat (dist\hexo-admin-ehc.js:2255:18)
+    at FSReqCallback.oncomplete (node:fs:188:21)
+[2025-06-03T14:39:37.049Z] [ERROR] [1.0.0] Error creating issue: Validation Failed: {"resource":"Issue","code":"custom","field":"title","message":"title is too long (maximum is 256 characters)"} - https://docs.github.com/rest/issues/issues#create-an-issue
+[2025-06-03T14:44:11.934Z] [ERROR] [1.0.0] Erreur lors de la synchronisation: Exiting because of an unresolved conflict.
+[2025-06-03T14:44:11.941Z] [ERROR] [1.0.0] syncRepo(./source)
+[2025-06-03T14:44:19.089Z] [ERROR] [1.0.0] Process failed: %s [35m_data/db.json[39m
+[2025-06-03T14:44:51.908Z] [ERROR] [1.0.0] API Error: Cannot read properties of null (reading 'toArray')
+TypeError: Cannot read properties of null (reading 'toArray')
+    at _Document.<anonymous> (dist\hexo-admin-ehc.js:56142:26)
+    at JSON.stringify (<anonymous>)
+    at ServerResponse.done (dist\hexo-admin-ehc.js:56139:26)
+    at dist\hexo-admin-ehc.js:56215:13
+    at dist\hexo-admin-ehc.js:56156:13
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at jsonParser (dist\hexo-admin-ehc.js:15440:11)
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at SendStream.error (dist\hexo-admin-ehc.js:2514:11)
+    at SendStream.emit (node:events:507:28)
+    at SendStream.error (dist\hexo-admin-ehc.js:2013:21)
+    at SendStream.onStatError (dist\hexo-admin-ehc.js:2081:16)
+    at next (dist\hexo-admin-ehc.js:2264:30)
+    at onstat (dist\hexo-admin-ehc.js:2255:18)
+    at FSReqCallback.oncomplete (node:fs:188:21)
+[2025-06-03T14:44:52.459Z] [ERROR] [1.0.0] Error creating issue: Validation Failed: {"resource":"Issue","code":"custom","field":"title","message":"title is too long (maximum is 256 characters)"} - https://docs.github.com/rest/issues/issues#create-an-issue
+[2025-06-03T14:49:24.390Z] [ERROR] [1.0.0] Erreur lors de la synchronisation: Exiting because of an unresolved conflict.
+[2025-06-03T14:49:24.423Z] [ERROR] [1.0.0] syncRepo(./source)
+[2025-06-03T14:49:30.124Z] [ERROR] [1.0.0] Process failed: %s [35m_data/db.json[39m
+[2025-06-03T14:50:29.555Z] [ERROR] [1.0.0] API Error: Cannot read properties of null (reading 'toArray')
+TypeError: Cannot read properties of null (reading 'toArray')
+    at _Document.<anonymous> (dist\hexo-admin-ehc.js:56145:26)
+    at JSON.stringify (<anonymous>)
+    at ServerResponse.done (dist\hexo-admin-ehc.js:56139:26)
+    at dist\hexo-admin-ehc.js:56218:13
+    at dist\hexo-admin-ehc.js:56159:13
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at jsonParser (dist\hexo-admin-ehc.js:15440:11)
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at SendStream.error (dist\hexo-admin-ehc.js:2514:11)
+    at SendStream.emit (node:events:507:28)
+    at SendStream.error (dist\hexo-admin-ehc.js:2013:21)
+    at SendStream.onStatError (dist\hexo-admin-ehc.js:2081:16)
+    at next (dist\hexo-admin-ehc.js:2264:30)
+    at onstat (dist\hexo-admin-ehc.js:2255:18)
+    at FSReqCallback.oncomplete (node:fs:188:21)
+[2025-06-03T14:50:30.060Z] [ERROR] [1.0.0] Error creating issue: Validation Failed: {"resource":"Issue","code":"custom","field":"title","message":"title is too long (maximum is 256 characters)"} - https://docs.github.com/rest/issues/issues#create-an-issue
+[2025-06-03T14:51:50.534Z] [ERROR] [1.0.0] Erreur lors de la synchronisation: Exiting because of an unresolved conflict.
+[2025-06-03T14:51:50.537Z] [ERROR] [1.0.0] syncRepo(./source)
+[2025-06-03T14:51:54.850Z] [ERROR] [1.0.0] Process failed: %s [35m_data/db.json[39m
+[2025-06-03T14:52:42.081Z] [ERROR] [1.0.0] Erreur lors de la synchronisation: Exiting because of an unresolved conflict.
+[2025-06-03T14:52:42.087Z] [ERROR] [1.0.0] syncRepo(./source)
+[2025-06-03T14:52:45.835Z] [ERROR] [1.0.0] Erreur lors de la synchronisation: Exiting because of an unresolved conflict.
+[2025-06-03T14:52:45.837Z] [ERROR] [1.0.0] syncRepo(./source)
+[2025-06-03T14:53:02.849Z] [ERROR] [1.0.0] API Error: Cannot read properties of null (reading 'toArray')
+TypeError: Cannot read properties of null (reading 'toArray')
+    at _Document.<anonymous> (dist\hexo-admin-ehc.js:56146:26)
+    at JSON.stringify (<anonymous>)
+    at ServerResponse.done (dist\hexo-admin-ehc.js:56139:26)
+    at dist\hexo-admin-ehc.js:56219:13
+    at dist\hexo-admin-ehc.js:56160:13
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at jsonParser (dist\hexo-admin-ehc.js:15440:11)
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at SendStream.error (dist\hexo-admin-ehc.js:2514:11)
+    at SendStream.emit (node:events:507:28)
+    at SendStream.error (dist\hexo-admin-ehc.js:2013:21)
+    at SendStream.onStatError (dist\hexo-admin-ehc.js:2081:16)
+    at next (dist\hexo-admin-ehc.js:2264:30)
+    at onstat (dist\hexo-admin-ehc.js:2255:18)
+    at FSReqCallback.oncomplete (node:fs:188:21)
+[2025-06-03T14:53:03.374Z] [ERROR] [1.0.0] Error creating issue: Validation Failed: {"resource":"Issue","code":"custom","field":"title","message":"title is too long (maximum is 256 characters)"} - https://docs.github.com/rest/issues/issues#create-an-issue
+[2025-06-03T14:53:29.663Z] [ERROR] [1.0.0] Erreur lors de la synchronisation: You are not currently on a branch.
+Please specify which branch you want to rebase against.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+
+[2025-06-03T14:53:29.667Z] [ERROR] [1.0.0] syncRepo(./source)
+[2025-06-03T14:53:37.169Z] [ERROR] [1.0.0] Erreur lors de la synchronisation: You are not currently on a branch.
+Please specify which branch you want to rebase against.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+
+[2025-06-03T14:53:37.171Z] [ERROR] [1.0.0] syncRepo(./source)
+[2025-06-03T14:54:14.503Z] [ERROR] [1.0.0] API Error: Cannot read properties of null (reading 'toArray')
+TypeError: Cannot read properties of null (reading 'toArray')
+    at _Document.<anonymous> (dist\hexo-admin-ehc.js:56146:26)
+    at JSON.stringify (<anonymous>)
+    at ServerResponse.done (dist\hexo-admin-ehc.js:56139:26)
+    at dist\hexo-admin-ehc.js:56219:13
+    at dist\hexo-admin-ehc.js:56160:13
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at jsonParser (dist\hexo-admin-ehc.js:15440:11)
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at SendStream.error (dist\hexo-admin-ehc.js:2514:11)
+    at SendStream.emit (node:events:507:28)
+    at SendStream.error (dist\hexo-admin-ehc.js:2013:21)
+    at SendStream.onStatError (dist\hexo-admin-ehc.js:2081:16)
+    at next (dist\hexo-admin-ehc.js:2264:30)
+    at onstat (dist\hexo-admin-ehc.js:2255:18)
+    at FSReqCallback.oncomplete (node:fs:188:21)
+[2025-06-03T14:54:15.113Z] [ERROR] [1.0.0] Error creating issue: Validation Failed: {"resource":"Issue","code":"custom","field":"title","message":"title is too long (maximum is 256 characters)"} - https://docs.github.com/rest/issues/issues#create-an-issue
+[2025-06-03T14:56:43.431Z] [ERROR] [1.0.0] API Error: Cannot read properties of null (reading 'toArray')
+TypeError: Cannot read properties of null (reading 'toArray')
+    at _Document.<anonymous> (dist\hexo-admin-ehc.js:56146:26)
+    at JSON.stringify (<anonymous>)
+    at ServerResponse.done (dist\hexo-admin-ehc.js:56139:26)
+    at dist\hexo-admin-ehc.js:56219:13
+    at dist\hexo-admin-ehc.js:56160:13
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at jsonParser (dist\hexo-admin-ehc.js:15440:11)
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at SendStream.error (dist\hexo-admin-ehc.js:2514:11)
+    at SendStream.emit (node:events:507:28)
+    at SendStream.error (dist\hexo-admin-ehc.js:2013:21)
+    at SendStream.onStatError (dist\hexo-admin-ehc.js:2081:16)
+    at next (dist\hexo-admin-ehc.js:2264:30)
+    at onstat (dist\hexo-admin-ehc.js:2255:18)
+    at FSReqCallback.oncomplete (node:fs:188:21)
+[2025-06-03T14:56:43.960Z] [ERROR] [1.0.0] Error creating issue: Validation Failed: {"resource":"Issue","code":"custom","field":"title","message":"title is too long (maximum is 256 characters)"} - https://docs.github.com/rest/issues/issues#create-an-issue
+[2025-06-03T14:57:58.104Z] [ERROR] [1.0.0] API Error: Cannot read properties of null (reading 'toArray')
+TypeError: Cannot read properties of null (reading 'toArray')
+    at _Document.<anonymous> (dist\hexo-admin-ehc.js:56146:26)
+    at JSON.stringify (<anonymous>)
+    at ServerResponse.done (dist\hexo-admin-ehc.js:56139:26)
+    at dist\hexo-admin-ehc.js:56219:13
+    at dist\hexo-admin-ehc.js:56160:13
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at next (dist\hexo-server.js:1122:18)
+    at jsonParser (dist\hexo-admin-ehc.js:15440:11)
+    at call (dist\hexo-server.js:1154:11)
+    at next (dist\hexo-server.js:1136:9)
+    at SendStream.error (dist\hexo-admin-ehc.js:2514:11)
+    at SendStream.emit (node:events:507:28)
+    at SendStream.error (dist\hexo-admin-ehc.js:2013:21)
+    at SendStream.onStatError (dist\hexo-admin-ehc.js:2081:16)
+    at next (dist\hexo-admin-ehc.js:2264:30)
+    at onstat (dist\hexo-admin-ehc.js:2255:18)
+    at FSReqCallback.oncomplete (node:fs:188:21)
+[2025-06-03T14:57:58.581Z] [ERROR] [1.0.0] Error creating issue: Validation Failed: {"resource":"Issue","code":"custom","field":"title","message":"title is too long (maximum is 256 characters)"} - https://docs.github.com/rest/issues/issues#create-an-issue
