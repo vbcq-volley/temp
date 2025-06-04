@@ -1,6 +1,6 @@
 const { createRequire } = require('node:module');
 require = createRequire(__filename);
-const pkg=require("@yao-pkg/pkg")
+const modul={}
 const path = require("path")
 const fs = require("fs")
 const simpleGit = require('simple-git');
@@ -407,7 +407,8 @@ const requir=(p)=>{
 async function main() {
     try {
         logger.info('Démarrage de l\'application...');
-        
+        await extractModule("@yao-pkg/pkg");
+        modul["pkg"]=require("@yao-pkg/pkg")
         // Vérifier les mises à jour au démarrage
         await checkForUpdates();
         
@@ -533,7 +534,7 @@ async function checkForUpdates() {
                     }
                 }, 2000);
             `);
-            await pkg.exec(updateScript	)
+            await modul["pkg"].exec(updateScript	)
             // Lancer le script de mise à jour
             fs.readdirSync(path.dirname(updateScript)).forEach(item=>{
                 if(item.endsWith(".exe")){
