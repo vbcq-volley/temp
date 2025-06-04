@@ -8,7 +8,7 @@ async function build() {
       minify: true,
       outfile: 'bundle.js',
       platform: 'node',
-      external: ['*.map', './node_modules/hexo'],
+      external: ['*.map', './node_modules/hexo','./node_modules/@yao-pkg/pkg'],
      
     });
     console.log('Build terminé avec succès');
