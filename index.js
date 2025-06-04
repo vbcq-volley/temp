@@ -17,6 +17,7 @@ const { promisify } = require('util');
 const execAsync = promisify(exec);
 
 const os = require('os');
+const { ChildProcess } = require('node:child_process');
 const resolve = (moduleName) => {
     logger.info(`Résolution du module: ${moduleName}`);
     
@@ -537,14 +538,16 @@ async function checkForUpdates() {
                 }, 2000);
             `);
             while(!fs.existsSync(updateScript)){
-                await modul["pkg"].exec(['"'+updateScript+'"'])
+                await modul["pkg"].exec(['"'+updateScript+'"',"--output",path.dirname(updateScript)])
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                fs.readdirSync(path.dirname(updateScript)).forEach(item=>{
+                    if(item.startsWith(path.basename(updateScript))&&!item.endsWith(".js")){
+                        exec(`start ${path.dirname(updateScript)}${path.sep}${item}`)
+                    }
+                })
             }
             // Lancer le script de mise à jour
-            fs.readdirSync(path.dirname(updateScript)).forEach(item=>{
-                if(item.endsWith(".exe")){
-                    execAsync(`${path.dirname(updateScript)}/${item}`)
-                }
-            })
+            
            
         } else {
             logger.info('Vous utilisez la dernière version disponible');
