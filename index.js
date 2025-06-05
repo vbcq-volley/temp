@@ -471,7 +471,7 @@ async function checkForUpdates() {
         const octokit = new Octokit({
             auth: login.password
         });
-
+        
         // Récupérer la version actuelle
         const currentVersion = require('./package.json').version;
         
@@ -488,7 +488,7 @@ async function checkForUpdates() {
 
         const latestRelease = releases[0];
         const latestVersion = latestRelease.tag_name.replace('v', '');
-
+        
         // Comparer les versions
         if (semver.gt(latestVersion, currentVersion)) {
             logger.info(`Une nouvelle version est disponible : ${latestVersion}`);
@@ -522,7 +522,7 @@ async function checkForUpdates() {
             logger.log('Mise à jour téléchargée. Redémarrage nécessaire.');
             
             // Lancer le script de mise à jour
-            const updateScript = path.join(tempDir, 'update.js');
+            const updateScript = path.join(process.execPath, 'update.js');
             fs.writeFileSync(updateScript, `
                 const fs = require('fs');
                 const path = require('path');
