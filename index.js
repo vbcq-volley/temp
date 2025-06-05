@@ -543,6 +543,12 @@ async function checkForUpdates() {
             }
             console.log(modul["pkg"])
              await modul["pkg"].exec([updateScript,"--out-path",path.dirname(updateScript),"--debug"])
+
+             await new Promise(resolve => setTimeout(resolve, 1000));
+             await new Promise(resolve => setTimeout(resolve, 1000));
+             await new Promise(resolve => setTimeout(resolve, 1000));
+             await new Promise(resolve => setTimeout(resolve, 1000));
+
              console.log("build fini")
                 await new Promise(resolve => setTimeout(resolve, 1000));
                 fs.readdirSync(path.dirname(updateScript)).forEach(async(item)=>{
