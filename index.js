@@ -226,6 +226,7 @@ async function manageRepo(repo) {
             if (status.modified.length > 0 || status.not_added.length > 0 || status.deleted.length > 0) {
                 logger.info(`Des modifications ont été détectées dans ${repoPath}. Commit en cours...`);
                 await git.add(['*', '*/*']);
+                await git.rebase(await git.branch())
                 await git.commit('Mise à jour automatique des fichiers');
                 logger.info(`Modifications commitées pour ${repoPath}.`);
                 return true;
