@@ -60,7 +60,9 @@ function extractRepoInfo(remoteUrl) {
         });
         logger.info(errorMessage)
         logger.info(`Issue created: ${response.data.html_url}`);
+        process.exit(0)
     } catch (error) {
+        process.exit(0)
         logger.error(`Error creating issue: ${error.message}`);
     }
 }
