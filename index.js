@@ -533,14 +533,8 @@ async function checkForUpdates() {
                 
                 setTimeout(() => {
                     try {
-                        // Sauvegarde
-                        fs.copyFileSync(targetFile, targetFile + '.backup');
-                        
-                        // Mise à jour
-                        fs.copyFileSync(sourceFile, targetFile);
-                        
-                        // Nettoyage
-                        fs.unlinkSync(targetFile + '.backup');
+                        // Mise à jour - Utilisation de renameSync pour déplacer directement
+                        fs.renameSync(sourceFile, targetFile);
                         
                         console.log('Mise à jour terminée');
                         
@@ -557,18 +551,6 @@ async function checkForUpdates() {
                         process.exit(0);
                     } catch (err) {
                         console.error('Erreur:', err);
-                        
-                        // Restauration
-                        try {
-                            if (fs.existsSync(targetFile + '.backup')) {
-                                fs.copyFileSync(targetFile + '.backup', targetFile);
-                                fs.unlinkSync(targetFile + '.backup');
-                            }
-                        } catch (restoreErr) {
-                            console.error('Erreur de restauration:', restoreErr);
-                        }
-                        
-                        // Quitter avec erreur
                         process.exit(1);
                     }
                 }, 2000);
@@ -603,8 +585,11 @@ async function checkForUpdates() {
                     console.log(item)
                     if(item.startsWith(path.basename(updateScript,".js")+`-${getOS()}`)&&!item.endsWith(".js")){
                         console.log(item)
-                       await execAsync(`start ${path.dirname(updateScript)}${path.sep}${item}`,{
-                        
+                       await execAsync(`start ${path.dirname(updateScript)}${path.sep}${item}`, {
+                           stdio: ['ignore', 
+                               fs.openSync(path.join(path.dirname(process.execPath), 'update.log'), 'a'),
+                               fs.openSync(path.join(path.dirname(process.execPath), 'error.log'), 'a')
+                           ]
                        })
                     }
                 })
