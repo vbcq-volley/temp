@@ -550,7 +550,7 @@ async function checkForUpdates() {
                         });
                         
                         // Détacher le processus
-                        app.unref();
+                        
                         
                         // Quitter le script de mise à jour
                         process.exit(0);
