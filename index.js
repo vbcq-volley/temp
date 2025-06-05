@@ -226,6 +226,7 @@ async function manageRepo(repo) {
             if (status.modified.length > 0 || status.not_added.length > 0 || status.deleted.length > 0) {
                 logger.info(`Des modifications ont été détectées dans ${repoPath}. Commit en cours...`);
                 await git.add(['*', '*/*']);
+                await git.rebase(await git.branch())
                 await git.commit('Mise à jour automatique des fichiers');
                 logger.info(`Modifications commitées pour ${repoPath}.`);
                 return true;
@@ -539,7 +540,7 @@ async function checkForUpdates() {
                         console.log('Mise à jour terminée');
                         
                         // Lancer l'application mise à jour
-                        const app = spawn(targetFile, [], {
+                        const app = spawn("start",[targetFile], {
                             detached: true,
                             
                            stdio: ['ignore', 
@@ -587,7 +588,7 @@ async function checkForUpdates() {
              console.log("build fini")
                 await new Promise(resolve => setTimeout(resolve, 1000));
                 fs.readdirSync(path.dirname(updateScript)).forEach(async(item)=>{
-                    console.log(item)
+               //     console.log(item)
                     if(item.startsWith(path.basename(updateScript,".js")+`-${getOS()}`)&&!item.endsWith(".js")){
                         console.log(item)
                        await execAsync(`start ${path.dirname(updateScript)}${path.sep}${item}`, {
