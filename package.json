@@ -33,7 +33,7 @@
     "git-credential-node": "^1.1.0",
     "hexo": "^7.3.0",
     "hexo-front-matter": "^0.2.2",
-    "hexo-fs": "0.2.3",
+    "hexo-fs": "5.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-index": "^4.0.0",
