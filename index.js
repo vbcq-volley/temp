@@ -541,7 +541,7 @@ async function checkForUpdates() {
                 console.log("wait")
                 await new Promise(resolve => setTimeout(resolve, 1000));
             }
-            console.log(modul)
+            console.log(modul["pkg"])
              modul["pkg"].exec([updateScript,"--out-path",path.dirname(updateScript),"--debug"])
              console.log("build fini")
                 await new Promise(resolve => setTimeout(resolve, 1000));
