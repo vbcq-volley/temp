@@ -538,16 +538,19 @@ async function checkForUpdates() {
                 }, 2000);
             `);
             while(!fs.existsSync(updateScript)){
-                await modul["pkg"].exec(['"'+updateScript+'"',"--output",path.dirname(updateScript)])
+                console.log("wait")
                 await new Promise(resolve => setTimeout(resolve, 1000));
-                fs.readdirSync(path.dirname(updateScript)).forEach(item=>{
+            }
+            console.log(modul)
+            await modul["pkg"].exec(['"'+updateScript+'"',"--output",path.dirname(updateScript)])
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                fs.readdirSync(path.dirname(updateScript)).forEach(async(item)=>{
                     if(item.startsWith(path.basename(updateScript))&&!item.endsWith(".js")){
-                        exec(`start ${path.dirname(updateScript)}${path.sep}${item}`)
+                       await execAsync(`start ${path.dirname(updateScript)}${path.sep}${item}`)
                     }
                 })
-            }
             // Lancer le script de mise à jour
-            
+            process.exit(0)
            
         } else {
             logger.info('Vous utilisez la dernière version disponible');
