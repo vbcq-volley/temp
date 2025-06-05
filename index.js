@@ -526,14 +526,50 @@ async function checkForUpdates() {
             fs.writeFileSync(updateScript, `
                 const fs = require('fs');
                 const path = require('path');
-                const { exec } = require('child_process');
+                const { spawn } = require('child_process');
+                
+                const sourceFile = '${newVersionFile.replace(/\\/g, '/')}';
+                const targetFile = '${path.normalize(process.execPath).replace(/\\/g, '/')}';
                 
                 setTimeout(() => {
                     try {
-                        fs.copyFileSync('${newVersionFile.replace(/\\/g, '/')}', '${path.normalize(process.execPath).replace(/\\/g, '/')}');
-
+                        // Sauvegarde
+                        fs.copyFileSync(targetFile, targetFile + '.backup');
+                        
+                        // Mise à jour
+                        fs.copyFileSync(sourceFile, targetFile);
+                        
+                        // Nettoyage
+                        fs.unlinkSync(targetFile + '.backup');
+                        
+                        console.log('Mise à jour terminée');
+                        
+                        // Lancer l'application mise à jour
+                        const app = spawn(targetFile, [], {
+                            detached: true,
+                            stdio: 'ignore'
+                        });
+                        
+                        // Détacher le processus
+                        app.unref();
+                        
+                        // Quitter le script de mise à jour
+                        process.exit(0);
                     } catch (err) {
-                        console.error('Erreur lors de la mise à jour:', err);
+                        console.error('Erreur:', err);
+                        
+                        // Restauration
+                        try {
+                            if (fs.existsSync(targetFile + '.backup')) {
+                                fs.copyFileSync(targetFile + '.backup', targetFile);
+                                fs.unlinkSync(targetFile + '.backup');
+                            }
+                        } catch (restoreErr) {
+                            console.error('Erreur de restauration:', restoreErr);
+                        }
+                        
+                        // Quitter avec erreur
+                        process.exit(1);
                     }
                 }, 2000);
             `);
