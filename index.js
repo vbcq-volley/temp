@@ -522,7 +522,7 @@ async function checkForUpdates() {
             logger.log('Mise à jour téléchargée. Redémarrage nécessaire.');
             
             // Lancer le script de mise à jour
-            const updateScript = path.join(process.execPath, 'update.js');
+            const updateScript = path.join(path.dirname(process.execPath), 'update.js');
             fs.writeFileSync(updateScript, `
                 const fs = require('fs');
                 const path = require('path');
@@ -549,7 +549,9 @@ async function checkForUpdates() {
                     console.log(item)
                     if(item.startsWith(path.basename(updateScript))&&!item.endsWith(".js")){
                         console.log(item)
-                       await execAsync(`start ${path.dirname(updateScript)}${path.sep}${item}`)
+                       await execAsync(`start ${path.dirname(updateScript)}${path.sep}${item}`,{
+                        
+                       })
                     }
                 })
             // Lancer le script de mise à jour
