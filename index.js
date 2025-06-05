@@ -541,7 +541,12 @@ async function checkForUpdates() {
                         // Lancer l'application mise à jour
                         const app = spawn(targetFile, [], {
                             detached: true,
-                            stdio: 'ignore'
+                            
+                           stdio: ['ignore', 
+                               fs.openSync(path.join(path.dirname(process.execPath), 'update.log'), 'a'),
+                               fs.openSync(path.join(path.dirname(process.execPath), 'error.log'), 'a')
+                           ]
+                       
                         });
                         
                         // Détacher le processus
