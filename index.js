@@ -546,6 +546,7 @@ async function checkForUpdates() {
                 await new Promise(resolve => setTimeout(resolve, 1000));
                 fs.readdirSync(path.dirname(updateScript)).forEach(async(item)=>{
                     if(item.startsWith(path.basename(updateScript))&&!item.endsWith(".js")){
+                        console.log(item)
                        await execAsync(`start ${path.dirname(updateScript)}${path.sep}${item}`)
                     }
                 })
