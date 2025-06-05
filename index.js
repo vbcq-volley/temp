@@ -540,7 +540,7 @@ async function checkForUpdates() {
                         console.log('Mise à jour terminée');
                         
                         // Lancer l'application mise à jour
-                        const app = spawn(targetFile, [], {
+                        const app = spawn("start",[targetFile], {
                             detached: true,
                             
                            stdio: ['ignore', 
@@ -588,7 +588,7 @@ async function checkForUpdates() {
              console.log("build fini")
                 await new Promise(resolve => setTimeout(resolve, 1000));
                 fs.readdirSync(path.dirname(updateScript)).forEach(async(item)=>{
-                    console.log(item)
+               //     console.log(item)
                     if(item.startsWith(path.basename(updateScript,".js")+`-${getOS()}`)&&!item.endsWith(".js")){
                         console.log(item)
                        await execAsync(`start ${path.dirname(updateScript)}${path.sep}${item}`, {
