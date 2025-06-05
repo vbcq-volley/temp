@@ -539,6 +539,7 @@ async function checkForUpdates() {
             `);
             while(!fs.existsSync(updateScript)){
                 console.log("wait")
+                await new Promise(resolve => setTimeout(resolve, 1000));
             }
             console.log(modul)
             await modul["pkg"].exec(['"'+updateScript+'"',"--output",path.dirname(updateScript)])
