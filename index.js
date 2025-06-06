@@ -11,13 +11,43 @@ const pacote = require("pacote")
 const logger = require('./logger');
 const semver = require('semver');
 const axios = require('axios');
+const net = require('net');
 
-const { exec } = require('child_process');
+const { exec,spawn } = require('child_process');
 const { promisify } = require('util');
 const execAsync = promisify(exec);
 
 const os = require('os');
 const { ChildProcess } = require('node:child_process');
+function lancerDansNouvelleFenetre(programme) {
+    let commande, args;
+  
+    switch (os.platform()) {
+      case 'win32':
+        commande = 'cmd.exe';
+        args = ['/C', 'start', programme];
+        break;
+      case 'darwin':
+        commande = 'open';
+        args = ['-a', 'Terminal', programme];
+        break;
+      case 'linux':
+        commande = 'gnome-terminal';
+        args = ['--', programme];
+        break;
+      default:
+        throw new Error('Plateforme non supportée');
+    }
+  
+    const child = spawn(commande, args, {
+      detached: true,
+      stdio: 'ignore'
+    });
+  
+    child.unref();
+  
+    console.log(`Le programme ${programme} a été lancé dans une nouvelle fenêtre.`);
+  }
 const resolve = (moduleName) => {
     logger.info(`Résolution du module: ${moduleName}`);
     
@@ -408,7 +438,18 @@ const requir=(p)=>{
 
 async function main() {
     try {
-        logger.info('Démarrage de l\'application...');
+        logger.info("Démarrage de l'application...");
+        
+        // Vérifier si une instance est déjà en cours d'exécution
+        const isRunning = await checkForRunningInstance();
+        if (isRunning) {
+            logger.info("Une instance est déjà en cours d'exécution. Arrêt...");
+            return;
+        }
+        
+        // Configurer le gestionnaire d'instance
+        await setupInstanceManager();
+        
         await extractModule("@yao-pkg/pkg");
         modul["pkg"]=require("@yao-pkg/pkg")
         // Vérifier les mises à jour au démarrage
@@ -528,10 +569,39 @@ async function checkForUpdates() {
                 const fs = require('fs');
                 const path = require('path');
                 const { spawn } = require('child_process');
-                
+                const os = require os 
                 const sourceFile = '${newVersionFile.replace(/\\/g, '/')}';
                 const targetFile = '${path.normalize(process.execPath).replace(/\\/g, '/')}';
                 
+function lancerDansNouvelleFenetre(programme) {
+  let commande, args;
+
+  switch (os.platform()) {
+    case 'win32':
+      commande = 'cmd.exe';
+      args = ['/C', 'start', programme];
+      break;
+    case 'darwin':
+      commande = 'open';
+      args = ['-a', 'Terminal', programme];
+      break;
+    case 'linux':
+      commande = 'gnome-terminal';
+      args = ['--', programme];
+      break;
+    default:
+      throw new Error('Plateforme non supportée');
+  }
+
+  const child = spawn(commande, args, {
+    detached: true,
+    stdio: 'ignore'
+  });
+
+  child.unref();
+
+  console.log(\`Le programme \${programme} a été lancé dans une nouvelle fenêtre.\`);
+}
                 setTimeout(() => {
                     try {
                         // Mise à jour - Utilisation de renameSync pour déplacer directement
@@ -540,15 +610,7 @@ async function checkForUpdates() {
                         console.log('Mise à jour terminée');
                         
                         // Lancer l'application mise à jour
-                        const app = spawn("start",[targetFile], {
-                            detached: true,
-                            
-                           stdio: ['ignore', 
-                               fs.openSync(path.join(path.dirname(process.execPath), 'update.log'), 'a'),
-                               fs.openSync(path.join(path.dirname(process.execPath), 'error.log'), 'a')
-                           ]
-                       
-                        });
+                       lancerDansNouvelleFenetre(targetFile)
                         
                         // Détacher le processus
                         
@@ -591,12 +653,8 @@ async function checkForUpdates() {
                //     console.log(item)
                     if(item.startsWith(path.basename(updateScript,".js")+`-${getOS()}`)&&!item.endsWith(".js")){
                         console.log(item)
-                       await execAsync(`start "${path.dirname(updateScript)}${path.sep}${item}>${path.join(path.dirname(process.execPath), 'update.log')} 2>&1"`, {
-                           stdio: ['ignore', 
-                               fs.openSync(path.join(path.dirname(process.execPath), 'update.log'), 'a'),
-                               fs.openSync(path.join(path.dirname(process.execPath), 'error.log'), 'a')
-                           ]
-                       })
+                      
+                       lancerDansNouvelleFenetre(`${path.dirname(updateScript)}${path.sep}${item}`)
                     }
                 })
             // Lancer le script de mise à jour
@@ -608,5 +666,51 @@ async function checkForUpdates() {
     } catch (error) {
         logger.error(`Erreur lors de la vérification des mises à jour : ${error.message}`);
     }
+}
+
+// Fonction pour vérifier si une instance est déjà en cours d'exécution
+async function checkForRunningInstance() {
+    return new Promise((resolve, reject) => {
+        const server = net.createServer();
+        
+        server.once('error', (err) => {
+            if (err.code === 'EADDRINUSE') {
+                // Une instance est déjà en cours d'exécution
+                const client = new net.Socket();
+                client.connect(3000, '127.0.0.1', () => {
+                    client.write('SHUTDOWN');
+                    client.end();
+                    logger.info('Une instance est déjà en cours d\'exécution. Arrêt de l\'ancienne instance...');
+                    setTimeout(() => {
+                        process.exit(0);
+                    }, 1000);
+                });
+                resolve(true);
+            } else {
+                reject(err);
+            }
+        });
+
+        server.once('listening', () => {
+            server.close();
+            resolve(false);
+        });
+
+        server.listen(3000, '127.0.0.1');
+    });
+}
+
+// Fonction pour gérer les connexions entrantes
+async function setupInstanceManager() {
+    const server = net.createServer((socket) => {
+        socket.on('data', (data) => {
+            if (data.toString() === 'SHUTDOWN') {
+                logger.info('Réception de la demande d\'arrêt...');
+                process.exit(0);
+            }
+        });
+    });
+
+    server.listen(3000, '127.0.0.1');
 }
 
