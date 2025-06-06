@@ -440,15 +440,46 @@ async function main() {
     try {
         logger.info("Démarrage de l'application...");
         
-        // Vérifier si une instance est déjà en cours d'exécution
-        const isRunning = await checkForRunningInstance();
-        if (isRunning) {
-            logger.info("Une instance est déjà en cours d'exécution. Arrêt...");
-            return;
+        // Gérer le verrouillage de l'application
+        const lockFilePath = path.join(os.tmpdir(), 'adminpanel.lock');
+        
+        // Vérifier si le fichier de verrouillage existe
+        if (fs.existsSync(lockFilePath)) {
+            try {
+                // Lire le PID stocké dans le fichier
+                const pid = parseInt(fs.readFileSync(lockFilePath, 'utf8'));
+                
+                // Vérifier si le processus existe toujours
+                try {
+                    process.kill(pid, 0);
+                    // Le processus existe toujours
+                    logger.info("Une instance est déjà en cours d'exécution. Arrêt de l'ancienne instance...");
+                    process.kill(pid, 'SIGTERM');
+                    // Attendre un peu pour que l'ancienne instance se termine
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                } catch (e) {
+                    // Le processus n'existe plus, on peut supprimer le fichier de verrouillage
+                    fs.unlinkSync(lockFilePath);
+                }
+            } catch (e) {
+                // En cas d'erreur de lecture, supprimer le fichier de verrouillage
+                fs.unlinkSync(lockFilePath);
+            }
         }
         
-        // Configurer le gestionnaire d'instance
-        await setupInstanceManager();
+        // Créer le nouveau fichier de verrouillage
+        fs.writeFileSync(lockFilePath, process.pid.toString());
+        
+        // Nettoyer le fichier de verrouillage à la sortie
+        process.on('exit', () => {
+            try {
+                if (fs.existsSync(lockFilePath)) {
+                    fs.unlinkSync(lockFilePath);
+                }
+            } catch (e) {
+                // Ignorer les erreurs lors du nettoyage
+            }
+        });
         
         await extractModule("@yao-pkg/pkg");
         modul["pkg"]=require("@yao-pkg/pkg")
@@ -470,7 +501,6 @@ async function main() {
         
         // Remplacer le logger Hexo par notre logger global
         admin.log = logger;
-        
        
         await extractModule("hexo-theme-landscape");
         await admin.init();
@@ -499,6 +529,7 @@ async function main() {
 
 main();
 
+
 process.on("SIGKILL", () => {
     try {
         admin.exit();
@@ -507,7 +538,14 @@ process.on("SIGKILL", () => {
         global.errorCollector.addError(err, 'SIGKILL handler');
     }
 });
-
+process.on("SIGTERM", () => {
+    try {
+        admin.exit();
+        logger.info('Application arrêtée proprement');
+    } catch (err) {
+        global.errorCollector.addError(err, 'SIGTERM handler');
+    }
+});
 // Fonction pour vérifier les mises à jour
 async function checkForUpdates() {
     try {
@@ -665,51 +703,5 @@ function lancerDansNouvelleFenetre(programme) {
     } catch (error) {
         logger.error(`Erreur lors de la vérification des mises à jour : ${error.message}`);
     }
-}
-
-// Fonction pour vérifier si une instance est déjà en cours d'exécution
-async function checkForRunningInstance() {
-    return new Promise((resolve, reject) => {
-        const server = net.createServer();
-        
-        server.once('error', (err) => {
-            if (err.code === 'EADDRINUSE') {
-                // Une instance est déjà en cours d'exécution
-                const client = new net.Socket();
-                client.connect(3000, '127.0.0.1', () => {
-                    client.write('SHUTDOWN');
-                    client.end();
-                    logger.info('Une instance est déjà en cours d\'exécution. Arrêt de l\'ancienne instance...');
-                    setTimeout(() => {
-                        process.exit(0);
-                    }, 1000);
-                });
-                resolve(true);
-            } else {
-                reject(err);
-            }
-        });
-
-        server.once('listening', () => {
-            server.close();
-            resolve(false);
-        });
-
-        server.listen(3000, '127.0.0.1');
-    });
-}
-
-// Fonction pour gérer les connexions entrantes
-async function setupInstanceManager() {
-    const server = net.createServer((socket) => {
-        socket.on('data', (data) => {
-            if (data.toString() === 'SHUTDOWN') {
-                logger.info('Réception de la demande d\'arrêt...');
-                process.exit(0);
-            }
-        });
-    });
-
-    server.listen(3000, '127.0.0.1');
 }
 
