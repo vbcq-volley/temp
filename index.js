@@ -470,6 +470,7 @@ async function main() {
         
         // Remplacer le logger Hexo par notre logger global
         admin.log = logger;
+        admin.config.root = '/admin/';
        
         await extractModule("hexo-theme-landscape");
         await admin.init();
