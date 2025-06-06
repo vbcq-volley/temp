@@ -34,7 +34,7 @@ jobs:
               const createdAt = new Date(issue.created_at);
               const timeDiff = twentyFourHoursAgo.getTime() - createdAt.getTime();
               const hoursDiff = timeDiff / (1000 * 60 * 60);
-              
+              console.log(hoursDiff)
               if (hoursDiff > 24) {
                 await github.rest.issues.update({
                   owner: context.repo.owner,
