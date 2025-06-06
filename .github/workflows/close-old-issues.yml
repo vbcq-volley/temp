@@ -1,0 +1,49 @@
+name: Close Old Issues
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Exécution quotidienne à minuit
+
+permissions:
+  issues: write
+
+jobs:
+  close-old-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close old issues
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const twentyFourHoursAgo = new Date();
+            twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
+            
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            });
+            
+            for (const issue of issues.data) {
+              if (issue.pull_request) {
+                continue;
+              }
+              
+              const createdAt = new Date(issue.created_at);
+              if (createdAt < twentyFourHoursAgo) {
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  state: 'closed'
+                });
+                
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: 'Cette issue a été fermée automatiquement car elle était ouverte depuis plus de 24 heures.'
+                });
+              }
+            } 
