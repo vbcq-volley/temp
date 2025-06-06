@@ -604,18 +604,16 @@ function lancerDansNouvelleFenetre(programme) {
 }
                 setTimeout(() => {
                     try {
-                        // Mise à jour - Utilisation de renameSync pour déplacer directement
-                        fs.renameSync(sourceFile, targetFile);
+                        if (fs.existsSync(targetFile)) {
+                            fs.unlinkSync(targetFile);
+                        }
+                        fs.copyFileSync(sourceFile, targetFile);
+                        fs.unlinkSync(sourceFile);
                         
                         console.log('Mise à jour terminée');
                         
-                        // Lancer l'application mise à jour
-                       lancerDansNouvelleFenetre(targetFile)
+                        lancerDansNouvelleFenetre(targetFile)
                         
-                        // Détacher le processus
-                        
-                        
-                        // Quitter le script de mise à jour
                         process.exit(0);
                     } catch (err) {
                         console.error('Erreur:', err);
