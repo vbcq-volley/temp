@@ -20,20 +20,32 @@ jobs:
             const twentyFourHoursAgo = new Date();
             twentyFourHoursAgo.setDate(twentyFourHoursAgo.getDate() - 1);
             
-            const issues = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open'
-            });
+                       let allIssues = [];
+            let page = 1;
+            let hasMoreIssues = true;
             
-            for (const issue of issues.data) {
+            while (hasMoreIssues) {
+              const response = await github.rest.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                per_page: 100,
+                page: page
+              });
+              
+              allIssues = allIssues.concat(response.data);
+              hasMoreIssues = response.data.length === 100;
+              page++;
+            }
+            
+            for (const issue of allIssues) {
               if (issue.pull_request) {
                 continue;
               }
               
               const createdAt = new Date(issue.created_at);
-              const timeDiff = twentyFourHoursAgo.getTime() - createdAt.getTime();
-              const hoursDiff = timeDiff / (1000 * 60 * 60);
+              const timeDiff = createdAt.getTime()-twentyFourHoursAgo.getTime()  ;
+              const hoursDiff = Math.abs(timeDiff / (1000 * 60 * 60));
               console.log(hoursDiff)
               if (hoursDiff > 24) {
                 await github.rest.issues.update({
