@@ -2,7 +2,8 @@ name: Close Old Issues
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Exécution quotidienne à minuit
+    - cron: '*/15 * * * *'  # Exécution toutes les 15 minutes
+  workflow_dispatch:  # Permet l'exécution manuelle
 
 permissions:
   issues: write
