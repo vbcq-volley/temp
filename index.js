@@ -569,7 +569,7 @@ async function checkForUpdates() {
                 const fs = require('fs');
                 const path = require('path');
                 const { spawn } = require('child_process');
-                const os = require os 
+                const os = require("os")
                 const sourceFile = '${newVersionFile.replace(/\\/g, '/')}';
                 const targetFile = '${path.normalize(process.execPath).replace(/\\/g, '/')}';
                 
