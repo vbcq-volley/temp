@@ -282,11 +282,19 @@ async function manageRepo(repo) {
         try {
             logger.info(`Synchronisation du dépôt ${repoPath}...`);
             const changesCommitted = await commitChanges(repoPath);
-            await git.pull();
+           
             logger.info(`Dépôt ${repoPath} synchronisé avec succès.`);
             if (changesCommitted) {
+                await git.pull();
                 await git.push();
                 logger.info(`Modifications poussées pour ${repoPath}.`);
+            } else {
+                // Vérifier s'il y a des fichiers non commités
+                const status = await git.status();
+                if (status.modified.length > 0 || status.not_added.length > 0 || status.deleted.length > 0) {
+                    logger.info(`Des fichiers non commités détectés, nouvelle tentative de synchronisation...`);
+                    await syncRepo(repoPath);
+                }
             }
         } catch (err) {
             logger.error(`Erreur lors de la synchronisation: ${err.message}`);
