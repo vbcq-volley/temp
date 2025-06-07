@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: '*/15 * * * *'  # Exécution toutes les 15 minutes
   workflow_dispatch:  # Permet l'exécution manuelle
+  issues:
+    types: [opened]
 
 permissions:
   issues: write
