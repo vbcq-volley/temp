@@ -34,9 +34,9 @@ function installDependencies(directory) {
             fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
         
             console.log(`Installation des dépendances dans ${directory}`);
-           // execSync(' pnpm install', { cwd: directory, stdio: 'inherit' });
-           // execSync("pnpm rebuild -r ", { cwd: directory, stdio: 'inherit' });
-           // execSync('pnpm approve-builds -g', { cwd: directory, stdio: 'inherit' });
+            execSync(' pnpm install', { cwd: directory, stdio: 'inherit' });
+            execSync("pnpm rebuild -r ", { cwd: directory, stdio: 'inherit' });
+            execSync('pnpm approve-builds -g', { cwd: directory, stdio: 'inherit' });
             if(packageJson.main){
                 fs.appendFileSync("./build.cmd", "npx esbuild ./" + packageJson.main + " --bundle --platform=node --outfile=../../dist/" + packageJson.name + ".js\n");
                 execSync('npx esbuild ./' + packageJson.main + ' --bundle --platform=node --outfile=../../dist/' + packageJson.name + '.js', { cwd: directory, stdio: 'inherit' });
