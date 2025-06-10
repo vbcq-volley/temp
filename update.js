@@ -144,6 +144,7 @@ const main =async () => {
     await manageRepo({ name: 'main', url: 'https://github.com/vbcq-volley/temp.git', path: '.' })
     await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
     await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
+    await manageRepo({ name: 'plugin', url: 'https://github.com/vbcq-volley/plugin.git', path: './plugin' })
         
 }
 main()
