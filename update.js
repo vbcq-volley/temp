@@ -1,6 +1,23 @@
 const path = require("path")
 const fs = require("fs")
 const simpleGit = require('simple-git');
+const buildforbiden=(dir)=>{
+    console.log(fs.statSync(dir).isFile())
+    if(!fs.statSync(dir).isDirectory()){
+        return []
+    }
+    return fs.readdirSync(path.normalize(`${dir}/.git`),{
+        withFileTypes:true,
+        recursive:true
+    }).map(item => ({
+        name: item.name,
+        type: item.isDirectory() ? 'dossier' : 'fichier',
+        path: item.parentPath,
+        cheminComplet: path.join(dir,item.parentPath, item.name)
+    })).filter((item)=>{
+        return item.type=='fichier'
+    }).map((item)=>{return item.cheminComplet})
+}
 async function manageRepo(repo) {
     const { name, url, path: repoPath } = repo;
     let isSyncing = false; // Flag pour suivre l'état de synchronisation
@@ -92,7 +109,8 @@ async function manageRepo(repo) {
                 '.gitignore', 
                 '.gitattributes',
                 'index.lock',
-                ".git\\index.lock"
+                ".git\\index.lock",
+                
             ];
 
             if (filename && !FORBIDDEN_FILES.some(forbidden => filename.endsWith(forbidden))) {
@@ -117,6 +135,8 @@ async function manageRepo(repo) {
         console.log(err)
     }
 }
+//console.log(buildforbiden("."))
+//console.log(buildforbiden("./plugin"))
 const main =async () => {
     await manageRepo({ name: 'main', url: 'https://github.com/vbcq-volley/temp.git', path: '.' })
     await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
