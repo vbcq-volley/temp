@@ -70,7 +70,7 @@ async function manageRepo(repo) {
 
     // Fonction pour synchroniser un dépôt
     async function syncRepo(repoPath) {
-        await new Promise(resolve => setTimeout(resolve, 60000)); // Attend 1 minute
+        //await new Promise(resolve => setTimeout(resolve, 60000)); // Attend 1 minute
         
         if (isSyncing) {
             //console.log(`Une synchronisation est déjà en cours pour ${repoPath}, nouvelle demande ignorée.`);
@@ -109,6 +109,9 @@ async function manageRepo(repo) {
 
     // Fonction pour surveiller les changements
     function watchRepo(repoPath) {
+        let changeCount = 0;
+        const CHANGE_THRESHOLD = 10;
+        
         const watcher = fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
             const FORBIDDEN_FILES = [
                 '.git',
@@ -116,12 +119,16 @@ async function manageRepo(repo) {
                 '.gitattributes',
                 'index.lock',
                 ".git\\index.lock",
-                
             ];
 
             if (filename && !FORBIDDEN_FILES.some(forbidden => filename.endsWith(forbidden))) {
-              //  console.log(`Changement détecté dans ${filename}`);
-                await syncRepo(repoPath);
+                changeCount++;
+                console.log(`Changement détecté (${changeCount}/${CHANGE_THRESHOLD})`);
+                
+                if (changeCount >= CHANGE_THRESHOLD) {
+                    await syncRepo(repoPath);
+                    changeCount = 0;
+                }
             }
         });
         console.log(`Surveillance du dépôt ${repoPath} activée`);
