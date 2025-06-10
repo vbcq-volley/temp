@@ -91,6 +91,9 @@ async function manageRepo(repo) {
                 if (status.modified.length > 0 || status.not_added.length > 0 || status.deleted.length > 0) {
                     console.log(`Des fichiers non commités détectés, nouvelle tentative de synchronisation...`);
                     await syncRepo(repoPath);
+                }else{
+                    await git.pull();
+                    await git.push();
                 }
             }
         } catch (err) {
