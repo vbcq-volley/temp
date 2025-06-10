@@ -114,7 +114,7 @@ async function manageRepo(repo) {
             ];
 
             if (filename && !FORBIDDEN_FILES.some(forbidden => filename.endsWith(forbidden))) {
-                console.log(`Changement détecté dans ${filename}`);
+              //  console.log(`Changement détecté dans ${filename}`);
                 await syncRepo(repoPath);
             }
         });
