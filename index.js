@@ -70,6 +70,8 @@ async function manageRepo(repo) {
 
     // Fonction pour synchroniser un dépôt
     async function syncRepo(repoPath) {
+        await new Promise(resolve => setTimeout(resolve, 60000)); // Attend 1 minute
+        
         if (isSyncing) {
             //console.log(`Une synchronisation est déjà en cours pour ${repoPath}, nouvelle demande ignorée.`);
             return;
