@@ -70,6 +70,7 @@ async function manageRepo(repo) {
 
     // Fonction pour synchroniser un dépôt
     async function syncRepo(repoPath) {
+        
         if (isSyncing) {
             //console.log(`Une synchronisation est déjà en cours pour ${repoPath}, nouvelle demande ignorée.`);
             return;
