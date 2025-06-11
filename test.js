@@ -41,7 +41,7 @@ async function closeAllIssues(owner, repo) {
         console.log(`Issue #${issue.number} fermée avec succès.`);
       }
       
-      hasMore = response.data.length === 100;
+      hasMore = false;
       page++;
     }
 
