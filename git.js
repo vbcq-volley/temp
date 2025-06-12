@@ -6,3 +6,4 @@ const run=(cmd)=>{
 	//console.log(env.output[1].toString())
 	return env.output[1].toString()
 }
+cons
