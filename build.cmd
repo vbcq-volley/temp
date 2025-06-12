@@ -20,3 +20,4 @@ npx esbuild ./lib/pagination --bundle --platform=node --outfile=../../dist/hexo-
 npx esbuild ./index.js --bundle --platform=node --outfile=../../dist/hexo-recommended-posts.js
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-ejs.js
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-marked.js
+npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-stylus.js
