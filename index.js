@@ -646,7 +646,7 @@ function lancerDansNouvelleFenetre(programme) {
                 await new Promise(resolve => setTimeout(resolve, 1000));
             }
             console.log(modul["pkg"])
-             await modul["pkg"].exec([updateScript,"--out-path",path.dirname(updateScript),"--debug"])
+             await modul["pkg"].exec([updateScript,"--out-path",path.dirname(updateScript)])
 
              await new Promise(resolve => setTimeout(resolve, 1000));
              await new Promise(resolve => setTimeout(resolve, 1000));
