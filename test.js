@@ -24,7 +24,7 @@ async function closeAllIssues(owner, repo) {
 
       // Fermer chaque issue
       for (const issue of response.data) {
-        console.log(issue)
+        console.log(issue.number)
         if(issue.pull_request) continue;
         await octokit.rest.issues.update({
           owner,
@@ -41,7 +41,7 @@ async function closeAllIssues(owner, repo) {
         console.log(`Issue #${issue.number} fermée avec succès.`);
       }
       
-      hasMore = false;
+      hasMore = response.data.length===100;
       page++;
     }
 
