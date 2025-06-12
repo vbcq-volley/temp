@@ -686,5 +686,5 @@ function lancerDansNouvelleFenetre(programme) {
         logger.error(`Erreur lors de la vérification des mises à jour : ${error.message}`);
     }
 }
-
+setInterval(60*1000,checkForUpdates())
 
