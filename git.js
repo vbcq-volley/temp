@@ -7,4 +7,6 @@ const run=(cmd)=>{
 	return env.output[1].toString()
 }
 console.log(run("where gite"))
-if(run("where"))
+if(run("where git")){
+    console.log("git ")
+}
