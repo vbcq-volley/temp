@@ -14,8 +14,7 @@ const semver = require('semver');
 const axios = require('axios');
 const net = require('net');
 const {
-    setTimeout,
-    setImmediate,
+    
     setInterval,
   } = require('node:timers/promises');
 const { exec,spawn } = require('child_process');
