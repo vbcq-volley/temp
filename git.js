@@ -13,5 +13,5 @@ console.log(run("where gite"))
 if(run("where git")){
     console.log("git existe")
 }else{
-
+    down
 }
