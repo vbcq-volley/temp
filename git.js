@@ -8,5 +8,7 @@ const run=(cmd)=>{
 }
 console.log(run("where gite"))
 if(run("where git")){
-    console.log("git ")
+    console.log("git existe")
+}else{
+    
 }
