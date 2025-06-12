@@ -1,5 +1,6 @@
 const { createRequire } = require('node:module');
 require = createRequire(__filename);
+require("./gitmanager")
 const modul={}
 const path = require("path")
 const fs = require("fs")
