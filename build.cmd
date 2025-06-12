@@ -39,3 +39,4 @@ npx esbuild ./index.js --bundle --platform=node --outfile=../../dist/hexo-recomm
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-ejs.js
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-marked.js
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-stylus.js
+npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-server.js
