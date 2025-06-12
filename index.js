@@ -412,10 +412,7 @@ async function extractModule(moduleName,version="latest") {
   }
 
 // Configuration Hexo
-const requir=(p)=>{
-    logger.info(p)
-    return JSON.parse(fs.readFileSync(p).toString())
-}
+
 
 async function main() {
     try {
