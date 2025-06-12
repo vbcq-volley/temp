@@ -7,9 +7,11 @@ const run=(cmd)=>{
 	return env.output[1].toString()
 }
 const download=(url,file)=>{
-    return run()
+    return run(`curl "${url}"`)
 }
 console.log(run("where gite"))
 if(run("where git")){
     console.log("git existe")
-}el
+}else{
+
+}
