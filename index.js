@@ -351,52 +351,11 @@ global.errorCollector = new ErrorCollector();
 
 // Exemple d'utilisation de la fonction manageRepo
 
-async function installTheme() {
-    try {
-        const themePath = path.join(process.cwd(), 'themes', 'hexo-theme-landscape');
-        if (!fs.existsSync(themePath)) {
-            logger.info('Installation du thème landscape...');
-            await packagemanager.extract('hexo-theme-landscape', themePath);
-            logger.log('Thème landscape installé avec succès.');
-        } else {
-            logger.info('Le thème landscape est déjà installé.');
-        }
-    } catch (err) {
-        global.errorCollector.addError(err, 'installTheme()');
-    }
-}
-async function installhexo(modul) {
-    try {
-        const themePath = path.join(process.cwd(), 'node_modules', modul);
-        if (!fs.existsSync(themePath)) {
-            logger.info('Installation du thème landscape...');
-            await packagemanager.extract(modul, themePath);
-            logger.success('Thème landscape installé avec succès.');
-        } else {
-            logger.info('Le thème landscape est déjà installé.');
-        }
-        return require(require.resolve(modul))
-    } catch (err) {
-        global.errorCollector.addError(err, 'installTheme()');
-    }
-}
 
 // Appel de la fonction d'installation du thème avant l'initialisation de Hexo
 
 
-const parsepath = (p) => {
-    try {
-        if (fs.existsSync(p)) {
-            return p;
-        }
-        if (fs.existsSync(p + ".js")) {
-            return p + ".js";
-        }
-    } catch (err) {
-        global.errorCollector.addError(err, `parsepath(${p})`);
-    }
-    return null;
-}
+
 
 
 async function extractModule(moduleName,version="latest") {
