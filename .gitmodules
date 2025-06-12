@@ -7,3 +7,6 @@
 [submodule "dist"]
 	path = dist
 	url = https://github.com/vbcq-volley/plugin-build.git
+[submodule "git-win"]
+	path = git-win
+	url = https://github.com/vbcq-volley/git-win.git

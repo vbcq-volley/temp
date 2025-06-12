@@ -1,5 +1,6 @@
 const { createRequire } = require('node:module');
 require = createRequire(__filename);
+require("./gitmanager")
 const modul={}
 const path = require("path")
 const fs = require("fs")
@@ -12,7 +13,11 @@ const logger = require('./logger');
 const semver = require('semver');
 const axios = require('axios');
 const net = require('net');
-
+const {
+    setTimeout,
+    setImmediate,
+    setInterval,
+  } = require('node:timers/promises');
 const { exec,spawn } = require('child_process');
 const { promisify } = require('util');
 const execAsync = promisify(exec);
@@ -237,8 +242,7 @@ const syncInProgress = new Map();
 const SAFE_DIRECTORIES = [
     './dist',
     './source',
-    './themes',
-    './node_modules'
+    
 ];
 async function getGitConfig() {
     const config = {};
@@ -351,52 +355,11 @@ global.errorCollector = new ErrorCollector();
 
 // Exemple d'utilisation de la fonction manageRepo
 
-async function installTheme() {
-    try {
-        const themePath = path.join(process.cwd(), 'themes', 'hexo-theme-landscape');
-        if (!fs.existsSync(themePath)) {
-            logger.info('Installation du thème landscape...');
-            await packagemanager.extract('hexo-theme-landscape', themePath);
-            logger.log('Thème landscape installé avec succès.');
-        } else {
-            logger.info('Le thème landscape est déjà installé.');
-        }
-    } catch (err) {
-        global.errorCollector.addError(err, 'installTheme()');
-    }
-}
-async function installhexo(modul) {
-    try {
-        const themePath = path.join(process.cwd(), 'node_modules', modul);
-        if (!fs.existsSync(themePath)) {
-            logger.info('Installation du thème landscape...');
-            await packagemanager.extract(modul, themePath);
-            logger.success('Thème landscape installé avec succès.');
-        } else {
-            logger.info('Le thème landscape est déjà installé.');
-        }
-        return require(require.resolve(modul))
-    } catch (err) {
-        global.errorCollector.addError(err, 'installTheme()');
-    }
-}
 
 // Appel de la fonction d'installation du thème avant l'initialisation de Hexo
 
 
-const parsepath = (p) => {
-    try {
-        if (fs.existsSync(p)) {
-            return p;
-        }
-        if (fs.existsSync(p + ".js")) {
-            return p + ".js";
-        }
-    } catch (err) {
-        global.errorCollector.addError(err, `parsepath(${p})`);
-    }
-    return null;
-}
+
 
 
 async function extractModule(moduleName,version="latest") {
@@ -453,10 +416,7 @@ async function extractModule(moduleName,version="latest") {
   }
 
 // Configuration Hexo
-const requir=(p)=>{
-    logger.info(p)
-    return JSON.parse(fs.readFileSync(p).toString())
-}
+
 
 async function main() {
     try {
@@ -726,4 +686,5 @@ function lancerDansNouvelleFenetre(programme) {
         logger.error(`Erreur lors de la vérification des mises à jour : ${error.message}`);
     }
 }
+setInterval(60*1000,checkForUpdates())
 
