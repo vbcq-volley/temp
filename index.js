@@ -238,8 +238,7 @@ const syncInProgress = new Map();
 const SAFE_DIRECTORIES = [
     './dist',
     './source',
-    './themes',
-    './node_modules'
+    
 ];
 async function getGitConfig() {
     const config = {};
