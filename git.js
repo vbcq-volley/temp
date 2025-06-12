@@ -13,5 +13,5 @@ console.log(run("where gite"))
 if(run("where git")){
     console.log("git existe")
 }else{
-    down
+    download("https://github.com/git-for-windows/git/releases/download/v2.49.0.windows.1/Git-2.49.0-64-bit.exe")
 }
