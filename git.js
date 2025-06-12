@@ -6,4 +6,4 @@ const run=(cmd)=>{
 	//console.log(env.output[1].toString())
 	return env.output[1].toString()
 }
-console.log(run("where git"))
+console.log(run("where gite"))
