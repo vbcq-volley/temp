@@ -465,7 +465,7 @@ async function main() {
         await extractModule("@yao-pkg/pkg");
         modul["pkg"]=require("@yao-pkg/pkg")
         // Vérifier les mises à jour au démarrage
-        await checkForUpdates();
+       
         
         await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
         await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
@@ -646,25 +646,26 @@ function lancerDansNouvelleFenetre(programme) {
                 await new Promise(resolve => setTimeout(resolve, 1000));
             }
             console.log(modul["pkg"])
-             await modul["pkg"].exec([updateScript,"--out-path",path.dirname(updateScript)])
+            function getOS() {
+                const platform = os.platform();
+                switch(platform) {
+                    case 'win32':
+                        return 'win';
+                    case 'darwin':
+                        return 'macos';
+                    case 'linux':
+                        return 'linux';
+                    default:
+                        return 'unknown';
+                }
+            }
+             await modul["pkg"].exec([updateScript,"--out-path",path.dirname(updateScript),"--targets",getOS()])
 
              await new Promise(resolve => setTimeout(resolve, 1000));
              await new Promise(resolve => setTimeout(resolve, 1000));
              await new Promise(resolve => setTimeout(resolve, 1000));
              await new Promise(resolve => setTimeout(resolve, 1000));
-             function getOS() {
-                 const platform = os.platform();
-                 switch(platform) {
-                     case 'win32':
-                         return 'win';
-                     case 'darwin':
-                         return 'macos';
-                     case 'linux':
-                         return 'linux';
-                     default:
-                         return 'unknown';
-                 }
-             }
+         
              console.log("build fini")
              console.log(getOS())
                 await new Promise(resolve => setTimeout(resolve, 1000));
