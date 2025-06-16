@@ -91,6 +91,20 @@ async function manageRepo(repo) {
             if (changesCommitted) {
                 await git.pull();
                 await git.push();
+                const octokit = new Octokit({
+                    auth: login.password // Utilisez un token si nécessaire
+                });
+                await octokit.request('POST /repos/vbcq-volley/source/actions/workflows/update-submodules/dispatches', {
+                    owner: 'vbcq-volley',
+                    repo: 'source',
+                    workflow_id: 'update-submodules',
+                    ref: 'main',
+                    inputs: {
+                      
+                    },
+                    headers: {
+                      'X-GitHub-Api-Version': '2022-11-28'
+                    }})
                 console.log(`Modifications poussées pour ${repoPath}.`);
             } else {
                 // Vérifier s'il y a des fichiers non commités
