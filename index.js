@@ -95,9 +95,7 @@ async function manageRepo(repo) {
                     auth: login.password // Utilisez un token si nécessaire
                 });
                 await octokit.request('POST /repos/vbcq-volley/source/actions/workflows/update-submodules.yml/dispatches', {
-                    owner: 'vbcq-volley',
-                    repo: 'source',
-                    workflow_id: 'update-submodules.yml',
+
                     ref: 'main',
                     inputs: {
                       
