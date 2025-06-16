@@ -91,6 +91,18 @@ async function manageRepo(repo) {
             if (changesCommitted) {
                 await git.pull();
                 await git.push();
+                await octokit.request('POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches', {
+                    owner: 'OWNER',
+                    repo: 'REPO',
+                    workflow_id: 'WORKFLOW_ID',
+                    ref: 'topic-branch',
+                    inputs: {
+                      name: 'Mona the Octocat',
+                      home: 'San Francisco, CA'
+                    },
+                    headers: {
+                      'X-GitHub-Api-Version': '2022-11-28'
+                    }})
                 console.log(`Modifications poussées pour ${repoPath}.`);
             } else {
                 // Vérifier s'il y a des fichiers non commités
@@ -688,4 +700,4 @@ function lancerDansNouvelleFenetre(programme) {
     }
 }
 setInterval(60*1000,checkForUpdates())
-
+
