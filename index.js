@@ -91,6 +91,9 @@ async function manageRepo(repo) {
             if (changesCommitted) {
                 await git.pull();
                 await git.push();
+                const octokit = new Octokit({
+                    auth: login.password // Utilisez un token si nécessaire
+                });
                 await octokit.request('POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches', {
                     owner: 'OWNER',
                     repo: 'REPO',
