@@ -10,10 +10,10 @@ const t = require("git-credential-node")
 const loadlogin=()=>{
     let log=t.fillSync("https://github.com")
     if(!log){
-        
+
     }
 }
-const login = 
+const login = loadlogin()
 const pacote = require("pacote")
 const logger = require('./logger');
 const semver = require('semver');
@@ -705,4 +705,5 @@ function lancerDansNouvelleFenetre(programme) {
         logger.error(`Erreur lors de la vérification des mises à jour : ${error.message}`);
     }
 }
-setInterval(60*1000,chec
+setInterval(60*1000,checkForUpdates())
+
