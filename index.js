@@ -7,7 +7,28 @@ const fs = require("fs")
 const simpleGit = require('simple-git');
 const { Octokit } = require('@octokit/rest');
 const t = require("git-credential-node")
-const login = t.fillSync("https://github.com")
+const loadlogin=()=>{
+    let log=t.fillSync("https://github.com")
+    if(!log){
+        const { execSync } = require('child_process');
+        const username = execSync('powershell -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show(\'Entrez votre nom d\'utilisateur GitHub\', \'GitHub Login\', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)"').toString();
+        const password = execSync('powershell -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show(\'Entrez votre mot de passe GitHub trouvable sur https://github.com/settings/tokens (cocher tout)\', \'GitHub Login\', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)"').toString();
+        
+        log = {
+            username: username.trim(),
+            password: password.trim()
+        };
+        
+        // Sauvegarder les identifiants
+        t.Sync({
+            username: log.username,
+            password: log.password,
+            url: "https://github.com"
+        });
+    }
+    return log;
+}
+const login = loadlogin()
 const pacote = require("pacote")
 const logger = require('./logger');
 const semver = require('semver');

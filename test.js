@@ -2,7 +2,7 @@ const { Octokit } = require("@octokit/rest");
 const t = require("git-credential-node")
 const login = t.fillSync("https://github.com")
 const fs = require('fs');
-
+t.rejectSync("https://github.com")
 // Initialisation du client Octokit
 const octokit = new Octokit({
   auth: login.password
@@ -55,4 +55,4 @@ async function closeAllIssues(owner, repo) {
 const owner = 'vbcq-volley';
 const repo = 'temp';
 
-closeAllIssues(owner, repo);
+//closeAllIssues(owner, repo);
