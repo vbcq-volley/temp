@@ -8,9 +8,9 @@ const simpleGit = require('simple-git');
 const { Octokit } = require('@octokit/rest');
 const t = require("git-credential-node")
 const loadlogin=()=>{
-    
+    let log=
 }
-const login = t.fillSync("https://github.com")
+const login = 
 const pacote = require("pacote")
 const logger = require('./logger');
 const semver = require('semver');
