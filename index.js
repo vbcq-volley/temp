@@ -20,7 +20,7 @@ const loadlogin=()=>{
         };
         
         // Sauvegarder les identifiants
-        t.Sync({
+        t.approveSync({
             username: log.username,
             password: log.password,
             url: "https://github.com"
