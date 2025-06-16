@@ -55,4 +55,4 @@ async function closeAllIssues(owner, repo) {
 const owner = 'vbcq-volley';
 const repo = 'temp';
 
-closeAllIssues(owner, repo);
+//closeAllIssues(owner, repo);
