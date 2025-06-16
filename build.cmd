@@ -53,3 +53,4 @@ npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-generator
 npx esbuild ./dist/i18n.js --bundle --platform=node --outfile=../../dist/hexo-i18n.js
 npx esbuild ./dist/log.js --bundle --platform=node --outfile=../../dist/hexo-log.js
 npx esbuild ./lib/pagination --bundle --platform=node --outfile=../../dist/hexo-pagination.js
+npx esbuild ./index.js --bundle --platform=node --outfile=../../dist/hexo-recommended-posts.js
