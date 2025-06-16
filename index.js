@@ -12,7 +12,7 @@ const loadlogin=()=>{
     if(!log){
         const { execSync } = require('child_process');
         const username = execSync('powershell -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show(\'Entrez votre nom d\'utilisateur GitHub\', \'GitHub Login\', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)"').toString();
-        const password = execSync('powershell -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show(\'Entrez votre mot de passe GitHub trouvable sur \', \'GitHub Login\', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)"').toString();
+        const password = execSync('powershell -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show(\'Entrez votre mot de passe GitHub trouvable sur https://github.com/settings/tokens \', \'GitHub Login\', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)"').toString();
         
         log = {
             username: username.trim(),
