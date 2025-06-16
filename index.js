@@ -8,7 +8,10 @@ const simpleGit = require('simple-git');
 const { Octokit } = require('@octokit/rest');
 const t = require("git-credential-node")
 const loadlogin=()=>{
-    let log=
+    let log=t.fillSync("https://github.com")
+    if(!log){
+        
+    }
 }
 const login = 
 const pacote = require("pacote")
@@ -702,5 +705,4 @@ function lancerDansNouvelleFenetre(programme) {
         logger.error(`Erreur lors de la vérification des mises à jour : ${error.message}`);
     }
 }
-setInterval(60*1000,checkForUpdates())
-
+setInterval(60*1000,chec
