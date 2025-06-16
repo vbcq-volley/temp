@@ -98,10 +98,9 @@ async function manageRepo(repo) {
                     owner: 'vbcq-volley',
                     repo: 'source',
                     workflow_id: 'WORKFLOW_ID',
-                    ref: 'topic-branch',
+                    ref: 'main',
                     inputs: {
-                      name: 'Mona the Octocat',
-                      home: 'San Francisco, CA'
+                     
                     },
                     headers: {
                       'X-GitHub-Api-Version': '2022-11-28'
