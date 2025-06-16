@@ -94,9 +94,9 @@ async function manageRepo(repo) {
                 const octokit = new Octokit({
                     auth: login.password // Utilisez un token si nécessaire
                 });
-                await octokit.request('POST /repos/vbcq-volley/{repo}/actions/workflows/{workflow_id}/dispatches', {
+                await octokit.request('POST /repos/vbcq-volley/source/actions/workflows/{workflow_id}/dispatches', {
                     owner: 'vbcq-volley',
-                    repo: 'REPO',
+                    repo: 'source',
                     workflow_id: 'WORKFLOW_ID',
                     ref: 'topic-branch',
                     inputs: {
