@@ -147,7 +147,7 @@ async function manageRepo(repo) {
     // Fonction pour surveiller les changements
     function watchRepo(repoPath) {
         let changeCount = 0;
-        const CHANGE_THRESHOLD = 10;
+        const CHANGE_THRESHOLD = 2;
         
         const watcher = fs.watch(repoPath, { recursive: true }, async (eventType, filename) => {
             const FORBIDDEN_FILES = [
