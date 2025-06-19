@@ -129,10 +129,10 @@ async function manageRepo(repo) {
         ensureDirectoryExistence(repoPath);
         if (fs.existsSync(path.join(repoPath, '.git'))) {
             await syncRepo(repoPath);
-            watchRepo(repoPath);
+            //watchRepo(repoPath);
         } else {
             await cloneRepo(repoPath, url);
-            watchRepo(repoPath);
+            //watchRepo(repoPath);
         }
     } catch (err) {
         console.log(err)
