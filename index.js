@@ -77,14 +77,14 @@ async function manageRepo(repo) {
         try {
             const status = await git.status();
             if (status.modified.length > 0 || status.not_added.length > 0 || status.deleted.length > 0) {
-                console.log(`Des modifications ont été détectées dans ${repoPath}. Commit en cours...`);
+                //console.log(`Des modifications ont été détectées dans ${repoPath}. Commit en cours...`);
                 await git.add(['*', '*/*']);
                 //await git.rebase(await git.branch())
                 await git.commit('Mise à jour automatique des fichiers');
-                console.log(`Modifications commitées pour ${repoPath}.`);
+                //console.log(`Modifications commitées pour ${repoPath}.`);
                 return true;
             } else {
-                console.log(`Aucune modification détectée dans ${repoPath}.`);
+               // console.log(`Aucune modification détectée dans ${repoPath}.`);
                 return false;
             }
         } catch (err) {
@@ -105,10 +105,10 @@ async function manageRepo(repo) {
         isSyncing = true;
         const git = simpleGit(repoPath);
         try {
-            console.log(`Synchronisation du dépôt ${repoPath}...`);
+            //console.log(`Synchronisation du dépôt ${repoPath}...`);
             const changesCommitted = await commitChanges(repoPath);
            
-            console.log(`Dépôt ${repoPath} synchronisé avec succès.`);
+           // console.log(`Dépôt ${repoPath} synchronisé avec succès.`);
             if (changesCommitted) {
                 await git.pull();
                 await git.push();
@@ -124,12 +124,12 @@ async function manageRepo(repo) {
                     headers: {
                       'X-GitHub-Api-Version': '2022-11-28'
                     }})
-                console.log(`Modifications poussées pour ${repoPath}.`);
+                //console.log(`Modifications poussées pour ${repoPath}.`);
             } else {
                 // Vérifier s'il y a des fichiers non commités
                 const status = await git.status();
                 if (status.modified.length > 0 || status.not_added.length > 0 || status.deleted.length > 0) {
-                    console.log(`Des fichiers non commités détectés, nouvelle tentative de synchronisation...`);
+                    //console.log(`Des fichiers non commités détectés, nouvelle tentative de synchronisation...`);
                     await syncRepo(repoPath);
                 }else{
                     await git.pull();
@@ -137,7 +137,7 @@ async function manageRepo(repo) {
                 }
             }
         } catch (err) {
-            console.log(`Erreur lors de la synchronisation: ${err.message}`);
+           // console.log(`Erreur lors de la synchronisation: ${err.message}`);
             
         } finally {
             isSyncing = false;
@@ -160,7 +160,7 @@ async function manageRepo(repo) {
 
             if (filename && !FORBIDDEN_FILES.some(forbidden => filename.endsWith(forbidden))) {
                 changeCount++;
-                console.log(`Changement détecté (${changeCount}/${CHANGE_THRESHOLD})`);
+             //   console.log(`Changement détecté (${changeCount}/${CHANGE_THRESHOLD})`);
                 
                 if (changeCount >= CHANGE_THRESHOLD) {
                     await syncRepo(repoPath);
@@ -168,7 +168,7 @@ async function manageRepo(repo) {
                 }
             }
         });
-        console.log(`Surveillance du dépôt ${repoPath} activée`);
+        //console.log(`Surveillance du dépôt ${repoPath} activée`);
         return watcher;
     }
 
