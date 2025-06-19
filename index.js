@@ -509,7 +509,7 @@ async function main() {
         logger.log('Hexo chargé avec succès');
         
         const admin = new hexo(process.cwd(), {
-            debug: true,
+            debug: false,
             silent: false,
         });
         
