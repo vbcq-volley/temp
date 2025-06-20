@@ -218,6 +218,7 @@ class GlobalLogger {
     }
 
     debug(...args) {
+        return
         this._writeLogOutput(DEBUG, ...args);
     }
 
