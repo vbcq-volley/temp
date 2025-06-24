@@ -1378,3 +1378,4 @@ npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-renderer-stylus.js
 npx esbuild ./index --bundle --platform=node --outfile=../../dist/hexo-server.js
 npx esbuild ./lib/index --bundle --platform=node --outfile=../../dist/hexo-util.js
+npx esbuild ./index.js --bundle --platform=node --outfile=../../dist/hexo-admin-ehc.js
