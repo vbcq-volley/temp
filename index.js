@@ -350,6 +350,7 @@ async function createIssueForError(context,errorMessage) {
         logger.info(errorMessage)
         logger.info(`Issue created: ${response.data.html_url}`);
     } catch (error) {
+        console.log(error)
         logger.error(`Error creating issue: ${error.message}`);
     }
 }
