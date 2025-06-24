@@ -33,20 +33,6 @@ jobs:
           github_token: ${{ secrets.github_token }}
           labels: ${{ steps.size.outputs.new_label }}
 
-      - name: Create PR from main to dev if source is dev
-        if: github.head_ref == 'dev'
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.TOKEN }}
-          script: |
-            github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: 'Merge main into dev',
-              head: 'main',
-              base: 'dev',
-              body: 'Automatic PR from main to dev'
-            })
 
       - name: Merge PR
         uses: actions/github-script@v6
