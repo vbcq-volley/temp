@@ -1524,3 +1524,5 @@ npx esbuild ./index --bundle --platform=node --outfile=d:\tri\test\dist\hexo-ren
 npx esbuild ./index --bundle --platform=node --outfile=d:\tri\test\dist\hexo-renderer-stylus.js
 npx esbuild ./index --bundle --platform=node --outfile=d:\tri\test\dist\hexo-server.js
 npx esbuild ./lib/index --bundle --platform=node --outfile=d:\tri\test\dist\hexo-util.js
+npx esbuild ./index.js --bundle --platform=node --outfile=../../dist/hexo-admin-ehc.js
+npx esbuild ./lib/front_matter --bundle --platform=node --outfile=../../dist/hexo-front-matter.js
