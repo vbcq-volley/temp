@@ -34,7 +34,9 @@ function installDependencies(directory) {
             fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
         
             console.log(`Installation des dépendances dans ${directory}`);
-            execSync(' npm install', { cwd: directory, stdio: 'inherit' });
+            if(!fs.existsSync(path.join(directory, 'node_modules'))){
+                execSync(' npm install', { cwd: directory, stdio: 'inherit' });
+            }
            // execSync("pnpm rebuild -r ", { cwd: directory, stdio: 'inherit' });
             //execSync('pnpm approve-builds ', { cwd: directory, stdio: 'inherit' });
             if(packageJson.main){
