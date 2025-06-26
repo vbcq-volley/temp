@@ -145,7 +145,7 @@ const main =async () => {
     await manageRepo({ name: 'plugins', url: 'https://github.com/vbcq-volley/plugin-build.git', path: './dist' });
     await manageRepo({ name: 'source', url: 'https://github.com/vbcq-volley/content.git', path: './source' });
     await manageRepo({ name: 'plugin', url: 'https://github.com/vbcq-volley/plugin.git', path: './plugin' })
-    await manageRepo({name:"pannel",url:"https://github.com/alphaleadership/hexo-pro-client.git",path:"./plugin"})
+    await manageRepo({name:"pannel",url:"https://github.com/alphaleadership/hexo-pro-client.git",path:"./pannel"})
         
 }
 main()
