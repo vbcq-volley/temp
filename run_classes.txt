@@ -1,0 +1,30 @@
+Liste des classes dans run.js:
+
+1. API
+2. DataFetcher
+3. Posts
+4. Pages
+5. Teams
+6. Stades
+7. Results
+8. Datas
+9. Settings
+10. About
+11. Post
+12. Page
+13. Team
+14. Stade
+15. Result
+16. Data
+17. PostEditor
+18. PageEditor
+19. TeamEditor
+20. StadeEditor
+21. ResultEditor
+22. DataEditor
+23. TournamentGenerator
+24. TournamentMatch
+25. TournamentResult
+26. TournamentMatches
+27. TournamentResults
+28. App

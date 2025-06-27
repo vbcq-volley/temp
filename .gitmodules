@@ -10,3 +10,6 @@
 [submodule "git-win"]
 	path = git-win
 	url = https://github.com/vbcq-volley/git-win.git
+[submodule "pannel"]
+	path = pannel
+	url = https://github.com/alphaleadership/hexo-pro-client.git
