@@ -7,7 +7,7 @@ t.rejectSync("https://github.com")
 const octokit = new Octokit({
   auth: login.password
 });
-
+ 
 async function closeAllIssues(owner, repo) {
   try {
     let page = 1;
